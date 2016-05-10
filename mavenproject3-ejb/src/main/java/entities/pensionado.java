@@ -12,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -28,23 +30,113 @@ public class pensionado implements Serializable {
     
     @NotNull(message= "Debe ingresar el rut")
     private Long rut_pensionado;
+    
     @NotNull(message= "Debe ingresar el nombre")
     private String nombre_pensionado;
+    
     @NotNull(message= "Debe ingresar el apellido")
     private String apellido_p_pensionado;
     private String apellido_m_pensionado;
+    
     @NotNull(message= "Debe ingresar la fecha de nacimiento")
     private String fecha_nacimiento;
+    
     @NotNull(message= "Debe ingresar el estado civil")
     private String estado_civil;
+    
     @NotNull(message= "Debe ingresar la dirección")
     private String direccion;
+    
     @NotNull(message= "Debe ingresar la comuna")
     private String comuna;
     private String region;
     private Long telefono_fijo;
     private Long celular;
 
+    @ManyToOne
+    private patologia patologias;
+   
+    @ManyToOne
+    private seguro seguros;
+    
+    @ManyToOne
+    private contacto contactos;
+    
+    @ManyToOne
+    private medicamento medicamentos;
+    
+    @ManyToOne
+    private prestamo prestamos;
+    
+    @ManyToOne
+    private beneficio beneficios;
+    
+    
+    
+    @OneToOne
+    private otros_datos otros_datos;
+
+    public medicamento getMedicamentos() {
+        return medicamentos;
+    }
+
+    public void setMedicamentos(medicamento medicamentos) {
+        this.medicamentos = medicamentos;
+    }
+
+    public prestamo getPrestamos() {
+        return prestamos;
+    }
+
+    public void setPrestamos(prestamo prestamos) {
+        this.prestamos = prestamos;
+    }
+
+    public beneficio getBeneficios() {
+        return beneficios;
+    }
+
+    public void setBeneficios(beneficio beneficios) {
+        this.beneficios = beneficios;
+    }
+    
+    
+
+    public seguro getSeguros() {
+        return seguros;
+    }
+
+    public void setSeguros(seguro seguros) {
+        this.seguros = seguros;
+    }
+
+    public contacto getContactos() {
+        return contactos;
+    }
+
+    public void setContactos(contacto contactos) {
+        this.contactos = contactos;
+    }
+
+    public otros_datos getOtros_datos() {
+        return otros_datos;
+    }
+
+    public void setOtros_datos(otros_datos otros_datos) {
+        this.otros_datos = otros_datos;
+    }
+
+    
+    
+    public patologia getPatologias() {
+        return patologias;
+    }
+
+    public void setPatologias(patologia patologias) {
+        this.patologias = patologias;
+    }
+    
+    
     public Long getRut_pensionado() {
         return rut_pensionado;
     }

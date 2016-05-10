@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -25,14 +27,46 @@ public class usuario implements Serializable {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
     
+    
+    
     @NotNull(message = "debe ingresar nombre")
     private String nombre;
+    
     @NotNull(message = "debe ingresar apellido")
     private String apellido;
+    
     @NotNull(message = "debe ingresar rut")
     private Long rut;
+    
     @NotNull(message = "debe ingresar contraseña")
     private String contrasena;
+    
+    @NotNull(message = "Debe tener un rol")
+    private String rol;
+    
+    @NotNull(message = "debe tener un rol")
+    @OneToOne
+    private rol tipo_usuario;
+
+    public rol getTipo_usuario() {
+        return tipo_usuario;
+    }
+
+    public void setTipo_usuario(rol tipo_usuario) {
+        this.tipo_usuario = tipo_usuario;
+    }
+    
+    
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+    
+    
 
     public String getNombre() {
         return nombre;
@@ -41,6 +75,8 @@ public class usuario implements Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    
+    
 
     public String getApellido() {
         return apellido;
