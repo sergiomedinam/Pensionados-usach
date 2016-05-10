@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="prestamoCreateDlg" widgetVar="prestamoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateprestamoTitle}">
+            <h:form id="prestamoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{prestamoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateprestamoLabel_tipo_prestamo}" for="tipo_prestamo" />
+                        <p:selectOneMenu id="tipo_prestamo" value="#{prestamoController.selected.tipo_prestamo}" >
+                            <f:selectItems value="#{tipo_prestamoController.itemsAvailableSelectOne}"
+                                           var="tipo_prestamoItem"
+                                           itemValue="#{tipo_prestamoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateprestamoLabel_nombre_prestamo}" for="nombre_prestamo" />
+                        <p:inputText id="nombre_prestamo" value="#{prestamoController.selected.nombre_prestamo}" title="#{bundle.CreateprestamoTitle_nombre_prestamo}" />
+                        <p:outputLabel value="#{bundle.CreateprestamoLabel_total_prestamo}" for="total_prestamo" />
+                        <p:inputText id="total_prestamo" value="#{prestamoController.selected.total_prestamo}" title="#{bundle.CreateprestamoTitle_total_prestamo}" />
+                        <p:outputLabel value="#{bundle.CreateprestamoLabel_cuotas_prestamo}" for="cuotas_prestamo" />
+                        <p:inputText id="cuotas_prestamo" value="#{prestamoController.selected.cuotas_prestamo}" title="#{bundle.CreateprestamoTitle_cuotas_prestamo}" />
+                        <p:outputLabel value="#{bundle.CreateprestamoLabel_interes_prestamo}" for="interes_prestamo" />
+                        <p:inputText id="interes_prestamo" value="#{prestamoController.selected.interes_prestamo}" title="#{bundle.CreateprestamoTitle_interes_prestamo}" />
+                        <p:outputLabel value="#{bundle.CreateprestamoLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{prestamoController.selected.id}" title="#{bundle.CreateprestamoTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{prestamoController.create}" value="#{bundle.Save}" update="display,:prestamoListForm:datalist,:growl" oncomplete="handleSubmit(args,'prestamoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="prestamoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

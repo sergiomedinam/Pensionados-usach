@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="otros_datosViewDlg" widgetVar="otros_datosViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.Viewotros_datosTitle}">
+            <h:form id="otros_datosViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{otros_datosController.selected != null}">
+                        <h:outputText value="#{bundle.Viewotros_datosLabel_sistema_salud}"/>
+                        <h:outputText value="#{otros_datosController.selected.sistema_salud}" title="#{bundle.Viewotros_datosTitle_sistema_salud}"/>
+                        <h:outputText value="#{bundle.Viewotros_datosLabel_tipo_pension}"/>
+                        <h:outputText value="#{otros_datosController.selected.tipo_pension}" title="#{bundle.Viewotros_datosTitle_tipo_pension}"/>
+                        <h:outputText value="#{bundle.Viewotros_datosLabel_sistema_pension}"/>
+                        <h:outputText value="#{otros_datosController.selected.sistema_pension}" title="#{bundle.Viewotros_datosTitle_sistema_pension}"/>
+                        <h:outputText value="#{bundle.Viewotros_datosLabel_nombre_banco}"/>
+                        <h:outputText value="#{otros_datosController.selected.nombre_banco}" title="#{bundle.Viewotros_datosTitle_nombre_banco}"/>
+                        <h:outputText value="#{bundle.Viewotros_datosLabel_cuenta_banco}"/>
+                        <h:outputText value="#{otros_datosController.selected.cuenta_banco}" title="#{bundle.Viewotros_datosTitle_cuenta_banco}"/>
+                        <h:outputText value="#{bundle.Viewotros_datosLabel_estamento}"/>
+                        <h:outputText value="#{otros_datosController.selected.estamento}" title="#{bundle.Viewotros_datosTitle_estamento}"/>
+                        <h:outputText value="#{bundle.Viewotros_datosLabel_monto_pension}"/>
+                        <h:outputText value="#{otros_datosController.selected.monto_pension}" title="#{bundle.Viewotros_datosTitle_monto_pension}"/>
+                        <h:outputText value="#{bundle.Viewotros_datosLabel_valor_cuota}"/>
+                        <h:outputText value="#{otros_datosController.selected.valor_cuota}" title="#{bundle.Viewotros_datosTitle_valor_cuota}"/>
+                        <h:outputText value="#{bundle.Viewotros_datosLabel_ultimo_aporte}"/>
+                        <h:outputText value="#{otros_datosController.selected.ultimo_aporte}" title="#{bundle.Viewotros_datosTitle_ultimo_aporte}"/>
+                        <h:outputText value="#{bundle.Viewotros_datosLabel_caja_compensacion}"/>
+                        <h:outputText value="#{otros_datosController.selected.caja_compensacion}" title="#{bundle.Viewotros_datosTitle_caja_compensacion}"/>
+                        <h:outputText value="#{bundle.Viewotros_datosLabel_id}"/>
+                        <h:outputText value="#{otros_datosController.selected.id}" title="#{bundle.Viewotros_datosTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="otros_datosViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="tipo_prestamoViewDlg" widgetVar="tipo_prestamoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.Viewtipo_prestamoTitle}">
+            <h:form id="tipo_prestamoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tipo_prestamoController.selected != null}">
+                        <h:outputText value="#{bundle.Viewtipo_prestamoLabel_id}"/>
+                        <h:outputText value="#{tipo_prestamoController.selected.id}" title="#{bundle.Viewtipo_prestamoTitle_id}"/>
+                        <h:outputText value="#{bundle.Viewtipo_prestamoLabel_nombre_t_prestamo}"/>
+                        <h:outputText value="#{tipo_prestamoController.selected.nombre_t_prestamo}" title="#{bundle.Viewtipo_prestamoTitle_nombre_t_prestamo}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="tipo_prestamoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

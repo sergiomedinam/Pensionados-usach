@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="medicamentoEditDlg" widgetVar="medicamentoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditmedicamentoTitle}">
+            <h:form id="medicamentoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{medicamentoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditmedicamentoLabel_nombre_medicamento}" for="nombre_medicamento" />
+                        <p:inputText id="nombre_medicamento" value="#{medicamentoController.selected.nombre_medicamento}" title="#{bundle.EditmedicamentoTitle_nombre_medicamento}" />
+                        <p:outputLabel value="#{bundle.EditmedicamentoLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{medicamentoController.selected.id}" title="#{bundle.EditmedicamentoTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{medicamentoController.update}" value="#{bundle.Save}" update="display,:medicamentoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'medicamentoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="medicamentoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
