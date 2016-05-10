@@ -26,6 +26,7 @@ public class designado_fallecimiento implements Serializable {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
     
+    
     @NotNull(message ="Debe tener un nombre")
     private String nombre_designado;
     

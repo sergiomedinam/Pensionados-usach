@@ -28,6 +28,14 @@ public class rol implements Serializable {
     
     @NotNull(message ="Debe tener un nombre")
     private String nombre_rol;
+
+    public String getNombre_rol() {
+        return nombre_rol;
+    }
+    
+    public void setNombre_rol(String nombre_rol) {
+        this.nombre_rol = nombre_rol;
+    }
     
             
     public Long getId() {

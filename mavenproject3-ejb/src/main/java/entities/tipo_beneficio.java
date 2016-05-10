@@ -36,6 +36,7 @@ public class tipo_beneficio implements Serializable {
         this.nombre_t_beneficio = nombre_t_beneficio;
     }
     
+    
 
     public Long getId() {
         return id;

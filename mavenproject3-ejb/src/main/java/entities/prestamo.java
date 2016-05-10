@@ -27,6 +27,7 @@ public class prestamo implements Serializable {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
     
+    
     @NotNull(message = "Debe ser de un tipo de prestamo")
     @OneToOne
     private tipo_prestamo tipo_prestamo;
