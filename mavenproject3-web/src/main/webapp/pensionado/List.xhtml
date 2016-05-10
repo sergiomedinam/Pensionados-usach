@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListpensionadoTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="pensionadoListForm">
+                <p:panel header="#{bundle.ListpensionadoTitle}">
+                    <p:dataTable id="datalist" value="#{pensionadoController.items}" var="item"
+                                 selectionMode="single" selection="#{pensionadoController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.id}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListpensionadoTitle_rut_pensionado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.rut_pensionado}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListpensionadoTitle_nombre_pensionado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre_pensionado}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListpensionadoTitle_apellido_p_pensionado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.apellido_p_pensionado}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListpensionadoTitle_apellido_m_pensionado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.apellido_m_pensionado}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListpensionadoTitle_fecha_nacimiento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecha_nacimiento}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListpensionadoTitle_estado_civil}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estado_civil}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListpensionadoTitle_direccion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.direccion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListpensionadoTitle_comuna}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.comuna}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListpensionadoTitle_region}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.region}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListpensionadoTitle_telefono_fijo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telefono_fijo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListpensionadoTitle_celular}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.celular}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListpensionadoTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{pensionadoController.prepareCreate}" update=":pensionadoCreateForm" oncomplete="PF('pensionadoCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":pensionadoViewForm" oncomplete="PF('pensionadoViewDialog').show()" disabled="#{empty pensionadoController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":pensionadoEditForm" oncomplete="PF('pensionadoEditDialog').show()" disabled="#{empty pensionadoController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{pensionadoController.destroy}" update=":growl,datalist" disabled="#{empty pensionadoController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="pensionadoViewDlg" widgetVar="pensionadoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewpensionadoTitle}">
+            <h:form id="pensionadoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{pensionadoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewpensionadoLabel_rut_pensionado}"/>
+                        <h:outputText value="#{pensionadoController.selected.rut_pensionado}" title="#{bundle.ViewpensionadoTitle_rut_pensionado}"/>
+                        <h:outputText value="#{bundle.ViewpensionadoLabel_nombre_pensionado}"/>
+                        <h:outputText value="#{pensionadoController.selected.nombre_pensionado}" title="#{bundle.ViewpensionadoTitle_nombre_pensionado}"/>
+                        <h:outputText value="#{bundle.ViewpensionadoLabel_apellido_p_pensionado}"/>
+                        <h:outputText value="#{pensionadoController.selected.apellido_p_pensionado}" title="#{bundle.ViewpensionadoTitle_apellido_p_pensionado}"/>
+                        <h:outputText value="#{bundle.ViewpensionadoLabel_apellido_m_pensionado}"/>
+                        <h:outputText value="#{pensionadoController.selected.apellido_m_pensionado}" title="#{bundle.ViewpensionadoTitle_apellido_m_pensionado}"/>
+                        <h:outputText value="#{bundle.ViewpensionadoLabel_fecha_nacimiento}"/>
+                        <h:outputText value="#{pensionadoController.selected.fecha_nacimiento}" title="#{bundle.ViewpensionadoTitle_fecha_nacimiento}"/>
+                        <h:outputText value="#{bundle.ViewpensionadoLabel_estado_civil}"/>
+                        <h:outputText value="#{pensionadoController.selected.estado_civil}" title="#{bundle.ViewpensionadoTitle_estado_civil}"/>
+                        <h:outputText value="#{bundle.ViewpensionadoLabel_direccion}"/>
+                        <h:outputText value="#{pensionadoController.selected.direccion}" title="#{bundle.ViewpensionadoTitle_direccion}"/>
+                        <h:outputText value="#{bundle.ViewpensionadoLabel_comuna}"/>
+                        <h:outputText value="#{pensionadoController.selected.comuna}" title="#{bundle.ViewpensionadoTitle_comuna}"/>
+                        <h:outputText value="#{bundle.ViewpensionadoLabel_region}"/>
+                        <h:outputText value="#{pensionadoController.selected.region}" title="#{bundle.ViewpensionadoTitle_region}"/>
+                        <h:outputText value="#{bundle.ViewpensionadoLabel_telefono_fijo}"/>
+                        <h:outputText value="#{pensionadoController.selected.telefono_fijo}" title="#{bundle.ViewpensionadoTitle_telefono_fijo}"/>
+                        <h:outputText value="#{bundle.ViewpensionadoLabel_celular}"/>
+                        <h:outputText value="#{pensionadoController.selected.celular}" title="#{bundle.ViewpensionadoTitle_celular}"/>
+                        <h:outputText value="#{bundle.ViewpensionadoLabel_id}"/>
+                        <h:outputText value="#{pensionadoController.selected.id}" title="#{bundle.ViewpensionadoTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="pensionadoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
