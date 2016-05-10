@@ -8,7 +8,7 @@
   </parent>
 
     <groupId>com.mycompany</groupId>
-    <artifactId>mavenproject3-web</artifactId>
+    <artifactId>FP-Usach</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
 

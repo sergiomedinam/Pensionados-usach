@@ -12,15 +12,18 @@
             <h:form id="usuarioEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{usuarioController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditusuarioLabel_rol}" for="rol" />
+                        <p:inputText id="rol" value="#{usuarioController.selected.rol}" title="#{bundle.EditusuarioTitle_rol}" />
                         <p:outputLabel value="#{bundle.EditusuarioLabel_nombre}" for="nombre" />
-                        <p:inputText required="true" requiredMessage="Debe ingresar el nombre" id="nombre" value="#{usuarioController.selected.nombre}" title="#{bundle.EditusuarioTitle_nombre}" />
+                        <p:inputText id="nombre" value="#{usuarioController.selected.nombre}" title="#{bundle.EditusuarioTitle_nombre}" />
                         <p:outputLabel value="#{bundle.EditusuarioLabel_apellido}" for="apellido" />
-                        <p:inputText required="true" requiredMessage="Debe ingresar el apellido" id="apellido" value="#{usuarioController.selected.apellido}" title="#{bundle.EditusuarioTitle_apellido}" />
+                        <p:inputText id="apellido" value="#{usuarioController.selected.apellido}" title="#{bundle.EditusuarioTitle_apellido}" />
                         <p:outputLabel value="#{bundle.EditusuarioLabel_rut}" for="rut" />
-                        <p:inputText required="true" requiredMessage="Debe ingresar el rut" id="rut" value="#{usuarioController.selected.rut}" title="#{bundle.EditusuarioTitle_rut}" />
+                        <p:inputText id="rut" value="#{usuarioController.selected.rut}" title="#{bundle.EditusuarioTitle_rut}" />
                         <p:outputLabel value="#{bundle.EditusuarioLabel_contrasena}" for="contrasena" />
-                        <p:password required="true" requiredMessage="Debe ingresar la contraseña" id="contrasena" value="#{usuarioController.selected.contrasena}" title="#{bundle.EditusuarioTitle_contrasena}" />
-                        
+                        <p:inputText id="contrasena" value="#{usuarioController.selected.contrasena}" title="#{bundle.EditusuarioTitle_contrasena}" />
+                        <p:outputLabel value="#{bundle.EditusuarioLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{usuarioController.selected.id}" title="#{bundle.EditusuarioTitle_id}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{usuarioController.update}" value="#{bundle.Save}" update="display,:usuarioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'usuarioEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="usuarioEditDialog.hide()"/>

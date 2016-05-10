@@ -29,6 +29,12 @@
 
                         <p:column>
                             <f:facet name="header">
+                                <h:outputText value="#{bundle.ListusuarioTitle_rol}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.rol}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListusuarioTitle_nombre}"/>
                             </f:facet>
                             <h:outputText value="#{item.nombre}"/>
@@ -45,7 +51,12 @@
                             </f:facet>
                             <h:outputText value="#{item.rut}"/>
                         </p:column>
-
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListusuarioTitle_contrasena}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.contrasena}"/>
+                        </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListusuarioTitle_id}"/>

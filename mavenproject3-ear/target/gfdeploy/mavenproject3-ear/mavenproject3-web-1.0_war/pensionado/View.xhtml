@@ -12,6 +12,8 @@
             <h:form id="pensionadoViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{pensionadoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewpensionadoLabel_patologias}"/>
+                        <h:outputText value="#{pensionadoController.selected.patologias}" title="#{bundle.ViewpensionadoTitle_patologias}"/>
                         <h:outputText value="#{bundle.ViewpensionadoLabel_rut_pensionado}"/>
                         <h:outputText value="#{pensionadoController.selected.rut_pensionado}" title="#{bundle.ViewpensionadoTitle_rut_pensionado}"/>
                         <h:outputText value="#{bundle.ViewpensionadoLabel_nombre_pensionado}"/>

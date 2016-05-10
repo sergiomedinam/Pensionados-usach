@@ -12,24 +12,31 @@
             <h:form id="pensionadoEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{pensionadoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditpensionadoLabel_patologias}" for="patologias" />
+                        <p:selectOneMenu id="patologias" value="#{pensionadoController.selected.patologias}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{patologiaController.itemsAvailableSelectOne}"
+                                           var="patologiasItem"
+                                           itemValue="#{patologiasItem}"/>
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_rut_pensionado}" for="rut_pensionado" />
-                        <p:inputText required="true" requiredMessage="Debe ingresar el rut" id="rut_pensionado" value="#{pensionadoController.selected.rut_pensionado}" title="#{bundle.EditpensionadoTitle_rut_pensionado}" />
+                        <p:inputText id="rut_pensionado" value="#{pensionadoController.selected.rut_pensionado}" title="#{bundle.EditpensionadoTitle_rut_pensionado}" />
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_nombre_pensionado}" for="nombre_pensionado" />
-                        <p:inputText required="true" requiredMessage="Debe ingresar el nombre" id="nombre_pensionado" value="#{pensionadoController.selected.nombre_pensionado}" title="#{bundle.EditpensionadoTitle_nombre_pensionado}" />
+                        <p:inputText id="nombre_pensionado" value="#{pensionadoController.selected.nombre_pensionado}" title="#{bundle.EditpensionadoTitle_nombre_pensionado}" />
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_apellido_p_pensionado}" for="apellido_p_pensionado" />
-                        <p:inputText required="true" requiredMessage="Debe ingresar el apellido" id="apellido_p_pensionado" value="#{pensionadoController.selected.apellido_p_pensionado}" title="#{bundle.EditpensionadoTitle_apellido_p_pensionado}" />
+                        <p:inputText id="apellido_p_pensionado" value="#{pensionadoController.selected.apellido_p_pensionado}" title="#{bundle.EditpensionadoTitle_apellido_p_pensionado}" />
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_apellido_m_pensionado}" for="apellido_m_pensionado" />
                         <p:inputText id="apellido_m_pensionado" value="#{pensionadoController.selected.apellido_m_pensionado}" title="#{bundle.EditpensionadoTitle_apellido_m_pensionado}" />
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_fecha_nacimiento}" for="fecha_nacimiento" />
-                        <p:inputText required="true" requiredMessage="Debe ingresar la fecha de nacimiento" id="fecha_nacimiento" value="#{pensionadoController.selected.fecha_nacimiento}" title="#{bundle.EditpensionadoTitle_fecha_nacimiento}" />
+                        <p:inputText id="fecha_nacimiento" value="#{pensionadoController.selected.fecha_nacimiento}" title="#{bundle.EditpensionadoTitle_fecha_nacimiento}" />
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_estado_civil}" for="estado_civil" />
-                        <p:inputText required="true" requiredMessage="Debe ingresar el estado civil" id="estado_civil" value="#{pensionadoController.selected.estado_civil}" title="#{bundle.EditpensionadoTitle_estado_civil}" />
+                        <p:inputText id="estado_civil" value="#{pensionadoController.selected.estado_civil}" title="#{bundle.EditpensionadoTitle_estado_civil}" />
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_direccion}" for="direccion" />
-                        <p:inputText required="true" requiredMessage="Debe ingresar la dirección" id="direccion" value="#{pensionadoController.selected.direccion}" title="#{bundle.EditpensionadoTitle_direccion}" />
+                        <p:inputText id="direccion" value="#{pensionadoController.selected.direccion}" title="#{bundle.EditpensionadoTitle_direccion}" />
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_comuna}" for="comuna" />
-                        <p:inputText required="true" requiredMessage="Debe ingresar la comuna" id="comuna" value="#{pensionadoController.selected.comuna}" title="#{bundle.EditpensionadoTitle_comuna}" />
+                        <p:inputText id="comuna" value="#{pensionadoController.selected.comuna}" title="#{bundle.EditpensionadoTitle_comuna}" />
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_region}" for="region" />
-                        <p:inputText required="true" requiredMessage="Debe ingresar la región" id="region" value="#{pensionadoController.selected.region}" title="#{bundle.EditpensionadoTitle_region}" />
+                        <p:inputText id="region" value="#{pensionadoController.selected.region}" title="#{bundle.EditpensionadoTitle_region}" />
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_telefono_fijo}" for="telefono_fijo" />
                         <p:inputText id="telefono_fijo" value="#{pensionadoController.selected.telefono_fijo}" title="#{bundle.EditpensionadoTitle_telefono_fijo}" />
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_celular}" for="celular" />
