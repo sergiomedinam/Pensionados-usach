@@ -12,6 +12,10 @@
             <h:form id="pensionadoViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{pensionadoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewpensionadoLabel_email_alternativo}"/>
+                        <h:outputText value="#{pensionadoController.selected.email_alternativo}" title="#{bundle.ViewpensionadoTitle_email_alternativo}"/>
+                        <h:outputText value="#{bundle.ViewpensionadoLabel_email_pensionado}"/>
+                        <h:outputText value="#{pensionadoController.selected.email_pensionado}" title="#{bundle.ViewpensionadoTitle_email_pensionado}"/>
                         <h:outputText value="#{bundle.ViewpensionadoLabel_medicamentos}"/>
                         <h:outputText value="#{pensionadoController.selected.medicamentos}" title="#{bundle.ViewpensionadoTitle_medicamentos}"/>
                         <h:outputText value="#{bundle.ViewpensionadoLabel_prestamos}"/>

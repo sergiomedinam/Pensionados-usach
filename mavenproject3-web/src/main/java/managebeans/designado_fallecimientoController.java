@@ -24,7 +24,7 @@ import javax.faces.convert.FacesConverter;
 public class designado_fallecimientoController implements Serializable {
 
     @EJB
-    private designado_fallecimientoFacadeLocal ejbFacade;
+    private sessionsbeans.designado_fallecimientoFacadeLocal ejbFacade;
     private List<designado_fallecimiento> items = null;
     private designado_fallecimiento selected;
 

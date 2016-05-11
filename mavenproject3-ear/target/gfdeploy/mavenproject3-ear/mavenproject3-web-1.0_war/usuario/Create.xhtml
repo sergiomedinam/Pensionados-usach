@@ -12,14 +12,14 @@
             <h:form id="usuarioCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{usuarioController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateusuarioLabel_email_usuario}" for="email_usuario" />
+                        <p:inputText id="email_usuario" value="#{usuarioController.selected.email_usuario}" title="#{bundle.CreateusuarioTitle_email_usuario}" />
                         <p:outputLabel value="#{bundle.CreateusuarioLabel_tipo_usuario}" for="tipo_usuario" />
                         <p:selectOneMenu id="tipo_usuario" value="#{usuarioController.selected.tipo_usuario}" >
                             <f:selectItems value="#{rolController.itemsAvailableSelectOne}"
                                            var="tipo_usuarioItem"
                                            itemValue="#{tipo_usuarioItem}"/>
                         </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreateusuarioLabel_rol}" for="rol" />
-                        <p:inputText id="rol" value="#{usuarioController.selected.rol}" title="#{bundle.CreateusuarioTitle_rol}" />
                         <p:outputLabel value="#{bundle.CreateusuarioLabel_nombre}" for="nombre" />
                         <p:inputText id="nombre" value="#{usuarioController.selected.nombre}" title="#{bundle.CreateusuarioTitle_nombre}" />
                         <p:outputLabel value="#{bundle.CreateusuarioLabel_apellido}" for="apellido" />

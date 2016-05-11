@@ -28,26 +28,30 @@ public class pensionado implements Serializable {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
     
-    @NotNull(message= "Debe ingresar el rut")
+    private String email_pensionado;
+    private String email_alternativo;
+   
+    
+    @NotNull
     private String rut_pensionado;
     
-    @NotNull(message= "Debe ingresar el nombre")
+    @NotNull
     private String nombre_pensionado;
     
-    @NotNull(message= "Debe ingresar el apellido")
+    @NotNull
     private String apellido_p_pensionado;
     private String apellido_m_pensionado;
     
-    @NotNull(message= "Debe ingresar la fecha de nacimiento")
+    @NotNull
     private String fecha_nacimiento;
     
-    @NotNull(message= "Debe ingresar el estado civil")
+    @NotNull
     private String estado_civil;
     
-    @NotNull(message= "Debe ingresar la dirección")
+    @NotNull
     private String direccion;
     
-    @NotNull(message= "Debe ingresar la comuna")
+    @NotNull
     private String comuna;
     private String region;
     private Long telefono_fijo;
@@ -75,6 +79,24 @@ public class pensionado implements Serializable {
     
     @OneToOne
     private otros_datos otros_datos;
+
+    public String getEmail_alternativo() {
+        return email_alternativo;
+    }
+
+    public void setEmail_alternativo(String email_alternativo) {
+        this.email_alternativo = email_alternativo;
+    }
+    
+    
+    
+     public String getEmail_pensionado() {
+        return email_pensionado;
+    }
+
+    public void setEmail_pensionado(String email_pensionado) {
+        this.email_pensionado = email_pensionado;
+    }
 
     public medicamento getMedicamentos() {
         return medicamentos;
