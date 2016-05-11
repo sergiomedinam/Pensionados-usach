@@ -29,7 +29,7 @@ public class pensionado implements Serializable {
     private Long id;
     
     @NotNull(message= "Debe ingresar el rut")
-    private Long rut_pensionado;
+    private String rut_pensionado;
     
     @NotNull(message= "Debe ingresar el nombre")
     private String nombre_pensionado;
@@ -135,16 +135,17 @@ public class pensionado implements Serializable {
     public void setPatologias(patologia patologias) {
         this.patologias = patologias;
     }
-    
-    
-    public Long getRut_pensionado() {
+
+    public String getRut_pensionado() {
         return rut_pensionado;
     }
 
-    public void setRut_pensionado(Long rut_pensionado) {
+    public void setRut_pensionado(String rut_pensionado) {
         this.rut_pensionado = rut_pensionado;
     }
-
+    
+    
+   
     public String getNombre_pensionado() {
         return nombre_pensionado;
     }

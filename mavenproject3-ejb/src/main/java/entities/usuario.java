@@ -36,7 +36,7 @@ public class usuario implements Serializable {
     private String apellido;
     
     @NotNull(message = "debe ingresar rut")
-    private Long rut;
+    private String rut;
     
     @NotNull(message = "debe ingresar contraseña")
     private String contrasena;
@@ -86,13 +86,16 @@ public class usuario implements Serializable {
         this.apellido = apellido;
     }
 
-    public Long getRut() {
+    public String getRut() {
         return rut;
     }
 
-    public void setRut(Long rut) {
+    public void setRut(String rut) {
         this.rut = rut;
     }
+
+   
+    
 
     public String getContrasena() {
         return contrasena;
