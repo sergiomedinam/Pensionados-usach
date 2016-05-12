@@ -26,20 +26,29 @@
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
                         
-                        <p:column filterBy="#{item.rut_pensionado}" headerText="Rut pensionado" filterMatchMode="contains">
+                        <p:column filterBy="#{item.rut_pensionado}" headerText="Rut pensionado" filterMatchMode="contains" sortBy="#{item.rut_pensionado}">
                                 <f:facet name="header">
                                     <h:outputText value="#{bundle.ListpensionadoTitle_rut_pensionado}"/>
                                 </f:facet>
                             <h:outputText value="#{item.rut_pensionado}"/>
                         </p:column>
                         
-                        <p:column filterBy="#{item.nombre_pensionado} #{item.apellido_p_pensionado} #{item.apellido_m_pensionado}" headerText="Nombre pensionado" filterMatchMode="contains">
+                        <p:column filterBy="#{item.nombre_pensionado} " headerText="Nombre pensionado" filterMatchMode="contains" sortBy="#{item.nombre_pensionado}">
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_nombre_pensionado}"/>
+                                <h:outputText value="Nombres"/>
                             </f:facet>
-                            <h:outputText value="#{item.nombre_pensionado} #{item.apellido_p_pensionado} #{item.apellido_m_pensionado}"/>
+                            <h:outputText value="#{item.nombre_pensionado} "/>
                         </p:column>
                        
+                        <p:column filterBy="#{item.apellido_p_pensionado} #{item.apellido_m_pensionado}" headerText="Apellido pensionado" filterMatchMode="contains" sortBy="#{item.apellido_p_pensionado} #{item.apellido_m_pensionado}">
+                            <f:facet name="header">
+                                <h:outputText value="Apellidos"/>
+                            </f:facet>
+                            <h:outputText value="#{item.apellido_p_pensionado} #{item.apellido_m_pensionado}"/>
+                        </p:column>
+                        
+                        
+                        
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{pensionadoController.prepareCreate}" update=":pensionadoCreateForm" oncomplete="PF('pensionadoCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":pensionadoViewForm" oncomplete="PF('pensionadoViewDialog').show()" disabled="#{empty pensionadoController.selected}"/>
