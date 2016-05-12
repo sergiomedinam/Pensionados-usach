@@ -29,130 +29,18 @@
 
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_email_alternativo}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.email_alternativo}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_email_pensionado}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.email_pensionado}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_medicamentos}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.medicamentos}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_prestamos}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.prestamos}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_beneficios}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.beneficios}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_seguros}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.seguros}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_contactos}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.contactos}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_otros_datos}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.otros_datos}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_patologias}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.patologias}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListpensionadoTitle_rut_pensionado}"/>
                             </f:facet>
                             <h:outputText value="#{item.rut_pensionado}"/>
                         </p:column>
+
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListpensionadoTitle_nombre_pensionado}"/>
                             </f:facet>
-                            <h:outputText value="#{item.nombre_pensionado}"/>
+                            <h:outputText value="#{item.nombre_pensionado} #{item.apellido_p_pensionado} #{item.apellido_m_pensionado}"/>
                         </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_apellido_p_pensionado}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.apellido_p_pensionado}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_apellido_m_pensionado}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.apellido_m_pensionado}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_fecha_nacimiento}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.fecha_nacimiento}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_estado_civil}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.estado_civil}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_direccion}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.direccion}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_comuna}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.comuna}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_region}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.region}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_telefono_fijo}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.telefono_fijo}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_celular}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.celular}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_id}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.id}"/>
-                        </p:column>
+                       
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{pensionadoController.prepareCreate}" update=":pensionadoCreateForm" oncomplete="PF('pensionadoCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":pensionadoViewForm" oncomplete="PF('pensionadoViewDialog').show()" disabled="#{empty pensionadoController.selected}"/>
