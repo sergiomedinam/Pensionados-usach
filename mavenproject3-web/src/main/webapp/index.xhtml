@@ -5,7 +5,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>FP Usach | Sistema de administración de pensionados</title>
-        <h:outputStylesheet name="css/jsfcrud.css"/>
+        <!--<h:outputStylesheet name="css/jsfcrud.css"/>-->
         <link rel="stylesheet" href="resources/font-awesome/css/font-awesome.min.css"/>
         
     </h:head>
@@ -13,7 +13,10 @@
         
         <ui:composition template="/template.xhtml"/>
         
-        
+        <br />
+        <a href="/mavenproject3-web/AdminResource">go to ADMIN</a>
+        <br />
+        <a href="/mavenproject3-web/UsuarioResource">go to USUARIO</a>
         <br />
         <h:link outcome="/beneficio/List" value="Show All beneficio Items"/>
         <br />
