@@ -11,8 +11,8 @@ managebeans\seguroController.class
 managebeans\contactoController$contactoControllerConverter.class
 managebeans\patologiaController.class
 managebeans\designado_fallecimientoController$designado_fallecimientoControllerConverter.class
+servlet\UsuarioResource.class
 managebeans\patologiaController$patologiaControllerConverter.class
-servlet\GuestResource.class
 managebeans\medicamentoController.class
 managebeans\usuarioController.class
 managebeans\rolController.class

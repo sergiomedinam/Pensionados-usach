@@ -19,9 +19,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Nelson
  */
-@WebServlet(name = "GuestResource", urlPatterns = {"/GuestResource"})
-@ServletSecurity(@HttpConstraint(rolesAllowed = {"admin","guest"}))
-public class GuestResource extends HttpServlet {
+@WebServlet(name = "UsuarioResource", urlPatterns = {"/UsuarioResource"})
+@ServletSecurity(@HttpConstraint(rolesAllowed = {"admin","usuario"}))
+public class UsuarioResource extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,10 +41,10 @@ public class GuestResource extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet GuestResource</title>");            
+            out.println("<title>Servlet UsuarioResource</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet GuestResource at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet UsuarioResource at " + request.getContextPath() + "</h1>");
             if (request.isUserInRole("admin")) {
                 role = "admin";
             }
