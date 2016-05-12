@@ -1,0 +1,71 @@
+@Entity
+@Table(name = "APP_GROUPS")
+public class GroupEntity implements Serializable {
+ 
+    private static final long serialVersionUID = -2701137080221544894L;
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "APP_GROUPS_PK")
+    private Long appGroupsPk;
+    
+    @Column(name = "GROUP_NAME")
+    private String groupName;
+    
+    @Column(name = "GROUP_DESC")
+    private String groupDesc;
+    
+    @ManyToMany
+    @JoinTable(name = "USERS_GROUPS_MAP",
+        joinColumns = {@JoinColumn(name = "APP_GROUPS_PK", referencedColumnName = "APP_GROUPS_PK")},
+        inverseJoinColumns = {@JoinColumn(name = "APP_USERS_PK", referencedColumnName = "APP_USERS_PK")})
+    private Set<UserEntity> usersThatBelongsToThisGroup;
+    /** Alternatively, you have the mappedBy attribute in @ManyToMany **/
+    //@ManyToMany(mappedBy = "groupsThatBelongTo")
+    
+    public GroupEntity() {
+    }
+ 
+    public GroupEntity(Long appGroupsPk) {
+        this.appGroupsPk = appGroupsPk;
+    }
+ 
+    public GroupEntity(Long appGroupsPk, String groupName, String groupDesc) {
+        this.appGroupsPk = appGroupsPk;
+        this.groupName = groupName;
+        this.groupDesc = groupDesc;
+    }
+ 
+   
+    public Set<UserEntity> getUsersThatBelongsToThisGroup() {
+        return usersThatBelongsToThisGroup;
+    }
+ 
+    public void setUsersThatBelongsToThisGroup(Set<UserEntity> usersThatBelongsToThisGroup) {
+        this.usersThatBelongsToThisGroup = usersThatBelongsToThisGroup;
+    }
+ 
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (appGroupsPk != null ? appGroupsPk.hashCode() : 0);
+        return hash;
+    }
+ 
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof GroupEntity)) {
+            return false;
+        }
+        GroupEntity other = (GroupEntity) object;
+        if ((this.appGroupsPk == null && other.appGroupsPk != null) || (this.appGroupsPk != null && !this.appGroupsPk.equals(other.appGroupsPk))) {
+            return false;
+        }
+        return true;
+    }
+ 
+    @Override
+    public String toString() {
+        return "com.developerscrappad.usrmng.entity.GroupEntity[ appGroupsPk=" + appGroupsPk + " ]";
+    }

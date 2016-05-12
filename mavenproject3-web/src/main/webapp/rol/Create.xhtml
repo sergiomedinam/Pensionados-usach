@@ -12,10 +12,10 @@
             <h:form id="rolCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{rolController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreaterolLabel_nombre_rol}" for="nombre_rol" />
-                        <p:inputText id="nombre_rol" value="#{rolController.selected.nombre_rol}" title="#{bundle.CreaterolTitle_nombre_rol}" />
-                        <p:outputLabel value="#{bundle.CreaterolLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{rolController.selected.id}" title="#{bundle.CreaterolTitle_id}" />
+                        <p:outputLabel value="#{bundle.CreaterolLabel_rol_id}" for="rol_id" />
+                        <p:inputText id="rol_id" value="#{rolController.selected.rol_id}" title="#{bundle.CreaterolTitle_rol_id}" />
+                        <p:outputLabel value="#{bundle.CreaterolLabel_rol_nombre}" for="rol_nombre" />
+                        <p:inputText id="rol_nombre" value="#{rolController.selected.rol_nombre}" title="#{bundle.CreaterolTitle_rol_nombre}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{rolController.create}" value="#{bundle.Save}" update="display,:rolListForm:datalist,:growl" oncomplete="handleSubmit(args,'rolCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="rolCreateDialog.hide()"/>

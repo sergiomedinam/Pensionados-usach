@@ -19,7 +19,7 @@
                     <p:dataTable id="datalist" value="#{rolController.items}" var="item"
                                  selectionMode="single" selection="#{rolController.selected}"
                                  paginator="true"
-                                 rowKey="#{item.id}"
+                                 rowKey="#{item.rol_id}"
                                  rows="10"
                                  rowsPerPageTemplate="10,20,30,40,50"
                                  >
@@ -29,15 +29,15 @@
 
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListrolTitle_nombre_rol}"/>
+                                <h:outputText value="#{bundle.ListrolTitle_rol_id}"/>
                             </f:facet>
-                            <h:outputText value="#{item.nombre_rol}"/>
+                            <h:outputText value="#{item.rol_id}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListrolTitle_id}"/>
+                                <h:outputText value="#{bundle.ListrolTitle_rol_nombre}"/>
                             </f:facet>
-                            <h:outputText value="#{item.id}"/>
+                            <h:outputText value="#{item.rol_nombre}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{rolController.prepareCreate}" update=":rolCreateForm" oncomplete="PF('rolCreateDialog').show()"/>

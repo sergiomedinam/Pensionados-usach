@@ -6,28 +6,28 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.Set;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author seerg
+ * @author Nelson
  */
 @Entity
 public class usuario implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    private Long id;
-    
-    
+    @Column(name = "USUARIO_ID")
+    private Long usuarioId;
     
     @NotNull(message = "debe ingresar nombre")
     private String nombre;
@@ -41,30 +41,69 @@ public class usuario implements Serializable {
     @NotNull(message = "debe ingresar contraseña")
     private String contrasena;
     
-    @NotNull(message = "Debe tener un rol")
-    private String rol;
+    @ManyToMany
+    @JoinTable(name = "USERS_GROUPS_MAP",
+        joinColumns = {@JoinColumn(name = "USUARIO_ID", referencedColumnName = "USUARIO_ID")},
+        inverseJoinColumns = {@JoinColumn(name = "ROL_ID", referencedColumnName = "ROL_ID")})
+    private Set<rol> groupsThatBelongTo;
+ 
+    public usuario() {
+    }
+ 
+    public usuario(Long appUsersPk) {
+        this.usuarioId = appUsersPk;
+    }
+ 
+    public usuario(Long appUsersPk, String username, String password) {
+        this.usuarioId = appUsersPk;
+        this.rut = username;
+        this.contrasena = password;
+    }
     
-    @NotNull(message = "debe tener un rol")
-    @OneToOne
-    private rol tipo_usuario;
-
-    public rol getTipo_usuario() {
-        return tipo_usuario;
+    public Set<rol> getGroupsThatBelongTo() {
+        return groupsThatBelongTo;
     }
-
-    public void setTipo_usuario(rol tipo_usuario) {
-        this.tipo_usuario = tipo_usuario;
+ 
+    public void setGroupsThatBelongTo(Set<rol> groupsThatBelongTo) {
+        this.groupsThatBelongTo = groupsThatBelongTo;
     }
     
     
-
-    public String getRol() {
-        return rol;
-    }
-
-    public void setRol(String rol) {
-        this.rol = rol;
-    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
 
@@ -76,8 +115,6 @@ public class usuario implements Serializable {
         this.nombre = nombre;
     }
     
-    
-
     public String getApellido() {
         return apellido;
     }
@@ -94,9 +131,6 @@ public class usuario implements Serializable {
         this.rut = rut;
     }
 
-   
-    
-
     public String getContrasena() {
         return contrasena;
     }
@@ -104,32 +138,30 @@ public class usuario implements Serializable {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
-    
-    
 
-    public Long getId() {
-        return id;
+    public Long getUsuarioId() {
+        return usuarioId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUsuarioId(Long usuarioId) {
+        this.usuarioId = usuarioId;
     }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (usuarioId != null ? usuarioId.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
+        // TODO: Warning - this method won't work in the case the usuarioId fields are not set
         if (!(object instanceof usuario)) {
             return false;
         }
         usuario other = (usuario) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.usuarioId == null && other.usuarioId != null) || (this.usuarioId != null && !this.usuarioId.equals(other.usuarioId))) {
             return false;
         }
         return true;
@@ -137,7 +169,7 @@ public class usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.usuario[ id=" + id + " ]";
+        return "entities.usuario[ id=" + usuarioId + " ]";
     }
     
 }

@@ -11,7 +11,7 @@ import javax.ejb.Local;
 
 /**
  *
- * @author Sergio
+ * @author Nelson
  */
 @Local
 public interface rolFacadeLocal {

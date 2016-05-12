@@ -3,7 +3,7 @@ package managebeans;
 import entities.seguro;
 import managebeans.util.JsfUtil;
 import managebeans.util.JsfUtil.PersistAction;
-import sessionsbeans.seguroFacadeLocal;
+import sessionsbeans.usuarioFacadeLocal;
 
 import java.io.Serializable;
 import java.util.List;
@@ -18,6 +18,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import sessionsbeans.seguroFacadeLocal;
 
 @Named("seguroController")
 @SessionScoped

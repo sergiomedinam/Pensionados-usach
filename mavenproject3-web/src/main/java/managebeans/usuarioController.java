@@ -19,13 +19,12 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-
 @Named("usuarioController")
 @SessionScoped
 public class usuarioController implements Serializable {
 
-
-    @EJB private usuarioFacadeLocal ejbFacade;
+    @EJB
+    private usuarioFacadeLocal ejbFacade;
     private List<usuario> items = null;
     private usuario selected;
 
@@ -122,7 +121,7 @@ public class usuarioController implements Serializable {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass=usuario.class)
+    @FacesConverter(forClass = usuario.class)
     public static class usuarioControllerConverter implements Converter {
 
         @Override
@@ -130,7 +129,7 @@ public class usuarioController implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            usuarioController controller = (usuarioController)facesContext.getApplication().getELResolver().
+            usuarioController controller = (usuarioController) facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "usuarioController");
             return controller.getusuario(getKey(value));
         }
@@ -154,7 +153,7 @@ public class usuarioController implements Serializable {
             }
             if (object instanceof usuario) {
                 usuario o = (usuario) object;
-                return getStringKey(o.getId());
+                return getStringKey(o.getUsuarioId());
             } else {
                 Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), usuario.class.getName()});
                 return null;

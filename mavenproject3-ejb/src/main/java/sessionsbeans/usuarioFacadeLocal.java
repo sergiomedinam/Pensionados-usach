@@ -11,7 +11,7 @@ import javax.ejb.Local;
 
 /**
  *
- * @author seerg
+ * @author Nelson
  */
 @Local
 public interface usuarioFacadeLocal {
