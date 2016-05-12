@@ -35,6 +35,16 @@
                         <p:inputText id="telefono_fijo" value="#{pensionadoController.selected.telefono_fijo}" title="#{bundle.EditpensionadoTitle_telefono_fijo}" />
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_celular}" for="celular" />
                         <p:inputText id="celular" value="#{pensionadoController.selected.celular}" title="#{bundle.EditpensionadoTitle_celular}" />
+                    
+                        <p:outputLabel value="#{bundle.CreatepensionadoLabel_email_pensionado}" for="email_pensionado" />
+                        <p:inputText id="email_pensionado" value="#{pensionadoController.selected.email_pensionado}" title="#{bundle.CreatepensionadoTitle_email_pensionado}" />
+
+                        
+                        
+                        <p:outputLabel value="#{bundle.CreatepensionadoLabel_email_alternativo}" for="email_alternativo" />
+                        <p:inputText id="email_alternativo" value="#{pensionadoController.selected.email_alternativo}" title="#{bundle.CreatepensionadoTitle_email_alternativo}" />
+                        
+                        
                     </p:panelGrid>
                     <p:commandButton actionListener="#{pensionadoController.update}" value="#{bundle.Save}" update="display,:pensionadoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'pensionadoEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="pensionadoEditDialog.hide()"/>
