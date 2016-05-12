@@ -6,6 +6,10 @@ import managebeans.util.JsfUtil.PersistAction;
 import sessionsbeans.usuarioFacadeLocal;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -55,14 +59,21 @@ public class usuarioController implements Serializable {
         return selected;
     }
 
-    public void create() {
+    public void create() throws NoSuchAlgorithmException, UnsupportedEncodingException {
+        String passTemp = selected.getContrasena();
+        passTemp = encryptSHA256(passTemp);
+        selected.setContrasena(passTemp);
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("usuarioCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
-    public void update() {
+    public void update() throws NoSuchAlgorithmException, UnsupportedEncodingException {
+        String passTemp = selected.getContrasena();
+        passTemp = encryptSHA256(passTemp);
+        selected.setContrasena(passTemp);
+        System.out.println(passTemp);
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("usuarioUpdated"));
     }
 
@@ -121,6 +132,22 @@ public class usuarioController implements Serializable {
         return getFacade().findAll();
     }
 
+    private String encryptSHA256(String pass) throws NoSuchAlgorithmException, UnsupportedEncodingException{
+        
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        String text = pass;
+        md.update(text.getBytes("UTF-8")); // Change this to "UTF-16" if needed
+        byte[] digest = md.digest();
+        BigInteger bigInt = new BigInteger(1, digest);
+        String output = bigInt.toString(16);
+
+        System.out.println(output);
+
+        
+
+        return output;
+    }
+    
     @FacesConverter(forClass = usuario.class)
     public static class usuarioControllerConverter implements Converter {
 
