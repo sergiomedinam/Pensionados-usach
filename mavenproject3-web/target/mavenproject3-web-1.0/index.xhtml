@@ -7,13 +7,18 @@
         <title>FP Usach | Sistema de administración de pensionados</title>
         <h:outputStylesheet name="css/jsfcrud.css"/>
         <link rel="stylesheet" href="resources/font-awesome/css/font-awesome.min.css"/>
-        
+
     </h:head>
     <h:body>
-        
+
         <ui:composition template="/template.xhtml"/>
-        
-        
+
+        <br />
+        <a href="/mavenproject3-web/AdminResource">go to    asdsaADMIN</a>
+        <br />
+        <a href="/mavenproject3-web/UsuarioResource">go to USUARIO</a>
+        <br />
+        <a href="/mavenproject3-web/faces/admin/index.xhtml">Pagina exclusiva admins</a>
         <br />
         <h:link outcome="/beneficio/List" value="Show All beneficio Items"/>
         <br />
@@ -42,6 +47,8 @@
         <h:link outcome="/usuario/List" value="Show All usuario Items"/>
         <br />
         <h:link outcome="/Mapa.xhtml" value="Mapa Geográfico"/>
+        <br />
+        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
     </h:body>
 
 </html>
