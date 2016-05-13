@@ -29,15 +29,15 @@
 
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListusuarioTitle_email_usuario}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.email_usuario}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListusuarioTitle_tipo_usuario}"/>
                             </f:facet>
                             <h:outputText value="#{item.tipo_usuario}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListusuarioTitle_rut}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.rut}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
@@ -53,22 +53,13 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListusuarioTitle_rut}"/>
+                                <h:outputText value="#{bundle.ListusuarioTitle_email_usuario}"/>
                             </f:facet>
-                            <h:outputText value="#{item.rut}"/>
+                            <h:outputText value="#{item.email_usuario}"/>
                         </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListusuarioTitle_contrasena}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.contrasena}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListusuarioTitle_id}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.id}"/>
-                        </p:column>
+                        
+                        
+                        
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{usuarioController.prepareCreate}" update=":usuarioCreateForm" oncomplete="PF('usuarioCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":usuarioViewForm" oncomplete="PF('usuarioViewDialog').show()" disabled="#{empty usuarioController.selected}"/>
