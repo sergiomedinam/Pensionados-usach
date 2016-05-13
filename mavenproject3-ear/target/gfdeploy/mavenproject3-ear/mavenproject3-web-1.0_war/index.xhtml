@@ -6,51 +6,59 @@
     <h:head>
         <title>FP Usach | Sistema de administración de pensionados</title>
         <h:outputStylesheet name="css/jsfcrud.css"/>
-        <link rel="stylesheet" href="resources/font-awesome/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="http://localhost:8080/mavenproject3-web/resources/font-awesome/css/font-awesome.min.css"/>
+        <!-- Bootstrap Core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
 
+    <!-- Custom CSS -->
+        <link href="css/simple-sidebar.css" rel="stylesheet"/>
     </h:head>
     <h:body>
 
-        <ui:composition template="/template.xhtml"/>
-
-        <br />
-        <a href="/mavenproject3-web/AdminResource">go to ADMIN</a>
-        <br />
-        <a href="/mavenproject3-web/UsuarioResource">go to USUARIO</a>
-        <br /> 
-        <a href="/mavenproject3-web/faces/admin/index.xhtml">Pagina exclusiva admins</a>
-        <br />
-        <h:link outcome="/beneficio/List" value="Show All beneficio Items"/>
-        <br />
-        <h:link outcome="/contacto/List" value="Show All contacto Items"/>
-        <br />
-        <h:link outcome="/designado_fallecimiento/List" value="Show All designado_fallecimiento Items"/>
-        <br />
-        <h:link outcome="/medicamento/List" value="Show All medicamento Items"/>
-        <br />
-        <h:link outcome="/otros_datos/List" value="Show All otros_datos Items"/>
-        <br />
-        <h:link outcome="/patologia/List" value="Show All patologia Items"/>
-        <br />
-        <h:link outcome="/pensionado/List" value="Show All pensionado Items"/>
-        <br />
-        <h:link outcome="/prestamo/List" value="Show All prestamo Items"/>
-        <br />
-        <h:link outcome="/rol/List" value="Show All rol Items"/>
-        <br />
-        <h:link outcome="/seguro/List" value="Show All seguro Items"/>
-        <br />
-        <h:link outcome="/tipo_beneficio/List" value="Show All tipo_beneficio Items"/>
-        <br />
-        <h:link outcome="/tipo_prestamo/List" value="Show All tipo_prestamo Items"/>
-        <br />
-        <h:link outcome="/usuario/List" value="Show All usuario Items"/>
-        <br />
-        <h:link outcome="/Mapa.xhtml" value="Mapa Geográfico"/>
-        <br />
-        <h:link outcome="/pensionado/Filtros.xhtml" value="Filtros Comuna-Region"/>
-        <br />
-        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+        <ui:composition template="/template.xhtml"> 
+            <br/>
+        <br/>
+            <ui:define name="body">
+                <br />
+                <a href="/mavenproject3-web/AdminResource">go to ADMIN</a>
+                <br />
+                <a href="/mavenproject3-web/UsuarioResource">go to USUARIO</a>
+                <br /> 
+                <a href="/mavenproject3-web/faces/admin/index.xhtml">Pagina exclusiva admins</a>
+                <br />
+                <h:link outcome="/beneficio/List" value="Show All beneficio Items"/>
+                <br />
+                <h:link outcome="/contacto/List" value="Show All contacto Items"/>
+                <br />
+                <h:link outcome="/designado_fallecimiento/List" value="Show All designado_fallecimiento Items"/>
+                <br />
+                <h:link outcome="/medicamento/List" value="Show All medicamento Items"/>
+                <br />
+                <h:link outcome="/otros_datos/List" value="Show All otros_datos Items"/>
+                <br />
+                <h:link outcome="/patologia/List" value="Show All patologia Items"/>
+                <br />
+                <h:link outcome="/pensionado/List" value="Show All pensionado Items"/>
+                <br />
+                <h:link outcome="/prestamo/List" value="Show All prestamo Items"/>
+                <br />
+                <h:link outcome="/rol/List" value="Show All rol Items"/>
+                <br />
+                <h:link outcome="/seguro/List" value="Show All seguro Items"/>
+                <br />
+                <h:link outcome="/tipo_beneficio/List" value="Show All tipo_beneficio Items"/>
+                <br />
+                <h:link outcome="/tipo_prestamo/List" value="Show All tipo_prestamo Items"/>
+                <br />
+                <h:link outcome="/usuario/List" value="Show All usuario Items"/>
+                <br />
+                <h:link outcome="/Mapa.xhtml" value="Mapa Geográfico"/>
+                <br />
+                <h:link outcome="/pensionado/Filtros.xhtml" value="Filtros Comuna-Region"/>
+                <br />
+                <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+            </ui:define>
+        </ui:composition>
     </h:body>
 
 </html>

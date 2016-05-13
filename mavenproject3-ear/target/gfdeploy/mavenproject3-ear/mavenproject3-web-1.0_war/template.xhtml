@@ -11,8 +11,12 @@
         <h:outputScript library="js" name="jsfcrud.js"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>    
-        <link rel="stylesheet" href="resources/font-awesome/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="http://localhost:8080/mavenproject3-web/resources/font-awesome/css/font-awesome.min.css"/>
+         <!-- Bootstrap Core CSS -->
+    <link href="http://localhost:8080/mavenproject3-web/resources/css/bootstrap.min.css" rel="stylesheet"/>
 
+    <!-- Custom CSS -->
+    <link href="http://localhost:8080/mavenproject3-web/resources/css/simple-sidebar.css" rel="stylesheet"/>
         
     </h:head>
 
@@ -20,8 +24,8 @@
 
         <p:growl id="growl" life="3000" />
 
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -36,18 +40,16 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li ><h:link outcome="/pensionado/List" value="Pensionados"/></li>
-                        <li><h:link outcome="/beneficio/List" value="Beneficios"/></li>
+                        
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Información<span class="caret"></span></a>
                             <ul class="dropdown-menu" >
-                                <li><a href="#">Estadísticas</a></li>
+                                
                                 <li><a href="#">Pagos</a></li>
-                                <li><a href="#">Otro</a></li>
+                                
                                 <li role="separator" class="divider"></li>
                                 <li><a href="#">Morosos</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Eventos</a></li>
+
                             </ul>
                         </li>
                     </ul>
@@ -57,7 +59,8 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> Sistema<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><h:link outcome="/usuario/List" value="Usuarios"/></li>
+                                <li><a href="http://localhost:8080/mavenproject3-web/faces/usuario/List.xhtml" align="center">Usuarios</a></li>
+                                
                                 
                                 <li role="separator" class="divider"></li>
                                 <li><a href="#" align="center">Cerrar Sesión</a></li>
@@ -67,16 +70,13 @@
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
-        
+        <br/>
+        <br/>
         <div class="row" >
             <div class="col-sm-2">
                 <ui:composition template="/barra.xhtml"/>
             </div>
-            
-            <div class="col-sm-8">
-                <ui:insert name="body"/>
-            </div>
-            
+                      
         </div>
 
     </h:body>
