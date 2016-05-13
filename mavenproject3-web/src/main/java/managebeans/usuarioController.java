@@ -6,6 +6,10 @@ import managebeans.util.JsfUtil.PersistAction;
 import sessionsbeans.usuarioFacadeLocal;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -27,6 +31,7 @@ public class usuarioController implements Serializable {
     private usuarioFacadeLocal ejbFacade;
     private List<usuario> items = null;
     private usuario selected;
+    private String passTemp;
 
     public usuarioController() {
     }
@@ -56,6 +61,9 @@ public class usuarioController implements Serializable {
     }
 
     public void create() {
+        passTemp = encryptSHA256(selected.getContrasena());
+        selected.setContrasena(passTemp);
+        System.out.println(selected.getContrasena());
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("usuarioCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
@@ -63,7 +71,27 @@ public class usuarioController implements Serializable {
     }
 
     public void update() {
+        passTemp = encryptSHA256(selected.getContrasena());
+        selected.setContrasena(passTemp);
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("usuarioUpdated"));
+    }
+    
+    private String encryptSHA256(String password){
+        
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            String text = password;
+            md.update(text.getBytes("UTF-8")); // Change this to "UTF-16" if needed
+            byte[] digest = md.digest();
+            BigInteger bigInt = new BigInteger(1, digest);
+            password = bigInt.toString(16);
+
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException ex) {
+            Logger.getLogger(usuarioController.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+        
+        return password;
     }
 
     public void destroy() {
