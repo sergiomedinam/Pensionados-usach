@@ -14,11 +14,12 @@
         </ui:define>
 
         <ui:define name="body">
-            <h1>
-                PENSIONADOS DEL SISTEMA
-                <div class="divider"></div>
-            </h1>
-            
+            <div class="container">
+                <h2>Funcionarios Pensionados - USACH</h2>
+                <p>En esta seccion del sistema, se muestran los pensionados que se encuentran en la aplicacion.</p>
+                <p class="bg-info">Para ver mas informacion de los pensionados es necesario seleccionarlo y posteriormente hacer click en Ver.</p>
+              </div>
+
             <h:form id="pensionadoListForm">
                 <p:panel header="#{bundle.ListpensionadoTitle}">
                     <p:dataTable id="datalist" value="#{pensionadoController.items}" var="item"
@@ -55,10 +56,10 @@
                         
                         
                         <f:facet name="footer">
-                            <!--<p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{pensionadoController.prepareCreate}" update=":pensionadoCreateForm" oncomplete="PF('pensionadoCreateDialog').show()"/>-->
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{pensionadoController.prepareCreate}" update=":pensionadoCreateForm" oncomplete="PF('pensionadoCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":pensionadoViewForm" oncomplete="PF('pensionadoViewDialog').show()" disabled="#{empty pensionadoController.selected}"/>
-                            <!--<p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":pensionadoEditForm" oncomplete="PF('pensionadoEditDialog').show()" disabled="#{empty pensionadoController.selected}"/>-->
-                            <!--<p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{pensionadoController.destroy}" update=":growl,datalist" disabled="#{empty pensionadoController.selected}"/>-->
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":pensionadoEditForm" oncomplete="PF('pensionadoEditDialog').show()" disabled="#{empty pensionadoController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{pensionadoController.destroy}" update=":growl,datalist" disabled="#{empty pensionadoController.selected}"/>
                         </f:facet>
                     </p:dataTable>
                 </p:panel>
