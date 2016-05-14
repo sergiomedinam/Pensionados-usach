@@ -5,6 +5,7 @@ managebeans\pensionadoController$pensionadoControllerConverter.class
 managebeans\util\JsfUtil$PersistAction.class
 managebeans\prestamoController$prestamoControllerConverter.class
 managebeans\designado_fallecimientoController.class
+servlet\LoginServlet.class
 servlet\AdminResource.class
 managebeans\beneficioController.class
 managebeans\seguroController.class
