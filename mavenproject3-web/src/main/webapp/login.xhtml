@@ -2,12 +2,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>Facelet Title</title>
+        <title>FP Usach | Sistema de administración de pensionados</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+        <link rel="stylesheet" href="http://localhost:8080/mavenproject3-web/resources/font-awesome/css/font-awesome.min.css"/>
+        <!-- Bootstrap Core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+        <link href="css/simple-sidebar.css" rel="stylesheet"/>
     </h:head>
     <h:body>
-        <h1> Inicio de sesión </h1>
+
+        <!--<ui:composition template="/template.xhtml">-->  
+<!--        <h1> Inicio de sesión </h1>
         <form action="j_security_check" method="POST">
             <input type="text" name="j_username" placeholder="Rut"/>
             <br/>
@@ -18,16 +28,17 @@
             <input type="submit" value="Ingresar"/>
             
             <a href="/mavenproject3-web/faces/index.xhtml">Inicio</a>
-        </form>
-<!--        <p:panel header="Login From">
-            <form method="POST" action="j_security_check">
-                <input type="text" name="j_username" placeholder="Rut"/>
-                <input type="password" name="j_password" placeholder="Constraseña"/>
-                <br />
-                <input type="submit" value="Login" />
-                <input type="reset" value="Reset" />
-            </form>
-        </p:panel>-->
+        </form>-->
+            <p:panel header="Login From">
+                <form method="POST" action="j_security_check">
+                    Usuario: <input type="text" name="j_username" />
+                    Contraseña: <input type="password" name="j_password" />
+                    <br />
+                    <input type="submit" value="Login" />
+                    <input type="reset" value="Reset" />
+                </form>
+            </p:panel>
+<!--        </ui:composition>-->
     </h:body>
     
 </html>
