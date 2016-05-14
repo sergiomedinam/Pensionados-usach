@@ -1,14 +1,32 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>Facelet Title</title>
+        <title>FP Usach | Sistema de administración de pensionados</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+        <link rel="stylesheet" href="http://localhost:8080/mavenproject3-web/resources/font-awesome/css/font-awesome.min.css"/>
+        <!-- Bootstrap Core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+        <link href="css/simple-sidebar.css" rel="stylesheet"/>
     </h:head>
     <h:body>
-        <p>Hola administrador</p>
+
+        <ui:composition template="/template.xhtml"> 
+            
         <br/>
-        <a href="/mavenproject3-web/faces/index.xhtml">Inicio</a>
+            <ui:define name="body">
+                  
+                <br /><a href="/mavenproject3-web/faces/index.xhtml">Inicio</a>
+                <br /><a href="/mavenproject3-web/faces/admin/usuario/List.xhtml">Usuarios</a>                
+                <br /><a href='/mavenproject3-web//LogoutServlet'> terminar sesión </a> 
+                 
+            </ui:define>
+        </ui:composition>
     </h:body>
+
 </html>
 
