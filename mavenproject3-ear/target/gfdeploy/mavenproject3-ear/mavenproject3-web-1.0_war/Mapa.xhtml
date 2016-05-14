@@ -1,99 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Leaflet Layers Control Example</title>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+    <title>FP Usach | Sistema de administración de pensionados</title>
+    <h:outputStylesheet name="css/jsfcrud.css"/>
+    <link rel="stylesheet" href="http://localhost:8080/mavenproject3-web/resources/font-awesome/css/font-awesome.min.css"/>
+        <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet"/>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+</h:head>
+<h:body>
+    <div class="center" id="map" style="width: 700px; height: 500px"></div>
+        <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+        <script>
+            var cities = new L.LayerGroup();
+            var region = new L.LayerGroup();        
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+            L.marker([-33.45, -70.666667]).bindPopup('Santiago').addTo(cities),
+            L.marker([-33.2, -70.683333]).bindPopup('Colina').addTo(cities),
+            L.marker([33.283333, -70.9]).bindPopup('Lampa').addTo(cities),
+            L.marker([-33.083333, -70.933333]).bindPopup('Tiltil').addTo(cities),
+            L.marker([-33.633333, -70.55]).bindPopup('Pirque').addTo(cities),
+            L.marker([-33.616667, -70.583333]).bindPopup('Puente Alto').addTo(cities),
+            L.marker([-33.633333, -70.366667]).bindPopup('San José de Maipo').addTo(cities),
+            L.marker([-33.733333, -70.75]).bindPopup('Buin').addTo(cities),
+            L.marker([-33.65, -70.816667]).bindPopup('Caleta de Tango').addTo(cities),
+            L.marker([-33.816667, -70.75]).bindPopup('Paine').addTo(cities),
+            L.marker([-33.592222, -70.704444]).bindPopup('San Bernardo').addTo(cities),
+            L.marker([-34.033333, -71.1]).bindPopup('Alhue').addTo(cities),
+            L.marker([-33.4, -71.15]).bindPopup('Curacaví').addTo(cities),
+            L.marker([-33.533333, -71.133333]).bindPopup('María Pinto').addTo(cities),
+            L.marker([-33.7, -71.216667]).bindPopup('Melipilla').addTo(cities),
+            L.marker([-33.9, -71.466667]).bindPopup('San Pedro').addTo(cities),
+            L.marker([-33.483333, -70.7]).bindPopup('Cerrillos').addTo(cities),
+            L.marker([-33.416667, -70.716667]).bindPopup('Cerro Navia').addTo(cities),
+            L.marker([-33.35, -70.616667]).bindPopup('Conchalí').addTo(cities),
+            L.marker([-33.566667, -70.7]).bindPopup('El Bosque').addTo(cities),
+            L.marker([-33.45, -70.666667]).bindPopup('Estación Central').addTo(cities),
+            L.marker([-33.35, -70.666667]).bindPopup('Huechuraba').addTo(cities),
+            L.marker([-33.416667, -70.633333]).bindPopup('Independencia').addTo(cities),
+            L.marker([-33.55, -70.683333]).bindPopup('La Cisterna').addTo(cities),
+            L.marker([-33.583333, -70.583333]).bindPopup('La Granja').addTo(cities),
+            L.marker([-33.55, -70.566667]).bindPopup('La Florida').addTo(cities),
+            L.marker([-33.583333, -70.616667]).bindPopup('La pintana').addTo(cities),
+            L.marker([-33.45, -70.55]).bindPopup('La Reina').addTo(cities),
+            L.marker([-33.416667, -70.583333]).bindPopup('Las Condes').addTo(cities),
+            L.marker([-33.35, -70.516667]).bindPopup('Lo Barnechea').addTo(cities),
+            L.marker([-33.533333, -70.716667]).bindPopup('Lo Espejo').addTo(cities),
+            L.marker([-33.433333, -70.716667]).bindPopup('Lo Prado').addTo(cities),
+            L.marker([-33.5, -70.566667]).bindPopup('Macul').addTo(cities),
+            L.marker([-33.516667, -70.766667]).bindPopup('Maipú').addTo(cities),
+            L.marker([-33.466667, -70.6]).bindPopup('Ñuñoa').addTo(cities),
+            L.marker([-33.466667, -70.633333]).bindPopup('Pedro Aguirre Cerda').addTo(cities),
+            L.marker([-33.483333, -70.533333]).bindPopup('Peñalolen').addTo(cities),
+            L.marker([-33.433333, -70.616667]).bindPopup('Providencia').addTo(cities),
+            L.marker([-33.433333, -70.716667]).bindPopup('Pudahuel').addTo(cities),
+            L.marker([-33.366667, -70.75]).bindPopup('Quilicura').addTo(cities),
+            L.marker([-33.45, -70.7]).bindPopup('Quinta Normal').addTo(cities),
+            L.marker([-33.416667, -70.65]).bindPopup('Recoleta').addTo(cities),
+            L.marker([-33.4, -70.733333]).bindPopup('Renca').addTo(cities),
+            L.marker([-33.5, -70.666667]).bindPopup('San Miguel').addTo(cities),
+            L.marker([-33.5, -70.616667]).bindPopup('San Joaquín').addTo(cities),
+            L.marker([-33.5, -70.616667]).bindPopup('San Ramón').addTo(cities),
+            L.marker([-33.4, -70.6]).bindPopup('Vitacura').addTo(cities),
+            L.marker([-33.683333, -71.016667]).bindPopup('El Monte').addTo(cities),
+            L.marker([-33.75, -70.9]).bindPopup('Isla de Maipo').addTo(cities),
+            L.marker([-33.566667, -70.833333]).bindPopup('Padre Hurtado').addTo(cities),
+            L.marker([-33.616667, -70.916667]).bindPopup('Peñaflor').addTo(cities),
+            L.marker([-33.666667, -70.933333]).bindPopup('Talagante').addTo(cities);
 
-	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
-</head>
-<body>
-	<div id="map" style="width: 700px; height: 700px"></div>
-	<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
-	<script>
-		var cities = new L.LayerGroup();
-                var region = new L.LayerGroup();
-                
+            L.marker([-18.475, -70.314444]).bindPopup('Arica y Parinacota').addTo(region),
+            L.marker([-20.283333, -69.333333]).bindPopup('Tarapacá').addTo(region),
+            L.marker([-23.644167, -70.410833]).bindPopup('Antofagasta').addTo(region),
+            L.marker([-27.366667, -70.332222]).bindPopup('Atacama').addTo(region),
+            L.marker([-29.907778, -71.254167]).bindPopup('Coquimbo').addTo(region),
+            L.marker([-33.063056, -71.639444]).bindPopup('Valparaíso').addTo(region),
+            L.marker([-33.437778, -70.650278]).bindPopup('Metropolitana').addTo(region),
+            L.marker([-34.167222, -70.726944]).bindPopup('Libertador Bernardo O´Higgins').addTo(region),
+            L.marker([-35.426667, -71.671667]).bindPopup('Maule').addTo(region),
+            L.marker([-36.7728, -73.0631]).bindPopup('Bío-Bío').addTo(region),
+            L.marker([-38.9, -72.666667]).bindPopup('Araucanía').addTo(region),
+            L.marker([-39.808333, -73.241667]).bindPopup('Los Ríos').addTo(region),
+            L.marker([-41.471667, -72.936667]).bindPopup('Los Lagos').addTo(region),
+            L.marker([-45.57, -72.066111]).bindPopup('Aysén del General Carlos Ibáñez del Campo').addTo(region),
+            L.marker([-53.1625, -70.9225]).bindPopup('Magallanes y la Antártica Chilena').addTo(region);
 
-		L.marker([-33.45, -70.666667]).bindPopup('Santiago').addTo(cities),
-		L.marker([-33.2, -70.683333]).bindPopup('Colina').addTo(cities),
-                L.marker([33.283333, -70.9]).bindPopup('Lampa').addTo(cities),
-                L.marker([-33.083333, -70.933333]).bindPopup('Tiltil').addTo(cities),
-                L.marker([-33.633333, -70.55]).bindPopup('Pirque').addTo(cities),
-                L.marker([-33.616667, -70.583333]).bindPopup('Puente Alto').addTo(cities),
-                L.marker([-33.633333, -70.366667]).bindPopup('San José de Maipo').addTo(cities),
-                L.marker([-33.733333, -70.75]).bindPopup('Buin').addTo(cities),
-                L.marker([-33.65, -70.816667]).bindPopup('Caleta de Tango').addTo(cities),
-                L.marker([-33.816667, -70.75]).bindPopup('Paine').addTo(cities),
-                L.marker([-33.592222, -70.704444]).bindPopup('San Bernardo').addTo(cities),
-                L.marker([-34.033333, -71.1]).bindPopup('Alhue').addTo(cities),
-                L.marker([-33.4, -71.15]).bindPopup('Curacaví').addTo(cities),
-                L.marker([-33.533333, -71.133333]).bindPopup('María Pinto').addTo(cities),
-                L.marker([-33.7, -71.216667]).bindPopup('Melipilla').addTo(cities),
-                L.marker([-33.9, -71.466667]).bindPopup('San Pedro').addTo(cities),
-                L.marker([-33.483333, -70.7]).bindPopup('Cerrillos').addTo(cities),
-                L.marker([-33.416667, -70.716667]).bindPopup('Cerro Navia').addTo(cities),
-                L.marker([-33.35, -70.616667]).bindPopup('Conchalí').addTo(cities),
-                L.marker([-33.566667, -70.7]).bindPopup('El Bosque').addTo(cities),
-                L.marker([-33.45, -70.666667]).bindPopup('Estación Central').addTo(cities),
-                L.marker([-33.35, -70.666667]).bindPopup('Huechuraba').addTo(cities),
-                L.marker([-33.416667, -70.633333]).bindPopup('Independencia').addTo(cities),
-                L.marker([-33.55, -70.683333]).bindPopup('La Cisterna').addTo(cities),
-                L.marker([-33.583333, -70.583333]).bindPopup('La Granja').addTo(cities),
-                L.marker([-33.55, -70.566667]).bindPopup('La Florida').addTo(cities),
-                L.marker([-33.583333, -70.616667]).bindPopup('La pintana').addTo(cities),
-                L.marker([-33.45, -70.55]).bindPopup('La Reina').addTo(cities),
-                L.marker([-33.416667, -70.583333]).bindPopup('Las Condes').addTo(cities),
-                L.marker([-33.35, -70.516667]).bindPopup('Lo Barnechea').addTo(cities),
-                L.marker([-33.533333, -70.716667]).bindPopup('Lo Espejo').addTo(cities),
-                L.marker([-33.433333, -70.716667]).bindPopup('Lo Prado').addTo(cities),
-                L.marker([-33.5, -70.566667]).bindPopup('Macul').addTo(cities),
-                L.marker([-33.516667, -70.766667]).bindPopup('Maipú').addTo(cities),
-                L.marker([-33.466667, -70.6]).bindPopup('Ñuñoa').addTo(cities),
-                L.marker([-33.466667, -70.633333]).bindPopup('Pedro Aguirre Cerda').addTo(cities),
-                L.marker([-33.483333, -70.533333]).bindPopup('Peñalolen').addTo(cities),
-                L.marker([-33.433333, -70.616667]).bindPopup('Providencia').addTo(cities),
-                L.marker([-33.433333, -70.716667]).bindPopup('Pudahuel').addTo(cities),
-                L.marker([-33.366667, -70.75]).bindPopup('Quilicura').addTo(cities),
-                L.marker([-33.45, -70.7]).bindPopup('Quinta Normal').addTo(cities),
-                L.marker([-33.416667, -70.65]).bindPopup('Recoleta').addTo(cities),
-                L.marker([-33.4, -70.733333]).bindPopup('Renca').addTo(cities),
-                L.marker([-33.5, -70.666667]).bindPopup('San Miguel').addTo(cities),
-                L.marker([-33.5, -70.616667]).bindPopup('San Joaquín').addTo(cities),
-                L.marker([-33.5, -70.616667]).bindPopup('San Ramón').addTo(cities),
-                L.marker([-33.4, -70.6]).bindPopup('Vitacura').addTo(cities),
-                L.marker([-33.683333, -71.016667]).bindPopup('El Monte').addTo(cities),
-                L.marker([-33.75, -70.9]).bindPopup('Isla de Maipo').addTo(cities),
-                L.marker([-33.566667, -70.833333]).bindPopup('Padre Hurtado').addTo(cities),
-                L.marker([-33.616667, -70.916667]).bindPopup('Peñaflor').addTo(cities),
-                L.marker([-33.666667, -70.933333]).bindPopup('Talagante').addTo(cities);
-  
 
-	    var mbAttr = 'Map data copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-				'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-				'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-			mbUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw';
 
-	    var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox.light', attribution: mbAttr}),
-		    streets  = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr});
+            var mbAttr = 'Map data copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+                                '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                                'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+                        mbUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw';
 
-		var map = L.map('map', {
-			center: [-33.45, -70.666667],
-			zoom: 11,
-			layers: [grayscale, cities]
-		});
+            var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox.light', attribution: mbAttr}),
+                streets  = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr});
 
-		var baseLayers = {
-			"Mapa": grayscale,
-			"Relieve": streets
-		};
+            var map = L.map('map', {
+                    center: [-33.45, -70.666667],
+                    zoom: 11,
+                    layers: [grayscale, cities]
+            });
 
-		var overlays = {
-			"Comunas": cities,
-                        "Regiones": region
-		};
+            var baseLayers = {
+                    "Mapa": grayscale,
+                    "Relieve": streets
+            };
 
-		L.control.layers(baseLayers, overlays).addTo(map);
-	</script>
-</body>
+            var overlays = {
+                    "Comunas": cities,
+                    "Regiones": region
+            };
+
+            L.control.layers(baseLayers, overlays).addTo(map);
+        </script>
+</h:body>
+
 </html>
