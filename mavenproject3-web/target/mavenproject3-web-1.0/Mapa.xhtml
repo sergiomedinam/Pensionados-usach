@@ -8,8 +8,7 @@
 	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
 </head>
 <body>
-	<div id="map" style="width: 600px; height: 600px"></div>
-
+	<div id="map" style="width: 700px; height: 700px"></div>
 	<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
 	<script>
 		var cities = new L.LayerGroup();
@@ -59,19 +58,15 @@
                 L.marker([-33.45, -70.7]).bindPopup('Quinta Normal').addTo(cities),
                 L.marker([-33.416667, -70.65]).bindPopup('Recoleta').addTo(cities),
                 L.marker([-33.4, -70.733333]).bindPopup('Renca').addTo(cities),
-                L.marker([]).bindPopup('').addTo(cities),
-                L.marker([]).bindPopup('').addTo(cities),
-                L.marker([]).bindPopup('').addTo(cities),
-                L.marker([]).bindPopup('').addTo(cities),
-                L.marker([]).bindPopup('').addTo(cities),
-                L.marker([]).bindPopup('').addTo(cities),
-                L.marker([]).bindPopup('').addTo(cities),
-                L.marker([]).bindPopup('').addTo(cities),
-                L.marker([]).bindPopup('').addTo(cities),
-                
-                
-                
-                ;
+                L.marker([-33.5, -70.666667]).bindPopup('San Miguel').addTo(cities),
+                L.marker([-33.5, -70.616667]).bindPopup('San Joaquín').addTo(cities),
+                L.marker([-33.5, -70.616667]).bindPopup('San Ramón').addTo(cities),
+                L.marker([-33.4, -70.6]).bindPopup('Vitacura').addTo(cities),
+                L.marker([-33.683333, -71.016667]).bindPopup('El Monte').addTo(cities),
+                L.marker([-33.75, -70.9]).bindPopup('Isla de Maipo').addTo(cities),
+                L.marker([-33.566667, -70.833333]).bindPopup('Padre Hurtado').addTo(cities),
+                L.marker([-33.616667, -70.916667]).bindPopup('Peñaflor').addTo(cities),
+                L.marker([-33.666667, -70.933333]).bindPopup('Talagante').addTo(cities);
   
 
 	    var mbAttr = 'Map data copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
@@ -84,7 +79,7 @@
 
 		var map = L.map('map', {
 			center: [-33.45, -70.666667],
-			zoom: 10,
+			zoom: 11,
 			layers: [grayscale, cities]
 		});
 
