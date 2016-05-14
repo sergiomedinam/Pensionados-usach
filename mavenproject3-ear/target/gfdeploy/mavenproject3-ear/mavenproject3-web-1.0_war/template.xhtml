@@ -13,7 +13,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>    
         <link rel="stylesheet" href="#{request.contextPath}/resources/font-awesome/css/font-awesome.min.css"/>
-              
+         
+     
          <!-- Bootstrap Core CSS -->
     <link href="#{request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet"/>
 
@@ -57,25 +58,30 @@
                     </ul>
                     
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#{request.contextPath}">#{usuarioController.getUsername(request.userPrincipal.name)}</a></li>
+                        <c:if test="${usuarioController.getUsername(request.userPrincipal.name) != ''   }">
+                            <li><a href="#{request.contextPath}"><b><i class="fa fa-male" aria-hidden="true"></i> #{usuarioController.getUsername(request.userPrincipal.name)}</b></a></li>
+                        </c:if>
+                        <c:if test="${usuarioController.getUsername(request.userPrincipal.name) == ''   }">
+                            <li><a href="#{request.contextPath}/AdminResource" align="center">Iniciar sesion</a></li>
+                        </c:if>
+                        <c:if test="${usuarioController.getUsername(request.userPrincipal.name) != ''   }">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> Sistema<span class="caret"></span></a>
+                            
+                                <ul class="dropdown-menu"> 
+    <!--                                <li><a href="http://localhost:8080/mavenproject3-web/faces/usuario/List.xhtml" align="center">Usuarios</a></li>
+                                <ul class="dropdown-menu">
+                                    <li><a href="http://localhost:8080/mavenproject3-web/faces/admin/usuario/List.xhtml" align="center">Usuarios</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#{request.contextPath}/LogoutServlet" align="center">Cerrar Sesión</a></li>
 
-                            <ul class="dropdown-menu"> 
-<!--                                <li><a href="http://localhost:8080/mavenproject3-web/faces/usuario/List.xhtml" align="center">Usuarios</a></li>
-                            <ul class="dropdown-menu">
-                                <li><a href="http://localhost:8080/mavenproject3-web/faces/admin/usuario/List.xhtml" align="center">Usuarios</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#{request.contextPath}/LogoutServlet" align="center">Cerrar Sesión</a></li>
-                                 
-                                    <a href="#{request.contextPath}/LogoutServlet" align="center">Cerrar Sesión</a>-->
-                                    <c:if test="${usuarioController.getUsername(request.userPrincipal.name) != ''   }">
-                                        <li><a href="#{request.contextPath}/LogoutServlet" align="center">Cerrar Sesión</a></li>
-                                    </c:if>
-                                 
-                                
-                            </ul>
+                                        <a href="#{request.contextPath}/LogoutServlet" align="center">Cerrar Sesión</a>-->
+                                            <li><a href="#{request.contextPath}/LogoutServlet" align="center">Cerrar Sesión</a></li>
+                                </ul>
+                            
                         </li>
+                        
+                        </c:if>
                     </ul> 
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
