@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>FP Usach | Sistema de administración de pensionados</title>
         <h:outputStylesheet name="css/jsfcrud.css"/>
@@ -12,6 +13,8 @@
 
     <!-- Custom CSS -->
         <link href="#{request.contextPath}/resources/css/simple-sidebar.css" rel="stylesheet"/>
+        <link href="#{request.contextPath}/resources/css/AdminLTE.min.css" rel="stylesheet"/>
+        <link href="#{request.contextPath}/resources/css/AdminLTE.css" rel="stylesheet"/>
     </h:head>
     <h:body>
 
@@ -23,7 +26,14 @@
                 <section class="content-header">
                     <h1>
                       FP-USACH
-                      <small>Panel de control</small>
+                      
+                      <c:if test="${usuarioController.getUsername(request.userPrincipal.name) == ''   }">
+                            <small>Panel de usuario</small>
+                        </c:if>
+                      <c:if test="${usuarioController.getUsername(request.userPrincipal.name) != ''   }">
+                            <small>Panel de control</small>
+                      </c:if>
+                      
                     </h1>
                     <ol class="breadcrumb">
                       <li><a href="#{request.contextPath}"><i class="fa fa-dashboard"></i> Indice</a></li>
@@ -32,7 +42,7 @@
                   </section>
                 
                 <section class="content">
-                    <div class="row">
+                    <div class="row" align="center">
                         <div class="col-lg-3 col-xs-6">
                           <!-- small box -->
                           <div class="small-box bg-aqua">
@@ -98,7 +108,7 @@
                 
                 
                 
-                
+                <!--
                 
                 <br />
                 <a href="#{request.contextPath}/AdminResource">go to ADMIN</a>
@@ -107,36 +117,47 @@
                 <br /> 
                 <a href="#{request.contextPath}/faces/admin/index.xhtml">Pagina exclusiva admins</a>
                 <br />
-                <h:link outcome="/beneficio/List" value="Show All beneficio Items"/>
-                <br />
-                <h:link outcome="/contacto/List" value="Show All contacto Items"/>
-                <br />
-                <h:link outcome="/designado_fallecimiento/List" value="Show All designado_fallecimiento Items"/>
-                <br />
-                <h:link outcome="/medicamento/List" value="Show All medicamento Items"/>
-                <br />
-                <h:link outcome="/otros_datos/List" value="Show All otros_datos Items"/>
-                <br />
-                <h:link outcome="/patologia/List" value="Show All patologia Items"/>
-                <br />
-                <h:link outcome="/pensionado/List" value="Show All pensionado Items"/>
-                <br />
-                <h:link outcome="/prestamo/List" value="Show All prestamo Items"/>
-                <br />
-                <h:link outcome="/rol/List" value="Show All rol Items"/>
-                <br />
-                <h:link outcome="/seguro/List" value="Show All seguro Items"/>
-                <br />
-                <h:link outcome="/tipo_beneficio/List" value="Show All tipo_beneficio Items"/>
-                <br />
-                <h:link outcome="/tipo_prestamo/List" value="Show All tipo_prestamo Items"/>
-                <br />
-                <h:link outcome="/Mapa.xhtml" value="Mapa Geográfico"/>
-                <br />
-                <h:link outcome="/pensionado/Filtros.xhtml" value="Filtros Comuna-Region"/>
-                <br />
-                <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
-
+                -->
+                
+                <div class="container bg-gray-light">
+                    
+                    <section class="content-header">
+                    <h1>
+                      Funcionalidades crud
+                                           
+                    </h1>
+                  </section>
+                    <br></br>
+                    <h:link outcome="/beneficio/List" value="Show All beneficio Items"/>
+                    <br />
+                    <h:link outcome="/contacto/List" value="Show All contacto Items"/>
+                    <br />
+                    <h:link outcome="/designado_fallecimiento/List" value="Show All designado_fallecimiento Items"/>
+                    <br />
+                    <h:link outcome="/medicamento/List" value="Show All medicamento Items"/>
+                    <br />
+                    <h:link outcome="/otros_datos/List" value="Show All otros_datos Items"/>
+                    <br />
+                    <h:link outcome="/patologia/List" value="Show All patologia Items"/>
+                    <br />
+                    <h:link outcome="/pensionado/List" value="Show All pensionado Items"/>
+                    <br />
+                    <h:link outcome="/prestamo/List" value="Show All prestamo Items"/>
+                    <br />
+                    <h:link outcome="/rol/List" value="Show All rol Items"/>
+                    <br />
+                    <h:link outcome="/seguro/List" value="Show All seguro Items"/>
+                    <br />
+                    <h:link outcome="/tipo_beneficio/List" value="Show All tipo_beneficio Items"/>
+                    <br />
+                    <h:link outcome="/tipo_prestamo/List" value="Show All tipo_prestamo Items"/>
+                    <br />
+                    <h:link outcome="/Mapa.xhtml" value="Mapa Geográfico"/>
+                    <br />
+                    <h:link outcome="/pensionado/Filtros.xhtml" value="Filtros Comuna-Region"/>
+                    <br />
+                    <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+                </div>
             </ui:define> 
 
         </ui:composition>
