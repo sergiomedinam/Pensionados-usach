@@ -20,9 +20,9 @@
         <br/>
             <ui:define name="body">
                   
-                <br /><a href="/mavenproject3-web/faces/index.xhtml">Inicio</a>
-                <br /><a href="/mavenproject3-web/faces/admin/usuario/List.xhtml">Usuarios</a>                
-                <br /><a href='/mavenproject3-web//LogoutServlet'> terminar sesión </a> 
+                <br /><a href="#{request.contextPath}/faces/index.xhtml">Inicio</a>
+                <br /><a href="#{request.contextPath}/faces/admin/usuario/List.xhtml">Usuarios</a>                
+                <br /><a href='#{request.contextPath}/LogoutServlet'> terminar sesión </a> 
                  
             </ui:define>
         </ui:composition>

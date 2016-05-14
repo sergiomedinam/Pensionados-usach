@@ -19,9 +19,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Nelson
  */
-@WebServlet(name = "UsuarioResource", urlPatterns = {"/UsuarioResource"})
-@ServletSecurity(@HttpConstraint(rolesAllowed = {"admin","usuario"}))
-public class UsuarioResource extends HttpServlet {
+@WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
+@ServletSecurity(@HttpConstraint(rolesAllowed = {"admin","usuario","observador"}))
+public class LoginServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,29 +35,17 @@ public class UsuarioResource extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        response.sendRedirect("/mavenproject3-web/faces/index.xhtml");
+        
+        response.sendRedirect(request.getContextPath()); 
 //        try (PrintWriter out = response.getWriter()) {
-//            String role = "anonymus";
 //            /* TODO output your page here. You may use following sample code. */
 //            out.println("<!DOCTYPE html>");
 //            out.println("<html>");
 //            out.println("<head>");
-//            out.println("<title>Servlet UsuarioResource</title>");            
+//            out.println("<title>Servlet LoginServlet</title>");            
 //            out.println("</head>");
 //            out.println("<body>");
-//            out.println("<h1>Servlet UsuarioResource at " + request.getContextPath() + "</h1>");
-//            if (request.isUserInRole("admin")) {
-//                role = "admin";
-//            }
-//            else if (request.isUserInRole("usuario")) {
-//                role = "usuario";
-//            }
-//            else { 
-//                role = "observador";
-//            }
-//            out.println("<br/> Bienvenido " + role +  " " + request.getUserPrincipal().getName());
-//            out.println("<br/><a href='./LogoutServlet'> terminar sesion </a>");
-//            out.println("<br/><a href='/mavenproject3-web/faces/index.xhtml'> Inicio </a>");
+//            out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
 //            out.println("</body>");
 //            out.println("</html>");
 //        }

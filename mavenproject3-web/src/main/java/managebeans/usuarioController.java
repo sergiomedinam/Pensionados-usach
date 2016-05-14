@@ -53,6 +53,17 @@ public class usuarioController implements Serializable {
     private usuarioFacadeLocal getFacade() {
         return ejbFacade;
     }
+    
+    public String getUsername(String rut){
+        String nombre = "";
+        getItems();
+        for (usuario item : items) {
+            if (item.getRut().equals(rut)) {
+                nombre = item.getNombre();
+            }
+        }
+        return nombre;
+    }
 
     public usuario prepareCreate() {
         selected = new usuario();

@@ -19,11 +19,11 @@
  
             <ui:define name="body">
                 <br />
-                <a href="/mavenproject3-web/AdminResource">go to ADMIN</a>
+                <a href="#{request.contextPath}/AdminResource">go to ADMIN</a>
                 <br />
-                <a href="/mavenproject3-web/UsuarioResource">go to USUARIO</a>
+                <a href="#{request.contextPath}/UsuarioResource">go to USUARIO</a>
                 <br /> 
-                <a href="/mavenproject3-web/faces/admin/index.xhtml">Pagina exclusiva admins</a>
+                <a href="#{request.contextPath}/faces/admin/index.xhtml">Pagina exclusiva admins</a>
                 <br />
                 <h:link outcome="/beneficio/List" value="Show All beneficio Items"/>
                 <br />

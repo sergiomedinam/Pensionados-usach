@@ -16,8 +16,8 @@
     </h:head>
     <h:body>
 
-        <ui:composition template="/template.xhtml">  
-        <h1> Inicio de sesión </h1>
+        <!--<ui:composition template="/template.xhtml">-->  
+<!--        <h1> Inicio de sesión </h1>
         <form action="j_security_check" method="POST">
             <input type="text" name="j_username" placeholder="Rut"/>
             <br/>
@@ -28,7 +28,17 @@
             <input type="submit" value="Ingresar"/>
             
             <a href="/mavenproject3-web/faces/index.xhtml">Inicio</a>
-        </form>
+        </form>-->
+            <p:panel header="Login From">
+                <form method="POST" action="j_security_check">
+                    Usuario: <input type="text" name="j_username" />
+                    Contraseña: <input type="password" name="j_password" />
+                    <br />
+                    <input type="submit" value="Login" />
+                    <input type="reset" value="Reset" />
+                </form>
+            </p:panel>
+<!--        </ui:composition>-->
     </h:body>
     
 </html>
