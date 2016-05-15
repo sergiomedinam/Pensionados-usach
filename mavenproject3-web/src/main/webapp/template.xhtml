@@ -56,14 +56,30 @@
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
- 
-                <li class="active">
-                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-dashboard fa-stack-1x "></i></span>Panel Administracion</a>
-                       <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                        <li><a href="#">Usuarios</a></li>
-                        
+                
+                <c:if test="${usuarioController.getUsername(request.userPrincipal.name) == ''   }">
+                    <li class="active">
+                    <a href="#{request.contextPath}/AdminResource"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span> Iniciar Sesion</a>
+                </li>
+                </c:if>
+                <c:if test="${usuarioController.getUsername(request.userPrincipal.name) != ''   }">
+                    <li class="active">
+                        <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-dashboard fa-stack-1x "></i></span>Panel Administracion</a>
+                           <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                            <li><a href="#">Usuarios</a></li>
+
+                        </ul>
+                    </li>
+                </c:if>
+                <c:if test="${usuarioController.getUsername(request.userPrincipal.name) != ''   }">
+                <li>
+                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span>Usuario: #{usuarioController.getUsername(request.userPrincipal.name)}</a>
+                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                        <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span>Mi Cuenta</a></li>
+                        <li><a href="#{request.contextPath}/LogoutServlet"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span>Cerrar Sesion</a></li>
                     </ul>
                 </li>
+                </c:if>
                 <li>
                     <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span> Pensionados</a>
                     <ul class="nav-pills nav-stacked" style="list-style-type:none;">
@@ -86,20 +102,8 @@
                 <li>
                     <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-server fa-stack-1x "></i></span>Contacto</a>
                 </li>
-                <c:if test="${usuarioController.getUsername(request.userPrincipal.name) != ''   }">
-                <li>
-                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span>#{usuarioController.getUsername(request.userPrincipal.name)}</a>
-                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                        <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span>Mi Cuenta</a></li>
-                        <li><a href="#{request.contextPath}/LogoutServlet"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span>Cerrar Sesion</a></li>
-                    </ul>
-                </li>
-                </c:if>
-                <c:if test="${usuarioController.getUsername(request.userPrincipal.name) == ''   }">
-                <li>
-                    <a href="#{request.contextPath}/AdminResource"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span> Iniciar Sesion</a>
-                </li>
-                </c:if>
+                
+                
             </ul>
         </div><!-- /#sidebar-wrapper -->
         <!-- Page Content -->
