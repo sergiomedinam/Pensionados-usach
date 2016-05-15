@@ -36,7 +36,7 @@
                         <p:outputLabel value="#{bundle.CreatepensionadoLabel_comuna}" for="comuna" />
                         <p:inputText required="true" requiredMessage="Se necesita una comuna" id="comuna" value="#{pensionadoController.selected.comuna}" title="#{bundle.CreatepensionadoTitle_comuna}" />
                         <p:outputLabel value="#{bundle.CreatepensionadoLabel_region}" for="region" />
-                        <p:inputText id="region" value="#{pensionadoController.selected.region}" title="#{bundle.CreatepensionadoTitle_region}" />
+                        <p:inputText required="true" requiredMessage="Se necesita una region" id="region" value="#{pensionadoController.selected.region}" title="#{bundle.CreatepensionadoTitle_region}" />
                         <p:outputLabel  value="#{bundle.CreatepensionadoLabel_telefono_fijo}"  for="telefono_fijo" />
                         <p:inputText id="telefono_fijo" placeholder="Ej: 59684599856" value="#{pensionadoController.selected.telefono_fijo}" title="#{bundle.CreatepensionadoTitle_telefono_fijo}">
                             <f:validateLength minimum="7" maximum="11"/>
