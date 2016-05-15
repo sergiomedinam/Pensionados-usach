@@ -26,74 +26,104 @@
     <h:body>
 
         <p:growl id="growl" life="3000" />
+        
 
-        <nav class="navbar navbar-default " >
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#{request.contextPath}">FP Usach</a>
-                </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
+          
+                    <nav class="navbar navbar-default no-margin" >
                         
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Información<span class="caret"></span></a>
-                            <ul class="dropdown-menu" >
-                                
-                                <li><a href="#">Pagos</a></li>
-                                
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Morosos</a></li>
+                                <div class="navbar-header fixed-brand">
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  id="menu-toggle">
+                                      <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+                                    </button>
+                                    <a class="navbar-brand" href="#{request.contextPath}"><i class="fa fa-square fa-4"></i> FP-USACH</a>
+                                    <c:if test="${usuarioController.getUsername(request.userPrincipal.name) != ''   }">
+                                        <p class="navbar-brand"><b><i class="fa fa-male" aria-hidden="true"></i> #{usuarioController.getUsername(request.userPrincipal.name)}</b></p>
+                                    </c:if>
+                                </div><!-- navbar-header-->
 
-                            </ul>
-                        </li>
-                    </ul>
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                            <ul class="nav navbar-nav">
+                                                <li class="active" ><button class="navbar-toggle collapse in" data-toggle="collapse" id="menu-toggle-2"> <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span></button></li>
+                                            </ul>
+                                </div><!-- bs-example-navbar-collapse-1 -->
+
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            
                     
-                    <ul class="nav navbar-nav navbar-right">
-                        <c:if test="${usuarioController.getUsername(request.userPrincipal.name) != ''   }">
-                            <li><a href="#{request.contextPath}"><b><i class="fa fa-male" aria-hidden="true"></i> #{usuarioController.getUsername(request.userPrincipal.name)}</b></a></li>
-                        </c:if>
-                        <c:if test="${usuarioController.getUsername(request.userPrincipal.name) == ''   }">
-                            <li><a href="#{request.contextPath}/AdminResource" align="center">Iniciar sesion</a></li>
-                        </c:if>
-                        <c:if test="${usuarioController.getUsername(request.userPrincipal.name) != ''   }">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> Sistema<span class="caret"></span></a>
-                            
-                                <ul class="dropdown-menu"> 
-    <!--                                <li><a href="http://localhost:8080/mavenproject3-web/faces/usuario/List.xhtml" align="center">Usuarios</a></li>
-                                <ul class="dropdown-menu">
-                                    <li><a href="http://localhost:8080/mavenproject3-web/faces/admin/usuario/List.xhtml" align="center">Usuarios</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#{request.contextPath}/LogoutServlet" align="center">Cerrar Sesión</a></li>
+                    </nav>
 
-                                        <a href="#{request.contextPath}/LogoutServlet" align="center">Cerrar Sesión</a>-->
-                                            <li><a href="#{request.contextPath}/LogoutServlet" align="center">Cerrar Sesión</a></li>
-                                </ul>
-                            
-                        </li>
-                        
-                        </c:if>
-                    </ul> 
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
+        <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
  
-        <div class="row" >
-            <div class="col-sm-2">
-                <ui:composition template="/barra.xhtml"/>
+                <li class="active">
+                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-dashboard fa-stack-1x "></i></span>Panel Administracion</a>
+                       <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                        <li><a href="#">Usuarios</a></li>
+                        
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span> Pensionados</a>
+                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                        <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span>Pagos</a></li>
+                        <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span>Beneficios</a></li>
+                        <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span>Seguros</a></li>
+                        
+ 
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-cloud-download fa-stack-1x "></i></span>Estadisticas</a>
+                </li>
+                <li>
+                    <a href="#"> <span class="fa-stack fa-lg pull-left"><i class="fa fa-cart-plus fa-stack-1x "></i></span>Ubicacion</a>
+                </li>
+                <li>
+                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-youtube-play fa-stack-1x "></i></span>Acerca</a>
+                </li>
+                <li>
+                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-server fa-stack-1x "></i></span>Contacto</a>
+                </li>
+                <c:if test="${usuarioController.getUsername(request.userPrincipal.name) != ''   }">
+                <li>
+                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span>#{usuarioController.getUsername(request.userPrincipal.name)}</a>
+                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                        <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span>Mi Cuenta</a></li>
+                        <li><a href="#{request.contextPath}/LogoutServlet"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span>Cerrar Sesion</a></li>
+                    </ul>
+                </li>
+                </c:if>
+                <c:if test="${usuarioController.getUsername(request.userPrincipal.name) == ''   }">
+                <li>
+                    <a href="#{request.contextPath}/AdminResource"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span> Iniciar Sesion</a>
+                </li>
+                </c:if>
+            </ul>
+        </div><!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid xyz">
+                <div class="row">
+                    <ui:insert name="body"/>
+                </div>
             </div>
-                      
         </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="#{request.contextPath}/resources/js/jquery-1.11.2.min.js"></script>
+    <script src="#{request.contextPath}/resources/js/bootstrap.min.js"></script>
+    <script src="#{request.contextPath}/resources/js/sidebar_menu.js"></script>
 
+                            
+
+                
+      
+
+      
     </h:body>
 
 </html>

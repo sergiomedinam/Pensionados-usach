@@ -12,80 +12,71 @@
     <link href="http://localhost:8080/mavenproject3-web/resources/css/simple-sidebar.css" rel="stylesheet"/>
     </h:head>
     <h:body>
-        <div id="wrapper">
+        
+        <div class="nav-side-menu">
+                <div class="brand">FP-USACH</div>
+                <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#">
-                        <h2> Menu</h2> 
-                    </a>
-                </li>
-                <li>
-                    <a href="#{request.contextPath}/faces/pensionado/List.xhtml"><i class="fa fa-users" aria-hidden="true"></i> Pensionados</a>
-                </li>
-                <li>
-                    <a href="#{request.contextPath}/faces/beneficio/List.xhtml"><i class="fa fa-check-circle" aria-hidden="true"></i> Beneficios</a>
-                </li>
-                <li>
-                    <a href="#{request.contextPath}/faces/seguro/List.xhtml"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Seguros</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-signal" aria-hidden="true"></i> Estadísticas</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-rss" aria-hidden="true"></i> Información</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-square" aria-hidden="true"></i> Otros</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i> Contacto</a>
-                </li>
-            </ul>
-        </div>
-        <!-- /#sidebar-wrapper -->
+                    <div class="menu-list">
 
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            
-          
-       
-            <div class="container-fluid">
-                
-                    <div class="container">
-                       
-                        
-                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Menu</a>
-                        <br/>
-                       <ui:insert name="body"/>
-                    </div>
-       
+                        <ul id="menu-content" class="menu-content collapse out">
+                            <li>
+                              <a href="#">
+                              <i class="fa fa-dashboard fa-lg"></i> Panel Administracion
+                              </a>
+                            </li>
+
+                            <li  data-toggle="collapse" data-target="#products" class="collapsed active">
+                              <a href="#"><i class="fa fa-gift fa-lg"></i> UI Elements <span class="arrow"></span></a>
+                            </li>
+                            <ul class="sub-menu collapse" id="products">
+                                <li class="active"><a href="#">CSS3 Animation</a></li>
+                                <li><a href="#">General</a></li>
+                                <li><a href="#">Buttons</a></li>
+                                <li><a href="#">Tabs Accordions</a></li>
+                                <li><a href="#">Typography</a></li>
+                                <li><a href="#">FontAwesome</a></li>
+                                <li><a href="#">Slider</a></li>
+                                <li><a href="#">Panels</a></li>
+                                <li><a href="#">Widgets</a></li>
+                                <li><a href="#">Bootstrap Model</a></li>
+                            </ul>
+
+
+                            <li data-toggle="collapse" data-target="#service" class="collapsed">
+                              <a href="#"><i class="fa fa-globe fa-lg"></i> Services <span class="arrow"></span></a>
+                            </li>  
+                            <ul class="sub-menu collapse" id="service">
+                              <li>New Service 1</li>
+                              <li>New Service 2</li>
+                              <li>New Service 3</li>
+                            </ul>
+
+
+                            <li data-toggle="collapse" data-target="#new" class="collapsed">
+                              <a href="#"><i class="fa fa-car fa-lg"></i> New <span class="arrow"></span></a>
+                            </li>
+                            <ul class="sub-menu collapse" id="new">
+                              <li>New New 1</li>
+                              <li>New New 2</li>
+                              <li>New New 3</li>
+                            </ul>
+
+
+                             <li>
+                              <a href="#">
+                              <i class="fa fa-user fa-lg"></i> Profile
+                              </a>
+                              </li>
+
+                             <li>
+                              <a href="#">
+                              <i class="fa fa-users fa-lg"></i> Users
+                              </a>
+                            </li>
+                        </ul>
+                 </div>
             </div>
-        </div>
-        <!-- /#page-content-wrapper -->
-
-    </div>
-    <!-- /#wrapper -->
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Menu Toggle Script -->
-    <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    </script>
-   
-        
-        
-        
     </h:body>
 </html>
 
