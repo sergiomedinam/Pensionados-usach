@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+    <title>FP Usach | Sistema de administración de pensionados</title>
+    <h:outputStylesheet name="css/jsfcrud.css"/>
+    <link rel="stylesheet" href="http://localhost:8080/mavenproject3-web/resources/font-awesome/css/font-awesome.min.css"/>
+        <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet"/>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+</h:head>
+<h:body>
+    <div class="center" id="map" style="width: 700px; height: 500px"></div>
+        <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+        <script>
+            var cities = new L.LayerGroup();
+            var region = new L.LayerGroup(); 
+
+            L.marker([-18.475, -70.314444]).bindPopup('Arica y Parinacota').addTo(region),
+            L.marker([-20.283333, -69.333333]).bindPopup('Tarapacá').addTo(region),
+            L.marker([-23.644167, -70.410833]).bindPopup('Antofagasta').addTo(region),
+            L.marker([-27.366667, -70.332222]).bindPopup('Atacama').addTo(region),
+            L.marker([-29.907778, -71.254167]).bindPopup('Coquimbo').addTo(region),
+            L.marker([-33.063056, -71.639444]).bindPopup('Valparaíso').addTo(region),
+            L.marker([-33.437778, -70.650278]).bindPopup('Metropolitana' + '<a href="http://www.google.com">Visit Google</a>"').addTo(region),
+            L.marker([-34.167222, -70.726944]).bindPopup('Libertador Bernardo O´Higgins').addTo(region),
+            L.marker([-35.426667, -71.671667]).bindPopup('Maule').addTo(region),
+            L.marker([-36.7728, -73.0631]).bindPopup('Bío-Bío').addTo(region),
+            L.marker([-38.9, -72.666667]).bindPopup('Araucanía').addTo(region),
+            L.marker([-39.808333, -73.241667]).bindPopup('Los Ríos').addTo(region),
+            L.marker([-41.471667, -72.936667]).bindPopup('Los Lagos').addTo(region),
+            L.marker([-45.57, -72.066111]).bindPopup('Aysén del General Carlos Ibáñez del Campo').addTo(region),
+            L.marker([-53.1625, -70.9225]).bindPopup('Magallanes y la Antártica Chilena').addTo(region);
+
+
+
+            var mbAttr = 'Map data copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+                                '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                                'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+                        mbUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw';
+
+            var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox.light', attribution: mbAttr}),
+                streets  = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr}),
+                dark  = L.tileLayer(mbUrl, {id: 'mapbox.dark',   attribution: mbAttr}),
+                satellite  = L.tileLayer(mbUrl, {id: 'mapbox.satellite',   attribution: mbAttr});
+
+            var map = L.map('map', {
+                    center: [-33.45, -70.666667],
+                    zoom: 11,
+                    layers: [dark, region]
+            });
+
+            var baseLayers = {
+                    "Mapa": grayscale,
+                    "Relieve": streets,
+                    "Satélite": satellite,
+                    "Darks": dark
+            };
+
+            var overlays = {
+                    "Comunas": cities,
+                    "Regiones": region
+            };
+            var popup = L.popup();
+
+            function onMapClick(e) {
+            popup
+                .setLatLng(e.latlng)
+                .setContent(e.latlng.toString() + '<a href="http://www.google.com">Visit Google</a>"')
+                .openOn(map);
+            }
+
+            map.on('click', onMapClick);
+
+            L.control.layers(baseLayers, overlays).addTo(map);
+        </script>
+</h:body>
+
+</html>
