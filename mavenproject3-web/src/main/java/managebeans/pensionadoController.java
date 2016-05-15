@@ -6,6 +6,7 @@ import managebeans.util.JsfUtil.PersistAction;
 import sessionsbeans.pensionadoFacadeLocal;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -80,7 +81,21 @@ public class pensionadoController implements Serializable {
         }
         return items;
     }
-
+    
+    /********************************************************/
+    public List<pensionado> PensionadosComuna(String Comuna) {
+        List<pensionado> sirvenIRA = new ArrayList<pensionado>();
+        getItems();
+        for (pensionado item : items) {
+            if (item.getComuna().equals(Comuna)){
+                    sirvenIRA.add(item);          
+            }
+        }
+        return sirvenIRA;
+    }
+    
+    
+    /********************************************************/
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
             setEmbeddableKeys();
