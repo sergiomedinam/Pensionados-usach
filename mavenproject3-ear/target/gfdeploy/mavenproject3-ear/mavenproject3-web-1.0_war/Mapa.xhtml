@@ -22,8 +22,8 @@
             var cities = new L.LayerGroup();
             var region = new L.LayerGroup(); 
 
-            L.marker([-33.437778, -70.650278]).bindPopup('<a href="/mavenproject3-web/faces/pensionado/Comuna/Santiago.xhtml">Santiago</a>').addTo(cities),
-            L.marker([-33.2, -70.683333]).bindPopup('Colina').addTo(cities),
+            L.marker([-33.437778, -70.650278]).bindPopup('Santiago (' + '<a href="/mavenproject3-web/faces/pensionado/Comuna/Santiago.xhtml">#{pensionadoController.PensionadosComuna('SANTIAGO').size()} pensionados</a>'+')').addTo(cities),
+            L.marker([-33.2, -70.683333]).bindPopup('<a href="/mavenproject3-web/faces/pensionado/Comuna/Colina.xhtml">Colina</a>').addTo(cities),
             L.marker([33.283333, -70.9]).bindPopup('Lampa').addTo(cities),
             L.marker([-33.083333, -70.933333]).bindPopup('Tiltil').addTo(cities),
             L.marker([-33.633333, -70.55]).bindPopup('Pirque').addTo(cities),
