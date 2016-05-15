@@ -66,7 +66,7 @@
                     <li class="active">
                         <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-dashboard fa-stack-1x "></i></span>Panel Administracion</a>
                            <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                            <li><a href="#">Usuarios</a></li>
+                            <li><a href="#{request.contextPath}/faces/admin/usuario/List.xhtml"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span> Usuarios</a></li>
 
                         </ul>
                     </li>
@@ -75,32 +75,32 @@
                 <li>
                     <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span>Usuario: #{usuarioController.getUsername(request.userPrincipal.name)}</a>
                     <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                        <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span>Mi Cuenta</a></li>
-                        <li><a href="#{request.contextPath}/LogoutServlet"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span>Cerrar Sesion</a></li>
+                        <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-wpforms fa-stack-1x "></i></span>Mi Cuenta</a></li>
+                        <li><a href="#{request.contextPath}/LogoutServlet"><span class="fa-stack fa-lg pull-left"><i class="fa fa-sign-out fa-stack-1x "></i></span>Cerrar Sesion</a></li>
                     </ul>
                 </li>
                 </c:if>
                 <li>
-                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span> Pensionados</a>
+                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-users fa-stack-1x "></i></span> Pensionados</a>
                     <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                        <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span>Pagos</a></li>
-                        <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span>Beneficios</a></li>
-                        <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span>Seguros</a></li>
+                        <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-money fa-stack-1x "></i></span>Pagos</a></li>
+                        <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-thumbs-up fa-stack-1x "></i></span>Beneficios</a></li>
+                        <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-asterisk fa-stack-1x "></i></span>Seguros</a></li>
                         
  
                     </ul>
                 </li>
                 <li>
-                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-cloud-download fa-stack-1x "></i></span>Estadisticas</a>
+                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-line-chart fa-stack-1x "></i></span>Estadisticas</a>
                 </li>
                 <li>
-                    <a href="#"> <span class="fa-stack fa-lg pull-left"><i class="fa fa-cart-plus fa-stack-1x "></i></span>Ubicacion</a>
+                    <a href="#"> <span class="fa-stack fa-lg pull-left"><i class="fa fa-map-o fa-stack-1x "></i></span>Ubicacion</a>
                 </li>
                 <li>
-                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-youtube-play fa-stack-1x "></i></span>Acerca</a>
+                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-question-circle-o fa-stack-1x "></i></span>Acerca</a>
                 </li>
                 <li>
-                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-server fa-stack-1x "></i></span>Contacto</a>
+                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-envelope-o fa-stack-1x "></i></span>Contacto</a>
                 </li>
                 
                 
