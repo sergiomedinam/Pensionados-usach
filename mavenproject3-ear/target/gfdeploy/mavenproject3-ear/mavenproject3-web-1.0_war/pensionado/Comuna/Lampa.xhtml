@@ -16,7 +16,7 @@
         <ui:define name="body">
             <h:form id="pensionadoListForm">
                 <p:panel header="#{bundle.ListpensionadoTitle}">
-                    <p:dataTable id="datalist" value="#{pensionadoController.PensionadosComuna('COLINA')}" var="item"
+                    <p:dataTable id="datalist" value="#{pensionadoController.PensionadosComuna('LAMPA')}" var="item"
                                  selectionMode="single" selection="#{pensionadoController.selected}"
                                  paginator="true"
                                  rowKey="#{item.id}"
@@ -65,8 +65,8 @@
                     <br></br>
                     <br></br>
                     <p:fieldset legend="Resultados">
-                        <h:outputText  class="center" value="En la comuna de Colina, actualmente, se encuentran "/>
-                        <h:outputText class="center" value="#{pensionadoController.PensionadosComuna('COLINA').size()}"/>
+                        <h:outputText  class="center" value="En la comuna de Lampa, actualmente, se encuentran "/>
+                        <h:outputText class="center" value="#{pensionadoController.PensionadosComuna('LAMPA').size()}"/>
                         <h:outputText class="center" value=" pensionados viviendo."/>
                     </p:fieldset>
                 </p:panel>
