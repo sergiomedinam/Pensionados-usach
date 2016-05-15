@@ -44,11 +44,11 @@ public class otros_datosTest {
     public void testGetSistema_salud() {
         System.out.println("getSistema_salud");
         otros_datos instance = new otros_datos();
-        String expResult = "";
+        String expResult = "test";
+        instance.setSistema_salud(expResult);
         String result = instance.getSistema_salud();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -57,11 +57,10 @@ public class otros_datosTest {
     @Test
     public void testSetSistema_salud() {
         System.out.println("setSistema_salud");
-        String sistema_salud = "";
+        String sistema_salud = "test";
         otros_datos instance = new otros_datos();
         instance.setSistema_salud(sistema_salud);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -71,11 +70,11 @@ public class otros_datosTest {
     public void testGetTipo_pension() {
         System.out.println("getTipo_pension");
         otros_datos instance = new otros_datos();
-        String expResult = "";
+        String expResult = "test";
+        instance.setTipo_pension(expResult);
         String result = instance.getTipo_pension();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -88,7 +87,6 @@ public class otros_datosTest {
         otros_datos instance = new otros_datos();
         instance.setTipo_pension(tipo_pension);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -98,11 +96,11 @@ public class otros_datosTest {
     public void testGetSistema_pension() {
         System.out.println("getSistema_pension");
         otros_datos instance = new otros_datos();
-        String expResult = "";
+        String expResult = "test";
+        instance.setSistema_pension(expResult);
         String result = instance.getSistema_pension();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // TODO review the generated test code and remove the default call to fail.;
     }
 
     /**
@@ -115,7 +113,6 @@ public class otros_datosTest {
         otros_datos instance = new otros_datos();
         instance.setSistema_pension(sistema_pension);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -126,10 +123,10 @@ public class otros_datosTest {
         System.out.println("getNombre_banco");
         otros_datos instance = new otros_datos();
         String expResult = "";
+        instance.setNombre_banco(expResult);
         String result = instance.getNombre_banco();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -142,7 +139,6 @@ public class otros_datosTest {
         otros_datos instance = new otros_datos();
         instance.setNombre_banco(nombre_banco);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -152,11 +148,11 @@ public class otros_datosTest {
     public void testGetCuenta_banco() {
         System.out.println("getCuenta_banco");
         otros_datos instance = new otros_datos();
-        String expResult = "";
+        String expResult = "test";
+        instance.setCuenta_banco(expResult);
         String result = instance.getCuenta_banco();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -169,7 +165,6 @@ public class otros_datosTest {
         otros_datos instance = new otros_datos();
         instance.setCuenta_banco(cuenta_banco);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -179,11 +174,11 @@ public class otros_datosTest {
     public void testGetEstamento() {
         System.out.println("getEstamento");
         otros_datos instance = new otros_datos();
-        String expResult = "";
+        String expResult = "test";
+        instance.setEstamento(expResult);
         String result = instance.getEstamento();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -196,7 +191,6 @@ public class otros_datosTest {
         otros_datos instance = new otros_datos();
         instance.setEstamento(estamento);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -206,11 +200,11 @@ public class otros_datosTest {
     public void testGetMonto_pension() {
         System.out.println("getMonto_pension");
         otros_datos instance = new otros_datos();
-        Integer expResult = null;
+        Integer expResult = 1;
+        instance.setMonto_pension(expResult);
         Integer result = instance.getMonto_pension();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -219,11 +213,10 @@ public class otros_datosTest {
     @Test
     public void testSetMonto_pension() {
         System.out.println("setMonto_pension");
-        Integer monto_pension = null;
+        Integer monto_pension = 1;
         otros_datos instance = new otros_datos();
         instance.setMonto_pension(monto_pension);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -233,11 +226,11 @@ public class otros_datosTest {
     public void testGetValor_cuota() {
         System.out.println("getValor_cuota");
         otros_datos instance = new otros_datos();
-        Integer expResult = null;
+        Integer expResult = 1;
+        instance.setValor_cuota(expResult);
         Integer result = instance.getValor_cuota();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -246,11 +239,10 @@ public class otros_datosTest {
     @Test
     public void testSetValor_cuota() {
         System.out.println("setValor_cuota");
-        Integer valor_cuota = null;
+        Integer valor_cuota = 1;
         otros_datos instance = new otros_datos();
         instance.setValor_cuota(valor_cuota);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -260,11 +252,11 @@ public class otros_datosTest {
     public void testGetUltimo_aporte() {
         System.out.println("getUltimo_aporte");
         otros_datos instance = new otros_datos();
-        String expResult = "";
+        String expResult = "test";
+        instance.setUltimo_aporte(expResult);
         String result = instance.getUltimo_aporte();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -277,7 +269,6 @@ public class otros_datosTest {
         otros_datos instance = new otros_datos();
         instance.setUltimo_aporte(ultimo_aporte);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -287,11 +278,11 @@ public class otros_datosTest {
     public void testGetCaja_compensacion() {
         System.out.println("getCaja_compensacion");
         otros_datos instance = new otros_datos();
-        String expResult = "";
+        String expResult = "test";
+        instance.setCaja_compensacion(expResult);
         String result = instance.getCaja_compensacion();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -304,7 +295,6 @@ public class otros_datosTest {
         otros_datos instance = new otros_datos();
         instance.setCaja_compensacion(caja_compensacion);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -314,11 +304,11 @@ public class otros_datosTest {
     public void testGetId() {
         System.out.println("getId");
         otros_datos instance = new otros_datos();
-        Long expResult = null;
+        Long expResult = new Long("1234567890");
+        instance.setId(expResult);
         Long result = instance.getId();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -331,7 +321,6 @@ public class otros_datosTest {
         otros_datos instance = new otros_datos();
         instance.setId(id);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -345,7 +334,6 @@ public class otros_datosTest {
         int result = instance.hashCode();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -360,7 +348,6 @@ public class otros_datosTest {
         boolean result = instance.equals(object);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -370,11 +357,11 @@ public class otros_datosTest {
     public void testToString() {
         System.out.println("toString");
         otros_datos instance = new otros_datos();
-        String expResult = "";
+        instance.setId(new Long("1"));
+        String expResult = "entities.otros_datos[ id=1 ]";
         String result = instance.toString();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }

@@ -44,11 +44,11 @@ public class patologiaTest {
     public void testGetNombre_patologia() {
         System.out.println("getNombre_patologia");
         patologia instance = new patologia();
-        String expResult = "";
+        String expResult = "test";
+        instance.setNombre_patologia(expResult);
         String result = instance.getNombre_patologia();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -61,7 +61,6 @@ public class patologiaTest {
         patologia instance = new patologia();
         instance.setNombre_patologia(nombre_patologia);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -71,11 +70,11 @@ public class patologiaTest {
     public void testGetId() {
         System.out.println("getId");
         patologia instance = new patologia();
-        Long expResult = null;
+        Long expResult = new Long("1");
+        instance.setId(expResult);
         Long result = instance.getId();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -88,7 +87,6 @@ public class patologiaTest {
         patologia instance = new patologia();
         instance.setId(id);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -102,7 +100,6 @@ public class patologiaTest {
         int result = instance.hashCode();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -117,7 +114,6 @@ public class patologiaTest {
         boolean result = instance.equals(object);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -127,11 +123,11 @@ public class patologiaTest {
     public void testToString() {
         System.out.println("toString");
         patologia instance = new patologia();
-        String expResult = "";
+        instance.setId(new Long("1"));
+        String expResult = "entities.patologia[ id=1 ]";
         String result = instance.toString();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }

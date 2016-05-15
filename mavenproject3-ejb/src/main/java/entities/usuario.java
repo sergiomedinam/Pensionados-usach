@@ -131,7 +131,9 @@ public class usuario implements Serializable {
 
     @Override
     public String toString() {
-        return nombre + apellido;
+        return "entities.usuario[ " + "id=" + id + " ]";
     }
+
+    
     
 }

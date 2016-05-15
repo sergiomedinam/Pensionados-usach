@@ -44,11 +44,11 @@ public class rolTest {
     public void testGetNombre_rol() {
         System.out.println("getNombre_rol");
         rol instance = new rol();
-        String expResult = "";
+        String expResult = "asdsa";
+        instance.setNombre_rol(expResult);
         String result = instance.getNombre_rol();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -57,11 +57,10 @@ public class rolTest {
     @Test
     public void testSetNombre_rol() {
         System.out.println("setNombre_rol");
-        String nombre_rol = "";
+        String nombre_rol = "asdsad";
         rol instance = new rol();
         instance.setNombre_rol(nombre_rol);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -71,11 +70,11 @@ public class rolTest {
     public void testGetId() {
         System.out.println("getId");
         rol instance = new rol();
-        Long expResult = null;
+        Long expResult = new Long("1");
+        instance.setId(expResult);
         Long result = instance.getId();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -84,11 +83,10 @@ public class rolTest {
     @Test
     public void testSetId() {
         System.out.println("setId");
-        Long id = null;
+        Long id = new Long("1");
         rol instance = new rol();
         instance.setId(id);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -102,7 +100,6 @@ public class rolTest {
         int result = instance.hashCode();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -117,7 +114,6 @@ public class rolTest {
         boolean result = instance.equals(object);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -127,11 +123,11 @@ public class rolTest {
     public void testToString() {
         System.out.println("toString");
         rol instance = new rol();
-        String expResult = "";
+        instance.setId(new Long("1"));
+        String expResult = "entities.rol[ id=1 ]";
         String result = instance.toString();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }

@@ -44,11 +44,11 @@ public class prestamoTest {
     public void testGetTipo_prestamo() {
         System.out.println("getTipo_prestamo");
         prestamo instance = new prestamo();
-        tipo_prestamo expResult = null;
+        tipo_prestamo expResult = new tipo_prestamo();
+        instance.setTipo_prestamo(expResult);
         tipo_prestamo result = instance.getTipo_prestamo();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -57,11 +57,10 @@ public class prestamoTest {
     @Test
     public void testSetTipo_prestamo() {
         System.out.println("setTipo_prestamo");
-        tipo_prestamo tipo_prestamo = null;
+        tipo_prestamo tipo_prestamo = new tipo_prestamo();
         prestamo instance = new prestamo();
         instance.setTipo_prestamo(tipo_prestamo);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -71,11 +70,11 @@ public class prestamoTest {
     public void testGetNombre_prestamo() {
         System.out.println("getNombre_prestamo");
         prestamo instance = new prestamo();
-        String expResult = "";
+        String expResult = "asdasd";
+        instance.setNombre_prestamo(expResult);
         String result = instance.getNombre_prestamo();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -84,11 +83,10 @@ public class prestamoTest {
     @Test
     public void testSetNombre_prestamo() {
         System.out.println("setNombre_prestamo");
-        String nombre_prestamo = "";
+        String nombre_prestamo = "asdasd";
         prestamo instance = new prestamo();
         instance.setNombre_prestamo(nombre_prestamo);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -98,11 +96,11 @@ public class prestamoTest {
     public void testGetTotal_prestamo() {
         System.out.println("getTotal_prestamo");
         prestamo instance = new prestamo();
-        String expResult = "";
+        String expResult = "asdas";
+        instance.setTotal_prestamo(expResult);
         String result = instance.getTotal_prestamo();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -111,11 +109,10 @@ public class prestamoTest {
     @Test
     public void testSetTotal_prestamo() {
         System.out.println("setTotal_prestamo");
-        String total_prestamo = "";
+        String total_prestamo = "asdsad";
         prestamo instance = new prestamo();
         instance.setTotal_prestamo(total_prestamo);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -125,11 +122,11 @@ public class prestamoTest {
     public void testGetCuotas_prestamo() {
         System.out.println("getCuotas_prestamo");
         prestamo instance = new prestamo();
-        String expResult = "";
+        String expResult = "asdasd";
+        instance.setCuotas_prestamo(expResult);
         String result = instance.getCuotas_prestamo();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -138,11 +135,10 @@ public class prestamoTest {
     @Test
     public void testSetCuotas_prestamo() {
         System.out.println("setCuotas_prestamo");
-        String cuotas_prestamo = "";
+        String cuotas_prestamo = "asdsd";
         prestamo instance = new prestamo();
         instance.setCuotas_prestamo(cuotas_prestamo);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -152,11 +148,11 @@ public class prestamoTest {
     public void testGetInteres_prestamo() {
         System.out.println("getInteres_prestamo");
         prestamo instance = new prestamo();
-        String expResult = "";
+        String expResult = "test";
+        instance.setInteres_prestamo(expResult);
         String result = instance.getInteres_prestamo();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -165,11 +161,10 @@ public class prestamoTest {
     @Test
     public void testSetInteres_prestamo() {
         System.out.println("setInteres_prestamo");
-        String interes_prestamo = "";
+        String interes_prestamo = "asdsad";
         prestamo instance = new prestamo();
         instance.setInteres_prestamo(interes_prestamo);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -179,11 +174,11 @@ public class prestamoTest {
     public void testGetId() {
         System.out.println("getId");
         prestamo instance = new prestamo();
-        Long expResult = null;
+        Long expResult = new Long("123");
+        instance.setId(expResult);
         Long result = instance.getId();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -192,11 +187,10 @@ public class prestamoTest {
     @Test
     public void testSetId() {
         System.out.println("setId");
-        Long id = null;
+        Long id = new Long("1");
         prestamo instance = new prestamo();
         instance.setId(id);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -210,7 +204,6 @@ public class prestamoTest {
         int result = instance.hashCode();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -225,7 +218,6 @@ public class prestamoTest {
         boolean result = instance.equals(object);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -235,11 +227,11 @@ public class prestamoTest {
     public void testToString() {
         System.out.println("toString");
         prestamo instance = new prestamo();
-        String expResult = "";
+        instance.setId(new Long("1"));
+        String expResult = "entities.prestamo[ id=1 ]";
         String result = instance.toString();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }

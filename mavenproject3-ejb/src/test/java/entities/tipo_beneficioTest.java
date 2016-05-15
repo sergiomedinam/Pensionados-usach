@@ -44,11 +44,11 @@ public class tipo_beneficioTest {
     public void testGetNombre_t_beneficio() {
         System.out.println("getNombre_t_beneficio");
         tipo_beneficio instance = new tipo_beneficio();
-        String expResult = "";
+        String expResult = "assad";
+        instance.setNombre_t_beneficio(expResult);
         String result = instance.getNombre_t_beneficio();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -57,11 +57,10 @@ public class tipo_beneficioTest {
     @Test
     public void testSetNombre_t_beneficio() {
         System.out.println("setNombre_t_beneficio");
-        String nombre_t_beneficio = "";
+        String nombre_t_beneficio = "asdsad";
         tipo_beneficio instance = new tipo_beneficio();
         instance.setNombre_t_beneficio(nombre_t_beneficio);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -71,11 +70,11 @@ public class tipo_beneficioTest {
     public void testGetId() {
         System.out.println("getId");
         tipo_beneficio instance = new tipo_beneficio();
-        Long expResult = null;
+        Long expResult = new Long("1");
+        instance.setId(expResult);
         Long result = instance.getId();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -84,11 +83,10 @@ public class tipo_beneficioTest {
     @Test
     public void testSetId() {
         System.out.println("setId");
-        Long id = null;
+        Long id = new Long("1");
         tipo_beneficio instance = new tipo_beneficio();
         instance.setId(id);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -102,7 +100,6 @@ public class tipo_beneficioTest {
         int result = instance.hashCode();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -117,7 +114,6 @@ public class tipo_beneficioTest {
         boolean result = instance.equals(object);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -127,11 +123,11 @@ public class tipo_beneficioTest {
     public void testToString() {
         System.out.println("toString");
         tipo_beneficio instance = new tipo_beneficio();
-        String expResult = "";
+        instance.setId(new Long("1"));
+        String expResult = "entities.tipo_beneficio[ id=1 ]";
         String result = instance.toString();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }
