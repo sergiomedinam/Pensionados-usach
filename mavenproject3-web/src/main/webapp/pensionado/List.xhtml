@@ -29,6 +29,7 @@
                                  rowKey="#{item.id}"
                                  rows="10"
                                  rowsPerPageTemplate="10,20,30,40,50"
+                                 emptyMessage="No hay resultados."
                                  >
                         <c:set var="name_rol" value="#{usuarioController.getTipo(request.userPrincipal.name)}"/>
                         <c:set var="rol" value="observador"/>
@@ -50,7 +51,7 @@
                             <h:outputText value="#{item.rut_pensionado}"/>
                         </p:column>
                         
-                        <p:column filterBy="#{item.nombre_pensionado} " headerText="Nombre pensionado" filterMatchMode="contains" sortBy="#{item.nombre_pensionado}">
+                        <p:column filterBy="#{item.nombre_pensionado}" headerText="Nombre pensionado" filterMatchMode="contains" sortBy="#{item.nombre_pensionado}">
                             <f:facet name="header">
                                 <h:outputText value="Nombres"/>
                             </f:facet>
