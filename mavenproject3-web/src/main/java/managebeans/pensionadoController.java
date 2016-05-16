@@ -84,17 +84,26 @@ public class pensionadoController implements Serializable {
     
     /********************************************************/
     public List<pensionado> PensionadosComuna(String Comuna) {
-        List<pensionado> sirvenIRA = new ArrayList<pensionado>();
+        List<pensionado> pertenece = new ArrayList<pensionado>();
         getItems();
         for (pensionado item : items) {
             if (item.getComuna().equals(Comuna)){
-                    sirvenIRA.add(item);          
+                    pertenece.add(item);          
             }
         }
-        return sirvenIRA;
+        return pertenece;
     }
     
-    
+    public List<pensionado> PensionadosRegion(String Region) {
+        List<pensionado> pertenece = new ArrayList<pensionado>();
+        getItems();
+        for (pensionado item : items) {
+            if (item.getRegion().equals(Region)){
+                    pertenece.add(item);          
+            }
+        }
+        return pertenece;
+    }
     /********************************************************/
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
