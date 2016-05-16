@@ -24,9 +24,19 @@
                                  rows="10"
                                  rowsPerPageTemplate="10,20,30,40,50"
                                  >
-
-                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
-                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+                        
+                        <c:set var="name_rol" value="#{usuarioController.getTipo(request.userPrincipal.name)}"/>
+                        <c:set var="rol" value="observador"/>
+                        <c:choose>
+                            <c:when test="${ name_rol != rol }">
+                                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+                            </c:when>    
+                            <c:otherwise>
+                                <p:ajax event="rowSelect"   update="viewButton"/>
+                                <p:ajax event="rowUnselect" update="viewButton"/>
+                            </c:otherwise>
+                        </c:choose>
 
                         <p:column>
                             <f:facet name="header">
