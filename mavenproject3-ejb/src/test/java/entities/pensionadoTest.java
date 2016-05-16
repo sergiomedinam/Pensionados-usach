@@ -44,7 +44,7 @@ public class pensionadoTest {
     public void testGetEmail_alternativo() {
         System.out.println("getEmail_alternativo");
         pensionado instance = new pensionado();
-        String expResult = "test";
+        String expResult = "test".toUpperCase();
         instance.setEmail_alternativo(expResult);
         String result = instance.getEmail_alternativo();
         assertEquals(expResult, result);
@@ -70,7 +70,7 @@ public class pensionadoTest {
     public void testGetEmail_pensionado() {
         System.out.println("getEmail_pensionado");
         pensionado instance = new pensionado();
-        String expResult = "test";
+        String expResult = "test".toUpperCase();
         instance.setEmail_pensionado(expResult);
         String result = instance.getEmail_pensionado();
         assertEquals(expResult, result);
@@ -311,7 +311,7 @@ public class pensionadoTest {
     public void testGetNombre_pensionado() {
         System.out.println("getNombre_pensionado");
         pensionado instance = new pensionado();
-        String expResult = "test";
+        String expResult = "test".toUpperCase();
         instance.setNombre_pensionado(expResult);
         String result = instance.getNombre_pensionado();
         assertEquals(expResult, result);
@@ -337,7 +337,7 @@ public class pensionadoTest {
     public void testGetApellido_p_pensionado() {
         System.out.println("getApellido_p_pensionado");
         pensionado instance = new pensionado();
-        String expResult = "test";
+        String expResult = "test".toUpperCase();
         instance.setApellido_p_pensionado(expResult);
         String result = instance.getApellido_p_pensionado();
         assertEquals(expResult, result);
@@ -363,7 +363,7 @@ public class pensionadoTest {
     public void testGetApellido_m_pensionado() {
         System.out.println("getApellido_m_pensionado");
         pensionado instance = new pensionado();
-        String expResult = "asd";
+        String expResult = "asd".toUpperCase();
         instance.setApellido_m_pensionado(expResult);
         String result = instance.getApellido_m_pensionado();
         assertEquals(expResult, result);
@@ -415,7 +415,7 @@ public class pensionadoTest {
     public void testGetEstado_civil() {
         System.out.println("getEstado_civil");
         pensionado instance = new pensionado();
-        String expResult = "asd";
+        String expResult = "asd".toUpperCase();
         instance.setEstado_civil(expResult);
         String result = instance.getEstado_civil();
         assertEquals(expResult, result);
@@ -441,7 +441,7 @@ public class pensionadoTest {
     public void testGetDireccion() {
         System.out.println("getDireccion");
         pensionado instance = new pensionado();
-        String expResult = "asdsad";
+        String expResult = "asdsad".toUpperCase();
         instance.setDireccion(expResult);
         String result = instance.getDireccion();
         assertEquals(expResult, result);
@@ -467,7 +467,7 @@ public class pensionadoTest {
     public void testGetComuna() {
         System.out.println("getComuna");
         pensionado instance = new pensionado();
-        String expResult = "asdsd";
+        String expResult = "asdsd".toUpperCase();
         instance.setComuna(expResult);
         String result = instance.getComuna();
         assertEquals(expResult, result);
@@ -493,7 +493,7 @@ public class pensionadoTest {
     public void testGetRegion() {
         System.out.println("getRegion");
         pensionado instance = new pensionado();
-        String expResult = "asdsd";
+        String expResult = "asdsd".toUpperCase();
         instance.setRegion(expResult);
         String result = instance.getRegion();
         assertEquals(expResult, result);

@@ -85,7 +85,7 @@ public class pensionado implements Serializable {
     }
 
     public void setEmail_alternativo(String email_alternativo) {
-        this.email_alternativo = email_alternativo;
+        this.email_alternativo = email_alternativo.toUpperCase();
     }
     
     
@@ -95,7 +95,7 @@ public class pensionado implements Serializable {
     }
 
     public void setEmail_pensionado(String email_pensionado) {
-        this.email_pensionado = email_pensionado;
+        this.email_pensionado = email_pensionado.toUpperCase();
     }
 
     public medicamento getMedicamentos() {
@@ -173,7 +173,7 @@ public class pensionado implements Serializable {
     }
 
     public void setNombre_pensionado(String nombre_pensionado) {
-        this.nombre_pensionado = nombre_pensionado;
+        this.nombre_pensionado = nombre_pensionado.toUpperCase();
     }
 
     public String getApellido_p_pensionado() {
@@ -181,7 +181,7 @@ public class pensionado implements Serializable {
     }
 
     public void setApellido_p_pensionado(String apellido_p_pensionado) {
-        this.apellido_p_pensionado = apellido_p_pensionado;
+        this.apellido_p_pensionado = apellido_p_pensionado.toUpperCase();
     }
 
     public String getApellido_m_pensionado() {
@@ -189,7 +189,7 @@ public class pensionado implements Serializable {
     }
 
     public void setApellido_m_pensionado(String apellido_m_pensionado) {
-        this.apellido_m_pensionado = apellido_m_pensionado;
+        this.apellido_m_pensionado = apellido_m_pensionado.toUpperCase();
     }
 
     public String getFecha_nacimiento() {
@@ -207,7 +207,7 @@ public class pensionado implements Serializable {
     }
 
     public void setEstado_civil(String estado_civil) {
-        this.estado_civil = estado_civil;
+        this.estado_civil = estado_civil.toUpperCase();
     }
 
     public String getDireccion() {
@@ -215,7 +215,7 @@ public class pensionado implements Serializable {
     }
 
     public void setDireccion(String direccion) {
-        this.direccion = direccion;
+        this.direccion = direccion.toUpperCase();
     }
 
     public String getComuna() {
@@ -223,7 +223,7 @@ public class pensionado implements Serializable {
     }
 
     public void setComuna(String comuna) {
-        this.comuna = comuna;
+        this.comuna = comuna.toUpperCase();
     }
 
     public String getRegion() {
@@ -231,7 +231,7 @@ public class pensionado implements Serializable {
     }
 
     public void setRegion(String region) {
-        this.region = region;
+        this.region = region.toUpperCase();
     }
 
     public Long getTelefono_fijo() {
