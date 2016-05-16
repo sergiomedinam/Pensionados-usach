@@ -41,7 +41,8 @@
             <description/>
             <url-pattern>/faces/admin/*</url-pattern>
             <url-pattern>/admin/*</url-pattern>
-            <url-pattern>/*</url-pattern>
+<!--            <url-pattern>/faces/resources/*</url-pattern>
+            <url-pattern>/resources/*</url-pattern>-->
             <http-method>GET</http-method>
             <http-method>PUT</http-method>
             <http-method>HEAD</http-method>
@@ -58,13 +59,34 @@
             <transport-guarantee>NONE</transport-guarantee>
         </user-data-constraint>
     </security-constraint>
-    <!--    <security-constraint>
+        <security-constraint>
         <display-name>General Pages</display-name>
         <web-resource-collection>
             <web-resource-name>Protected General Area</web-resource-name>
             <description></description>
-            <url-pattern>/faces/*</url-pattern>
-            <url-pattern>/*</url-pattern>
+            <url-pattern>/faces/beneficio/*</url-pattern> 
+            <url-pattern>/faces/contacto/*</url-pattern> 
+            <url-pattern>/faces/designado_fallecimiento/*</url-pattern> 
+            <url-pattern>/faces/medicamento/*</url-pattern> 
+            <url-pattern>/faces/otros_datos/*</url-pattern> 
+            <url-pattern>/faces/patologia/*</url-pattern> 
+            <url-pattern>/faces/pensionado/*</url-pattern> 
+            <url-pattern>/faces/prestamo/*</url-pattern> 
+            <url-pattern>/faces/resources/*</url-pattern> 
+            <url-pattern>/faces/seguro/*</url-pattern> 
+            <url-pattern>/faces/tipo_beneficio/*</url-pattern> 
+            <url-pattern>/faces/tipo_prestamo/*</url-pattern> 
+            <url-pattern>/beneficio/*</url-pattern>
+            <url-pattern>/contacto/*</url-pattern>
+            <url-pattern>/designado_fallecimiento/*</url-pattern>
+            <url-pattern>/medicamento/*</url-pattern>
+            <url-pattern>/otros_datos/*</url-pattern>
+            <url-pattern>/patologia/*</url-pattern>
+            <url-pattern>/pensionado/*</url-pattern>
+            <url-pattern>/prestamo/*</url-pattern>
+            <url-pattern>/seguro/*</url-pattern>
+            <url-pattern>/tipo_beneficio/*</url-pattern>
+            <url-pattern>/tipo_prestamo/*</url-pattern>
             <http-method>GET</http-method>
             <http-method>POST</http-method>
             <http-method>HEAD</http-method>
@@ -82,7 +104,7 @@
         <user-data-constraint>
             <transport-guarantee>NONE</transport-guarantee>
         </user-data-constraint>
-    </security-constraint>-->
+    </security-constraint>
     <security-constraint>
         <display-name>All Access</display-name>
         <web-resource-collection>
