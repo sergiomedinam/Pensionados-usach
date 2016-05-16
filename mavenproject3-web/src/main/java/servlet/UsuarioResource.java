@@ -35,7 +35,7 @@ public class UsuarioResource extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        response.sendRedirect("/mavenproject3-web/faces/index.xhtml");
+        response.sendRedirect(request.getContextPath());
 //        try (PrintWriter out = response.getWriter()) {
 //            String role = "anonymus";
 //            /* TODO output your page here. You may use following sample code. */

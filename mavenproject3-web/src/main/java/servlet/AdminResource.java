@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Nelson
  */
 @WebServlet(name = "AdminResource", urlPatterns = {"/AdminResource"})
-@ServletSecurity(@HttpConstraint(rolesAllowed = {"admin"}))
+@ServletSecurity(@HttpConstraint(rolesAllowed = {"admin","usuario","observador"}))
 public class AdminResource extends HttpServlet {
 
     /**
@@ -35,7 +35,7 @@ public class AdminResource extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        response.sendRedirect("/mavenproject3-web/faces/index.xhtml");
+        response.sendRedirect(request.getContextPath());
 //        try (PrintWriter out = response.getWriter()) {
 //            /* TODO output your page here. You may use following sample code. */
 //            out.println("<!DOCTYPE html>");
