@@ -64,6 +64,17 @@ public class usuarioController implements Serializable {
         }
         return nombre;
     }
+    
+    public String getTipo(String rut){
+        String tipo = "";
+        getItems();
+        for (usuario item : items) {
+            if (item.getRut().equals(rut)) {
+                tipo = item.getTipo_usuario().getNombre_rol();
+            }
+        }
+        return tipo;
+    }
 
     public usuario prepareCreate() {
         selected = new usuario();
