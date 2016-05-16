@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <ui:composition template="/template.xhtml">
 
@@ -24,8 +25,18 @@
                                  rowsPerPageTemplate="10,20,30,40,50"
                                  >
 
-                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
-                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+                        <c:set var="name_rol" value="#{usuarioController.getTipo(request.userPrincipal.name)}"/>
+                        <c:set var="rol" value="observador"/>
+                        <c:choose>
+                            <c:when test="${ name_rol != rol }">
+                                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+                            </c:when>    
+                            <c:otherwise>
+                                <p:ajax event="rowSelect"   update="viewButton"/>
+                                <p:ajax event="rowUnselect" update="viewButton"/>
+                            </c:otherwise>
+                        </c:choose>
 
                         <p:column>
                             <f:facet name="header">
@@ -40,10 +51,14 @@
                             <h:outputText value="#{item.id}"/>
                         </p:column>
                         <f:facet name="footer">
-                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{seguroController.prepareCreate}" update=":seguroCreateForm" oncomplete="PF('seguroCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":seguroViewForm" oncomplete="PF('seguroViewDialog').show()" disabled="#{empty seguroController.selected}"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":seguroEditForm" oncomplete="PF('seguroEditDialog').show()" disabled="#{empty seguroController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{seguroController.destroy}" update=":growl,datalist" disabled="#{empty seguroController.selected}"/>
+                            <c:set var="name_rol" value="#{usuarioController.getTipo(request.userPrincipal.name)}"/>
+                            <c:set var="rol" value="observador"/>
+                            <c:if test="${ name_rol != rol }">   
+                                <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{seguroController.prepareCreate}" update=":seguroCreateForm" oncomplete="PF('seguroCreateDialog').show()"/>
+                                <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":seguroEditForm" oncomplete="PF('seguroEditDialog').show()" disabled="#{empty seguroController.selected}"/>
+                                <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{seguroController.destroy}" update=":growl,datalist" disabled="#{empty seguroController.selected}"/>
+                            </c:if>
                         </f:facet>
                     </p:dataTable>
                 </p:panel>
