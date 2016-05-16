@@ -41,13 +41,13 @@
                             <h:outputText value="#{item.id}"/>
                         </p:column>
                         <f:facet name="footer">
-                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":tipo_prestamoViewForm" oncomplete="PF('tipo_prestamoViewDialog').show()" disabled="#{empty tipo_prestamoController.selected}"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":medicamentoViewForm" oncomplete="PF('medicamentoViewDialog').show()" disabled="#{empty medicamentoController.selected}"/>
                             <c:set var="name_rol" value="#{usuarioController.getTipo(request.userPrincipal.name)}"/>
                             <c:set var="rol" value="observador"/>
                             <c:if test="${ name_rol != rol }">   
-                                <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{tipo_prestamoController.prepareCreate}" update=":tipo_prestamoCreateForm" oncomplete="PF('tipo_prestamoCreateDialog').show()"/>
-                                <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":tipo_prestamoEditForm" oncomplete="PF('tipo_prestamoEditDialog').show()" disabled="#{empty tipo_prestamoController.selected}"/>
-                                <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{tipo_prestamoController.destroy}" update=":growl,datalist" disabled="#{empty tipo_prestamoController.selected}"/>
+                                <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{medicamentoController.prepareCreate}" update=":medicamentoCreateForm" oncomplete="PF('medicamentoCreateDialog').show()"/>
+                                <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":medicamentoEditForm" oncomplete="PF('medicamentoEditDialog').show()" disabled="#{empty medicamentoController.selected}"/>
+                                <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{medicamentoController.destroy}" update=":growl,datalist" disabled="#{empty medicamentoController.selected}"/>
                             </c:if>
                         </f:facet>
                     </p:dataTable>
