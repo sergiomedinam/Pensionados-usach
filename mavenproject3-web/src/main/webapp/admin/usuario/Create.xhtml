@@ -18,7 +18,8 @@
                         <p:selectOneMenu id="tipo_usuario" value="#{usuarioController.selected.tipo_usuario}" >
                             <f:selectItems value="#{rolController.itemsAvailableSelectOne}"
                                            var="tipo_usuarioItem"
-                                           itemValue="#{tipo_usuarioItem}"/>
+                                           itemValue="#{tipo_usuarioItem}"
+                                           itemLabel="#{tipo_usuarioItem.nombre_rol.toUpperCase()}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateusuarioLabel_nombre}" for="nombre" />
                         <p:inputText id="nombre" value="#{usuarioController.selected.nombre}" title="#{bundle.CreateusuarioTitle_nombre}" />

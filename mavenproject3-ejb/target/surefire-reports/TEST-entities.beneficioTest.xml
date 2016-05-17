@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="9" failures="0" name="entities.beneficioTest" time="0.244" errors="0" skipped="0">
+<testsuite tests="9" failures="0" name="entities.beneficioTest" time="0.247" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_65\jre\bin"/>
@@ -61,13 +61,13 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="entities.beneficioTest" name="testGetNombre_beneficio" time="0.011"/>
+  <testcase classname="entities.beneficioTest" name="testGetNombre_beneficio" time="0.017"/>
   <testcase classname="entities.beneficioTest" name="testGetTipo_beneficio" time="0"/>
   <testcase classname="entities.beneficioTest" name="testSetTipo_beneficio" time="0"/>
-  <testcase classname="entities.beneficioTest" name="testEquals" time="0"/>
   <testcase classname="entities.beneficioTest" name="testGetId" time="0"/>
-  <testcase classname="entities.beneficioTest" name="testHashCode" time="0"/>
   <testcase classname="entities.beneficioTest" name="testSetId" time="0"/>
   <testcase classname="entities.beneficioTest" name="testToString" time="0"/>
+  <testcase classname="entities.beneficioTest" name="testHashCode" time="0"/>
+  <testcase classname="entities.beneficioTest" name="testEquals" time="0"/>
   <testcase classname="entities.beneficioTest" name="testSetNombre_beneficio" time="0"/>
 </testsuite>
