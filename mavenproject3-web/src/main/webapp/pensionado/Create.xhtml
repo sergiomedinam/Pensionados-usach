@@ -33,10 +33,20 @@
                         <p:inputText id="estado_civil" value="#{pensionadoController.selected.estado_civil}" title="#{bundle.CreatepensionadoTitle_estado_civil}" />
                         <p:outputLabel value="#{bundle.CreatepensionadoLabel_direccion}" for="direccion" />
                         <p:inputText required="true" requiredMessage="Se necesita una direccion" id="direccion" value="#{pensionadoController.selected.direccion}" title="#{bundle.CreatepensionadoTitle_direccion}" />
-                        <p:outputLabel value="#{bundle.CreatepensionadoLabel_comuna}" for="comuna" />
-                        <p:inputText required="true" requiredMessage="Se necesita una comuna" id="comuna" value="#{pensionadoController.selected.comuna}" title="#{bundle.CreatepensionadoTitle_comuna}" />
-                        <p:outputLabel value="#{bundle.CreatepensionadoLabel_region}" for="region" />
-                        <p:inputText required="true" requiredMessage="Se necesita una region" id="region" value="#{pensionadoController.selected.region}" title="#{bundle.CreatepensionadoTitle_region}" />
+                        
+                        <p:outputLabel value="#{bundle.CreatepensionadoLabel_region}" for="country" />
+                        <p:selectOneMenu required="true" requiredMessage="Se necesita una región" id="country" value="#{pensionadoController.selected.region}" style="width:155px" >
+                            <p:ajax event="blur" listener="#{regionesComunas.onCountryChange}" update="city"/>
+                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{regionesComunas.countries}" />
+                        </p:selectOneMenu>
+                    
+                        <p:outputLabel value="#{bundle.CreatepensionadoLabel_comuna}" for="city" />
+                        <p:selectOneMenu id="city" value="#{pensionadoController.selected.comuna}" style="width: 155px">
+                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true"/>
+                            <f:selectItems   value="#{regionesComunas.cities}"/>
+                        </p:selectOneMenu>
+                        
                         <p:outputLabel  value="#{bundle.CreatepensionadoLabel_telefono_fijo}"  for="telefono_fijo" />
                         <p:inputText id="telefono_fijo" placeholder="Ej: 59684599856" value="#{pensionadoController.selected.telefono_fijo}" title="#{bundle.CreatepensionadoTitle_telefono_fijo}">
                             <f:validateLength minimum="7" maximum="11"/>
