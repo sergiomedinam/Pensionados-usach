@@ -467,7 +467,6 @@ public class RegionesComunas implements Serializable {
     }
     
     private Map<String,String> Ordenar(Map mapa){
-        System.out.println("ESTOY dentro del ordenaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaar");
         Map mapOrdenado = new TreeMap(mapa);
         Set ref = mapOrdenado.keySet();
         Iterator it = ref.iterator();
@@ -508,23 +507,10 @@ public class RegionesComunas implements Serializable {
         return cities;
     }
  
-    public void onCountryChange() {
-        System.out.println("SE EJECUTA ONCOUNTRYCHANGE");
+    public void onCountryChange(String country) {
         if(country !=null && !country.equals(""))
             cities = data.get(country);
         else
             cities = new HashMap<String, String>();
-    }
-     
-    public void displayLocation() {
-        FacesMessage msg;
-        if(city != null && country != null)
-            msg = new FacesMessage("Selected", city + " of " + country);
-        else
-            msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalid", "City is not selected."); 
-             
-        FacesContext.getCurrentInstance().addMessage(null, msg);  
-    }
-            
-            
+    }        
 }

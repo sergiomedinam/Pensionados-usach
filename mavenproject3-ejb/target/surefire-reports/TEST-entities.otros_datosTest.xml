@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="25" failures="0" name="entities.otros_datosTest" time="0.075" errors="0" skipped="0">
+<testsuite tests="25" failures="0" name="entities.otros_datosTest" time="0.065" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_65\jre\bin"/>
@@ -61,29 +61,29 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="entities.otros_datosTest" name="testSetNombre_banco" time="0.004"/>
-  <testcase classname="entities.otros_datosTest" name="testGetMonto_pension" time="0"/>
-  <testcase classname="entities.otros_datosTest" name="testSetCuenta_banco" time="0"/>
-  <testcase classname="entities.otros_datosTest" name="testGetUltimo_aporte" time="0.001"/>
-  <testcase classname="entities.otros_datosTest" name="testSetTipo_pension" time="0"/>
-  <testcase classname="entities.otros_datosTest" name="testGetSistema_pension" time="0.001"/>
-  <testcase classname="entities.otros_datosTest" name="testSetValor_cuota" time="0"/>
-  <testcase classname="entities.otros_datosTest" name="testGetSistema_salud" time="0.001"/>
-  <testcase classname="entities.otros_datosTest" name="testSetSistema_salud" time="0.001"/>
-  <testcase classname="entities.otros_datosTest" name="testGetNombre_banco" time="0"/>
-  <testcase classname="entities.otros_datosTest" name="testGetTipo_pension" time="0.002"/>
-  <testcase classname="entities.otros_datosTest" name="testGetCuenta_banco" time="0.001"/>
-  <testcase classname="entities.otros_datosTest" name="testSetMonto_pension" time="0"/>
-  <testcase classname="entities.otros_datosTest" name="testGetValor_cuota" time="0.002"/>
-  <testcase classname="entities.otros_datosTest" name="testSetUltimo_aporte" time="0"/>
-  <testcase classname="entities.otros_datosTest" name="testGetCaja_compensacion" time="0.005"/>
-  <testcase classname="entities.otros_datosTest" name="testSetCaja_compensacion" time="0.003"/>
-  <testcase classname="entities.otros_datosTest" name="testSetSistema_pension" time="0"/>
-  <testcase classname="entities.otros_datosTest" name="testSetEstamento" time="0.002"/>
-  <testcase classname="entities.otros_datosTest" name="testSetId" time="0.001"/>
-  <testcase classname="entities.otros_datosTest" name="testHashCode" time="0"/>
-  <testcase classname="entities.otros_datosTest" name="testEquals" time="0"/>
+  <testcase classname="entities.otros_datosTest" name="testEquals" time="0.006"/>
+  <testcase classname="entities.otros_datosTest" name="testToString" time="0"/>
   <testcase classname="entities.otros_datosTest" name="testGetId" time="0"/>
-  <testcase classname="entities.otros_datosTest" name="testToString" time="0.001"/>
+  <testcase classname="entities.otros_datosTest" name="testSetId" time="0"/>
+  <testcase classname="entities.otros_datosTest" name="testHashCode" time="0"/>
+  <testcase classname="entities.otros_datosTest" name="testGetSistema_salud" time="0"/>
+  <testcase classname="entities.otros_datosTest" name="testGetValor_cuota" time="0.001"/>
+  <testcase classname="entities.otros_datosTest" name="testGetCaja_compensacion" time="0"/>
+  <testcase classname="entities.otros_datosTest" name="testSetUltimo_aporte" time="0.001"/>
+  <testcase classname="entities.otros_datosTest" name="testSetSistema_pension" time="0"/>
+  <testcase classname="entities.otros_datosTest" name="testSetCaja_compensacion" time="0.002"/>
+  <testcase classname="entities.otros_datosTest" name="testSetNombre_banco" time="0"/>
+  <testcase classname="entities.otros_datosTest" name="testSetValor_cuota" time="0.001"/>
+  <testcase classname="entities.otros_datosTest" name="testGetSistema_pension" time="0.001"/>
+  <testcase classname="entities.otros_datosTest" name="testSetSistema_salud" time="0"/>
+  <testcase classname="entities.otros_datosTest" name="testSetMonto_pension" time="0.002"/>
+  <testcase classname="entities.otros_datosTest" name="testGetMonto_pension" time="0.003"/>
+  <testcase classname="entities.otros_datosTest" name="testSetCuenta_banco" time="0.003"/>
+  <testcase classname="entities.otros_datosTest" name="testGetUltimo_aporte" time="0.002"/>
+  <testcase classname="entities.otros_datosTest" name="testGetNombre_banco" time="0"/>
+  <testcase classname="entities.otros_datosTest" name="testGetCuenta_banco" time="0.009"/>
+  <testcase classname="entities.otros_datosTest" name="testGetTipo_pension" time="0"/>
+  <testcase classname="entities.otros_datosTest" name="testSetTipo_pension" time="0"/>
+  <testcase classname="entities.otros_datosTest" name="testSetEstamento" time="0.001"/>
   <testcase classname="entities.otros_datosTest" name="testGetEstamento" time="0"/>
 </testsuite>
