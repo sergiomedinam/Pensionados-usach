@@ -23,8 +23,17 @@
                         <p:outputLabel id="apellido_m_pensionado" value="#{pensionadoController.selected.apellido_m_pensionado}" title="#{bundle.EditpensionadoTitle_apellido_m_pensionado}" />
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_fecha_nacimiento}" for="fecha_nacimiento" />
                         <p:inputText id="fecha_nacimiento" value="#{pensionadoController.selected.fecha_nacimiento}" title="#{bundle.EditpensionadoTitle_fecha_nacimiento}" />
-                        <p:outputLabel value="#{bundle.EditpensionadoLabel_estado_civil}" for="estado_civil" />
-                        <p:inputText id="estado_civil" value="#{pensionadoController.selected.estado_civil}" title="#{bundle.EditpensionadoTitle_estado_civil}" />
+                        
+                        
+                        <p:outputLabel value="#{bundle.EditpensionadoLabel_estado_civil}" for="estado_civil" />                        
+                        <p:selectOneMenu id="estado_civil" value="#{pensionadoController.selected.estado_civil}" style="width:155px" >
+                            <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{estadoCivil.estadosCiviles}" />
+                        </p:selectOneMenu>
+                        
+                        
+                        
+                        
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_direccion}" for="direccion" />
                         <p:inputText required="true" requiredMessage="Se necesita una direccion"  id="direccion" value="#{pensionadoController.selected.direccion}" title="#{bundle.EditpensionadoTitle_direccion}" />
                         
