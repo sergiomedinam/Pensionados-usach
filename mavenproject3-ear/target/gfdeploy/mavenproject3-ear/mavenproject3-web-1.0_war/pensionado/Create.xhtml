@@ -17,7 +17,7 @@
                     <p:panelGrid columns="2" rendered="#{pensionadoController.selected != null}">
 
                         <p:outputLabel value="#{bundle.CreatepensionadoLabel_rut_pensionado}" for="rut_pensionado" />
-                        <p:inputText required="true" placeholder="12.345.678-9" requiredMessage="Se necesita un rut" id="rut_pensionado" value="#{pensionadoController.selected.rut_pensionado}" title="#{bundle.CreatepensionadoTitle_rut_pensionado}" validator="#{pensionadoController.validarRut}" />
+                        <p:inputMask required="true" mask="99.999.999-9" placeholder="12.345.678-9" requiredMessage="Se necesita un rut" id="rut_pensionado" value="#{pensionadoController.selected.rut_pensionado}" title="#{bundle.CreatepensionadoTitle_rut_pensionado}" validator="#{pensionadoController.validarRut}" />
                         
                             
                         <p:outputLabel value="#{bundle.CreatepensionadoLabel_nombre_pensionado}" for="nombre_pensionado" />
@@ -49,25 +49,25 @@
                         <p:inputText required="true" requiredMessage="Se necesita una direccion" id="direccion" value="#{pensionadoController.selected.direccion}" title="#{bundle.CreatepensionadoTitle_direccion}" />
                                                
                         <p:outputLabel for="country" value="#{bundle.CreatepensionadoLabel_region}" />
-                        <p:selectOneMenu id="country" value="#{pensionadoController.selected.region}" style="width:155px" >
+                        <p:selectOneMenu required="true" requiredMessage="Se necesita una región" id="country" value="#{pensionadoController.selected.region}" style="width:155px" >
                             <p:ajax listener="#{regionesComunas.onCountryChange(pensionadoController.selected.region)}" update="city" />
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{regionesComunas.countries}" />
                         </p:selectOneMenu>
                         
                         <p:outputLabel for="city" value="#{bundle.CreatepensionadoLabel_comuna}" />
-                        <p:selectOneMenu id="city" value="#{pensionadoController.selected.comuna}" style="width:155px">
+                        <p:selectOneMenu required="true" requiredMessage="Se necesita una comuna" id="city" value="#{pensionadoController.selected.comuna}" style="width:155px">
                             <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{regionesComunas.cities}" />
                         </p:selectOneMenu>
                         
                         <p:outputLabel  value="#{bundle.CreatepensionadoLabel_telefono_fijo}"  for="telefono_fijo" />
-                        <p:inputText id="telefono_fijo" value="#{pensionadoController.selected.telefono_fijo}" title="#{bundle.CreatepensionadoTitle_telefono_fijo}">
-                            <f:validateLength minimum="7" maximum="11"/>
-                        </p:inputText>
+                        <p:inputMask id="telefono_fijo" mask="99999999" placeholder="27778888" value="#{pensionadoController.selected.telefono_fijo}" title="#{bundle.CreatepensionadoTitle_telefono_fijo}">
+                            <f:validateLength minimum="8" maximum="8"/>
+                        </p:inputMask>
                         
                         <p:outputLabel value="#{bundle.CreatepensionadoLabel_celular}" for="celular" />
-                        <p:inputMask id="celular" mask="99999999"  placeholder="12345678" value="#{pensionadoController.selected.celular}" title="#{bundle.CreatepensionadoTitle_celular}">
+                        <p:inputMask id="celular" mask="99999999"  placeholder="97778888" value="#{pensionadoController.selected.celular}" title="#{bundle.CreatepensionadoTitle_celular}">
                             <f:validateLength minimum="8" maximum="8"/>
                         </p:inputMask>
                         

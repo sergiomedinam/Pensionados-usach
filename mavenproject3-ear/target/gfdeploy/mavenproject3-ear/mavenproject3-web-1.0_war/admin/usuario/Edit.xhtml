@@ -10,6 +10,7 @@
 
         <p:dialog id="usuarioEditDlg" widgetVar="usuarioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditusuarioTitle}">
             <h:form id="usuarioEditForm">
+                <p:growl id="growl" showDetail="true" showSummary="true" autoUpdate="true" />  
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{usuarioController.selected != null}">
                         <p:outputLabel value="#{bundle.EditusuarioLabel_email_usuario}" for="email_usuario" />
@@ -27,7 +28,7 @@
                         <p:outputLabel value="#{bundle.EditusuarioLabel_apellido}" for="apellido" />
                         <p:inputText id="apellido" value="#{usuarioController.selected.apellido}" title="#{bundle.EditusuarioTitle_apellido}" />
                         <p:outputLabel value="#{bundle.EditusuarioLabel_rut}" for="rut" />
-                        <p:inputText id="rut" value="#{usuarioController.selected.rut}" title="#{bundle.EditusuarioTitle_rut}" />
+                        <p:inputText id="rut" value="#{usuarioController.selected.rut}" title="#{bundle.EditusuarioTitle_rut}" validator="#{usuarioController.validarRut}" />
                         <p:outputLabel value="#{bundle.EditusuarioLabel_contrasena}" for="contrasena" />
                         <p:inputText id="contrasena" value="#{usuarioController.selected.contrasena}" title="#{bundle.EditusuarioTitle_contrasena}" />
                         <p:outputLabel value="#{bundle.EditusuarioLabel_id}" for="id" />
