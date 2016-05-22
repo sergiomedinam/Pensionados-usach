@@ -9,13 +9,15 @@ import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
+import javax.faces.bean.ManagedBean;
 
 /**
  *
  * @author Nelson
  */
 public class validarRut {
-    public void validarRut(FacesContext context, UIComponent toValidate, Object value) {
+    public void validameElRut(FacesContext context, UIComponent toValidate, Object value) {
         context = FacesContext.getCurrentInstance();
         String texto = (String) value;
         if (!texto.equals("")) {
@@ -23,8 +25,11 @@ public class validarRut {
             String mensaje = "fail my bro";
             if (!mensaje.equals("Exito")) {
                 ((UIInput) toValidate).setValid(false);
-                context.addMessage(toValidate.getClientId(context), new FacesMessage(FacesMessage.SEVERITY_ERROR, "", mensaje));
+                context.addMessage(null, new FacesMessage("Successful",  "Your message: " + texto) );
+//                throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Validation Error", texto + " is not a valid email;"));
+//                context.addMessage(toValidate.getClientId(context), new FacesMessage(FacesMessage.SEVERITY_ERROR, mensaje, ""));
             }
         }
     }
+    
 }

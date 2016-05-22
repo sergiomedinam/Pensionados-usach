@@ -14,6 +14,7 @@ managebeans\contactoController$contactoControllerConverter.class
 managebeans\patologiaController.class
 managebeans\designado_fallecimientoController$designado_fallecimientoControllerConverter.class
 servlet\UsuarioResource.class
+managebeans\EmailValidator.class
 managebeans\patologiaController$patologiaControllerConverter.class
 managebeans\medicamentoController.class
 managebeans\usuarioController.class
@@ -23,6 +24,7 @@ managebeans\util\JsfUtil.class
 managebeans\EstadoCivil.class
 managebeans\otros_datosController$otros_datosControllerConverter.class
 managebeans\tipo_prestamoController.class
+managebeans\validarRut.class
 managebeans\contactoController.class
 managebeans\medicamentoController$medicamentoControllerConverter.class
 managebeans\prestamoController.class
