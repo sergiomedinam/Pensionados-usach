@@ -21,8 +21,10 @@
                         <p:outputLabel id="apellido_p_pensionado" value="#{pensionadoController.selected.apellido_p_pensionado}" title="#{bundle.EditpensionadoTitle_apellido_p_pensionado}" />
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_apellido_m_pensionado}" for="apellido_m_pensionado" />
                         <p:outputLabel id="apellido_m_pensionado" value="#{pensionadoController.selected.apellido_m_pensionado}" title="#{bundle.EditpensionadoTitle_apellido_m_pensionado}" />
+                        
+                        
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_fecha_nacimiento}" for="fecha_nacimiento" />
-                        <p:inputText id="fecha_nacimiento" value="#{pensionadoController.selected.fecha_nacimiento}" title="#{bundle.EditpensionadoTitle_fecha_nacimiento}" />
+                        <p:inputMask id="fecha_nacimiento" mask="99/99/9999" placeholder="DD/MM/AAAA" value="#{pensionadoController.selected.fecha_nacimiento}" title="#{bundle.EditpensionadoTitle_fecha_nacimiento}" />
                         
                         
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_estado_civil}" for="estado_civil" />                        
