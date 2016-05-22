@@ -10,6 +10,7 @@
 
         <p:dialog id="usuarioEditDlg" widgetVar="usuarioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditusuarioTitle}">
             <h:form id="usuarioEditForm">
+                <p:growl id="growl" showDetail="true" showSummary="true" autoUpdate="true" />  
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{usuarioController.selected != null}">
                         <p:outputLabel value="#{bundle.EditusuarioLabel_email_usuario}" for="email_usuario" />
