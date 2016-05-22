@@ -15,6 +15,21 @@
         </ui:define>
 
         <ui:define name="body">
+            <div class="container">
+                    <div class="btn-group btn-breadcrumb">
+                        <a href="#{request.contextPath}" class="btn btn-primary "><i class="glyphicon glyphicon-home"></i></a>
+                        <a href="#" class="btn btn-primary active" >Usuarios</a>
+                    </div>
+                </div>
+                
+                <section class="content-header">
+                    <h1>
+                      Usuarios del Sistema      
+                      <small>Panel de administrador</small>
+                    </h1>
+                    
+                  </section>
+            
             <h:form id="usuarioListForm">
                 <p:panel header="#{bundle.ListusuarioTitle}">
                     <p:dataTable id="datalist" value="#{usuarioController.items}" var="item"

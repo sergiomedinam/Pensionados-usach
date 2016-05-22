@@ -21,24 +21,17 @@
         <ui:composition template="/template.xhtml"> 
  
             <ui:define name="body">
-                
+                <div class="container">
+                    <div class="btn-group btn-breadcrumb">
+                        <a href="#{request.contextPath}" class="btn btn-primary "><i class="glyphicon glyphicon-home"></i></a>
+                    </div>
+                </div>
                 
                 <section class="content-header">
                     <h1>
-                      FP-USACH
-                      
-                      <c:if test="${usuarioController.getUsername(request.userPrincipal.name) == ''   }">
-                            <small>Panel de usuario</small>
-                        </c:if>
-                      <c:if test="${usuarioController.getUsername(request.userPrincipal.name) != ''   }">
-                            <small>Panel de control</small>
-                      </c:if>
-                      
+                            <small>Panel inicial</small>
                     </h1>
-                    <ol class="breadcrumb">
-                      <li><a href="#{request.contextPath}"><i class="fa fa-dashboard"></i> Indice</a></li>
-                      <li class="active">Panel</li>
-                    </ol>
+                    
                   </section>
                 
                 <section class="content" >
