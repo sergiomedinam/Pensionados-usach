@@ -62,20 +62,20 @@
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
   <testcase classname="entities.usuarioTest" name="testToString" time="0"/>
-  <testcase classname="entities.usuarioTest" name="testEquals" time="0"/>
-  <testcase classname="entities.usuarioTest" name="testSetId" time="0"/>
-  <testcase classname="entities.usuarioTest" name="testHashCode" time="0"/>
   <testcase classname="entities.usuarioTest" name="testGetId" time="0"/>
-  <testcase classname="entities.usuarioTest" name="testGetRut" time="0"/>
-  <testcase classname="entities.usuarioTest" name="testSetRut" time="0"/>
-  <testcase classname="entities.usuarioTest" name="testGetApellido" time="0"/>
-  <testcase classname="entities.usuarioTest" name="testSetNombre" time="0"/>
-  <testcase classname="entities.usuarioTest" name="testGetNombre" time="0"/>
+  <testcase classname="entities.usuarioTest" name="testHashCode" time="0"/>
+  <testcase classname="entities.usuarioTest" name="testSetId" time="0.016"/>
+  <testcase classname="entities.usuarioTest" name="testEquals" time="0"/>
   <testcase classname="entities.usuarioTest" name="testSetApellido" time="0"/>
+  <testcase classname="entities.usuarioTest" name="testGetApellido" time="0"/>
+  <testcase classname="entities.usuarioTest" name="testSetRut" time="0"/>
+  <testcase classname="entities.usuarioTest" name="testSetNombre" time="0"/>
+  <testcase classname="entities.usuarioTest" name="testGetNombre" time="0.015"/>
+  <testcase classname="entities.usuarioTest" name="testGetRut" time="0"/>
+  <testcase classname="entities.usuarioTest" name="testGetEmail_usuario" time="0"/>
+  <testcase classname="entities.usuarioTest" name="testSetContrasena" time="0"/>
   <testcase classname="entities.usuarioTest" name="testSetEmail_usuario" time="0"/>
   <testcase classname="entities.usuarioTest" name="testGetContrasena" time="0"/>
-  <testcase classname="entities.usuarioTest" name="testGetTipo_usuario" time="0"/>
+  <testcase classname="entities.usuarioTest" name="testGetTipo_usuario" time="0.016"/>
   <testcase classname="entities.usuarioTest" name="testSetTipo_usuario" time="0"/>
-  <testcase classname="entities.usuarioTest" name="testSetContrasena" time="0"/>
-  <testcase classname="entities.usuarioTest" name="testGetEmail_usuario" time="0"/>
 </testsuite>
