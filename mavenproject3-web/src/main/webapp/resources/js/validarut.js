@@ -68,6 +68,25 @@ function revisarDigito2( crut )
 	return true
 }
 
+function Ruteo(string){
+                var re1 = new RegExp("^([0-9]{1,2}.[0-9]{3}.[0-9]{3}-[0-9kK]{1})$");
+                var re2 = new RegExp("^([0-9]{1,2}[0-9]{3}[0-9]{3}-[0-9kK]{1})$");
+                var re3 = new RegExp("^([0-9]{1,2}[0-9]{3}[0-9]{3}[0-9kK]{1})$");
+                if (re1.test(string)) {
+                    alert("Valid");                    
+                    return false;
+                } else if (re2.test(string)) { 
+                    alert("Valido");
+                    return false;
+                } else if (re3.test(string)) { 
+                    alert("Validod");
+                    return false;
+                }else {
+                    alert("El rut no es válido");
+                    return false;
+                }
+} 
+
 function Rut(texto)
 {	
 	var tmpstr = "";	

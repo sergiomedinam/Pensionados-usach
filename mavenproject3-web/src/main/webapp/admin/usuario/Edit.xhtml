@@ -27,7 +27,7 @@
                         <p:outputLabel value="#{bundle.EditusuarioLabel_apellido}" for="apellido" />
                         <p:inputText id="apellido" value="#{usuarioController.selected.apellido}" title="#{bundle.EditusuarioTitle_apellido}" />
                         <p:outputLabel value="#{bundle.EditusuarioLabel_rut}" for="rut" />
-                        <p:inputText id="rut" value="#{usuarioController.selected.rut}" title="#{bundle.EditusuarioTitle_rut}" />
+                        <p:inputText id="rut" value="#{usuarioController.selected.rut}" title="#{bundle.EditusuarioTitle_rut}" validator="#{usuarioController.validarRut}" />
                         <p:outputLabel value="#{bundle.EditusuarioLabel_contrasena}" for="contrasena" />
                         <p:inputText id="contrasena" value="#{usuarioController.selected.contrasena}" title="#{bundle.EditusuarioTitle_contrasena}" />
                         <p:outputLabel value="#{bundle.EditusuarioLabel_id}" for="id" />

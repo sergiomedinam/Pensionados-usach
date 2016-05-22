@@ -7,28 +7,28 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:cc="http://xmlns.jcp.org/jsf/composite">
-
     <ui:composition>
+        <!--<script type="text/javascript" src="#{request.contextPath}/resources/js/validarut.js"></script>-->
 
         <p:dialog id="pensionadoCreateDlg" widgetVar="pensionadoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatepensionadoTitle}">
             <h:form id="pensionadoCreateForm" >
+                <p:growl id="growl" showDetail="true" showSummary="true" autoUpdate="true" />  
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{pensionadoController.selected != null}">
 
                         <p:outputLabel value="#{bundle.CreatepensionadoLabel_rut_pensionado}" for="rut_pensionado" />
-                        <p:inputText required="true" placeholder="12.345.678-9" requiredMessage="Se necesita un rut" id="rut_pensionado" value="#{pensionadoController.selected.rut_pensionado}" title="#{bundle.CreatepensionadoTitle_rut_pensionado}" >
-                            <f:validateLength minimum="11" maximum="12"/>
-                        </p:inputText>
+                        <p:inputText required="true" placeholder="12.345.678-9" requiredMessage="Se necesita un rut" id="rut_pensionado" value="#{pensionadoController.selected.rut_pensionado}" title="#{bundle.CreatepensionadoTitle_rut_pensionado}" validator="#{pensionadoController.validarRut}" />
                         
+                            
                         <p:outputLabel value="#{bundle.CreatepensionadoLabel_nombre_pensionado}" for="nombre_pensionado" />
                         <p:inputText required="true" requiredMessage="Se necesita un nombre" id="nombre_pensionado" value="#{pensionadoController.selected.nombre_pensionado}" title="#{bundle.CreatepensionadoTitle_nombre_pensionado}">
-                            <f:validateLength minimum="2" maximum="25"/>
+                            <f:validateLength minimum="2" maximum="25"/> 
                         </p:inputText>
                         
                         <p:outputLabel value="#{bundle.CreatepensionadoLabel_apellido_p_pensionado}" for="apellido_p_pensionado" />
                         <p:inputText required="true" requiredMessage="Se necesita un apellido" id="apellido_p_pensionado" value="#{pensionadoController.selected.apellido_p_pensionado}" title="#{bundle.CreatepensionadoTitle_apellido_p_pensionado}">
                             <f:validateLength minimum="2" maximum="25"/>
-                        </p:inputText>
+                        </p:inputText> 
                         
                         <p:outputLabel value="#{bundle.CreatepensionadoLabel_apellido_m_pensionado}" for="apellido_m_pensionado" />
                         <p:inputText id="apellido_m_pensionado" value="#{pensionadoController.selected.apellido_m_pensionado}" title="#{bundle.CreatepensionadoTitle_apellido_m_pensionado}" />
@@ -83,6 +83,11 @@
                 </h:panelGroup>
             </h:form>
         </p:dialog>
-
+            
+        
+        
+        
     </ui:composition>
+    
+    
 </html>
