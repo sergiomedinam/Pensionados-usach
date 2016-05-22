@@ -5,6 +5,7 @@ managebeans\pensionadoController$pensionadoControllerConverter.class
 managebeans\util\JsfUtil$PersistAction.class
 managebeans\prestamoController$prestamoControllerConverter.class
 managebeans\designado_fallecimientoController.class
+managebeans\RegionesComunas.class
 servlet\LoginServlet.class
 servlet\AdminResource.class
 managebeans\beneficioController.class
@@ -19,6 +20,7 @@ managebeans\usuarioController.class
 managebeans\rolController.class
 managebeans\pensionadoController.class
 managebeans\util\JsfUtil.class
+managebeans\EstadoCivil.class
 managebeans\otros_datosController$otros_datosControllerConverter.class
 managebeans\tipo_prestamoController.class
 managebeans\contactoController.class
