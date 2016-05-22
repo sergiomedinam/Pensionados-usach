@@ -15,11 +15,20 @@
         </ui:define>
 
         <ui:define name="body">
+            
             <div class="container">
-                <h2>Funcionarios Pensionados - USACH</h2>
-                <p>En esta seccion del sistema, se muestran los pensionados que se encuentran en la aplicacion.</p>
-                
-              </div>
+                    <div class="btn-group btn-breadcrumb">
+                        <a href="#{request.contextPath}" class="btn btn-primary "><i class="glyphicon glyphicon-home"></i></a>
+                        <a href="#" class="btn btn-primary active" >Pensionados</a>
+                    </div>
+                </div>
+                <section class="content-header">
+                    <h1>
+                      Funcionarios Pensionados  
+                      <small>Panel de administrador</small>
+                    </h1>
+                    
+                  </section>
 
             <h:form id="pensionadoListForm">
                 
