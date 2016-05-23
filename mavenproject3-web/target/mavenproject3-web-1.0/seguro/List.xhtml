@@ -15,6 +15,22 @@
         </ui:define>
 
         <ui:define name="body">
+            
+                        <div class="container">
+                    <div class="btn-group btn-breadcrumb">
+                        <a href="#{request.contextPath}" class="btn btn-primary "><i class="glyphicon glyphicon-home"></i></a>
+                        <a href="#" class="btn btn-primary active" >Seguros</a>
+                    </div>
+                </div>
+                <section class="content-header">
+                    <h1>
+                      Seguros  
+                      <small>Panel de administrador</small>
+                    </h1>
+                    
+                  </section>
+            
+            
             <h:form id="seguroListForm">
                 <p:panel header="#{bundle.ListseguroTitle}">
                     <p:dataTable id="datalist" value="#{seguroController.items}" var="item"
