@@ -80,7 +80,13 @@
                             <c:if test="${ name_rol != rol }">   
                                 <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{usuarioController.prepareCreate}" update=":usuarioCreateForm" oncomplete="PF('usuarioCreateDialog').show()"/>
                                 <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":usuarioEditForm" oncomplete="PF('usuarioEditDialog').show()" disabled="#{empty usuarioController.selected}"/>
-                                <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{usuarioController.destroy}" update=":growl,datalist" disabled="#{empty usuarioController.selected}"/>
+                                <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{usuarioController.destroy}" update=":growl,datalist" disabled="#{empty usuarioController.selected}">
+                                    <p:confirm header="Eliminar usuario" message="Estas seguro?" icon="ui-icon-alert" />
+                                </p:commandButton>
+                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                    <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                </p:confirmDialog>
                             </c:if>
                         </f:facet>
                     </p:dataTable>
