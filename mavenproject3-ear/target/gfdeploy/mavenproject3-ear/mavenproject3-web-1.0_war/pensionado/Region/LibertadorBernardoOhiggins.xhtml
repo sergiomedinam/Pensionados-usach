@@ -15,7 +15,20 @@
         </ui:define>
 
         <ui:define name="body">
-            <h1>Región del Libertador Bernardo O'Higgins</h1>
+            <div class="container">
+                    <div class="btn-group btn-breadcrumb">
+                        <a href="#{request.contextPath}" class="btn btn-primary "><i class="glyphicon glyphicon-home"></i></a>
+                        <a href="#{request.contextPath}/faces/pensionado/Mapa.xhtml" class="btn btn-primary" >Mapa de ubicaciones</a>
+                        <a href="#" class="btn btn-primary active">Región del Libertador Bernardo O'Higgins</a>
+                    </div>
+                </div>
+                <section class="content-header">
+                    <h1>
+                        Región del Libertador Bernardo O'Higgins
+                    </h1>
+                    
+                  </section>
+            
             <h:form id="pensionadoListForm">
                 <p:panel header="#{bundle.ListpensionadoTitle}">
                     <p:dataTable id="datalist" value="#{pensionadoController.PensionadosRegion('LIBERTADOR BERNARDO OHIGGINS')}" var="item"
