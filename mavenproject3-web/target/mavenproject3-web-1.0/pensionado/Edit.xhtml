@@ -16,11 +16,11 @@
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_rut_pensionado}" for="rut_pensionado" />
                         <p:outputLabel id="rut_pensionado" value="#{pensionadoController.selected.rut_pensionado}" title="#{bundle.EditpensionadoTitle_rut_pensionado}"/>
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_nombre_pensionado}" for="nombre_pensionado" />
-                        <p:outputLabel id="nombre_pensionado" value="#{pensionadoController.selected.nombre_pensionado}" title="#{bundle.EditpensionadoTitle_nombre_pensionado}" />
+                        <p:inputText id="nombre_pensionado" value="#{pensionadoController.selected.nombre_pensionado}" title="#{bundle.EditpensionadoTitle_nombre_pensionado}" />
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_apellido_p_pensionado}" for="apellido_p_pensionado" />
-                        <p:outputLabel id="apellido_p_pensionado" value="#{pensionadoController.selected.apellido_p_pensionado}" title="#{bundle.EditpensionadoTitle_apellido_p_pensionado}" />
+                        <p:inputText id="apellido_p_pensionado" value="#{pensionadoController.selected.apellido_p_pensionado}" title="#{bundle.EditpensionadoTitle_apellido_p_pensionado}" />
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_apellido_m_pensionado}" for="apellido_m_pensionado" />
-                        <p:outputLabel id="apellido_m_pensionado" value="#{pensionadoController.selected.apellido_m_pensionado}" title="#{bundle.EditpensionadoTitle_apellido_m_pensionado}" />
+                        <p:inputText id="apellido_m_pensionado" value="#{pensionadoController.selected.apellido_m_pensionado}" title="#{bundle.EditpensionadoTitle_apellido_m_pensionado}" />
                         
                         
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_fecha_nacimiento}" for="fecha_nacimiento" />
@@ -48,7 +48,7 @@
                         
                         <p:outputLabel for="city" value="#{bundle.CreatepensionadoLabel_comuna}" />
                         <p:selectOneMenu required="true" requiredMessage="Se necesita una comuna" id="city" value="#{pensionadoController.selected.comuna}" style="width:155px">
-                            <f:selectItem itemLabel="Seleccionar" itemValue="#{pensionadoController.selected.comuna}" noSelectionOption="true" />
+                            <f:selectItem itemLabel="Seleccionar" itemValue="#{pensionadoController.selected.comuna}"/>
                             <f:selectItems value="#{regionesComunas.cities}" />
                         </p:selectOneMenu>                        
                         
