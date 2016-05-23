@@ -54,23 +54,28 @@
                             </c:otherwise>
                         </c:choose>
                         
-                        <p:column filterBy="#{item.rut_pensionado}" headerText="Rut pensionado" filterMatchMode="contains" sortBy="#{item.rut_pensionado}">
+                        <p:column filterBy="#{item.rut_pensionado}" filterStyle="width:200px;" id="rut" headerText="Rut pensionado" filterMatchMode="contains" sortBy="#{item.rut_pensionado}">
                                 <f:facet name="header">
                                     <h:outputText value="#{bundle.ListpensionadoTitle_rut_pensionado}"/>
+                                    <p:watermark for="rut" value="Buscar Rut (con puntos y guión)" />
+
                                 </f:facet>
                             <h:outputText value="#{item.rut_pensionado}"/>
                         </p:column>
                         
-                        <p:column filterBy="#{item.nombre_pensionado.toLowerCase()} #{item.nombre_pensionado}" headerText="Nombre pensionado" filterMatchMode="contains" sortBy="#{item.nombre_pensionado}">
+                        <p:column filterBy="#{item.nombre_pensionado.toLowerCase()} #{item.nombre_pensionado}" filterStyle="width:200px;" id="nombre" headerText="Nombre pensionado" filterMatchMode="contains" sortBy="#{item.nombre_pensionado}">
                             <f:facet name="header">
                                 <h:outputText value="Nombres"/>
+                                <p:watermark for="nombre" value="Buscar Nombre" />
+
                             </f:facet>
                             <h:outputText value="#{item.nombre_pensionado} "/>
                         </p:column>
                        
-                        <p:column filterBy="#{item.apellido_p_pensionado} #{item.apellido_p_pensionado.toLowerCase()} #{item.apellido_m_pensionado}  #{item.apellido_m_pensionado.toLowerCase()}" headerText="Apellido pensionado" filterMatchMode="contains" sortBy="#{item.apellido_p_pensionado} #{item.apellido_m_pensionado}">
+                        <p:column filterBy="#{item.apellido_p_pensionado} #{item.apellido_p_pensionado.toLowerCase()} #{item.apellido_m_pensionado}  #{item.apellido_m_pensionado.toLowerCase()}" headerText="Apellido pensionado" id="apellido" filterStyle="width:200px;" filterMatchMode="contains" sortBy="#{item.apellido_p_pensionado} #{item.apellido_m_pensionado}">
                             <f:facet name="header">
                                 <h:outputText value="Apellidos"/>
+                                <p:watermark for="apellido" value="Buscar Apellido" />
                             </f:facet>
                             <h:outputText value="#{item.apellido_p_pensionado} #{item.apellido_m_pensionado}"/>
                         </p:column>
