@@ -44,7 +44,7 @@ public class usuarioTest {
     public void testGetEmail_usuario() {
         System.out.println("getEmail_usuario");
         usuario instance = new usuario();
-        String expResult = "test";
+        String expResult = "test".toUpperCase();
         instance.setEmail_usuario(expResult);
         String result = instance.getEmail_usuario();
         assertEquals(expResult, result);
@@ -96,7 +96,7 @@ public class usuarioTest {
     public void testGetNombre() {
         System.out.println("getNombre");
         usuario instance = new usuario();
-        String expResult = "test";
+        String expResult = "test".toUpperCase();
         instance.setNombre(expResult);
         String result = instance.getNombre();
         assertEquals(expResult, result);
@@ -122,7 +122,7 @@ public class usuarioTest {
     public void testGetApellido() {
         System.out.println("getApellido");
         usuario instance = new usuario();
-        String expResult = "test";
+        String expResult = "test".toUpperCase();
         instance.setApellido(expResult);
         String result = instance.getApellido();
         assertEquals(expResult, result);
