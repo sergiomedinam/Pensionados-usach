@@ -32,10 +32,7 @@
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{estadoCivil.estadosCiviles}" />
                         </p:selectOneMenu>
-                        
-                        
-                        
-                        
+                             
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_direccion}" for="direccion" />
                         <p:inputText required="true" requiredMessage="Se necesita una direccion"  id="direccion" value="#{pensionadoController.selected.direccion}" title="#{bundle.EditpensionadoTitle_direccion}" />
                         
