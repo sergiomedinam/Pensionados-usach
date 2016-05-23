@@ -9,7 +9,7 @@
       xmlns:cc="http://xmlns.jcp.org/jsf/composite">
     <ui:composition>
         <!--<script type="text/javascript" src="#{request.contextPath}/resources/js/validarut.js"></script>-->
-
+        
         <p:dialog id="pensionadoCreateDlg" widgetVar="pensionadoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatepensionadoTitle}">
             <h:form id="pensionadoCreateForm" >
                 <p:growl id="growl" showDetail="true" showSummary="true" autoUpdate="true" />  
@@ -33,11 +33,9 @@
                         <p:outputLabel value="#{bundle.CreatepensionadoLabel_apellido_m_pensionado}" for="apellido_m_pensionado" />
                         <p:inputText id="apellido_m_pensionado" value="#{pensionadoController.selected.apellido_m_pensionado}" title="#{bundle.CreatepensionadoTitle_apellido_m_pensionado}" />
                         
-                        <p:outputLabel value="#{bundle.CreatepensionadoLabel_fecha_nacimiento}" for="fecha_nacimiento" />
-                        <p:inputMask id="fecha_nacimiento" mask="99/99/9999" placeholder="DD/MM/AAAA" value="#{pensionadoController.selected.fecha_nacimiento}" title="#{bundle.CreatepensionadoTitle_fecha_nacimiento}" />
-
                         
-                        
+                        <p:outputLabel for="fecha_nacimiento" value="Fecha Nacimiento:" />
+                        <p:calendar id="fecha_nacimiento" value="#{pensionadoController.selected.fnacimiento}" locale="es" navigator="true" pattern="dd-MM-yyyy"  maxdate="01/01/2010" />
                         
                         <p:outputLabel value="#{bundle.CreatepensionadoLabel_estado_civil}" for="estado_civil" />                        
                         <p:selectOneMenu id="estado_civil" value="#{pensionadoController.selected.estado_civil}" style="width:155px" >
@@ -78,6 +76,7 @@
                         <p:inputText id="email_alternativo" value="#{pensionadoController.selected.email_alternativo}" title="#{bundle.CreatepensionadoTitle_email_alternativo}" />
                         
                     </p:panelGrid>
+                   
                     <p:commandButton actionListener="#{pensionadoController.create}" value="#{bundle.Save}" update="display,:pensionadoListForm:datalist,:growl" oncomplete="handleSubmit(args,'pensionadoCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="pensionadoCreateDialog.hide()"/>
                 </h:panelGroup>

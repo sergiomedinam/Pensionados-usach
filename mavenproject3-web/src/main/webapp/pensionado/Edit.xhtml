@@ -23,9 +23,9 @@
                         <p:inputText id="apellido_m_pensionado" value="#{pensionadoController.selected.apellido_m_pensionado}" title="#{bundle.EditpensionadoTitle_apellido_m_pensionado}" />
                         
                         
-                        <p:outputLabel value="#{bundle.EditpensionadoLabel_fecha_nacimiento}" for="fecha_nacimiento" />
-                        <p:inputMask id="fecha_nacimiento" mask="99/99/9999" placeholder="DD/MM/AAAA" value="#{pensionadoController.selected.fecha_nacimiento}" title="#{bundle.EditpensionadoTitle_fecha_nacimiento}" />
-                        
+                       
+                        <p:outputLabel for="fecha_nacimiento" value="Fecha Nacimiento:" />
+                        <p:calendar id="fecha_nacimiento" value="#{pensionadoController.selected.fnacimiento}" locale="es" navigator="true" pattern="dd-MM-yyyy"  maxdate="01/01/2010" />
                         
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_estado_civil}" for="estado_civil" />                        
                         <p:selectOneMenu id="estado_civil" value="#{pensionadoController.selected.estado_civil}" style="width:155px" >

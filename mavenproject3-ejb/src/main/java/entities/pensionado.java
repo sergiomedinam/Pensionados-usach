@@ -14,6 +14,8 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import static javax.persistence.TemporalType.DATE;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -46,6 +48,10 @@ public class pensionado implements Serializable {
     private String fecha_nacimiento;
     
     @NotNull
+    @Temporal(DATE)
+    private Date fnacimiento;
+    
+    @NotNull
     private String estado_civil;
     
     @NotNull
@@ -74,6 +80,14 @@ public class pensionado implements Serializable {
     
     @ManyToOne
     private beneficio beneficios;
+
+    public Date getFnacimiento() {
+        return fnacimiento;
+    }
+
+    public void setFnacimiento(Date fnacimiento) {
+        this.fnacimiento = fnacimiento;
+    }
     
     
     

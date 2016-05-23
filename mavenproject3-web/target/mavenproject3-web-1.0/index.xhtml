@@ -11,7 +11,7 @@
         <!-- Bootstrap Core CSS -->
         <link href="#{request.contextPath}/resources/css/bootstrap.css" rel="stylesheet"/>
 
-    <!-- Custom CSS -->
+        <!-- Custom CSS -->
         <link href="#{request.contextPath}/resources/css/simple-sidebar.css" rel="stylesheet"/>
         <link href="#{request.contextPath}/resources/css/AdminLTE.min.css" rel="stylesheet"/>
         <link href="#{request.contextPath}/resources/css/AdminLTE.css" rel="stylesheet"/>
@@ -19,87 +19,87 @@
     <h:body>
 
         <ui:composition template="/template.xhtml"> 
- 
+
             <ui:define name="body">
                 <div class="container">
                     <div class="btn-group btn-breadcrumb">
                         <a href="#{request.contextPath}" class="btn btn-primary "><i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;Inicio</a>
                     </div>
                 </div>
-                
+
                 <section class="content-header">
                     <h1>
-                      Sistema de Funcionarios Pensionados - USACH        
-                            <small>Panel inicial</small>
+                        Sistema de Funcionarios Pensionados - USACH        
+                        <small>Panel inicial</small>
                     </h1>
-                    
-                  </section>
-                
+
+                </section>
+
                 <section class="content" >
                     <div class="row" align="center">
                         <div class="col-lg-3 col-xs-6">
-                          <!-- small box -->
-                          <div class="small-box bg-aqua">
-                            <div class="inner">
-                                <h3>#{pensionadoController.items.size()}</h3>
-                              <p>Pensionados</p>
+                            <!-- small box -->
+                            <div class="small-box bg-aqua">
+                                <div class="inner">
+                                    <h3>#{pensionadoController.items.size()}</h3>
+                                    <p>Pensionados</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-bag"></i>
+                                </div>
+                                <a href="#{request.contextPath}/faces/pensionado/List.xhtml" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
                             </div>
-                            <div class="icon">
-                              <i class="ion ion-bag"></i>
-                            </div>
-                            <a href="#{request.contextPath}/faces/pensionado/List.xhtml" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
-                          </div>
                         </div>
                         <!-- ./col -->
                         <div class="col-lg-3 col-xs-6">
-                          <!-- small box -->
-                          <div class="small-box bg-green">
-                            <div class="inner">
-                              <h3>x<sup style="font-size: 20px">%</sup></h3>
+                            <!-- small box -->
+                            <div class="small-box bg-green">
+                                <div class="inner">
+                                    <h3>x<sup style="font-size: 20px">%</sup></h3>
 
-                              <p>Beneficiados</p>
+                                    <p>Beneficiados</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-stats-bars"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
                             </div>
-                            <div class="icon">
-                              <i class="ion ion-stats-bars"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
-                          </div>
                         </div>
                         <!-- ./col -->
                         <div class="col-lg-3 col-xs-6">
-                          <!-- small box -->
-                          <div class="small-box bg-yellow">
-                            <div class="inner">
-                              <h3>#{usuarioController.items.size()}</h3>
+                            <!-- small box -->
+                            <div class="small-box bg-yellow">
+                                <div class="inner">
+                                    <h3>#{usuarioController.items.size()}</h3>
 
-                              <p>Usuarios en el sistema</p>
+                                    <p>Usuarios en el sistema</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-person-add"></i>
+                                </div>
+                                <a href="#{request.contextPath}/faces/admin/usuario/List.xhtml" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
                             </div>
-                            <div class="icon">
-                              <i class="ion ion-person-add"></i>
-                            </div>
-                            <a href="#{request.contextPath}/faces/admin/usuario/List.xhtml" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
-                          </div>
                         </div>
                         <!-- ./col -->
                         <div class="col-lg-3 col-xs-6">
-                          <!-- small box -->
-                          <div class="small-box bg-red">
-                            <div class="inner">
-                              <h3>x</h3>
+                            <!-- small box -->
+                            <div class="small-box bg-red">
+                                <div class="inner">
+                                    <h3>x</h3>
 
-                              <p>Morosos</p>
+                                    <p>Morosos</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-pie-graph"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
                             </div>
-                            <div class="icon">
-                              <i class="ion ion-pie-graph"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
-                          </div>
                         </div>
                         <!-- ./col -->
-                      </div>
-                  </section>
-                
-                
+                    </div>
+                </section>
+
+
                 <!--
                 
                 <br />
@@ -120,43 +120,46 @@
                     </h1>
                   </section>
                     <br></br>
-                    <h:link outcome="/beneficio/List" value="Show All beneficio Items"/>
-                    <br />
-                    <h:link outcome="/contacto/List" value="Show All contacto Items"/>
-                    <br />
-                    <h:link outcome="/designado_fallecimiento/List" value="Show All designado_fallecimiento Items"/>
-                    <br />
-                    <h:link outcome="/medicamento/List" value="Show All medicamento Items"/>
-                    <br />
-                    <h:link outcome="/otros_datos/List" value="Show All otros_datos Items"/>
-                    <br />
-                    <h:link outcome="/patologia/List" value="Show All patologia Items"/>
-                    <br />
-                    <h:link outcome="/pensionado/List" value="Show All pensionado Items"/>
-                    <br />
-                    <h:link outcome="/prestamo/List" value="Show All prestamo Items"/>
-                    <br />
-                    <h:link outcome="/admin/rol/List" value="Show All rol Items"/>
-                    <br />
-                    <h:link outcome="/seguro/List" value="Show All seguro Items"/>
-                    <br />
-                    <h:link outcome="/tipo_beneficio/List" value="Show All tipo_beneficio Items"/>
-                    <br />
-                    <h:link outcome="/tipo_prestamo/List" value="Show All tipo_prestamo Items"/>
-                    <br />
-                    <h:link outcome="/pensionado/Mapa.xhtml" value="Mapa Geográfico"/>
-                    <br />
-                    <h:link outcome="/pensionado/Filtros.xhtml" value="Filtros Comuna-Region"/>
-                    <br />
-                    <h:link outcome="/admin/usuario/List.xhtml" value="Usuarios"/>
-                    <br />
-                    <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
-                </div>
+                <h:link outcome="/beneficio/List" value="Show All beneficio Items"/>
+                <br />
+                <h:link outcome="/contacto/List" value="Show All contacto Items"/>
+                <br />
+                <h:link outcome="/designado_fallecimiento/List" value="Show All designado_fallecimiento Items"/>
+                <br />
+                <h:link outcome="/medicamento/List" value="Show All medicamento Items"/>
+                <br />
+                <h:link outcome="/otros_datos/List" value="Show All otros_datos Items"/>
+                <br />
+                <h:link outcome="/patologia/List" value="Show All patologia Items"/>
+                <br />
+                <h:link outcome="/pensionado/List" value="Show All pensionado Items"/>
+                <br />
+                <h:link outcome="/prestamo/List" value="Show All prestamo Items"/>
+                <br />
+                <h:link outcome="/admin/rol/List" value="Show All rol Items"/>
+                <br />
+                <h:link outcome="/seguro/List" value="Show All seguro Items"/>
+                <br />
+                <h:link outcome="/tipo_beneficio/List" value="Show All tipo_beneficio Items"/>
+                <br />
+                <h:link outcome="/tipo_prestamo/List" value="Show All tipo_prestamo Items"/>
+                <br />
+                <h:link outcome="/pensionado/Mapa.xhtml" value="Mapa Geográfico"/>
+                <br />
+                <h:link outcome="/pensionado/Filtros.xhtml" value="Filtros Comuna-Region"/>
+                <br />
+                <h:link outcome="/admin/usuario/List.xhtml" value="Usuarios"/>
+                <br />
+                <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+            </div>
                 -->
             </ui:define> 
 
         </ui:composition>
+        <br />
+        <h:link outcome="/asd/pensionado/List" value="Show All pensionado Items"/>
     </h:body>
+
 
 </html>
 
