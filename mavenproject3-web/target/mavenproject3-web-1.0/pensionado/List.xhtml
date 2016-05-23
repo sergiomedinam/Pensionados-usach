@@ -61,14 +61,14 @@
                             <h:outputText value="#{item.rut_pensionado}"/>
                         </p:column>
                         
-                        <p:column filterBy="#{item.nombre_pensionado}" headerText="Nombre pensionado" filterMatchMode="contains" sortBy="#{item.nombre_pensionado}">
+                        <p:column filterBy="#{item.nombre_pensionado.toLowerCase()} #{item.nombre_pensionado}" headerText="Nombre pensionado" filterMatchMode="contains" sortBy="#{item.nombre_pensionado}">
                             <f:facet name="header">
                                 <h:outputText value="Nombres"/>
                             </f:facet>
                             <h:outputText value="#{item.nombre_pensionado} "/>
                         </p:column>
                        
-                        <p:column filterBy="#{item.apellido_p_pensionado} #{item.apellido_m_pensionado}" headerText="Apellido pensionado" filterMatchMode="contains" sortBy="#{item.apellido_p_pensionado} #{item.apellido_m_pensionado}">
+                        <p:column filterBy="#{item.apellido_p_pensionado} #{item.apellido_p_pensionado.toLowerCase()} #{item.apellido_m_pensionado}  #{item.apellido_m_pensionado.toLowerCase()}" headerText="Apellido pensionado" filterMatchMode="contains" sortBy="#{item.apellido_p_pensionado} #{item.apellido_m_pensionado}">
                             <f:facet name="header">
                                 <h:outputText value="Apellidos"/>
                             </f:facet>

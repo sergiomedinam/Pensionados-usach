@@ -67,14 +67,14 @@
                             <h:outputText value="#{item.nombre_pensionado} #{item.apellido_p_pensionado} #{item.apellido_m_pensionado}"/>
                         </p:column>
                         
-                        <p:column filterBy="#{item.comuna}" headerText="Comuna" filterMatchMode="contains" sortBy="#{item.comuna}">
+                        <p:column filterBy="#{item.comuna} #{item.comuna.toLowerCase()}" headerText="Comuna" filterMatchMode="contains" sortBy="#{item.comuna}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListpensionadoTitle_comuna}"/>
                             </f:facet>
                             <h:outputText value="#{item.comuna}"/>
                         </p:column>
                         
-                        <p:column filterBy="#{item.region}" headerText="Comuna" filterMatchMode="contains" sortBy="#{item.region}">
+                        <p:column filterBy="#{item.region} #{item.region.toLowerCase()}" headerText="Comuna" filterMatchMode="contains" sortBy="#{item.region}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListpensionadoTitle_region}"/>
                             </f:facet>
