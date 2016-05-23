@@ -12,20 +12,22 @@
             <h:form id="usuarioViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{usuarioController.selected != null}">
-                        <h:outputText value="#{bundle.ViewusuarioLabel_email_usuario}"/>
-                        <h:outputText value="#{usuarioController.selected.email_usuario}" title="#{bundle.ViewusuarioTitle_email_usuario}"/>
+                        
                         <h:outputText value="#{bundle.ViewusuarioLabel_tipo_usuario}"/>
-                        <h:outputText value="#{usuarioController.selected.tipo_usuario}" title="#{bundle.ViewusuarioTitle_tipo_usuario}"/>
-                        <h:outputText value="#{bundle.ViewusuarioLabel_nombre}"/>
-                        <h:outputText value="#{usuarioController.selected.nombre}" title="#{bundle.ViewusuarioTitle_nombre}"/>
-                        <h:outputText value="#{bundle.ViewusuarioLabel_apellido}"/>
-                        <h:outputText value="#{usuarioController.selected.apellido}" title="#{bundle.ViewusuarioTitle_apellido}"/>
+                        <h:outputText value="#{usuarioController.selected.tipo_usuario.nombre_rol.toUpperCase()}" title="#{bundle.ViewusuarioTitle_tipo_usuario}"/>
+
+                        
                         <h:outputText value="#{bundle.ViewusuarioLabel_rut}"/>
                         <h:outputText value="#{usuarioController.selected.rut}" title="#{bundle.ViewusuarioTitle_rut}"/>
-                        <h:outputText value="#{bundle.ViewusuarioLabel_contrasena}"/>
-                        <h:outputText value="#{usuarioController.selected.contrasena}" title="#{bundle.ViewusuarioTitle_contrasena}"/>
-                        <h:outputText value="#{bundle.ViewusuarioLabel_id}"/>
-                        <h:outputText value="#{usuarioController.selected.id}" title="#{bundle.ViewusuarioTitle_id}"/>
+
+                        
+                        <h:outputText value="#{bundle.ViewusuarioLabel_nombre}"/>
+                        <h:outputText value="#{usuarioController.selected.nombre} #{usuarioController.selected.apellido}" title="#{bundle.ViewusuarioTitle_nombre}"/>
+                        
+                        <h:outputText value="#{bundle.ViewusuarioLabel_email_usuario}"/>
+                        <h:outputText value="#{usuarioController.selected.email_usuario}" title="#{bundle.ViewusuarioTitle_email_usuario}"/>
+
+                        
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="usuarioViewDialog.hide()"/>
                 </h:panelGroup>
