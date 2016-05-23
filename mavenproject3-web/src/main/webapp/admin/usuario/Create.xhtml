@@ -31,9 +31,11 @@
                         <p:outputLabel value="#{bundle.CreateusuarioLabel_apellido}" for="apellido" />
                         <p:inputText id="apellido" required="true" requiredMessage="Se necesita apellido" value="#{usuarioController.selected.apellido}" title="#{bundle.CreateusuarioTitle_apellido}" />
                         <p:outputLabel value="#{bundle.CreateusuarioLabel_email_usuario}" for="email_usuario" />
-                        <p:inputText id="email_usuario"  required="true" requiredMessage="Se necesita email" value="#{usuarioController.selected.email_usuario}" title="#{bundle.CreateusuarioTitle_email_usuario}">
-                            <f:validator validatorId="custom.emailValidator" />
+                        <p:inputText id="email_usuario"  validatorMessage="Email con formato invalido" required="true" requiredMessage="Se necesita email" value="#{usuarioController.selected.email_usuario}" title="#{bundle.CreateusuarioTitle_email_usuario}">
+                            <f:validateRegex
+		pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
                         </p:inputText>
+                            
                         <p:outputLabel value="#{bundle.CreateusuarioLabel_contrasena}" for="contrasena" />
                         <p:password id="contrasena" required="true" requiredMessage="Se necesita contraseña" value="#{usuarioController.selected.contrasena}" title="#{bundle.CreateusuarioTitle_contrasena}" />
                       
@@ -41,48 +43,9 @@
                     <p:commandButton actionListener="#{usuarioController.create}" value="#{bundle.Save}" update="display,:usuarioListForm:datalist,:growl" oncomplete="handleSubmit(args,'usuarioCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="usuarioCreateDialog.hide()"/>
                 </h:panelGroup>
+                
             </h:form>
-            <script type="text/javascript">
-                /**
-                 * Faces Validator
-                 */
-                PrimeFaces.validator['custom.emailValidator'] = {
-
-                    pattern: /\S+@\S+/,
-
-                    validate: function(element, value) {
-                        //use element.data() to access validation metadata, in this case there is none.
-                        if(!this.pattern.test(value)) {
-                            throw {
-                                summary: 'Error de validacion',
-                                detail: value + ' no es un correo valido.'
-                            }
-                        }
-                    }
-                };
-
-                /**
-                 * Bean validator
-                 */
-                PrimeFaces.validator['Email'] = {
-
-                    pattern: /\S+@\S+/,
-
-                    MESSAGE_ID: 'org.primefaces.examples.validate.email.message',
-
-                    validate: function(element, value) {
-                        var vc = PrimeFaces.util.ValidationContext;
-
-                        if(!this.pattern.test(value)) {
-                            var msgStr = element.data('p-email-msg'),
-                            msg = msgStr ? {summary:msgStr, detail: msgStr} : vc.getMessage(this.MESSAGE_ID);
-
-                            throw msg;
-                        }
-                    }
-                };
-            </script>
-
+           
         </p:dialog>
 
     </ui:composition>
