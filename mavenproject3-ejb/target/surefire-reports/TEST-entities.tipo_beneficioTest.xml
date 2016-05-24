@@ -61,11 +61,11 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase time="0" classname="entities.tipo_beneficioTest" name="testSetNombre_t_beneficio"/>
-  <testcase time="0" classname="entities.tipo_beneficioTest" name="testGetNombre_t_beneficio"/>
-  <testcase time="0" classname="entities.tipo_beneficioTest" name="testSetId"/>
   <testcase time="0" classname="entities.tipo_beneficioTest" name="testEquals"/>
+  <testcase time="0" classname="entities.tipo_beneficioTest" name="testGetId"/>
   <testcase time="0" classname="entities.tipo_beneficioTest" name="testHashCode"/>
   <testcase time="0" classname="entities.tipo_beneficioTest" name="testToString"/>
-  <testcase time="0" classname="entities.tipo_beneficioTest" name="testGetId"/>
+  <testcase time="0" classname="entities.tipo_beneficioTest" name="testSetId"/>
+  <testcase time="0" classname="entities.tipo_beneficioTest" name="testSetNombre_t_beneficio"/>
+  <testcase time="0" classname="entities.tipo_beneficioTest" name="testGetNombre_t_beneficio"/>
 </testsuite>
