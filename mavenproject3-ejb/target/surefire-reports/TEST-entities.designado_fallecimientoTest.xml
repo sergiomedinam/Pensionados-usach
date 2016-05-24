@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.015" errors="0" skipped="0" tests="17" name="entities.designado_fallecimientoTest">
+<testsuite failures="0" time="0.016" errors="0" skipped="0" tests="17" name="entities.designado_fallecimientoTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.7.0_79\jre\bin"/>
@@ -61,21 +61,21 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase time="0" classname="entities.designado_fallecimientoTest" name="testGetParentesco"/>
-  <testcase time="0" classname="entities.designado_fallecimientoTest" name="testSetParentesco"/>
-  <testcase time="0" classname="entities.designado_fallecimientoTest" name="testGetTelefono"/>
-  <testcase time="0" classname="entities.designado_fallecimientoTest" name="testSetNombre_designado"/>
-  <testcase time="0" classname="entities.designado_fallecimientoTest" name="testGetRut_designado"/>
-  <testcase time="0" classname="entities.designado_fallecimientoTest" name="testSetRut_designado"/>
-  <testcase time="0" classname="entities.designado_fallecimientoTest" name="testGetNombre_designado"/>
   <testcase time="0" classname="entities.designado_fallecimientoTest" name="testSetApellido_designado"/>
-  <testcase time="0" classname="entities.designado_fallecimientoTest" name="testSetPensionados"/>
-  <testcase time="0" classname="entities.designado_fallecimientoTest" name="testGetPensionados"/>
-  <testcase time="0" classname="entities.designado_fallecimientoTest" name="testGetApellido_designado"/>
+  <testcase time="0" classname="entities.designado_fallecimientoTest" name="testSetRut_designado"/>
   <testcase time="0" classname="entities.designado_fallecimientoTest" name="testSetTelefono"/>
-  <testcase time="0" classname="entities.designado_fallecimientoTest" name="testToString"/>
+  <testcase time="0" classname="entities.designado_fallecimientoTest" name="testGetNombre_designado"/>
+  <testcase time="0" classname="entities.designado_fallecimientoTest" name="testSetParentesco"/>
+  <testcase time="0" classname="entities.designado_fallecimientoTest" name="testGetRut_designado"/>
+  <testcase time="0" classname="entities.designado_fallecimientoTest" name="testGetApellido_designado"/>
+  <testcase time="0" classname="entities.designado_fallecimientoTest" name="testGetTelefono"/>
+  <testcase time="0" classname="entities.designado_fallecimientoTest" name="testGetParentesco"/>
+  <testcase time="0" classname="entities.designado_fallecimientoTest" name="testSetNombre_designado"/>
+  <testcase time="0" classname="entities.designado_fallecimientoTest" name="testGetPensionados"/>
+  <testcase time="0" classname="entities.designado_fallecimientoTest" name="testSetPensionados"/>
   <testcase time="0" classname="entities.designado_fallecimientoTest" name="testHashCode"/>
+  <testcase time="0" classname="entities.designado_fallecimientoTest" name="testToString"/>
   <testcase time="0" classname="entities.designado_fallecimientoTest" name="testSetId"/>
-  <testcase time="0" classname="entities.designado_fallecimientoTest" name="testEquals"/>
   <testcase time="0" classname="entities.designado_fallecimientoTest" name="testGetId"/>
+  <testcase time="0" classname="entities.designado_fallecimientoTest" name="testEquals"/>
 </testsuite>

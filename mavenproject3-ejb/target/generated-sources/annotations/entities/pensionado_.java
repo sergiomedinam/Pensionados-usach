@@ -9,12 +9,11 @@ import entities.pago;
 import entities.patologia;
 import entities.prestamo;
 import entities.seguro;
-import java.util.Date;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-05-24T10:44:49")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-05-24T12:19:48")
 @StaticMetamodel(pensionado.class)
 public class pensionado_ { 
 
@@ -37,7 +36,6 @@ public class pensionado_ {
     public static volatile SingularAttribute<pensionado, Integer> monto_pension;
     public static volatile SingularAttribute<pensionado, medicamento> medicamentos;
     public static volatile SingularAttribute<pensionado, Integer> saldo;
-    public static volatile SingularAttribute<pensionado, Date> fnacimiento;
     public static volatile SingularAttribute<pensionado, patologia> patologias;
     public static volatile SingularAttribute<pensionado, String> rut_pensionado;
     public static volatile SingularAttribute<pensionado, prestamo> prestamos;

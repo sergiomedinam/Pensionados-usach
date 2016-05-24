@@ -63,9 +63,9 @@
   </properties>
   <testcase time="0" classname="entities.medicamentoTest" name="testSetNombre_medicamento"/>
   <testcase time="0" classname="entities.medicamentoTest" name="testGetNombre_medicamento"/>
-  <testcase time="0" classname="entities.medicamentoTest" name="testToString"/>
   <testcase time="0" classname="entities.medicamentoTest" name="testHashCode"/>
+  <testcase time="0" classname="entities.medicamentoTest" name="testToString"/>
   <testcase time="0" classname="entities.medicamentoTest" name="testSetId"/>
-  <testcase time="0" classname="entities.medicamentoTest" name="testEquals"/>
   <testcase time="0" classname="entities.medicamentoTest" name="testGetId"/>
+  <testcase time="0" classname="entities.medicamentoTest" name="testEquals"/>
 </testsuite>
