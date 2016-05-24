@@ -7,12 +7,16 @@ package entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import static javax.persistence.TemporalType.DATE;
@@ -28,6 +32,7 @@ public class pensionado implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "id_pensionado")
     private Long id;
     
     private String email_pensionado;
@@ -88,8 +93,8 @@ public class pensionado implements Serializable {
     @ManyToOne
     private patologia patologias;
    
-    @ManyToOne
-    private seguro seguros;
+    @OneToMany(mappedBy = "pensionado")
+    private Set<cargas> cargas = new HashSet<cargas>();
     
     @ManyToOne
     private contacto contactos;
@@ -109,6 +114,18 @@ public class pensionado implements Serializable {
     @ManyToOne
     private pago pagos;
 
+    public Set<cargas> getCargas() {
+        return cargas;
+    }
+
+    public void setCargas(Set<cargas> cargas) {
+        this.cargas = cargas;
+    }
+
+    public void addCarga(cargas carga) {
+        this.cargas.add(carga);
+    } 
+    
     public cuotaspagadas getCuotaspagadas() {
         return cuotaspagadas;
     }
@@ -182,15 +199,7 @@ public class pensionado implements Serializable {
         this.beneficios = beneficios;
     }
     
-    
-
-    public seguro getSeguros() {
-        return seguros;
-    }
-
-    public void setSeguros(seguro seguros) {
-        this.seguros = seguros;
-    }
+ 
 
     public contacto getContactos() {
         return contactos;

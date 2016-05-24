@@ -6,11 +6,15 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -23,10 +27,27 @@ public class seguro implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "id_seguro")
     private Long id;
     
     @NotNull(message = "Debe tener un nombre")
     private String nombre_seguro;
+    
+    
+    @OneToMany(mappedBy = "seguro")
+    private Set<cargas> cargas = new HashSet<cargas>();
+
+    public Set<cargas> cargas() {
+        return cargas;
+    }
+
+    public void setCargas(Set<cargas> cargas) {
+        this.cargas = cargas;
+    }
+    public void addCargas(cargas carga) {
+        this.cargas.add(carga);
+    }
+    
 
     public String getNombre_seguro() {
         return nombre_seguro;

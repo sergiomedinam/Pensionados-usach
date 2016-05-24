@@ -175,29 +175,6 @@ public class pensionadoTest {
     /**
      * Test of getSeguros method, of class pensionado.
      */
-    @Test
-    public void testGetSeguros() {
-        System.out.println("getSeguros");
-        pensionado instance = new pensionado();
-        seguro expResult = new seguro();
-        expResult.setId(Long.MIN_VALUE);
-        instance.setSeguros(expResult);
-        seguro result = instance.getSeguros();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-    }
-
-    /**
-     * Test of setSeguros method, of class pensionado.
-     */
-    @Test
-    public void testSetSeguros() {
-        System.out.println("setSeguros");
-        seguro seguros = null;
-        pensionado instance = new pensionado();
-        instance.setSeguros(seguros);
-        // TODO review the generated test code and remove the default call to fail.
-    }
 
     /**
      * Test of getContactos method, of class pensionado.
