@@ -69,10 +69,7 @@ public class pensionado implements Serializable {
     @NotNull
     private String fecha_nacimiento;
     
-    @NotNull
-    @Temporal(DATE)
-    private Date fnacimiento;
-    
+
     @NotNull
     private String estado_civil;
     
@@ -125,15 +122,6 @@ public class pensionado implements Serializable {
         this.pagos = pagos;
     }
     
-    
-
-    public Date getFnacimiento() {
-        return fnacimiento;
-    }
-
-    public void setFnacimiento(Date fnacimiento) {
-        this.fnacimiento = fnacimiento;
-    }
     
     
     

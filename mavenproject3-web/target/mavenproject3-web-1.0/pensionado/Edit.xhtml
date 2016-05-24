@@ -25,7 +25,7 @@
                         
                        
                         <p:outputLabel for="fecha_nacimiento" value="Fecha Nacimiento:" />
-                        <p:calendar id="fecha_nacimiento" value="#{pensionadoController.selected.fnacimiento}" locale="es" navigator="true" pattern="dd-MM-yyyy"  maxdate="01/01/2010" />
+                        <p:inputMask mask="99/99/9999" id="fecha_nacimiento" value="#{pensionadoController.selected.fecha_nacimiento}" placeholder="dd/mm/yyyy"/>
                         
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_estado_civil}" for="estado_civil" />                        
                         <p:selectOneMenu id="estado_civil" value="#{pensionadoController.selected.estado_civil}" style="width:155px" >
