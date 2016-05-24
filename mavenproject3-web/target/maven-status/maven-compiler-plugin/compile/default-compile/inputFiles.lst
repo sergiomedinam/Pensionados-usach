@@ -1,6 +1,5 @@
 C:\Users\Sergio\Desktop\Pensionados-usach\mavenproject3-web\src\main\java\servlet\LoginServlet.java
 C:\Users\Sergio\Desktop\Pensionados-usach\mavenproject3-web\src\main\java\managebeans\tipo_beneficioController.java
-C:\Users\Sergio\Desktop\Pensionados-usach\mavenproject3-web\src\main\java\managebeans\parametrosController.java
 C:\Users\Sergio\Desktop\Pensionados-usach\mavenproject3-web\src\main\java\managebeans\patologiaController.java
 C:\Users\Sergio\Desktop\Pensionados-usach\mavenproject3-web\src\main\java\managebeans\beneficioController.java
 C:\Users\Sergio\Desktop\Pensionados-usach\mavenproject3-web\src\main\java\managebeans\medicamentoController.java
@@ -8,16 +7,13 @@ C:\Users\Sergio\Desktop\Pensionados-usach\mavenproject3-web\src\main\java\manage
 C:\Users\Sergio\Desktop\Pensionados-usach\mavenproject3-web\src\main\java\managebeans\contactoController.java
 C:\Users\Sergio\Desktop\Pensionados-usach\mavenproject3-web\src\main\java\servlet\UsuarioResource.java
 C:\Users\Sergio\Desktop\Pensionados-usach\mavenproject3-web\src\main\java\managebeans\util\JsfUtil.java
-C:\Users\Sergio\Desktop\Pensionados-usach\mavenproject3-web\src\main\java\managebeans\pagodetalleController.java
 C:\Users\Sergio\Desktop\Pensionados-usach\mavenproject3-web\src\main\java\managebeans\pensionadoController.java
 C:\Users\Sergio\Desktop\Pensionados-usach\mavenproject3-web\src\main\java\managebeans\RegionesComunas.java
-C:\Users\Sergio\Desktop\Pensionados-usach\mavenproject3-web\src\main\java\managebeans\pagoController.java
 C:\Users\Sergio\Desktop\Pensionados-usach\mavenproject3-web\src\main\java\servlet\AdminResource.java
 C:\Users\Sergio\Desktop\Pensionados-usach\mavenproject3-web\src\main\java\servlet\LogoutServlet.java
 C:\Users\Sergio\Desktop\Pensionados-usach\mavenproject3-web\src\main\java\managebeans\tipo_prestamoController.java
 C:\Users\Sergio\Desktop\Pensionados-usach\mavenproject3-web\src\main\java\managebeans\EstadoCivil.java
 C:\Users\Sergio\Desktop\Pensionados-usach\mavenproject3-web\src\main\java\managebeans\rolController.java
-C:\Users\Sergio\Desktop\Pensionados-usach\mavenproject3-web\src\main\java\managebeans\cuotaspagadasController.java
 C:\Users\Sergio\Desktop\Pensionados-usach\mavenproject3-web\src\main\java\managebeans\usuarioController.java
 C:\Users\Sergio\Desktop\Pensionados-usach\mavenproject3-web\src\main\java\managebeans\seguroController.java
 C:\Users\Sergio\Desktop\Pensionados-usach\mavenproject3-web\src\main\java\managebeans\designado_fallecimientoController.java
