@@ -11,7 +11,7 @@ import javax.ejb.Local;
 
 /**
  *
- * @author seerg
+ * @author Sergio
  */
 @Local
 public interface pensionadoFacadeLocal {

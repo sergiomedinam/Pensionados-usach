@@ -32,7 +32,29 @@ public class pensionado implements Serializable {
     
     private String email_pensionado;
     private String email_alternativo;
+
+    public Integer getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(Integer saldo) {
+        this.saldo = saldo;
+    }
+
+    public Integer getMonto_pension() {
+        return monto_pension;
+    }
+
+    public void setMonto_pension(Integer monto_pension) {
+        this.monto_pension = monto_pension;
+    }
    
+    
+    @NotNull
+    private Integer saldo = 0;
+    
+    @NotNull
+    private Integer monto_pension = 0;
     
     @NotNull
     private String rut_pensionado;
@@ -80,6 +102,30 @@ public class pensionado implements Serializable {
     
     @ManyToOne
     private beneficio beneficios;
+    
+    @ManyToOne
+    private cuotaspagadas cuotaspagadas;
+    
+    @ManyToOne
+    private pago pagos;
+
+    public cuotaspagadas getCuotaspagadas() {
+        return cuotaspagadas;
+    }
+
+    public void setCuotaspagadas(cuotaspagadas cuotaspagadas) {
+        this.cuotaspagadas = cuotaspagadas;
+    }
+
+    public pago getPagos() {
+        return pagos;
+    }
+
+    public void setPagos(pago pagos) {
+        this.pagos = pagos;
+    }
+    
+    
 
     public Date getFnacimiento() {
         return fnacimiento;

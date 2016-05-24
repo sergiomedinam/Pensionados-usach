@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="pensionadoEditDlg" widgetVar="pensionadoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditpensionadoTitle}">
+            <h:form id="pensionadoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{pensionadoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditpensionadoLabel_saldo}" for="saldo" />
+                        <p:inputText id="saldo" value="#{pensionadoController.selected.saldo}" title="#{bundle.EditpensionadoTitle_saldo}" />
+                        <p:outputLabel value="#{bundle.EditpensionadoLabel_monto_pension}" for="monto_pension" />
+                        <p:inputText id="monto_pension" value="#{pensionadoController.selected.monto_pension}" title="#{bundle.EditpensionadoTitle_monto_pension}" />
+                        <p:outputLabel value="#{bundle.EditpensionadoLabel_cuotaspagadas}" for="cuotaspagadas" />
+                        <p:selectOneMenu id="cuotaspagadas" value="#{pensionadoController.selected.cuotaspagadas}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{cuotaspagadasController.itemsAvailableSelectOne}"
+                                           var="cuotaspagadasItem"
+                                           itemValue="#{cuotaspagadasItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditpensionadoLabel_pagos}" for="pagos" />
+                        <p:selectOneMenu id="pagos" value="#{pensionadoController.selected.pagos}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{pagoController.itemsAvailableSelectOne}"
+                                           var="pagosItem"
+                                           itemValue="#{pagosItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditpensionadoLabel_fnacimiento}" for="fnacimiento" />
+                        <p:calendar id="fnacimiento" pattern="MM/dd/yyyy" value="#{pensionadoController.selected.fnacimiento}" title="#{bundle.EditpensionadoTitle_fnacimiento}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditpensionadoLabel_email_alternativo}" for="email_alternativo" />
+                        <p:inputText id="email_alternativo" value="#{pensionadoController.selected.email_alternativo}" title="#{bundle.EditpensionadoTitle_email_alternativo}" />
+                        <p:outputLabel value="#{bundle.EditpensionadoLabel_email_pensionado}" for="email_pensionado" />
+                        <p:inputText id="email_pensionado" value="#{pensionadoController.selected.email_pensionado}" title="#{bundle.EditpensionadoTitle_email_pensionado}" />
+                        <p:outputLabel value="#{bundle.EditpensionadoLabel_medicamentos}" for="medicamentos" />
+                        <p:selectOneMenu id="medicamentos" value="#{pensionadoController.selected.medicamentos}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{medicamentoController.itemsAvailableSelectOne}"
+                                           var="medicamentosItem"
+                                           itemValue="#{medicamentosItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditpensionadoLabel_prestamos}" for="prestamos" />
+                        <p:selectOneMenu id="prestamos" value="#{pensionadoController.selected.prestamos}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{prestamoController.itemsAvailableSelectOne}"
+                                           var="prestamosItem"
+                                           itemValue="#{prestamosItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditpensionadoLabel_beneficios}" for="beneficios" />
+                        <p:selectOneMenu id="beneficios" value="#{pensionadoController.selected.beneficios}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{beneficioController.itemsAvailableSelectOne}"
+                                           var="beneficiosItem"
+                                           itemValue="#{beneficiosItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditpensionadoLabel_seguros}" for="seguros" />
+                        <p:selectOneMenu id="seguros" value="#{pensionadoController.selected.seguros}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{seguroController.itemsAvailableSelectOne}"
+                                           var="segurosItem"
+                                           itemValue="#{segurosItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditpensionadoLabel_contactos}" for="contactos" />
+                        <p:selectOneMenu id="contactos" value="#{pensionadoController.selected.contactos}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{contactoController.itemsAvailableSelectOne}"
+                                           var="contactosItem"
+                                           itemValue="#{contactosItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditpensionadoLabel_otros_datos}" for="otros_datos" />
+                        <p:selectOneMenu id="otros_datos" value="#{pensionadoController.selected.otros_datos}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{otros_datosController.itemsAvailableSelectOne}"
+                                           var="otros_datosItem"
+                                           itemValue="#{otros_datosItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditpensionadoLabel_patologias}" for="patologias" />
+                        <p:selectOneMenu id="patologias" value="#{pensionadoController.selected.patologias}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{patologiaController.itemsAvailableSelectOne}"
+                                           var="patologiasItem"
+                                           itemValue="#{patologiasItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditpensionadoLabel_rut_pensionado}" for="rut_pensionado" />
+                        <p:inputText id="rut_pensionado" value="#{pensionadoController.selected.rut_pensionado}" title="#{bundle.EditpensionadoTitle_rut_pensionado}" />
+                        <p:outputLabel value="#{bundle.EditpensionadoLabel_nombre_pensionado}" for="nombre_pensionado" />
+                        <p:inputText id="nombre_pensionado" value="#{pensionadoController.selected.nombre_pensionado}" title="#{bundle.EditpensionadoTitle_nombre_pensionado}" />
+                        <p:outputLabel value="#{bundle.EditpensionadoLabel_apellido_p_pensionado}" for="apellido_p_pensionado" />
+                        <p:inputText id="apellido_p_pensionado" value="#{pensionadoController.selected.apellido_p_pensionado}" title="#{bundle.EditpensionadoTitle_apellido_p_pensionado}" />
+                        <p:outputLabel value="#{bundle.EditpensionadoLabel_apellido_m_pensionado}" for="apellido_m_pensionado" />
+                        <p:inputText id="apellido_m_pensionado" value="#{pensionadoController.selected.apellido_m_pensionado}" title="#{bundle.EditpensionadoTitle_apellido_m_pensionado}" />
+                        <p:outputLabel value="#{bundle.EditpensionadoLabel_fecha_nacimiento}" for="fecha_nacimiento" />
+                        <p:inputText id="fecha_nacimiento" value="#{pensionadoController.selected.fecha_nacimiento}" title="#{bundle.EditpensionadoTitle_fecha_nacimiento}" />
+                        <p:outputLabel value="#{bundle.EditpensionadoLabel_estado_civil}" for="estado_civil" />
+                        <p:inputText id="estado_civil" value="#{pensionadoController.selected.estado_civil}" title="#{bundle.EditpensionadoTitle_estado_civil}" />
+                        <p:outputLabel value="#{bundle.EditpensionadoLabel_direccion}" for="direccion" />
+                        <p:inputText id="direccion" value="#{pensionadoController.selected.direccion}" title="#{bundle.EditpensionadoTitle_direccion}" />
+                        <p:outputLabel value="#{bundle.EditpensionadoLabel_comuna}" for="comuna" />
+                        <p:inputText id="comuna" value="#{pensionadoController.selected.comuna}" title="#{bundle.EditpensionadoTitle_comuna}" />
+                        <p:outputLabel value="#{bundle.EditpensionadoLabel_region}" for="region" />
+                        <p:inputText id="region" value="#{pensionadoController.selected.region}" title="#{bundle.EditpensionadoTitle_region}" />
+                        <p:outputLabel value="#{bundle.EditpensionadoLabel_telefono_fijo}" for="telefono_fijo" />
+                        <p:inputText id="telefono_fijo" value="#{pensionadoController.selected.telefono_fijo}" title="#{bundle.EditpensionadoTitle_telefono_fijo}" />
+                        <p:outputLabel value="#{bundle.EditpensionadoLabel_celular}" for="celular" />
+                        <p:inputText id="celular" value="#{pensionadoController.selected.celular}" title="#{bundle.EditpensionadoTitle_celular}" />
+                        <p:outputLabel value="#{bundle.EditpensionadoLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{pensionadoController.selected.id}" title="#{bundle.EditpensionadoTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{pensionadoController.update}" value="#{bundle.Save}" update="display,:pensionadoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'pensionadoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="pensionadoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
