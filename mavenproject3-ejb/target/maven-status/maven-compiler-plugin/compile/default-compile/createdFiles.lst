@@ -13,6 +13,7 @@ sessionsbeans\cuotaspagadasFacade.class
 entities\tipo_beneficio_.class
 entities\pago_.class
 entities\parametros_.class
+sessionsbeans\cargasFacadeLocal.class
 sessionsbeans\tipo_prestamoFacadeLocal.class
 entities\seguro.class
 sessionsbeans\prestamoFacadeLocal.class
@@ -40,6 +41,7 @@ entities\cuotaspagadas.class
 entities\otros_datos.class
 entities\rol.class
 entities\medicamento_.class
+sessionsbeans\cargasFacade.class
 entities\rol_.class
 sessionsbeans\AbstractFacade.class
 sessionsbeans\pagodetalleFacade.class
@@ -61,9 +63,11 @@ sessionsbeans\tipo_prestamoFacade.class
 sessionsbeans\designado_fallecimientoFacadeLocal.class
 sessionsbeans\patologiaFacadeLocal.class
 entities\tipo_beneficio.class
+entities\cargas.class
 sessionsbeans\contactoFacade.class
 sessionsbeans\otros_datosFacade.class
 entities\otros_datos_.class
 sessionsbeans\patologiaFacade.class
 entities\usuario.class
+entities\cargas_.class
 entities\prestamo_.class
