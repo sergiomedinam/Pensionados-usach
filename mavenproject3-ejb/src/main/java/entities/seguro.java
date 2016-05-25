@@ -27,7 +27,6 @@ public class seguro implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "id_seguro")
     private Long id;
     
     @NotNull(message = "Debe tener un nombre")

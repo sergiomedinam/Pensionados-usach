@@ -32,7 +32,6 @@ public class pensionado implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "id_pensionado")
     private Long id;
     
     private String email_pensionado;
