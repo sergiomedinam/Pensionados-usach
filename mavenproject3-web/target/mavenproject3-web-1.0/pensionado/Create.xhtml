@@ -39,7 +39,7 @@
                         
                         
                         <p:outputLabel value="#{bundle.CreatepensionadoLabel_estado_civil}" for="estado_civil" />                        
-                        <p:selectOneMenu id="estado_civil" value="#{pensionadoController.selected.estado_civil}" style="width:155px" >
+                        <p:selectOneMenu required="true" requiredMessage="Se necesita un estado civil" id="estado_civil"  value="#{pensionadoController.selected.estado_civil}" style="width:155px" >
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{estadoCivil.estadosCiviles}" />
                         </p:selectOneMenu>
