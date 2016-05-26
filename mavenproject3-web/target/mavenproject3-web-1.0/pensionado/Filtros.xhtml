@@ -21,13 +21,24 @@
                 <p:menuitem value="Inicio" url="/" />
                 <p:menuitem value="Filtros" url="/faces/pensionado/Filtros.xhtml" />
             </p:breadCrumb>
-                <section class="content-header">
+                 <section class="content-header">
                     <h1>
                       Funcionarios Pensionados       
-                      <small>Panel de información</small>
+                      <small>Panel de información</small> <a href="#demo" data-toggle="collapse" class="btn btn-info">Informacion</a>
+
                     </h1>
+                  
+                    <div id="demo" class=" collapse">
+                          <br/>
+                         <div class="panel panel-default">
+                        
+                             <div class="panel-footer"> <b>¿Que hacer aqui?</b> En esta seccion del sistema es posible buscar por comunas y regiones a los pensionados.</div>
+                        </div>
+                    </div>
                     
                   </section>
+             <br/>
+    
             
             <h:form id="pensionadoListForm">
                 <p:panel header="#{bundle.ListpensionadoTitle}">

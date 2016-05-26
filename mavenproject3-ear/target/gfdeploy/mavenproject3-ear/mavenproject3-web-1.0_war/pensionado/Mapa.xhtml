@@ -25,14 +25,23 @@
                 <p:menuitem value="Inicio" url="/" />
                 <p:menuitem value="Mapa de ubicaciones" url="/faces/pensionado/Mapa.xhtml" />
                 </p:breadCrumb>
-                <section class="content-header">
+                 <section class="content-header">
                     <h1>
                       Ubicación de los Pensionados  
-                      <small>Panel de información</small>
+                      <small>Panel de información</small> <a href="#demo" data-toggle="collapse" class="btn btn-info">Informacion</a>
+
                     </h1>
+                  
+                    <div id="demo" class=" collapse">
+                          <br/>
+                         <div class="panel panel-default">
+                        
+                             <div class="panel-footer"> <b>¿Que hacer aqui?</b> En esta seccion del sistema es posible conocer la cantidad de pensionados por comunas y regiones de nuestro país.</div>
+                        </div>
+                    </div>
                     
                   </section>
-    
+             <br/>
     
     <div class="center" id="map" style="width: 700px; height: 500px"></div>
         <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>

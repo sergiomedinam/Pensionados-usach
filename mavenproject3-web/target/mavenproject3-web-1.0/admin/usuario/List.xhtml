@@ -24,11 +24,20 @@
                 <section class="content-header">
                     <h1>
                       Usuarios del Sistema      
-                      <small>Panel de administrador</small>
+                      <small>Panel de administrador</small> <a href="#demo" data-toggle="collapse" class="btn btn-info">Informacion</a>
+
                     </h1>
+                  
+                    <div id="demo" class=" collapse">
+                          <br/>
+                         <div class="panel panel-default">
+                        
+                             <div class="panel-footer"> <b>¿Que hacer aqui?</b> En esta seccion del sistema es posible agregar nuevos usuarios que puedan interactuar con el sistema.</div>
+                        </div>
+                    </div>
                     
                   </section>
-            
+             <br/>
             <h:form id="usuarioListForm">
                 <p:panel header="#{bundle.ListusuarioTitle}">
                     <p:dataTable id="datalist" value="#{usuarioController.items}" var="item"
