@@ -27,24 +27,36 @@
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                        <p:column>
+                        <p:column filterBy="#{item.pensionado.rut_pensionado}"  filterStyle="width:200px;" id="rut" filterMatchMode="contains" sortBy="#{item.pensionado.rut_pensionado}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListcuotaspagadasTitle_pensionado}"/>
+                                <p:watermark for="rut" value="Buscar Rut (con puntos y guión)" />
                             </f:facet>
                             <h:outputText value="#{item.pensionado.rut_pensionado}"/>
                         </p:column>
-                        <p:column>
+                        <p:column filterBy="#{item.pensionado.nombre_pensionado} #{item.pensionado.nombre_pensionado.toLowerCase()}
+                                  #{item.pensionado.apellido_p_pensionado} #{item.pensionado.apellido_p_pensionado.toLowerCase()}
+                                            #{item.pensionado.apellido_m_pensionado} #{item.pensionado.apellido_m_pensionado.toLowerCase()}"  
+                                  filterStyle="width:200px;" 
+                                  id="nombre"
+                                  filterMatchMode="contains" 
+                                  sortBy="#{item.pensionado.nombre_pensionado}
+                                          #{item.pensionado.apellido_p_pensionado}
+                                          #{item.pensionado.apellido_m_pensionado}"
+                                >
                             <f:facet name="header">
                                 <h:outputText value="Nombre"/>
+                                <p:watermark for="nombre" value="Buscar Nombre" />
                             </f:facet>
                             <h:outputText value="#{item.pensionado.nombre_pensionado}
                                                  #{item.pensionado.apellido_p_pensionado}
                                                  #{item.pensionado.apellido_m_pensionado}"/>
                         </p:column>
                         
-                        <p:column>
+                        <p:column filterBy="#{item.ano}"  filterStyle="width:200px;" id="año" filterMatchMode="contains" sortBy="#{item.ano}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListcuotaspagadasTitle_ano}"/>
+                                <p:watermark for="año" value="Buscar Año" />
                             </f:facet>
                             <h:outputText value="#{item.ano}"/>
                         </p:column>
