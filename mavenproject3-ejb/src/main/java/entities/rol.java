@@ -68,7 +68,9 @@ public class rol implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.rol[ id=" + id + " ]";
+        return "entities.rol[ " + "id=" + id + " ]";
     }
+
+    
     
 }

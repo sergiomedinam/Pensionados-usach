@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <ui:composition template="/template.xhtml">
 
@@ -14,7 +15,30 @@
         </ui:define>
 
         <ui:define name="body">
+            
+            <p:breadCrumb > 
+                <p:menuitem value="Inicio" url="#" />
+                <p:menuitem value="Inicio" url="/" />
+                <p:menuitem value="Pensionados" url="/faces/pensionado/List.xhtml" />
+            </p:breadCrumb>
+                <section class="content-header">
+                    <h1>
+                      Funcionarios Pensionados  
+                      <small>Panel de administrador</small> <a href="#demo" data-toggle="collapse" class="btn btn-info">Informacion</a>
+
+                    </h1>
+                  
+                    <div id="demo" class=" collapse">
+                          <br/>
+                         <div class="panel panel-default">
+                        
+                             <div class="panel-footer"> <b>¿Que hacer aqui?</b> En esta seccion del sistema es posible agregar nuevos pensionados, modificar o deshabilitar los actuales o simplemente saber más sobre ellos.</div>
+                        </div>
+                    </div>
+                  </section>
+            <br/>
             <h:form id="pensionadoListForm">
+                
                 <p:panel header="#{bundle.ListpensionadoTitle}">
                     <p:dataTable id="datalist" value="#{pensionadoController.items}" var="item"
                                  selectionMode="single" selection="#{pensionadoController.selected}"
@@ -22,130 +46,61 @@
                                  rowKey="#{item.id}"
                                  rows="10"
                                  rowsPerPageTemplate="10,20,30,40,50"
+                                 emptyMessage="No hay resultados."
                                  >
+                        <c:set var="name_rol" value="#{usuarioController.getTipo(request.userPrincipal.name)}"/>
+                        <c:set var="rol" value="observador"/>
+                        <c:choose>
+                            <c:when test="${ name_rol != rol }">
+                                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+                            </c:when>    
+                            <c:otherwise>
+                                <p:ajax event="rowSelect"   update="viewButton"/>
+                                <p:ajax event="rowUnselect" update="viewButton"/>
+                            </c:otherwise>
+                        </c:choose>
+                        
+                        <p:column filterBy="#{item.rut_pensionado}" filterStyle="width:200px;" id="rut" headerText="Rut pensionado" filterMatchMode="contains" sortBy="#{item.rut_pensionado}">
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListpensionadoTitle_rut_pensionado}"/>
+                                    <p:watermark for="rut" value="Buscar Rut (con puntos y guión)" />
 
-                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
-                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
-
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_medicamentos}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.medicamentos}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_prestamos}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.prestamos}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_beneficios}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.beneficios}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_seguros}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.seguros}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_contactos}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.contactos}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_otros_datos}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.otros_datos}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_patologias}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.patologias}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_rut_pensionado}"/>
-                            </f:facet>
+                                </f:facet>
                             <h:outputText value="#{item.rut_pensionado}"/>
                         </p:column>
-                        <p:column>
+                        
+                        <p:column filterBy="#{item.nombre_pensionado.toLowerCase()} #{item.nombre_pensionado}" filterStyle="width:200px;" id="nombre" headerText="Nombre pensionado" filterMatchMode="contains" sortBy="#{item.nombre_pensionado}">
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_nombre_pensionado}"/>
+                                <h:outputText value="Nombres"/>
+                                <p:watermark for="nombre" value="Buscar Nombre" />
+
                             </f:facet>
-                            <h:outputText value="#{item.nombre_pensionado}"/>
+                            <h:outputText value="#{item.nombre_pensionado} "/>
                         </p:column>
-                        <p:column>
+                       
+                        <p:column filterBy="#{item.apellido_p_pensionado} #{item.apellido_p_pensionado.toLowerCase()} #{item.apellido_m_pensionado}  #{item.apellido_m_pensionado.toLowerCase()}" headerText="Apellido pensionado" id="apellido" filterStyle="width:200px;" filterMatchMode="contains" sortBy="#{item.apellido_p_pensionado} #{item.apellido_m_pensionado}">
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_apellido_p_pensionado}"/>
+                                <h:outputText value="Apellidos"/>
+                                <p:watermark for="apellido" value="Buscar Apellido" />
                             </f:facet>
-                            <h:outputText value="#{item.apellido_p_pensionado}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_apellido_m_pensionado}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.apellido_m_pensionado}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_fecha_nacimiento}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.fecha_nacimiento}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_estado_civil}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.estado_civil}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_direccion}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.direccion}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_comuna}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.comuna}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_region}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.region}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_telefono_fijo}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.telefono_fijo}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_celular}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.celular}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_id}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.id}"/>
+                            <h:outputText value="#{item.apellido_p_pensionado} #{item.apellido_m_pensionado}"/>
                         </p:column>
                         <f:facet name="footer">
-                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{pensionadoController.prepareCreate}" update=":pensionadoCreateForm" oncomplete="PF('pensionadoCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":pensionadoViewForm" oncomplete="PF('pensionadoViewDialog').show()" disabled="#{empty pensionadoController.selected}"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":pensionadoEditForm" oncomplete="PF('pensionadoEditDialog').show()" disabled="#{empty pensionadoController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{pensionadoController.destroy}" update=":growl,datalist" disabled="#{empty pensionadoController.selected}"/>
+                            <c:set var="name_rol" value="#{usuarioController.getTipo(request.userPrincipal.name)}"/>
+                            <c:set var="rol" value="observador"/> 
+                            <c:if test="${ name_rol != rol }">   
+                                <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{pensionadoController.prepareCreate}" update=":pensionadoCreateForm" oncomplete="PF('pensionadoCreateDialog').show()"/>
+                                <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":pensionadoEditForm" oncomplete="PF('pensionadoEditDialog').show()" disabled="#{empty pensionadoController.selected}"/>
+                                <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{pensionadoController.destroy}" update=":growl,datalist" disabled="#{empty pensionadoController.selected}">
+                                <p:confirm header="Eliminar pensionado" message="Estas seguro?" icon="ui-icon-alert" />
+                                </p:commandButton>
+                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                    <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                </p:confirmDialog>
+                            </c:if>
                         </f:facet>
                     </p:dataTable>
                 </p:panel>

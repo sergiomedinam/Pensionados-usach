@@ -7,13 +7,20 @@ package entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import static javax.persistence.TemporalType.DATE;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -28,26 +35,53 @@ public class pensionado implements Serializable {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
     
-    @NotNull(message= "Debe ingresar el rut")
-    private Long rut_pensionado;
+    private String email_pensionado;
+    private String email_alternativo;
+
+    public Integer getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(Integer saldo) {
+        this.saldo = saldo;
+    }
+
+    public Integer getMonto_pension() {
+        return monto_pension;
+    }
+
+    public void setMonto_pension(Integer monto_pension) {
+        this.monto_pension = monto_pension;
+    }
+   
     
-    @NotNull(message= "Debe ingresar el nombre")
+    @NotNull
+    private Integer saldo = 0;
+    
+    @NotNull
+    private Integer monto_pension = 0;
+    
+    @NotNull
+    private String rut_pensionado;
+    
+    @NotNull
     private String nombre_pensionado;
     
-    @NotNull(message= "Debe ingresar el apellido")
+    @NotNull
     private String apellido_p_pensionado;
     private String apellido_m_pensionado;
     
-    @NotNull(message= "Debe ingresar la fecha de nacimiento")
+    @NotNull
     private String fecha_nacimiento;
     
-    @NotNull(message= "Debe ingresar el estado civil")
+    
+    @NotNull
     private String estado_civil;
     
-    @NotNull(message= "Debe ingresar la dirección")
+    @NotNull
     private String direccion;
     
-    @NotNull(message= "Debe ingresar la comuna")
+    @NotNull
     private String comuna;
     private String region;
     private Long telefono_fijo;
@@ -56,8 +90,8 @@ public class pensionado implements Serializable {
     @ManyToOne
     private patologia patologias;
    
-    @ManyToOne
-    private seguro seguros;
+    @OneToMany(mappedBy = "pensionado")
+    private Set<cargas> cargas = new HashSet<cargas>();
     
     @ManyToOne
     private contacto contactos;
@@ -71,10 +105,74 @@ public class pensionado implements Serializable {
     @ManyToOne
     private beneficio beneficios;
     
+    @OneToMany
+    private List<cuotaspagadas> cuotaspagadas;
     
+    @OneToMany(mappedBy = "pensionado")
+    private Set<pensionadoprestamo> pensionadoprestamo = new HashSet<pensionadoprestamo>();
+    
+    @ManyToOne
+    private pago pagos;
+    
+    
+
+    public List<cuotaspagadas> getCuotaspagadas() {
+        return cuotaspagadas;
+    }
+
+    public void setCuotaspagadas(List<cuotaspagadas> cuotaspagadas) {
+        this.cuotaspagadas = cuotaspagadas;
+    }
+    
+     public void addCuotaspagadas(cuotaspagadas cuotaspagadas) {
+        this.cuotaspagadas.add(cuotaspagadas);
+    }
+
+    public Set<cargas> getCargas() {
+        return cargas;
+    }
+
+    public void setCargas(Set<cargas> cargas) {
+        this.cargas = cargas;
+    }
+
+    public void addCarga(cargas carga) {
+        this.cargas.add(carga);
+    } 
+    
+
+    public pago getPagos() {
+        return pagos;
+    }
+
+    public void setPagos(pago pagos) {
+        this.pagos = pagos;
+    }
+    
+    
+
+
     
     @OneToOne
     private otros_datos otros_datos;
+
+    public String getEmail_alternativo() {
+        return email_alternativo;
+    }
+
+    public void setEmail_alternativo(String email_alternativo) {
+        this.email_alternativo = email_alternativo.toUpperCase();
+    }
+    
+    
+    
+     public String getEmail_pensionado() {
+        return email_pensionado;
+    }
+
+    public void setEmail_pensionado(String email_pensionado) {
+        this.email_pensionado = email_pensionado.toUpperCase();
+    }
 
     public medicamento getMedicamentos() {
         return medicamentos;
@@ -100,15 +198,7 @@ public class pensionado implements Serializable {
         this.beneficios = beneficios;
     }
     
-    
-
-    public seguro getSeguros() {
-        return seguros;
-    }
-
-    public void setSeguros(seguro seguros) {
-        this.seguros = seguros;
-    }
+ 
 
     public contacto getContactos() {
         return contactos;
@@ -135,22 +225,23 @@ public class pensionado implements Serializable {
     public void setPatologias(patologia patologias) {
         this.patologias = patologias;
     }
-    
-    
-    public Long getRut_pensionado() {
+
+    public String getRut_pensionado() {
         return rut_pensionado;
     }
 
-    public void setRut_pensionado(Long rut_pensionado) {
+    public void setRut_pensionado(String rut_pensionado) {
         this.rut_pensionado = rut_pensionado;
     }
-
+    
+    
+   
     public String getNombre_pensionado() {
         return nombre_pensionado;
     }
 
     public void setNombre_pensionado(String nombre_pensionado) {
-        this.nombre_pensionado = nombre_pensionado;
+        this.nombre_pensionado = nombre_pensionado.toUpperCase();
     }
 
     public String getApellido_p_pensionado() {
@@ -158,7 +249,7 @@ public class pensionado implements Serializable {
     }
 
     public void setApellido_p_pensionado(String apellido_p_pensionado) {
-        this.apellido_p_pensionado = apellido_p_pensionado;
+        this.apellido_p_pensionado = apellido_p_pensionado.toUpperCase();
     }
 
     public String getApellido_m_pensionado() {
@@ -166,7 +257,7 @@ public class pensionado implements Serializable {
     }
 
     public void setApellido_m_pensionado(String apellido_m_pensionado) {
-        this.apellido_m_pensionado = apellido_m_pensionado;
+        this.apellido_m_pensionado = apellido_m_pensionado.toUpperCase();
     }
 
     public String getFecha_nacimiento() {
@@ -184,7 +275,7 @@ public class pensionado implements Serializable {
     }
 
     public void setEstado_civil(String estado_civil) {
-        this.estado_civil = estado_civil;
+        this.estado_civil = estado_civil.toUpperCase();
     }
 
     public String getDireccion() {
@@ -192,7 +283,7 @@ public class pensionado implements Serializable {
     }
 
     public void setDireccion(String direccion) {
-        this.direccion = direccion;
+        this.direccion = direccion.toUpperCase();
     }
 
     public String getComuna() {
@@ -200,7 +291,7 @@ public class pensionado implements Serializable {
     }
 
     public void setComuna(String comuna) {
-        this.comuna = comuna;
+        this.comuna = comuna.toUpperCase();
     }
 
     public String getRegion() {
@@ -208,7 +299,7 @@ public class pensionado implements Serializable {
     }
 
     public void setRegion(String region) {
-        this.region = region;
+        this.region = region.toUpperCase();
     }
 
     public Long getTelefono_fijo() {

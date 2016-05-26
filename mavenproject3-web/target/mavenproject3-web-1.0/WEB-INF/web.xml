@@ -2,8 +2,17 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <context-param>
         <param-name>javax.faces.PROJECT_STAGE</param-name>
-        <param-value>Development</param-value>
+        <param-value>Production</param-value>
     </context-param>
+    <context-param>
+    <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+    <param-value>client</param-value>
+</context-param>
+
+        <context-param>  
+        <param-name>primefaces.THEME</param-name>  
+        <param-value>excite-bike</param-value>  
+    </context-param>  
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -19,6 +28,106 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
+        <!--<welcome-file>LoginServlet</welcome-file>-->
         <welcome-file>faces/index.xhtml</welcome-file>
     </welcome-file-list>
+    <error-page>
+        <error-code>403</error-code>
+        <location>/faces/403.xhtml</location>
+    </error-page>
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>securityRealm</realm-name>
+        <form-login-config>
+            <form-login-page>/faces/login.xhtml</form-login-page>
+            <form-error-page>/faces/WrongCredentials.xhtml</form-error-page>
+        </form-login-config>
+    </login-config>
+    <security-constraint>
+        <display-name>Admin Pages</display-name>
+        <web-resource-collection>
+            <web-resource-name>Protected Admin Area</web-resource-name>
+            <description/>
+            <url-pattern>/faces/admin/*</url-pattern>
+            <url-pattern>/admin/*</url-pattern>
+<!--            <url-pattern>/faces/resources/*</url-pattern>
+            <url-pattern>/resources/*</url-pattern>-->
+            <http-method>GET</http-method>
+            <http-method>PUT</http-method>
+            <http-method>HEAD</http-method>
+            <http-method>POST</http-method>
+            <http-method>OPTIONS</http-method>
+            <http-method>TRACE</http-method>
+            <http-method>DELETE</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>admin</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+        <security-constraint>
+        <display-name>General Pages</display-name>
+        <web-resource-collection>
+            <web-resource-name>Protected General Area</web-resource-name>
+            <description></description>
+            <url-pattern>/faces/beneficio/*</url-pattern> 
+            <url-pattern>/faces/contacto/*</url-pattern> 
+            <url-pattern>/faces/designado_fallecimiento/*</url-pattern> 
+            <url-pattern>/faces/medicamento/*</url-pattern> 
+            <url-pattern>/faces/otros_datos/*</url-pattern> 
+            <url-pattern>/faces/patologia/*</url-pattern> 
+            <url-pattern>/faces/pensionado/*</url-pattern> 
+            <url-pattern>/faces/prestamo/*</url-pattern> 
+            <url-pattern>/faces/resources/*</url-pattern> 
+            <url-pattern>/faces/seguro/*</url-pattern> 
+            <url-pattern>/faces/tipo_beneficio/*</url-pattern> 
+            <url-pattern>/faces/tipo_prestamo/*</url-pattern> 
+            <url-pattern>/beneficio/*</url-pattern>
+            <url-pattern>/contacto/*</url-pattern>
+            <url-pattern>/designado_fallecimiento/*</url-pattern>
+            <url-pattern>/medicamento/*</url-pattern>
+            <url-pattern>/otros_datos/*</url-pattern>
+            <url-pattern>/patologia/*</url-pattern>
+            <url-pattern>/pensionado/*</url-pattern>
+            <url-pattern>/prestamo/*</url-pattern>
+            <url-pattern>/seguro/*</url-pattern>
+            <url-pattern>/tipo_beneficio/*</url-pattern>
+            <url-pattern>/tipo_prestamo/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+            <http-method>HEAD</http-method>
+            <http-method>PUT</http-method>
+            <http-method>OPTIONS</http-method>
+            <http-method>TRACE</http-method>
+            <http-method>DELETE</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>admin</role-name>
+            <role-name>usuario</role-name>
+            <role-name>observador</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    <security-constraint>
+        <display-name>All Access</display-name>
+        <web-resource-collection>
+            <web-resource-name>None Protected User Area</web-resource-name>
+            <description/>
+            <url-pattern>/faces/*</url-pattern>
+            <url-pattern>/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>HEAD</http-method>
+            <http-method>OPTIONS</http-method>
+            <http-method>TRACE</http-method>
+        </web-resource-collection>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
 </web-app>

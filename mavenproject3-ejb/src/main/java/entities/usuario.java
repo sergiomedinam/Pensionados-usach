@@ -26,7 +26,8 @@ public class usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
-    
+       
+    private String email_usuario;
     
     
     @NotNull(message = "debe ingresar nombre")
@@ -36,18 +37,23 @@ public class usuario implements Serializable {
     private String apellido;
     
     @NotNull(message = "debe ingresar rut")
-    private Long rut;
+    private String rut;
     
     @NotNull(message = "debe ingresar contraseña")
     private String contrasena;
-    
-    @NotNull(message = "Debe tener un rol")
-    private String rol;
-    
     @NotNull(message = "debe tener un rol")
     @OneToOne
     private rol tipo_usuario;
 
+    public String getEmail_usuario() {
+        return email_usuario;
+    }
+
+    public void setEmail_usuario(String email_usuario) {
+        this.email_usuario = email_usuario.toUpperCase();
+    }
+
+    
     public rol getTipo_usuario() {
         return tipo_usuario;
     }
@@ -55,25 +61,13 @@ public class usuario implements Serializable {
     public void setTipo_usuario(rol tipo_usuario) {
         this.tipo_usuario = tipo_usuario;
     }
-    
-    
-
-    public String getRol() {
-        return rol;
-    }
-
-    public void setRol(String rol) {
-        this.rol = rol;
-    }
-    
-    
 
     public String getNombre() {
         return nombre;
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        this.nombre = nombre.toUpperCase();
     }
     
     
@@ -83,16 +77,19 @@ public class usuario implements Serializable {
     }
 
     public void setApellido(String apellido) {
-        this.apellido = apellido;
+        this.apellido = apellido.toUpperCase();
     }
 
-    public Long getRut() {
+    public String getRut() {
         return rut;
     }
 
-    public void setRut(Long rut) {
+    public void setRut(String rut) {
         this.rut = rut;
     }
+
+   
+    
 
     public String getContrasena() {
         return contrasena;
@@ -134,7 +131,9 @@ public class usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.usuario[ id=" + id + " ]";
+        return "entities.usuario[ " + "id=" + id + " ]";
     }
+
+    
     
 }

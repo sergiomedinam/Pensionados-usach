@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="cuotaspagadasCreateDlg" widgetVar="cuotaspagadasCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatecuotaspagadasTitle}">
+            <h:form id="cuotaspagadasCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cuotaspagadasController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreatecuotaspagadasLabel_pensionado}" for="pensionado" />
+                        <p:selectOneMenu id="pensionado" filter="true" filterMatchMode="contains"  value="#{cuotaspagadasController.selected.pensionado}" style="width:155px">
+                            <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{pensionadoController.itemsAvailableSelectOne}"
+                                           var="pensionadoItem"
+                                           itemValue="#{pensionadoItem}"
+                                           itemLabel="#{pensionadoItem.rut_pensionado}"/>
+                        </p:selectOneMenu>
+                        
+                        <p:outputLabel value="#{bundle.CreatecuotaspagadasLabel_ano}" for="ano" />
+                        <p:selectOneMenu  id="ano" required="true" requiredMessage="Se necesita un año"  value="#{cuotaspagadasController.selected.ano}" style="width:155px">
+                            <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{añosCuotas.añosCuotas}" />
+                        </p:selectOneMenu>
+                        
+                        <p:outputLabel value="#{bundle.CreatecuotaspagadasLabel_cuotas}" for="cuotas" />
+                       
+                         <p:selectOneMenu  id="cuotas" value="#{cuotaspagadasController.selected.cuotas}" style="width:155px">
+                            <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{añosCuotas.numeroCuotas}" />
+                        </p:selectOneMenu>
+                        
+                        
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cuotaspagadasController.create}" value="#{bundle.Save}" update="display,:cuotaspagadasListForm:datalist,:growl" oncomplete="handleSubmit(args,'cuotaspagadasCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="cuotaspagadasCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

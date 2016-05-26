@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListcuotaspagadasTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <p:breadCrumb > 
+                <p:menuitem value="Inicio" url="#" />
+                <p:menuitem value="Inicio" url="/" />
+                <p:menuitem value="Pensionados" url="/faces/pensionado/List.xhtml" />
+                <p:menuitem value="Cuotas Pagadas" url="/faces/cuotaspagadas/List.xhtml" />
+            </p:breadCrumb>
+                <section class="content-header">
+                    <h1>
+                      Cuotas Pagadas  
+                      <small>Panel de administrador</small> <a href="#demo" data-toggle="collapse" class="btn btn-info">Informacion</a>
+
+                    </h1>
+                  
+                    <div id="demo" class=" collapse">
+                          <br/>
+                         <div class="panel panel-default">
+                        
+                             <div class="panel-footer"> <b>¿Que hacer aqui?</b> En esta seccion del sistema es posible agregar las cuotas pagadas por pensionados, además de modificar éstas.</div>
+                        </div>
+                    </div>
+                  </section>
+            <br/>
+            
+            <h:form id="cuotaspagadasListForm">
+                <p:panel header="#{bundle.ListcuotaspagadasTitle}">
+                    <p:dataTable id="datalist" value="#{cuotaspagadasController.items}" var="item"
+                                 selectionMode="single" selection="#{cuotaspagadasController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.id}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column filterBy="#{item.pensionado.rut_pensionado}"  filterStyle="width:200px;" id="rut" filterMatchMode="contains" sortBy="#{item.pensionado.rut_pensionado}">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListcuotaspagadasTitle_pensionado}"/>
+                                <p:watermark for="rut" value="Buscar Rut (con puntos y guión)" />
+                            </f:facet>
+                            <h:outputText value="#{item.pensionado.rut_pensionado}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.pensionado.nombre_pensionado} #{item.pensionado.nombre_pensionado.toLowerCase()}
+                                  #{item.pensionado.apellido_p_pensionado} #{item.pensionado.apellido_p_pensionado.toLowerCase()}
+                                            #{item.pensionado.apellido_m_pensionado} #{item.pensionado.apellido_m_pensionado.toLowerCase()}"  
+                                  filterStyle="width:200px;" 
+                                  id="nombre"
+                                  filterMatchMode="contains" 
+                                  sortBy="#{item.pensionado.nombre_pensionado}
+                                          #{item.pensionado.apellido_p_pensionado}
+                                          #{item.pensionado.apellido_m_pensionado}"
+                                >
+                            <f:facet name="header">
+                                <h:outputText value="Nombre"/>
+                                <p:watermark for="nombre" value="Buscar Nombre" />
+                            </f:facet>
+                            <h:outputText value="#{item.pensionado.nombre_pensionado}
+                                                 #{item.pensionado.apellido_p_pensionado}
+                                                 #{item.pensionado.apellido_m_pensionado}"/>
+                        </p:column>
+                        
+                        <p:column filterBy="#{item.ano}"  filterStyle="width:200px;" id="año" filterMatchMode="contains" sortBy="#{item.ano}">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListcuotaspagadasTitle_ano}"/>
+                                <p:watermark for="año" value="Buscar Año" />
+                            </f:facet>
+                            <h:outputText value="#{item.ano}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListcuotaspagadasTitle_cuotas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cuotas}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{cuotaspagadasController.prepareCreate}" update=":cuotaspagadasCreateForm" oncomplete="PF('cuotaspagadasCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":cuotaspagadasViewForm" oncomplete="PF('cuotaspagadasViewDialog').show()" disabled="#{empty cuotaspagadasController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":cuotaspagadasEditForm" oncomplete="PF('cuotaspagadasEditDialog').show()" disabled="#{empty cuotaspagadasController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{cuotaspagadasController.destroy}" update=":growl,datalist" disabled="#{empty cuotaspagadasController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

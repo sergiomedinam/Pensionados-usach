@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="pagodetalleEditDlg" widgetVar="pagodetalleEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditpagodetalleTitle}">
+            <h:form id="pagodetalleEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{pagodetalleController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditpagodetalleLabel_seguro_catastrofico}" for="seguro_catastrofico" />
+                        <p:selectBooleanCheckbox id="seguro_catastrofico" value="#{pagodetalleController.selected.seguro_catastrofico}" />
+                        <p:outputLabel value="#{bundle.EditpagodetalleLabel_seguro_vida}" for="seguro_vida" />
+                        <p:selectBooleanCheckbox id="seguro_vida" value="#{pagodetalleController.selected.seguro_vida}" />
+                        <p:outputLabel value="#{bundle.EditpagodetalleLabel_seguro_hospitalario}" for="seguro_hospitalario" />
+                        <p:selectBooleanCheckbox id="seguro_hospitalario" value="#{pagodetalleController.selected.seguro_hospitalario}" />
+                        <p:outputLabel value="#{bundle.EditpagodetalleLabel_seguro_ucm}" for="seguro_ucm" />
+                        <p:selectBooleanCheckbox id="seguro_ucm" value="#{pagodetalleController.selected.seguro_ucm}" />
+                        <p:outputLabel value="#{bundle.EditpagodetalleLabel_seguro_paux}" for="seguro_paux" />
+                        <p:selectBooleanCheckbox id="seguro_paux" value="#{pagodetalleController.selected.seguro_paux}" />
+                        <p:outputLabel value="#{bundle.EditpagodetalleLabel_seguro_pmed}" for="seguro_pmed" />
+                        <p:selectBooleanCheckbox id="seguro_pmed" value="#{pagodetalleController.selected.seguro_pmed}" />
+                        <p:outputLabel value="#{bundle.EditpagodetalleLabel_seguro_jardin}" for="seguro_jardin" />
+                        <p:selectBooleanCheckbox id="seguro_jardin" value="#{pagodetalleController.selected.seguro_jardin}" />
+                        <p:outputLabel value="#{bundle.EditpagodetalleLabel_aportes}" for="aportes" />
+                        <p:selectBooleanCheckbox id="aportes" value="#{pagodetalleController.selected.aportes}" />
+                        <p:outputLabel value="#{bundle.EditpagodetalleLabel_prestamos}" for="prestamos" />
+                        <p:selectBooleanCheckbox id="prestamos" value="#{pagodetalleController.selected.prestamos}" />
+                        <p:outputLabel value="#{bundle.EditpagodetalleLabel_otros}" for="otros" />
+                        <p:selectBooleanCheckbox id="otros" value="#{pagodetalleController.selected.otros}" />
+                        <p:outputLabel value="#{bundle.EditpagodetalleLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{pagodetalleController.selected.id}" title="#{bundle.EditpagodetalleTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{pagodetalleController.update}" value="#{bundle.Save}" update="display,:pagodetalleListForm:datalist,:growl" oncomplete="handleSubmit(args, 'pagodetalleEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="pagodetalleEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
