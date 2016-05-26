@@ -63,11 +63,11 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
+  <testcase classname="entities.rolTest" name="testSetId" time="0"/>
   <testcase classname="entities.rolTest" name="testHashCode" time="0"/>
   <testcase classname="entities.rolTest" name="testGetId" time="0"/>
   <testcase classname="entities.rolTest" name="testToString" time="0"/>
   <testcase classname="entities.rolTest" name="testEquals" time="0"/>
-  <testcase classname="entities.rolTest" name="testSetId" time="0"/>
   <testcase classname="entities.rolTest" name="testSetNombre_rol" time="0"/>
   <testcase classname="entities.rolTest" name="testGetNombre_rol" time="0"/>
 </testsuite>
