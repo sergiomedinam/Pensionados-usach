@@ -14,6 +14,29 @@
         </ui:define>
 
         <ui:define name="body">
+            <p:breadCrumb > 
+                <p:menuitem value="Inicio" url="#" />
+                <p:menuitem value="Inicio" url="/" />
+                <p:menuitem value="Pensionados" url="/faces/pensionado/List.xhtml" />
+                <p:menuitem value="Cuotas Pagadas" url="/faces/cuotaspagadas/List.xhtml" />
+            </p:breadCrumb>
+                <section class="content-header">
+                    <h1>
+                      Cuotas Pagadas  
+                      <small>Panel de administrador</small> <a href="#demo" data-toggle="collapse" class="btn btn-info">Informacion</a>
+
+                    </h1>
+                  
+                    <div id="demo" class=" collapse">
+                          <br/>
+                         <div class="panel panel-default">
+                        
+                             <div class="panel-footer"> <b>¿Que hacer aqui?</b> En esta seccion del sistema es posible agregar las cuotas pagadas por pensionados, además de modificar éstas.</div>
+                        </div>
+                    </div>
+                  </section>
+            <br/>
+            
             <h:form id="cuotaspagadasListForm">
                 <p:panel header="#{bundle.ListcuotaspagadasTitle}">
                     <p:dataTable id="datalist" value="#{cuotaspagadasController.items}" var="item"
