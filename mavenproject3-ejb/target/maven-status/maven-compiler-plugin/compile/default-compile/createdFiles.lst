@@ -1,4 +1,7 @@
+sessionsbeans\pensionadoprestamoFacadeLocal.class
+sessionsbeans\pensionadoprestamoFacade.class
 entities\usuario_.class
+entities\pensionadoprestamo.class
 entities\contacto_.class
 entities\designado_fallecimiento.class
 sessionsbeans\beneficioFacadeLocal.class
@@ -47,6 +50,7 @@ sessionsbeans\AbstractFacade.class
 sessionsbeans\pagodetalleFacade.class
 sessionsbeans\pagodetalleFacadeLocal.class
 sessionsbeans\pagoFacadeLocal.class
+entities\pensionadoprestamo_.class
 sessionsbeans\designado_fallecimientoFacade.class
 entities\patologia.class
 sessionsbeans\parametrosFacadeLocal.class

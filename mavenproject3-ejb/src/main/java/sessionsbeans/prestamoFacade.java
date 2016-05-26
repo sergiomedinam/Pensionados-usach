@@ -12,7 +12,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author Sergio
+ * @author seerg
  */
 @Stateless
 public class prestamoFacade extends AbstractFacade<prestamo> implements prestamoFacadeLocal {

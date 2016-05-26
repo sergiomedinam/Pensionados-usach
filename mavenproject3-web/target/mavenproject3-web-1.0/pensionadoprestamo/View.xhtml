@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="pensionadoprestamoViewDlg" widgetVar="pensionadoprestamoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewpensionadoprestamoTitle}">
+            <h:form id="pensionadoprestamoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{pensionadoprestamoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewpensionadoprestamoLabel_pensionado}"/>
+                        <h:outputText value="#{pensionadoprestamoController.selected.pensionado}" title="#{bundle.ViewpensionadoprestamoTitle_pensionado}"/>
+                        <h:outputText value="#{bundle.ViewpensionadoprestamoLabel_prestamo}"/>
+                        <h:outputText value="#{pensionadoprestamoController.selected.prestamo}" title="#{bundle.ViewpensionadoprestamoTitle_prestamo}"/>
+                        <h:outputText value="#{bundle.ViewpensionadoprestamoLabel_fecha_pedido}"/>
+                        <h:outputText value="#{pensionadoprestamoController.selected.fecha_pedido}" title="#{bundle.ViewpensionadoprestamoTitle_fecha_pedido}"/>
+                        <h:outputText value="#{bundle.ViewpensionadoprestamoLabel_fecha_termino}"/>
+                        <h:outputText value="#{pensionadoprestamoController.selected.fecha_termino}" title="#{bundle.ViewpensionadoprestamoTitle_fecha_termino}"/>
+                        <h:outputText value="#{bundle.ViewpensionadoprestamoLabel_cuotas}"/>
+                        <h:outputText value="#{pensionadoprestamoController.selected.cuotas}" title="#{bundle.ViewpensionadoprestamoTitle_cuotas}"/>
+                        <h:outputText value="#{bundle.ViewpensionadoprestamoLabel_monto_total}"/>
+                        <h:outputText value="#{pensionadoprestamoController.selected.monto_total}" title="#{bundle.ViewpensionadoprestamoTitle_monto_total}"/>
+                        <h:outputText value="#{bundle.ViewpensionadoprestamoLabel_id}"/>
+                        <h:outputText value="#{pensionadoprestamoController.selected.id}" title="#{bundle.ViewpensionadoprestamoTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="pensionadoprestamoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

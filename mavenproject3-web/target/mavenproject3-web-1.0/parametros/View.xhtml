@@ -12,6 +12,18 @@
             <h:form id="parametrosViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{parametrosController.selected != null}">
+                        <h:outputText value="#{bundle.ViewparametrosLabel_prima_catastrofico_titular}"/>
+                        <h:outputText value="#{parametrosController.selected.prima_catastrofico_titular}" title="#{bundle.ViewparametrosTitle_prima_catastrofico_titular}"/>
+                        <h:outputText value="#{bundle.ViewparametrosLabel_prima_catastrofico_conyuge}"/>
+                        <h:outputText value="#{parametrosController.selected.prima_catastrofico_conyuge}" title="#{bundle.ViewparametrosTitle_prima_catastrofico_conyuge}"/>
+                        <h:outputText value="#{bundle.ViewparametrosLabel_prima_catastrofico_hijos}"/>
+                        <h:outputText value="#{parametrosController.selected.prima_catastrofico_hijos}" title="#{bundle.ViewparametrosTitle_prima_catastrofico_hijos}"/>
+                        <h:outputText value="#{bundle.ViewparametrosLabel_prima_hospitalario_titular}"/>
+                        <h:outputText value="#{parametrosController.selected.prima_hospitalario_titular}" title="#{bundle.ViewparametrosTitle_prima_hospitalario_titular}"/>
+                        <h:outputText value="#{bundle.ViewparametrosLabel_prima_hospitalario_titularmas1}"/>
+                        <h:outputText value="#{parametrosController.selected.prima_hospitalario_titularmas1}" title="#{bundle.ViewparametrosTitle_prima_hospitalario_titularmas1}"/>
+                        <h:outputText value="#{bundle.ViewparametrosLabel_prima_hospitalario_titular2omas}"/>
+                        <h:outputText value="#{parametrosController.selected.prima_hospitalario_titular2omas}" title="#{bundle.ViewparametrosTitle_prima_hospitalario_titular2omas}"/>
                         <h:outputText value="#{bundle.ViewparametrosLabel_valor_uf}"/>
                         <h:outputText value="#{parametrosController.selected.valor_uf}" title="#{bundle.ViewparametrosTitle_valor_uf}"/>
                         <h:outputText value="#{bundle.ViewparametrosLabel_id}"/>

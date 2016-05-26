@@ -11,7 +11,7 @@ import javax.ejb.Local;
 
 /**
  *
- * @author Sergio
+ * @author seerg
  */
 @Local
 public interface cuotaspagadasFacadeLocal {
