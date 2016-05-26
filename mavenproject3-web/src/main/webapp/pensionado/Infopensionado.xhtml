@@ -18,6 +18,99 @@
 
                     
                 </section>
+                
+                <section class="content " >
+                    
+                    <div class="container panel panel-default">
+                        <h3>Informacion Básica</h3>
+                               
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th>Rut</th>
+                              <th>Correo</th>
+                              <th>Telefono</th>
+                              <th>Comuna</th>
+                              <th>Region</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                                <td>#{pensionadoController.selected.rut_pensionado}</td>
+                                <td>#{pensionadoController.selected.email_pensionado}</td>
+                                <td>#{pensionadoController.selected.celular}</td>
+                                <td>#{pensionadoController.selected.comuna}</td>
+                                <td>#{pensionadoController.selected.region}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+
+
+                    
+                    <div class="container" align="center">
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-aqua">
+                                <div class="inner">
+                                    <h3>0</h3>
+                                    <p>Seguros asociados</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-bag"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-green">
+                                <div class="inner">
+                                    <h3>Si</h3>
+
+                                    <p>¿Esta al dia?</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-stats-bars"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-yellow">
+                                <div class="inner">
+                                    <h3>0</h3>
+
+                                    <p>Prestamos actuales</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-person-add"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-maroon">
+                                <div class="inner">
+                                    <h3>0</h3>
+
+                                    <p>Beneficios actuales</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-person-add"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        
+                        <!-- ./col -->
+                    </div>
+                </section>
 
                
             </ui:define> 
