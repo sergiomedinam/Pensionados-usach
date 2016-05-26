@@ -31,8 +31,17 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListcuotaspagadasTitle_pensionado}"/>
                             </f:facet>
-                            <h:outputText value="#{item.pensionado}"/>
+                            <h:outputText value="#{item.pensionado.rut_pensionado}"/>
                         </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nombre"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pensionado.nombre_pensionado}
+                                                 #{item.pensionado.apellido_p_pensionado}
+                                                 #{item.pensionado.apellido_m_pensionado}"/>
+                        </p:column>
+                        
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListcuotaspagadasTitle_ano}"/>
@@ -44,12 +53,6 @@
                                 <h:outputText value="#{bundle.ListcuotaspagadasTitle_cuotas}"/>
                             </f:facet>
                             <h:outputText value="#{item.cuotas}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListcuotaspagadasTitle_id}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.id}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{cuotaspagadasController.prepareCreate}" update=":cuotaspagadasCreateForm" oncomplete="PF('cuotaspagadasCreateDialog').show()"/>
