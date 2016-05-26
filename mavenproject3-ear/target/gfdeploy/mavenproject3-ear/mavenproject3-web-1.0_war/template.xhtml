@@ -14,121 +14,73 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>    
         <link rel="stylesheet" href="#{request.contextPath}/resources/font-awesome/css/font-awesome.min.css"/>
         <h:outputScript library="js" name="calendar_es.js"/>
-     
-         <!-- Bootstrap Core CSS -->
-    <link href="#{request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="#{request.contextPath}/resources/css/AdminLTE.css" rel="stylesheet"/>
+        <link href="#{request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet"/>
 
-    <!-- Custom CSS -->
-    <link href="#{request.contextPath}/resources/css/simple-sidebar.css" rel="stylesheet"/>
-        
+    
     </h:head>
 
     <h:body>
+    <p:growl id="growl" life="3000" />
+        
+            <div class="panel panel-default">
+            <div class="panel-body bg-blue-active">
+                Universidad de Santiago | Recursos humanos                
+            </div>
+            <div class="container-fluid bg-gray-light">
+              <div class="navbar-header">
+                  <a class="navbar-brand" href="#{request.contextPath}">FP-Usach</a>
+              </div>
+              <ul class="nav navbar-nav">
 
-        <p:growl id="growl" life="3000" />
+                <c:if test="${usuarioController.getUsername(request.userPrincipal.name) != ''   }">
+
+
+                      <li class="dropdown">
+                          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Pensionados
+                          <span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                              <li><a href="#{request.contextPath}/faces/pensionado/List.xhtml">Todos</a></li>
+                            <li><a href="#{request.contextPath}/faces/pensionado/Filtros.xhtml">Busqueda</a></li>
+                            <li><a href="#{request.contextPath}/faces/pensionado/Mapa.xhtml">Ubicaciones</a></li> 
+                          </ul>
+                        </li>
+                      <li><a href="#">Seguros</a></li> 
+                      <li><a href="#">Prestamos</a></li> 
+                      <li><a href="#{request.contextPath}/faces/beneficio/List.xhtml">Beneficios</a></li>
+                      <li><a href="#{request.contextPath}/faces/seguro/List.xhtml">Seguros</a></li>
+                      <li><a href="#">Otros</a></li> 
+                  </c:if>
+               </ul>
+              <ul class="nav navbar-nav navbar-right">
+           
+                  <c:if test="${usuarioController.getUsername(request.userPrincipal.name) != ''   }">
+                      <li class="dropdown">
+                          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuario: #{usuarioController.getUsername(request.userPrincipal.name).toUpperCase()}
+                        <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Mis datos</a></li>
+                          
+                        <li class="divider"></li>
+                          <li><a href="#{request.contextPath}/LogoutServlet">Cerrar Sesion</a></li> 
+                        </ul>
+                      </li>
+
+                                        
+                  </c:if>
+                  <c:if test="${usuarioController.getUsername(request.userPrincipal.name) == ''   }">
+                      <li><a href="#{request.contextPath}/AdminResource"><span class="glyphicon glyphicon-log-in"></span> Inicia Sesion</a></li>                  
+                  </c:if>
+              </ul>
+            </div>
+         
+        </div>
+        
         
 
-          
-                    <nav class="navbar navbar-default no-margin" >
-                        
-                                <div class="navbar-header fixed-brand">
-                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  id="menu-toggle">
-                                      <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
-                                    </button>
-                                    <a class="navbar-brand" href="#{request.contextPath}"><i class="fa fa-square fa-4"></i> FP-USACH</a>
-                                    <c:if test="${usuarioController.getUsername(request.userPrincipal.name) != ''   }">
-                                        <p class="navbar-brand"><b><i class="fa fa-male" aria-hidden="true"></i> #{usuarioController.getUsername(request.userPrincipal.name)}</b></p>
-                                    </c:if>
-                                </div><!-- navbar-header-->
-
-                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                            <ul class="nav navbar-nav">
-                                                <li class="active" ><button class="navbar-toggle collapse in" data-toggle="collapse" id="menu-toggle-2"> <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span></button></li>
-                                            </ul>
-                                </div><!-- bs-example-navbar-collapse-1 -->
-
-                            <!-- Collect the nav links, forms, and other content for toggling -->
-                            
-                    
-                    </nav>
-
-        <div id="wrapper">
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
-                
-                <c:if test="${usuarioController.getUsername(request.userPrincipal.name) == ''   }">
-                    <li class="active">
-                    <a href="#{request.contextPath}/AdminResource"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span> Iniciar Sesion</a>
-                </li>
-                </c:if>
-                <c:if test="${usuarioController.getUsername(request.userPrincipal.name) != ''   }">
-                    <li class="active">
-                        <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-dashboard fa-stack-1x "></i></span>Panel Administracion</a>
-                           <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                            <li><a href="#{request.contextPath}/faces/admin/usuario/List.xhtml"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span> Usuarios</a></li>
-
-                        </ul>
-                    </li>
-                </c:if>
-                <c:if test="${usuarioController.getUsername(request.userPrincipal.name) != ''   }">
-                <li>
-                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user fa-stack-1x "></i></span>Usuario: #{usuarioController.getUsername(request.userPrincipal.name)}</a>
-                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                        <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-wpforms fa-stack-1x "></i></span>Mi Cuenta</a></li>
-                        <li><a href="#{request.contextPath}/LogoutServlet"><span class="fa-stack fa-lg pull-left"><i class="fa fa-sign-out fa-stack-1x "></i></span>Cerrar Sesion</a></li>
-                    </ul>
-                </li>
-                </c:if>
-                <li>
-                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-users fa-stack-1x "></i></span> Pensionados</a>
-                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                        <li><a href="#{request.contextPath}/faces/pensionado/List.xhtml"><span class="fa-stack fa-lg pull-left"><i class="fa fa-users fa-stack-1x "></i></span>Todos</a></li>
-                        <li><a href="#{request.contextPath}/faces/pensionado/Filtros.xhtml"><span class="fa-stack fa-lg pull-left"><i class="fa fa-search fa-stack-1x "></i></span>Filtros</a></li>
-                        <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-money fa-stack-1x "></i></span>Pagos</a></li>
-                        <li><a href="#{request.contextPath}/faces/beneficio/List.xhtml"><span class="fa-stack fa-lg pull-left"><i class="fa fa-thumbs-up fa-stack-1x "></i></span>Beneficios</a></li>
-                        <li><a href="#{request.contextPath}/faces/seguro/List.xhtml"><span class="fa-stack fa-lg pull-left"><i class="fa fa-asterisk fa-stack-1x "></i></span>Seguros</a></li>
-                        
- 
-                    </ul>
-                </li>
-                <li>
-                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-line-chart fa-stack-1x "></i></span>Estadisticas</a>
-                </li>
-                <li>
-                    <a href="#{request.contextPath}/faces/pensionado/Mapa.xhtml"> <span class="fa-stack fa-lg pull-left"><i class="fa fa-map-o fa-stack-1x "></i></span>Ubicacion</a>
-                </li>
-                <li>
-                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-question-circle-o fa-stack-1x "></i></span>Acerca</a>
-                </li>
-                <li>
-                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-envelope-o fa-stack-1x "></i></span>Contacto</a>
-                </li>
-                
-                
-            </ul>
-        </div><!-- /#sidebar-wrapper -->
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid xyz">
-                <div class="row">
-                    <ui:insert name="body"/>
-                </div>
-            </div>
+        <div class="container">
+            <ui:insert name="body"/>
         </div>
-        <!-- /#page-content-wrapper -->
-    </div>
-    <!-- /#wrapper -->
-    <!-- jQuery -->
-    <script src="#{request.contextPath}/resources/js/jquery-1.11.2.min.js"></script>
-    <script src="#{request.contextPath}/resources/js/bootstrap.min.js"></script>
-    <script src="#{request.contextPath}/resources/js/sidebar_menu.js"></script>
-
-                            
-
-                
-      
-
       
     </h:body>
 
