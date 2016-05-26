@@ -6,35 +6,39 @@
 package entities;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author Sergio
+ * @author seerg
  */
 @Entity
-public class cuotaspagadas implements Serializable {
+public class pensionadoprestamo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
     
-    @NotNull
-    private String ano;
-    
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_pensionado") 
     private pensionado pensionado;
     
-    @NotNull
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_prestamo") 
+    private prestamo prestamo;
+    
+    private String fecha_pedido;
+    private String fecha_termino;
     private Integer cuotas;
+    private Integer monto_total;
 
     public pensionado getPensionado() {
         return pensionado;
@@ -44,13 +48,28 @@ public class cuotaspagadas implements Serializable {
         this.pensionado = pensionado;
     }
 
-    
-    public String getAno() {
-        return ano;
+    public prestamo getPrestamo() {
+        return prestamo;
     }
 
-    public void setAno(String ano) {
-        this.ano = ano;
+    public void setPrestamo(prestamo prestamo) {
+        this.prestamo = prestamo;
+    }
+
+    public String getFecha_pedido() {
+        return fecha_pedido;
+    }
+
+    public void setFecha_pedido(String fecha_pedido) {
+        this.fecha_pedido = fecha_pedido;
+    }
+
+    public String getFecha_termino() {
+        return fecha_termino;
+    }
+
+    public void setFecha_termino(String fecha_termino) {
+        this.fecha_termino = fecha_termino;
     }
 
     public Integer getCuotas() {
@@ -60,9 +79,17 @@ public class cuotaspagadas implements Serializable {
     public void setCuotas(Integer cuotas) {
         this.cuotas = cuotas;
     }
-    
-    
 
+    public Integer getMonto_total() {
+        return monto_total;
+    }
+
+    public void setMonto_total(Integer monto_total) {
+        this.monto_total = monto_total;
+    }
+    
+    
+    
     public Long getId() {
         return id;
     }
@@ -81,10 +108,10 @@ public class cuotaspagadas implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof cuotaspagadas)) {
+        if (!(object instanceof pensionadoprestamo)) {
             return false;
         }
-        cuotaspagadas other = (cuotaspagadas) object;
+        pensionadoprestamo other = (pensionadoprestamo) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -93,7 +120,8 @@ public class cuotaspagadas implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.cuotaspagadas[ id=" + id + " ]";
+        return "entities.pensionadoprestamo[ id=" + id + " ]";
     }
     
 }
+

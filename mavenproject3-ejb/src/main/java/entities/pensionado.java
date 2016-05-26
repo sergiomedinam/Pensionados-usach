@@ -8,6 +8,7 @@ package entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -104,11 +105,28 @@ public class pensionado implements Serializable {
     @ManyToOne
     private beneficio beneficios;
     
-    @ManyToOne
-    private cuotaspagadas cuotaspagadas;
+    @OneToMany
+    private List<cuotaspagadas> cuotaspagadas;
+    
+    @OneToMany(mappedBy = "pensionado")
+    private Set<pensionadoprestamo> pensionadoprestamo = new HashSet<pensionadoprestamo>();
     
     @ManyToOne
     private pago pagos;
+    
+    
+
+    public List<cuotaspagadas> getCuotaspagadas() {
+        return cuotaspagadas;
+    }
+
+    public void setCuotaspagadas(List<cuotaspagadas> cuotaspagadas) {
+        this.cuotaspagadas = cuotaspagadas;
+    }
+    
+     public void addCuotaspagadas(cuotaspagadas cuotaspagadas) {
+        this.cuotaspagadas.add(cuotaspagadas);
+    }
 
     public Set<cargas> getCargas() {
         return cargas;
@@ -122,13 +140,6 @@ public class pensionado implements Serializable {
         this.cargas.add(carga);
     } 
     
-    public cuotaspagadas getCuotaspagadas() {
-        return cuotaspagadas;
-    }
-
-    public void setCuotaspagadas(cuotaspagadas cuotaspagadas) {
-        this.cuotaspagadas = cuotaspagadas;
-    }
 
     public pago getPagos() {
         return pagos;

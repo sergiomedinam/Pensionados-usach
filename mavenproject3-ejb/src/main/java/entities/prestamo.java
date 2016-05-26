@@ -6,12 +6,15 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
@@ -31,7 +34,23 @@ public class prestamo implements Serializable {
     @NotNull(message = "Debe ser de un tipo de prestamo")
     @OneToOne
     private tipo_prestamo tipo_prestamo;
+    
+    @OneToMany(mappedBy = "prestamo")
+    private Set<pensionadoprestamo> pensionadoprestamo = new HashSet<pensionadoprestamo>();
 
+    public Set<pensionadoprestamo> getPensionadoprestamo() {
+        return pensionadoprestamo;
+    }
+
+    public void setPensionadoprestamo(Set<pensionadoprestamo> pensionadoprestamo) {
+        this.pensionadoprestamo = pensionadoprestamo;
+    }
+
+    public void addPensionadoprestamo(pensionadoprestamo pensionadoprestamo) {
+        this.pensionadoprestamo.add(pensionadoprestamo);
+    }
+    
+    
     public tipo_prestamo getTipo_prestamo() {
         return tipo_prestamo;
     }
