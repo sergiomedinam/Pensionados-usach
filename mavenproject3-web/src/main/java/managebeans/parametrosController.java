@@ -34,6 +34,11 @@ public class parametrosController implements Serializable {
     public parametros getSelected() {
         return selected;
     }
+    
+    public parametros parametros(){
+        parametros parametro = getItemsAvailableSelectOne().get(0);
+        return parametro;
+    }
 
     public void setSelected(parametros selected) {
         this.selected = selected;
