@@ -1,16 +1,25 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>FP-Usach | Sistema de administración de pensionados</title>
     </h:head>
     <h:body>
         <ui:composition template="/template.xhtml"> 
-
             <ui:define name="body">
-
+                
+                <p:breadCrumb > 
+                <p:menuitem value="Inicio" url="#" />
+                <p:menuitem value="Inicio" url="/" />
+                <p:menuitem value="Pensionados" url="/faces/pensionado/List.xhtml" />
+                <p:menuitem value="Información" url="/faces/pensionado/Infopensionado.xhtml" />
+                </p:breadCrumb>
+                
                 <section class="content-header">
                         <h1>Pensionado: #{pensionadoController.selected.nombre_pensionado} #{pensionadoController.selected.apellido_p_pensionado}
                         <small>Panel administrador</small>
@@ -74,7 +83,7 @@
                                 <div class="icon">
                                     <i class="ion ion-stats-bars"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
+                                <a href="#cuotasPensionado" data-toggle="collapse" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->
@@ -111,6 +120,64 @@
                         <!-- ./col -->
                     </div>
                 </section>
+                <div id="cuotasPensionado" class=" collapse">
+                    <br/>
+                    <div class="panel panel-default">
+                    <h:form id="cuotaspagadasListForm">
+                        <p:panel header="#{bundle.ListcuotaspagadasTitle}">
+                            <p:dataTable id="datalist" value="#{cuotaspagadasController.CuotasPensionadosList(pensionadoController.selected.rut_pensionado)}" var="item"
+                                         selectionMode="single" selection="#{cuotaspagadasController.selected}"
+                                         paginator="false"
+                                         rowKey="#{item.id}"
+                                         rows="10"
+                                         rowsPerPageTemplate="10,20,30,40,50"
+                                         >
+
+                                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                                <p:column id="rut">
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListcuotaspagadasTitle_pensionado}"/>
+                                        <p:watermark for="rut" value="Buscar Rut (con puntos y guión)" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.pensionado.rut_pensionado}"/>
+                                </p:column>
+                                <p:column id="nombre">
+                                    <f:facet name="header">
+                                        <h:outputText value="Nombre"/>
+                                        <p:watermark for="nombre" value="Buscar Nombre" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.pensionado.nombre_pensionado}
+                                                         #{item.pensionado.apellido_p_pensionado}
+                                                         #{item.pensionado.apellido_m_pensionado}"/>
+                                </p:column>
+
+                                <p:column id="año" >
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListcuotaspagadasTitle_ano}"/>
+                                        <p:watermark for="año" value="Buscar Año" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.ano}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListcuotaspagadasTitle_cuotas}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.cuotas}"/>
+                                </p:column>
+                                <f:facet name="footer">
+                                    <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{cuotaspagadasController.prepareCreate}" update=":cuotaspagadasCreateForm" oncomplete="PF('cuotaspagadasCreateDialog').show()"/>
+                                    <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":cuotaspagadasViewForm" oncomplete="PF('cuotaspagadasViewDialog').show()" disabled="#{empty cuotaspagadasController.selected}"/>
+                                    <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":cuotaspagadasEditForm" oncomplete="PF('cuotaspagadasEditDialog').show()" disabled="#{empty cuotaspagadasController.selected}"/>
+                                    <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{cuotaspagadasController.destroy}" update=":growl,datalist" disabled="#{empty cuotaspagadasController.selected}"/>
+                                </f:facet>
+                            </p:dataTable>
+                        </p:panel>
+                    </h:form>
+                    </div>
+                    </div>
+                
 
                
             </ui:define> 

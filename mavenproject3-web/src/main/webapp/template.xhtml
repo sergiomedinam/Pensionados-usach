@@ -21,12 +21,15 @@
     </h:head>
 
     <h:body>
-    <p:growl id="growl" life="3000" />
+        <p:growl id="growl" life="3000" />
         
             <div class="panel panel-default ">
-            <div class="panel-body bg-blue-active ">
-                Universidad de Santiago de Chile | Recursos humanos                
-            </div>
+                <div class="panel-body bg-blue-active ">
+                <div class="container">
+
+                    Universidad de Santiago de Chile | Recursos humanos                
+                </div>
+                </div>
                 
               <div class="container ">
               <div class="navbar-header">
@@ -47,7 +50,7 @@
                             <li><a href="#{request.contextPath}/faces/pensionado/Mapa.xhtml">Ubicaciones</a></li> 
                           </ul>
                         </li>
-                      <li><a href="#">Seguros</a></li> 
+              
                       <li><a href="#">Prestamos</a></li> 
                       <li><a href="#{request.contextPath}/faces/beneficio/List.xhtml">Beneficios</a></li>
                       <li><a href="#{request.contextPath}/faces/seguro/List.xhtml">Seguros</a></li>

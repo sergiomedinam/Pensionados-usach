@@ -6,6 +6,7 @@ import managebeans.util.JsfUtil.PersistAction;
 import sessionsbeans.cuotaspagadasFacadeLocal;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -79,6 +80,18 @@ public class cuotaspagadasController implements Serializable {
             items = getFacade().findAll();
         }
         return items;
+    }
+    
+    
+    public List<cuotaspagadas> CuotasPensionadosList(String rut) {
+        List<cuotaspagadas> pertenece = new ArrayList<cuotaspagadas>();
+        getItems();
+        for (cuotaspagadas item : items) {
+            if (item.getPensionado().getRut_pensionado().equals(rut)){
+                    pertenece.add(item);          
+            }
+        }
+        return pertenece;
     }
 
     private void persist(PersistAction persistAction, String successMessage) {

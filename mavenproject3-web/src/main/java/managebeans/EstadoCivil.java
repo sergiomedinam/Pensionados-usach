@@ -22,8 +22,6 @@ import javax.faces.context.FacesContext;
 @ViewScoped
 public class EstadoCivil implements Serializable {
      
-    private Map<String,Map<String,String>> data = new HashMap<String, Map<String,String>>();
-    private String estado; 
     private Map<String,String> estadosCiviles;
      
     @PostConstruct
@@ -37,12 +35,6 @@ public class EstadoCivil implements Serializable {
         estadosCiviles.put("CONVIVIENTE", "CONVIVIENTE");
         
         estadosCiviles = Ordenar(estadosCiviles);
-    }
- 
-    
-    
-    public Map<String, Map<String, String>> getData() {
-        return data;
     }
     
     private Map<String,String> Ordenar(Map mapa){
@@ -61,15 +53,7 @@ public class EstadoCivil implements Serializable {
         }
         return mapResultado;
     }
- 
-    public String getEstado() {
-        return estado;
-    }
- 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
- 
+    
     public Map<String, String> getEstadosCiviles() {
         return estadosCiviles;
     }     
