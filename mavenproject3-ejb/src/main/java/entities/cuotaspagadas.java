@@ -7,10 +7,12 @@ package entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -28,9 +30,21 @@ public class cuotaspagadas implements Serializable {
     @NotNull
     private String ano;
     
+    @ManyToOne(fetch=FetchType.LAZY)
+    private pensionado pensionado;
+    
     @NotNull
     private Integer cuotas;
 
+    public pensionado getPensionado() {
+        return pensionado;
+    }
+
+    public void setPensionado(pensionado pensionado) {
+        this.pensionado = pensionado;
+    }
+
+    
     public String getAno() {
         return ano;
     }

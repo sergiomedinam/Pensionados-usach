@@ -4,6 +4,7 @@ C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\entitie
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\entities\pagodetalle.java
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\sessionsbeans\designado_fallecimientoFacade.java
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\sessionsbeans\tipo_beneficioFacadeLocal.java
+C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\sessionsbeans\pensionadoprestamoFacade.java
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\sessionsbeans\seguroFacadeLocal.java
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\entities\medicamento.java
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\sessionsbeans\AbstractFacade.java
@@ -25,6 +26,7 @@ C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\entitie
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\entities\usuario.java
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\sessionsbeans\patologiaFacade.java
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\sessionsbeans\parametrosFacade.java
+C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\sessionsbeans\pensionadoprestamoFacadeLocal.java
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\sessionsbeans\designado_fallecimientoFacadeLocal.java
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\sessionsbeans\prestamoFacadeLocal.java
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\sessionsbeans\tipo_prestamoFacade.java
@@ -47,6 +49,7 @@ C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\session
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\sessionsbeans\seguroFacade.java
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\entities\cargas.java
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\sessionsbeans\pagodetalleFacadeLocal.java
+C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\entities\pensionadoprestamo.java
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\sessionsbeans\rolFacade.java
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\sessionsbeans\pagoFacadeLocal.java
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\sessionsbeans\patologiaFacadeLocal.java

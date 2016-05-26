@@ -12,6 +12,18 @@
             <h:form id="parametrosCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{parametrosController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateparametrosLabel_prima_catastrofico_titular}" for="prima_catastrofico_titular" />
+                        <p:inputText id="prima_catastrofico_titular" value="#{parametrosController.selected.prima_catastrofico_titular}" title="#{bundle.CreateparametrosTitle_prima_catastrofico_titular}" />
+                        <p:outputLabel value="#{bundle.CreateparametrosLabel_prima_catastrofico_conyuge}" for="prima_catastrofico_conyuge" />
+                        <p:inputText id="prima_catastrofico_conyuge" value="#{parametrosController.selected.prima_catastrofico_conyuge}" title="#{bundle.CreateparametrosTitle_prima_catastrofico_conyuge}" />
+                        <p:outputLabel value="#{bundle.CreateparametrosLabel_prima_catastrofico_hijos}" for="prima_catastrofico_hijos" />
+                        <p:inputText id="prima_catastrofico_hijos" value="#{parametrosController.selected.prima_catastrofico_hijos}" title="#{bundle.CreateparametrosTitle_prima_catastrofico_hijos}" />
+                        <p:outputLabel value="#{bundle.CreateparametrosLabel_prima_hospitalario_titular}" for="prima_hospitalario_titular" />
+                        <p:inputText id="prima_hospitalario_titular" value="#{parametrosController.selected.prima_hospitalario_titular}" title="#{bundle.CreateparametrosTitle_prima_hospitalario_titular}" />
+                        <p:outputLabel value="#{bundle.CreateparametrosLabel_prima_hospitalario_titularmas1}" for="prima_hospitalario_titularmas1" />
+                        <p:inputText id="prima_hospitalario_titularmas1" value="#{parametrosController.selected.prima_hospitalario_titularmas1}" title="#{bundle.CreateparametrosTitle_prima_hospitalario_titularmas1}" />
+                        <p:outputLabel value="#{bundle.CreateparametrosLabel_prima_hospitalario_titular2omas}" for="prima_hospitalario_titular2omas" />
+                        <p:inputText id="prima_hospitalario_titular2omas" value="#{parametrosController.selected.prima_hospitalario_titular2omas}" title="#{bundle.CreateparametrosTitle_prima_hospitalario_titular2omas}" />
                         <p:outputLabel value="#{bundle.CreateparametrosLabel_valor_uf}" for="valor_uf" />
                         <p:inputText id="valor_uf" value="#{parametrosController.selected.valor_uf}" title="#{bundle.CreateparametrosTitle_valor_uf}" />
                         <p:outputLabel value="#{bundle.CreateparametrosLabel_id}" for="id" />

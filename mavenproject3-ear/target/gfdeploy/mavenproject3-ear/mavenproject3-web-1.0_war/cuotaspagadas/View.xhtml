@@ -12,6 +12,8 @@
             <h:form id="cuotaspagadasViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{cuotaspagadasController.selected != null}">
+                        <h:outputText value="#{bundle.ViewcuotaspagadasLabel_pensionado}"/>
+                        <h:outputText value="#{cuotaspagadasController.selected.pensionado}" title="#{bundle.ViewcuotaspagadasTitle_pensionado}"/>
                         <h:outputText value="#{bundle.ViewcuotaspagadasLabel_ano}"/>
                         <h:outputText value="#{cuotaspagadasController.selected.ano}" title="#{bundle.ViewcuotaspagadasTitle_ano}"/>
                         <h:outputText value="#{bundle.ViewcuotaspagadasLabel_cuotas}"/>

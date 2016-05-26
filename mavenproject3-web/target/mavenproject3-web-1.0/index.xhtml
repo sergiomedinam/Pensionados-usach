@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="http://localhost:8080/mavenproject3-web/resources/font-awesome/css/font-awesome.min.css"/>
         <!-- Bootstrap Core CSS -->
         <link href="#{request.contextPath}/resources/css/bootstrap.css" rel="stylesheet"/>
-         <link rel="stylesheet" href="#{request.contextPath}/resources/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="#{request.contextPath}/resources/css/bootstrap.min.css"/>
         <!-- Custom CSS -->
 
         <link href="#{request.contextPath}/resources/css/AdminLTE.min.css" rel="stylesheet"/>
@@ -22,7 +22,7 @@
         <ui:composition template="/template.xhtml"> 
 
             <ui:define name="body">
-               
+
                 <section class="content-header">
                     <h1>
                         Sistema de Funcionarios Pensionados - USACH        
@@ -94,7 +94,17 @@
                         <!-- ./col -->
                     </div>
                 </section>
-                
+                <br />
+        <h:link outcome="/cuotaspagadas/List" value="Show All cuotaspagadas Items"/>
+        <br />
+        <h:link outcome="/parametros/List" value="Show All parametros Items"/>
+    
+        <br />
+        <h:link outcome="/pensionadoprestamo/List" value="Show All pensionadoprestamo Items"/>
+        <br />
+        <h:link outcome="/prestamo/List" value="Show All prestamo Items"/>
+        <br />
+        <h:link outcome="/seguro/List" value="Show All seguro Items"/>
                 <!--
                 <br />
                 <h:link outcome="/cuotaspagadas/List" value="Show All cuotaspagadas Items"/>
@@ -108,31 +118,31 @@
                 <h:link outcome="/pensionado/List" value="Show All pensionado Items"/>
 
         <br />
-        <h:link outcome="/cargas/List" value="Show All cargas Items"/>
-        <br />
-        <h:link outcome="/pensionado/List" value="Show All pensionado Items"/>
-        <br />
-        <h:link outcome="/seguro/List" value="Show All seguro Items"/>
-                
-                
+                <h:link outcome="/cargas/List" value="Show All cargas Items"/>
                 <br />
-                <a href="#{request.contextPath}/AdminResource">go to ADMIN</a>
+                <h:link outcome="/pensionado/List" value="Show All pensionado Items"/>
                 <br />
-                <a href="#{request.contextPath}/UsuarioResource">go to USUARIO</a>
-                <br /> 
-                <a href="#{request.contextPath}/faces/admin/index.xhtml">Pagina exclusiva admins</a>
-                <br />
-               
-               
-                <div class="container bg-gray-light">
-                    
-                    <section class="content-header">
-                    <h1>
-                      Funcionalidades crud
-                                           
-                    </h1>
-                  </section>
-                    <br></br>
+                <h:link outcome="/seguro/List" value="Show All seguro Items"/>
+                        
+                        
+                        <br />
+                        <a href="#{request.contextPath}/AdminResource">go to ADMIN</a>
+                        <br />
+                        <a href="#{request.contextPath}/UsuarioResource">go to USUARIO</a>
+                        <br /> 
+                        <a href="#{request.contextPath}/faces/admin/index.xhtml">Pagina exclusiva admins</a>
+                        <br />
+                       
+                       
+                        <div class="container bg-gray-light">
+                            
+                            <section class="content-header">
+                            <h1>
+                              Funcionalidades crud
+                                                   
+                            </h1>
+                          </section>
+                            <br></br>
                 <h:link outcome="/beneficio/List" value="Show All beneficio Items"/>
                 <br />
                 <h:link outcome="/contacto/List" value="Show All contacto Items"/>
@@ -168,7 +178,14 @@
                 -->
             </ui:define> 
         </ui:composition>
+        
     </h:body>
+
+
+
+
+
+
 
 </html>
 

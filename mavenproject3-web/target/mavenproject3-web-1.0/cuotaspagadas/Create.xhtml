@@ -12,6 +12,12 @@
             <h:form id="cuotaspagadasCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{cuotaspagadasController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreatecuotaspagadasLabel_pensionado}" for="pensionado" />
+                        <p:selectOneMenu id="pensionado" value="#{cuotaspagadasController.selected.pensionado}" >
+                            <f:selectItems value="#{pensionadoController.itemsAvailableSelectOne}"
+                                           var="pensionadoItem"
+                                           itemValue="#{pensionadoItem}"/>
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreatecuotaspagadasLabel_ano}" for="ano" />
                         <p:inputText id="ano" value="#{cuotaspagadasController.selected.ano}" title="#{bundle.CreatecuotaspagadasTitle_ano}" />
                         <p:outputLabel value="#{bundle.CreatecuotaspagadasLabel_cuotas}" for="cuotas" />

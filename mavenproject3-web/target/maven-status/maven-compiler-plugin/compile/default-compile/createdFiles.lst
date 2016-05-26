@@ -7,6 +7,7 @@ managebeans\prestamoController$prestamoControllerConverter.class
 managebeans\designado_fallecimientoController.class
 managebeans\RegionesComunas.class
 servlet\LoginServlet.class
+managebeans\pensionadoprestamoController.class
 managebeans\cargasController$cargasControllerConverter.class
 servlet\AdminResource.class
 managebeans\beneficioController.class
@@ -21,6 +22,7 @@ managebeans\patologiaController$patologiaControllerConverter.class
 managebeans\medicamentoController.class
 managebeans\usuarioController.class
 managebeans\rolController.class
+managebeans\pensionadoprestamoController$pensionadoprestamoControllerConverter.class
 managebeans\parametrosController$parametrosControllerConverter.class
 managebeans\pensionadoController.class
 managebeans\parametrosController.class
