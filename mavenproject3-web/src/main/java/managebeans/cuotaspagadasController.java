@@ -7,6 +7,8 @@ import sessionsbeans.cuotaspagadasFacadeLocal;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -93,6 +95,77 @@ public class cuotaspagadasController implements Serializable {
         }
         return Cuotas;
     }
+    
+    public boolean alDia(String rut){
+        Calendar fecha = new GregorianCalendar();
+        int añoActual = fecha.get(Calendar.YEAR);
+        int mesActual = fecha.get(Calendar.MONTH) + 1;
+        boolean alDia = false;
+        boolean bandera = true;
+        List<cuotaspagadas> cuotas = new ArrayList<cuotaspagadas>();
+        cuotas = CuotasPensionados(rut);
+        for(cuotaspagadas item : cuotas){
+            if( Integer.parseInt(item.getAno()) <= añoActual){
+                if(bandera){
+                    int diferencia = añoActual - Integer.parseInt(item.getAno());
+                    if(diferencia == cuotas.size()){
+                        alDia = false;
+                    }
+                    bandera = false;
+                }
+                if(Integer.parseInt(item.getAno()) != añoActual){
+                    if(item.getCuotas() != 12){
+                        alDia = false;
+                    }
+                }else{
+                    if(item.getCuotas() == mesActual){
+                        alDia = true;
+                    }else{
+                        alDia = false;
+                    }
+                }
+            }
+        }        
+        return alDia;
+    }
+    
+    public boolean esMoroso(String rut){
+        Calendar fecha = new GregorianCalendar();
+        int añoActual = fecha.get(Calendar.YEAR);
+        int mesActual = fecha.get(Calendar.MONTH) + 1;
+        int mesesEspera = 3;
+        boolean Moroso = false;
+        boolean bandera = true;
+        List<cuotaspagadas> cuotas = new ArrayList<cuotaspagadas>();
+        cuotas = CuotasPensionados(rut);
+        for(cuotaspagadas item : cuotas){
+            if( Integer.parseInt(item.getAno()) <= añoActual){
+                if(bandera){
+                    int diferencia = añoActual - Integer.parseInt(item.getAno());
+                    if(diferencia == cuotas.size()){
+                        if(mesesEspera <= mesActual){
+                            Moroso = true;
+                        }
+                    }
+                    bandera = false;
+                }
+                if(Integer.parseInt(item.getAno()) != añoActual){
+                    if(item.getCuotas() != 12){
+                        Moroso = true;
+                    }
+                }else{
+                    if(item.getCuotas() != mesActual){
+                        if(item.getCuotas() <= (mesActual - mesesEspera)){
+                            Moroso = true;
+                        }
+                    }
+                }
+            }
+        }
+        return Moroso;
+    }
+    
+    
 
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
