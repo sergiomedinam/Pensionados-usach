@@ -74,18 +74,30 @@
                         <!-- ./col -->
                         <div class="col-lg-3 col-xs-6">
                             <!-- small box -->
-                            <div class="small-box bg-green">
-                                <div class="inner">
-                                    
-                                    <h3>#{cuotaspagadasController.alDia(pensionadoController.selected.rut_pensionado)}</h3>
-                                    <h1>#{cuotaspagadasController.esMoroso(pensionadoController.selected.rut_pensionado)}</h1>
-                                    <p>¿Esta al dia?</p>
+                            <c:if test="${cuotaspagadasController.alDia(pensionadoController.selected.rut_pensionado) == true}" >
+                                <div class="small-box bg-green">
+                                    <div class="inner">
+                                        <h3>Si</h3>
+                                        <p>¿Esta al dia?</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-stats-bars"></i>
+                                    </div>
+                                    <a href="#cuotasPensionado" data-toggle="collapse" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
-                                <div class="icon">
-                                    <i class="ion ion-stats-bars"></i>
+                            </c:if>
+                            <c:if test="${cuotaspagadasController.alDia(pensionadoController.selected.rut_pensionado) == false}" >
+                                <div class="small-box bg-red">
+                                    <div class="inner">
+                                        <h3>No</h3>
+                                        <p>¿Esta al dia?</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-stats-bars"></i>
+                                    </div>
+                                    <a href="#cuotasPensionado" data-toggle="collapse" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
-                                <a href="#cuotasPensionado" data-toggle="collapse" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
+                            </c:if>
                         </div>
                         <!-- ./col -->
                         <div class="col-lg-3 col-xs-6">
@@ -122,8 +134,13 @@
                     </div>
                 </section>
                 <div id="cuotasPensionado" class=" collapse">
-                    <br/>
+                    <c:if test="${cuotaspagadasController.esMoroso(pensionadoController.selected.rut_pensionado) == true}" >
+                        <p id="failtext" class="alert alert-danger" align="center" style="font-size:100%;" >
+                                El pensionado se encuentra moroso.
+                            </p>        
+                    </c:if>
                     <div class="panel panel-default">
+                    
                     <h:form id="cuotaspagadasListForm">
                         <p:panel header="#{bundle.ListcuotaspagadasTitle}">
                             <p:dataTable id="datalist" value="#{cuotaspagadasController.CuotasPensionados(pensionadoController.selected.rut_pensionado)}" var="item"
