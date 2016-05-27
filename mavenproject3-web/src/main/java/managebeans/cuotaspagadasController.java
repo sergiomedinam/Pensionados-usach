@@ -96,62 +96,76 @@ public class cuotaspagadasController implements Serializable {
         return Cuotas;
     }
     
-    public boolean esMoroso(String rut){
+    public boolean alDia(String rut){
         Calendar fecha = new GregorianCalendar();
         int añoActual = fecha.get(Calendar.YEAR);
         int mesActual = fecha.get(Calendar.MONTH) + 1;
-        int mesesEspera = 3;
-        boolean moroso = false;
+        boolean alDia = false;
         boolean bandera = true;
         List<cuotaspagadas> cuotas = new ArrayList<cuotaspagadas>();
         cuotas = CuotasPensionados(rut);
         for(cuotaspagadas item : cuotas){
             if( Integer.parseInt(item.getAno()) <= añoActual){
                 if(bandera){
-                    System.out.println("entro a la bandera");
                     int diferencia = añoActual - Integer.parseInt(item.getAno());
-                    System.out.println("diferencia: "+diferencia+ "cuotas: " + cuotas.size());
                     if(diferencia == cuotas.size()){
-                        System.out.println("se cumple diferencia<cuotassize");
-                        System.out.println("mesespera: "+mesesEspera+"mesActual"+mesActual);
+                        alDia = false;
+                    }
+                    bandera = false;
+                }
+                if(Integer.parseInt(item.getAno()) != añoActual){
+                    if(item.getCuotas() != 12){
+                        alDia = false;
+                    }
+                }else{
+                    if(item.getCuotas() == mesActual){
+                        alDia = true;
+                    }else{
+                        alDia = false;
+                    }
+                }
+            }
+        }        
+        return alDia;
+    }
+    
+    public boolean esMoroso(String rut){
+        Calendar fecha = new GregorianCalendar();
+        int añoActual = fecha.get(Calendar.YEAR);
+        int mesActual = fecha.get(Calendar.MONTH) + 1;
+        int mesesEspera = 3;
+        boolean Moroso = false;
+        boolean bandera = true;
+        List<cuotaspagadas> cuotas = new ArrayList<cuotaspagadas>();
+        cuotas = CuotasPensionados(rut);
+        for(cuotaspagadas item : cuotas){
+            if( Integer.parseInt(item.getAno()) <= añoActual){
+                if(bandera){
+                    int diferencia = añoActual - Integer.parseInt(item.getAno());
+                    if(diferencia == cuotas.size()){
                         if(mesesEspera <= mesActual){
-                            System.out.println("se cumple");
-                            moroso = true;
+                            Moroso = true;
                         }
                     }
                     bandera = false;
                 }
-                
-                
-                System.out.println("se revisa:"+Integer.parseInt(item.getAno()) + " de: "+item.getPensionado().getRut_pensionado());
                 if(Integer.parseInt(item.getAno()) != añoActual){
-                    if(item.getCuotas() == 12){
-                        System.out.println("año: "+item.getAno()+" está todo pagado");
-                    }else{
-                        System.out.println("año: "+item.getAno()+" no está todo pagado");
-                        moroso = true;
+                    if(item.getCuotas() != 12){
+                        Moroso = true;
                     }
                 }else{
-                    if(item.getCuotas() == mesActual){
-                        System.out.println("año: "+item.getAno()+" está todo pagado");
-                    }else{
-                        System.out.println("año: "+item.getAno()+" no está todo pagado");
+                    if(item.getCuotas() != mesActual){
                         if(item.getCuotas() <= (mesActual - mesesEspera)){
-                            System.out.println(">Es moroso");
-                            moroso = true;
-                        }else{
-                            System.out.println(">No es moroso");
-                            
+                            Moroso = true;
                         }
                     }
                 }
             }
-            item.getPensionado().setEmail_alternativo("'Hola'");
         }
-        System.out.println("*****************************************************************************");
-        
-        return moroso;
+        return Moroso;
     }
+    
+    
 
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
