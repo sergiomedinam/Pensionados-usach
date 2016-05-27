@@ -106,25 +106,25 @@ public class pensionadoController implements Serializable {
     }
     
     public List<pensionado> PensionadosComuna(String Comuna) {
-        List<pensionado> pertenece = new ArrayList<pensionado>();
+        List<pensionado> perteneceComuna = new ArrayList<pensionado>();
         getItems();
         for (pensionado item : items) {
             if (item.getComuna().equals(Comuna)){
-                    pertenece.add(item);          
+                    perteneceComuna.add(item);          
             }
         }
-        return pertenece;
+        return perteneceComuna;
     }
     
     public List<pensionado> PensionadosRegion(String Region) {
-        List<pensionado> pertenece = new ArrayList<pensionado>();
+        List<pensionado> perteneceRegion = new ArrayList<pensionado>();
         getItems();
         for (pensionado item : items) {
             if (item.getRegion().equals(Region)){
-                    pertenece.add(item);          
+                    perteneceRegion.add(item);          
             }
         }
-        return pertenece;
+        return perteneceRegion;
     }
         
     public void validarRut(FacesContext context, UIComponent toValidate, Object value) {

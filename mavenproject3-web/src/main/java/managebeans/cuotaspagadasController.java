@@ -83,15 +83,15 @@ public class cuotaspagadasController implements Serializable {
     }
     
     
-    public List<cuotaspagadas> CuotasPensionadosList(String rut) {
-        List<cuotaspagadas> pertenece = new ArrayList<cuotaspagadas>();
+    public List<cuotaspagadas> CuotasPensionados(String rut) {
+        List<cuotaspagadas> Cuotas = new ArrayList<cuotaspagadas>();
         getItems();
         for (cuotaspagadas item : items) {
             if (item.getPensionado().getRut_pensionado().equals(rut)){
-                    pertenece.add(item);          
+                    Cuotas.add(item);          
             }
         }
-        return pertenece;
+        return Cuotas;
     }
 
     private void persist(PersistAction persistAction, String successMessage) {
