@@ -125,12 +125,13 @@
                     <div class="panel panel-default">
                     <h:form id="cuotaspagadasListForm">
                         <p:panel header="#{bundle.ListcuotaspagadasTitle}">
-                            <p:dataTable id="datalist" value="#{cuotaspagadasController.CuotasPensionadosList(pensionadoController.selected.rut_pensionado)}" var="item"
+                            <p:dataTable id="datalist" value="#{cuotaspagadasController.CuotasPensionados(pensionadoController.selected.rut_pensionado)}" var="item"
                                          selectionMode="single" selection="#{cuotaspagadasController.selected}"
                                          paginator="false"
                                          rowKey="#{item.id}"
                                          rows="10"
                                          rowsPerPageTemplate="10,20,30,40,50"
+                                         emptyMessage="No hay resultados."
                                          >
 
                                 <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
