@@ -47,7 +47,7 @@ public class usuarioController implements Serializable {
     public void setSelected(usuario selected) {
         this.selected = selected;
     }
-
+   
     protected void setEmbeddableKeys() {
     }
 
@@ -108,7 +108,8 @@ public class usuarioController implements Serializable {
                 texto = texto.substring(0, 2) + "." + texto.substring(2, 5) + "." + texto.substring(5);            
             }
         }
-        selected.setRut(texto);
+        selected.setRut(texto);      
+        
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("usuarioCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
@@ -138,6 +139,82 @@ public class usuarioController implements Serializable {
         }
         selected.setRut(texto);
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("usuarioUpdated"));
+    }
+    
+    public void verificarRutExistencia(FacesContext context, UIComponent toValidate, Object value){
+        context = FacesContext.getCurrentInstance();
+        FacesMessage message = null;
+        String texto = (String) value;
+        boolean alpha = texto.matches("[0-9]{1,2}.[0-9]{3}.[0-9]{3}-[0-9kK]{1}");
+        boolean beta = texto.matches("[0-9]{1,2}[0-9]{3}[0-9]{3}-[0-9kK]{1}");
+        boolean gamma = texto.matches("[0-9]{1,2}[0-9]{3}[0-9]{3}[0-9kK]{1}");
+        
+        if (!getUsername(texto).equals("")) {
+            ((UIInput) toValidate).setValid(false);
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "El rut ingresado ya existe para usuario.") );
+        }
+        
+        if (alpha || beta || gamma) {
+            String partA = "";
+            String partB = "";
+            boolean raya = false;
+            int suma = 0;
+            int mult = 5;
+            int modulo;
+            int resta;
+            
+            if (alpha || beta) {
+                for (int i = 0; i < texto.length(); i++) {
+                    if (texto.charAt(i) == '-') {
+                        raya = true;
+                    }
+                    if (texto.charAt(i) != '.' && texto.charAt(i) != '-'){
+                        if (!raya) {
+                            partA = partA + texto.charAt(i);
+                        }else{
+                            partB = partB + texto.charAt(i);
+                            partB = partB.toUpperCase();
+                        }
+                    }
+                }
+            }else{
+                for (int i = 0; i < texto.length()-1; i++) {
+                    partA = partA + texto.charAt(i);                    
+                }
+                partB = ""+texto.charAt(texto.length()-1);
+                partB = partB.toUpperCase();
+            }
+            for (int i = partA.length()-1; i >= 0; i--) {
+                if (mult < 0) {
+                    mult = 5;
+                }
+                suma = suma + Integer.parseInt(""+partA.charAt(i))*(7-mult);
+                mult = mult-1;
+            }
+            modulo = suma%11;
+            resta = 11 - modulo;
+
+            if(!  ( ( resta == 11 && partB.equals("0") )||
+                    ( resta == 10 && partB.equals("K") )||
+                    ( resta == 9  && partB.equals("9") )||
+                    ( resta == 8  && partB.equals("8") )||
+                    ( resta == 7  && partB.equals("7") )||
+                    ( resta == 6  && partB.equals("6") )||
+                    ( resta == 5  && partB.equals("5") )||
+                    ( resta == 4  && partB.equals("4") )||
+                    ( resta == 3  && partB.equals("3") )||
+                    ( resta == 2  && partB.equals("2") )||
+                    ( resta == 1  && partB.equals("1") )    ) ){
+
+                ((UIInput) toValidate).setValid(false);
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "El rut ingresado no es válido.") );
+            }           
+            
+        }
+        else{
+            ((UIInput) toValidate).setValid(false);
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "El rut ingresado no es válido.") );
+        }
     }
     
     public void validarRut(FacesContext context, UIComponent toValidate, Object value) {
@@ -201,7 +278,7 @@ public class usuarioController implements Serializable {
                     ( resta == 1  && partB.equals("1") )    ) ){
 
                 ((UIInput) toValidate).setValid(false);
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Successful",  "El rut ingresado no es válido.") );
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "El rut ingresado no es válido.") );
             }                
             
         }
