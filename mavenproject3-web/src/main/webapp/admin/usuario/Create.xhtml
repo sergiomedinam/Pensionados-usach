@@ -22,8 +22,8 @@
                         </p:selectOneMenu>
                         
                         <p:outputLabel value="#{bundle.CreateusuarioLabel_rut}" for="rut" />
-                        <p:inputMask id="rut" mask="99.999.999-9" placeholder="12.345.678-9" required="true" requiredMessage="Se necesita Rut" value="#{usuarioController.selected.rut}" title="#{bundle.CreateusuarioTitle_rut}" validator="#{usuarioController.validarRut}" />
-                        
+                        <p:inputMask id="rut" mask="99.999.999-9" placeholder="12.345.678-9" required="true" requiredMessage="Se necesita Rut" value="#{usuarioController.selected.rut}" title="#{bundle.CreateusuarioTitle_rut}" validator="#{usuarioController.verificarRutExistencia}" />
+
                         
                         
                         <p:outputLabel value="#{bundle.CreateusuarioLabel_nombre}" for="nombre" />
