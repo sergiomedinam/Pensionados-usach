@@ -1,6 +1,7 @@
 package managebeans;
 
 import entities.cuotaspagadas;
+import entities.pensionado;
 import managebeans.util.JsfUtil;
 import managebeans.util.JsfUtil.PersistAction;
 import sessionsbeans.cuotaspagadasFacadeLocal;
@@ -165,7 +166,15 @@ public class cuotaspagadasController implements Serializable {
         return Moroso;
     }
     
-    
+    public List<pensionado> Morosos(List<pensionado> pensionados){
+        List<pensionado> morosos = new ArrayList<pensionado>();
+        for(pensionado item : pensionados){
+            if(esMoroso(item.getRut_pensionado())){
+                morosos.add(item);
+            }
+        }
+        return morosos;
+    }
 
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {

@@ -81,14 +81,14 @@
                             <!-- small box -->
                             <div class="small-box bg-red">
                                 <div class="inner">
-                                    <h3>x</h3>
+                                    <h3>#{cuotaspagadasController.Morosos(pensionadoController.items).size()}</h3>
 
                                     <p>Morosos</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-pie-graph"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
+                                <a href="#{request.contextPath}/faces/pensionado/Morosos.xhtml" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->
