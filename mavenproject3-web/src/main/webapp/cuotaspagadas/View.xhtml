@@ -12,14 +12,17 @@
             <h:form id="cuotaspagadasViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{cuotaspagadasController.selected != null}">
-                        <h:outputText value="#{bundle.ViewcuotaspagadasLabel_pensionado}"/>
-                        <h:outputText value="#{cuotaspagadasController.selected.pensionado}" title="#{bundle.ViewcuotaspagadasTitle_pensionado}"/>
+                        <h:outputText value="#{bundle.ViewpensionadoLabel_rut_pensionado}"/>
+                        <h:outputText value="#{cuotaspagadasController.selected.pensionado.rut_pensionado}" title="#{bundle.ViewcuotaspagadasTitle_pensionado}"/>
+                        
+                        <h:outputText value="#{bundle.ViewpensionadoLabel_nombre_pensionado}"/>
+                        <h:outputText value="#{cuotaspagadasController.selected.pensionado.nombre_pensionado} #{cuotaspagadasController.selected.pensionado.apellido_p_pensionado} #{cuotaspagadasController.selected.pensionado.apellido_m_pensionado}" title="#{bundle.ViewcuotaspagadasTitle_pensionado}"/>
+
                         <h:outputText value="#{bundle.ViewcuotaspagadasLabel_ano}"/>
                         <h:outputText value="#{cuotaspagadasController.selected.ano}" title="#{bundle.ViewcuotaspagadasTitle_ano}"/>
+
                         <h:outputText value="#{bundle.ViewcuotaspagadasLabel_cuotas}"/>
                         <h:outputText value="#{cuotaspagadasController.selected.cuotas}" title="#{bundle.ViewcuotaspagadasTitle_cuotas}"/>
-                        <h:outputText value="#{bundle.ViewcuotaspagadasLabel_id}"/>
-                        <h:outputText value="#{cuotaspagadasController.selected.id}" title="#{bundle.ViewcuotaspagadasTitle_id}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="cuotaspagadasViewDialog.hide()"/>
                 </h:panelGroup>

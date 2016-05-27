@@ -13,7 +13,7 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{cuotaspagadasController.selected != null}">
                         <p:outputLabel value="#{bundle.CreatecuotaspagadasLabel_pensionado}" for="pensionado" />
-                        <p:selectOneMenu id="pensionado" filter="true" filterMatchMode="contains"  value="#{cuotaspagadasController.selected.pensionado}" style="width:155px">
+                        <p:selectOneMenu id="pensionado" required="true" requiredMessage="Se necesita un pensionado" filter="true" filterMatchMode="contains"  value="#{cuotaspagadasController.selected.pensionado}" style="width:155px">
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{pensionadoController.itemsAvailableSelectOne}"
                                            var="pensionadoItem"
@@ -29,7 +29,7 @@
                         
                         <p:outputLabel value="#{bundle.CreatecuotaspagadasLabel_cuotas}" for="cuotas" />
                        
-                         <p:selectOneMenu  id="cuotas" value="#{cuotaspagadasController.selected.cuotas}" style="width:155px">
+                        <p:selectOneMenu  id="cuotas" required="true" requiredMessage="Se necesita el mes más reciente pagado" value="#{cuotaspagadasController.selected.cuotas}" style="width:155px">
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{añosCuotas.numeroCuotas}" />
                         </p:selectOneMenu>
