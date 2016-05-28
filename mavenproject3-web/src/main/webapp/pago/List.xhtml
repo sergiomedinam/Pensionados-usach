@@ -29,22 +29,30 @@
 
                         <p:column>
                             <f:facet name="header">
+                                <h:outputText value="#{bundle.ListpagoTitle_completo}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.completo}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListpagoTitle_mes}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.mes}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListpagoTitle_pensionado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pensionado.rut_pensionado}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListpagoTitle_pago}"/>
                             </f:facet>
                             <h:outputText value="#{item.pago}"/>
                         </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpagoTitle_pagodetalles}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.pagodetalles}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpagoTitle_id}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.id}"/>
-                        </p:column>
+
+ 
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{pagoController.prepareCreate}" update=":pagoCreateForm" oncomplete="PF('pagoCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":pagoViewForm" oncomplete="PF('pagoViewDialog').show()" disabled="#{empty pagoController.selected}"/>

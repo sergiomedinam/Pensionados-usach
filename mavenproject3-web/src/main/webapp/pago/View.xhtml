@@ -12,6 +12,12 @@
             <h:form id="pagoViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{pagoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewpagoLabel_completo}"/>
+                        <p:selectBooleanCheckbox value="#{pagoController.selected.completo}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewpagoLabel_mes}"/>
+                        <h:outputText value="#{pagoController.selected.mes}" title="#{bundle.ViewpagoTitle_mes}"/>
+                        <h:outputText value="#{bundle.ViewpagoLabel_pensionado}"/>
+                        <h:outputText value="#{pagoController.selected.pensionado}" title="#{bundle.ViewpagoTitle_pensionado}"/>
                         <h:outputText value="#{bundle.ViewpagoLabel_pago}"/>
                         <h:outputText value="#{pagoController.selected.pago}" title="#{bundle.ViewpagoTitle_pago}"/>
                         <h:outputText value="#{bundle.ViewpagoLabel_pagodetalles}"/>
