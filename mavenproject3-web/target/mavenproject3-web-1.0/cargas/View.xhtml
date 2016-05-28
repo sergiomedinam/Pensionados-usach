@@ -12,20 +12,18 @@
             <h:form id="cargasViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{cargasController.selected != null}">
-                        <h:outputText value="#{bundle.ViewcargasLabel_titular}"/>
-                        <h:outputText value="#{cargasController.selected.titular}" title="#{bundle.ViewcargasTitle_titular}"/>
+                        <h:outputText value="#{bundle.ViewcargasLabel_pensionado}"/>
+                        <h:outputText value="#{cargasController.selected.pensionado.rut_pensionado}" title="#{bundle.ViewcargasTitle_pensionado}"/>
+                        <h:outputText value="#{bundle.ViewpensionadoLabel_nombre_pensionado}"/>
+                        <h:outputText value="#{cargasController.selected.pensionado.nombre_pensionado} #{cargasController.selected.pensionado.apellido_p_pensionado} #{cargasController.selected.pensionado.apellido_m_pensionado} " title="#{bundle.ViewpensionadoTitle_pensionado}"/>
+                        <h:outputText value="#{bundle.ViewcargasLabel_seguro}"/>
+                        <h:outputText value="#{cargasController.selected.seguro.nombre_seguro}" title="#{bundle.ViewcargasTitle_seguro}"/>
                         <h:outputText value="#{bundle.ViewcargasLabel_conyuge}"/>
                         <h:outputText value="#{cargasController.selected.conyuge}" title="#{bundle.ViewcargasTitle_conyuge}"/>
                         <h:outputText value="#{bundle.ViewcargasLabel_hijos}"/>
                         <h:outputText value="#{cargasController.selected.hijos}" title="#{bundle.ViewcargasTitle_hijos}"/>
                         <h:outputText value="#{bundle.ViewcargasLabel_otros}"/>
                         <h:outputText value="#{cargasController.selected.otros}" title="#{bundle.ViewcargasTitle_otros}"/>
-                        <h:outputText value="#{bundle.ViewcargasLabel_pensionado}"/>
-                        <h:outputText value="#{cargasController.selected.pensionado}" title="#{bundle.ViewcargasTitle_pensionado}"/>
-                        <h:outputText value="#{bundle.ViewcargasLabel_seguro}"/>
-                        <h:outputText value="#{cargasController.selected.seguro}" title="#{bundle.ViewcargasTitle_seguro}"/>
-                        <h:outputText value="#{bundle.ViewcargasLabel_id}"/>
-                        <h:outputText value="#{cargasController.selected.id}" title="#{bundle.ViewcargasTitle_id}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="cargasViewDialog.hide()"/>
                 </h:panelGroup>

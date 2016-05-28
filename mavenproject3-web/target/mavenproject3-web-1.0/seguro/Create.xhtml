@@ -6,16 +6,14 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition>
-
+    <ui:composition>        
         <p:dialog id="seguroCreateDlg" widgetVar="seguroCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateseguroTitle}">
             <h:form id="seguroCreateForm">
+                <p:growl id="growl" showDetail="true" showSummary="true" autoUpdate="true" />
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{seguroController.selected != null}">
                         <p:outputLabel value="#{bundle.CreateseguroLabel_nombre_seguro}" for="nombre_seguro" />
-                        <p:inputText id="nombre_seguro" value="#{seguroController.selected.nombre_seguro}" title="#{bundle.CreateseguroTitle_nombre_seguro}" />
-                        <p:outputLabel value="#{bundle.CreateseguroLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{seguroController.selected.id}" title="#{bundle.CreateseguroTitle_id}" />
+                        <p:inputText id="nombre_seguro" value="#{seguroController.selected.nombre_seguro}" title="#{bundle.CreateseguroTitle_nombre_seguro}" validator="#{seguroController.validarNotNullNotExistente}"/>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{seguroController.create}" value="#{bundle.Save}" update="display,:seguroListForm:datalist,:growl" oncomplete="handleSubmit(args,'seguroCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="seguroCreateDialog.hide()"/>
