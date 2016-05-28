@@ -17,7 +17,7 @@
                     <p:panelGrid columns="2" rendered="#{pensionadoController.selected != null}">
 
                         <p:outputLabel value="#{bundle.CreatepensionadoLabel_rut_pensionado}" for="rut_pensionado" />
-                        <p:inputMask required="true" mask="99.999.999-9" placeholder="12.345.678-9" requiredMessage="Se necesita un rut" id="rut_pensionado" value="#{pensionadoController.selected.rut_pensionado}" title="#{bundle.CreatepensionadoTitle_rut_pensionado}" validator="#{pensionadoController.validarRut}" />
+                        <p:inputMask required="true" mask="99.999.999-9" placeholder="12.345.678-9" requiredMessage="Se necesita un rut" id="rut_pensionado" value="#{pensionadoController.selected.rut_pensionado}" title="#{bundle.CreatepensionadoTitle_rut_pensionado}" validator="#{pensionadoController.verificarRutExistencia}" />
                         
                             
                         <p:outputLabel value="#{bundle.CreatepensionadoLabel_nombre_pensionado}" for="nombre_pensionado" />
