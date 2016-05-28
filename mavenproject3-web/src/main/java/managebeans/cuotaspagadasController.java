@@ -18,7 +18,9 @@ import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
+import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
@@ -60,10 +62,30 @@ public class cuotaspagadasController implements Serializable {
     }
 
     public void create() {
-        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("cuotaspagadasCreated"));
-        if (!JsfUtil.isValidationFailed()) {
-            items = null;    // Invalidate list of items to trigger re-query.
+        System.out.println("********************************************************");
+        String rut = selected.getPensionado().getRut_pensionado();
+        String nuevoAño = selected.getAno();
+        List<cuotaspagadas> cuotas = CuotasPensionados(rut);
+        System.out.println("RUT: "+selected.getPensionado().getRut_pensionado());
+        System.out.println("añoNuevo: "+nuevoAño);
+        System.out.println("CUOTAS: "+cuotas.size());
+        boolean existeAño = false;
+        for(cuotaspagadas item : cuotas){
+            System.out.println("años en cuotas: "+item.getAno());
+            System.out.println("item.getAno().equals(nuevoAño): "+item.getAno().equals(nuevoAño));
+            if(item.getAno().equals(nuevoAño)){
+                destroyAño();
+            }
         }
+        
+        System.out.println("********************************************************");
+        if (!existeAño) {
+            persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("cuotaspagadasCreated"));
+            if (!JsfUtil.isValidationFailed()) {
+                items = null;    // Invalidate list of items to trigger re-query.
+            }
+        }
+        
     }
 
     public void update() {
@@ -72,6 +94,14 @@ public class cuotaspagadasController implements Serializable {
 
     public void destroy() {
         persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("cuotaspagadasDeleted"));
+        if (!JsfUtil.isValidationFailed()) {
+            selected = null; // Remove selection
+            items = null;    // Invalidate list of items to trigger re-query.
+        }
+    }
+    
+    public void destroyAño() {
+        persist(PersistAction.DELETE, "Error: Para este pensionado, ya existe el año");
         if (!JsfUtil.isValidationFailed()) {
             selected = null; // Remove selection
             items = null;    // Invalidate list of items to trigger re-query.
@@ -175,7 +205,7 @@ public class cuotaspagadasController implements Serializable {
         }
         return morosos;
     }
-
+    
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
             setEmbeddableKeys();
