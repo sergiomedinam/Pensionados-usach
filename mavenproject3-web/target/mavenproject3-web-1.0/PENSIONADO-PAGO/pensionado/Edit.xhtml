@@ -16,13 +16,6 @@
                         <p:inputText id="saldo" value="#{pensionadoController.selected.saldo}" title="#{bundle.EditpensionadoTitle_saldo}" />
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_monto_pension}" for="monto_pension" />
                         <p:inputText id="monto_pension" value="#{pensionadoController.selected.monto_pension}" title="#{bundle.EditpensionadoTitle_monto_pension}" />
-                        <p:outputLabel value="#{bundle.EditpensionadoLabel_pagos}" for="pagos" />
-                        <p:selectOneMenu id="pagos" value="#{pensionadoController.selected.pagos}" >
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{pagoController.itemsAvailableSelectOne}"
-                                           var="pagosItem"
-                                           itemValue="#{pagosItem}"/>
-                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_email_alternativo}" for="email_alternativo" />
                         <p:inputText id="email_alternativo" value="#{pensionadoController.selected.email_alternativo}" title="#{bundle.EditpensionadoTitle_email_alternativo}" />
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_email_pensionado}" for="email_pensionado" />
