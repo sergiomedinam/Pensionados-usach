@@ -112,8 +112,24 @@ public class pensionado implements Serializable {
     private Set<pensionadoprestamo> pensionadoprestamo = new HashSet<pensionadoprestamo>();
     
     
-    @ManyToOne
-    private pago pagos;
+    @OneToMany
+    private List<pago> pagos;
+
+    public Set<pensionadoprestamo> getPensionadoprestamo() {
+        return pensionadoprestamo;
+    }
+
+    public void setPensionadoprestamo(Set<pensionadoprestamo> pensionadoprestamo) {
+        this.pensionadoprestamo = pensionadoprestamo;
+    }
+
+    public List<pago> getPagos() {
+        return pagos;
+    }
+
+    public void setPagos(List<pago> pagos) {
+        this.pagos = pagos;
+    }
     
     
 
@@ -141,17 +157,6 @@ public class pensionado implements Serializable {
         this.cargas.add(carga);
     } 
     
-
-    public pago getPagos() {
-        return pagos;
-    }
-
-    public void setPagos(pago pagos) {
-        this.pagos = pagos;
-    }
-    
-    
-
 
     
     @OneToOne

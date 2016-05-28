@@ -12,8 +12,11 @@
             <h:form id="pagoCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{pagoController.selected != null}">
+                        
                         <p:outputLabel value="#{bundle.CreatepagoLabel_pago}" for="pago" />
                         <p:inputText id="pago" value="#{pagoController.selected.pago}" title="#{bundle.CreatepagoTitle_pago}" />
+                        <p:outputLabel value="#{bundle.CreatepagoLabel_mes}" for="mes" />
+                        <p:inputText id="mes" value="#{pagoController.selected.mes}" title="#{bundle.CreatepagoTitle_mes}" />
                         
                         <p:outputLabel value="#{bundle.CreatepagodetalleLabel_seguro_catastrofico}" for="catastrofico" />
                         <p:selectBooleanCheckbox id="catastrofico" value="#{pagoController.catastrofico}" />
@@ -21,19 +24,28 @@
                         <p:selectBooleanCheckbox id="vida" value="#{pagoController.vida}" />
                         <p:outputLabel value="#{bundle.CreatepagodetalleLabel_seguro_hospitalario}" for="hospitalario" />
                         <p:selectBooleanCheckbox id="hospitalario" value="#{pagoController.hospitalario}" />
-                        <p:outputLabel value="#{bundle.CreatepagodetalleLabel_seguro_ucm}" for="ucm" />
-                        <p:selectBooleanCheckbox id="ucm" value="#{pagoController.ucm}" />
-                        <p:outputLabel value="#{bundle.CreatepagodetalleLabel_seguro_paux}" for="paux" />
-                        <p:selectBooleanCheckbox id="paux" value="#{pagoController.paux}" />
-                        <p:outputLabel value="#{bundle.CreatepagodetalleLabel_seguro_jardin}" for="jardin" />
-                        <p:selectBooleanCheckbox id="jardin" value="#{pagoController.jardin}" />
+                   
+         
+                    
                         <p:outputLabel value="#{bundle.CreatepagodetalleLabel_aportes}" for="aportes" />
                         <p:selectBooleanCheckbox id="aportes" value="#{pagoController.aportes}" />
                         <p:outputLabel value="#{bundle.CreatepagodetalleLabel_otros}" for="otros" />
                         <p:selectBooleanCheckbox id="otros" value="#{pagoController.otros}" />
+                        <p:outputLabel value="#{bundle.CreatepagodetalleLabel_prestamos}" for="prestamos" />
+                        <p:selectBooleanCheckbox id="prestamos" value="#{pagoController.prestamos}" />
+                     
+                        <p:outputLabel value="#{bundle.CreatepagoLabel_completo}" for="completo" />
+                        <p:selectBooleanCheckbox id="completo" value="#{pagoController.selected.completo}" />
                         
-                        <p:outputLabel value="Seguro PMED" for="pmed" />
-                        <p:selectBooleanCheckbox id="pmed" value="#{pagoController.pmed}" />
+                        <p:outputLabel value="#{bundle.CreatepagoLabel_pensionado}" for="pensionado" />
+                        <p:selectOneMenu id="pensionado" value="#{pagoController.selected.pensionado}" >
+                            <f:selectItems value="#{pensionadoController.itemsAvailableSelectOne}"
+                                           var="pensionadoItem"
+                                           itemValue="#{pensionadoItem}"/>
+                        </p:selectOneMenu>
+                       
+                       
+                       
                     </p:panelGrid>
                     <p:commandButton actionListener="#{pagoController.create}" value="#{bundle.Save}" update="display,:pagoListForm:datalist,:growl" oncomplete="handleSubmit(args,'pagoCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="pagoCreateDialog.hide()"/>

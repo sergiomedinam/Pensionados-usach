@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
@@ -31,6 +32,39 @@ public class pago implements Serializable {
     
     @OneToOne
     private pagodetalle pagodetalles;
+    
+    @ManyToOne
+    private pensionado pensionado;
+    
+    private Boolean completo;
+    
+    private String mes;
+
+    public Boolean getCompleto() {
+        return completo;
+    }
+
+    public void setCompleto(Boolean completo) {
+        this.completo = completo;
+    }
+
+    public String getMes() {
+        return mes;
+    }
+
+    public void setMes(String mes) {
+        this.mes = mes;
+    }
+    
+    public pensionado getPensionado() {
+        return pensionado;
+    }
+
+    public void setPensionado(pensionado pensionado) {
+        this.pensionado = pensionado;
+    }
+    
+    
 
     public Integer getPago() {
         return pago;
