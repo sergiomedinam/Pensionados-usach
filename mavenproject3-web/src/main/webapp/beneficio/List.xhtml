@@ -15,12 +15,11 @@
         </ui:define>
 
         <ui:define name="body">
-            <div class="container">
-                    <div class="btn-group btn-breadcrumb">
-                        <a href="#{request.contextPath}" class="btn btn-primary "><i class="glyphicon glyphicon-home"></i></a>
-                        <a href="#" class="btn btn-primary active" >Beneficios</a>
-                    </div>
-                </div>
+           <p:breadCrumb > 
+                <p:menuitem value="Inicio" url="#" />
+                <p:menuitem value="Inicio" url="/" />
+                <p:menuitem value="Beneficios" url="/faces/beneficio/List.xhtml" />
+            </p:breadCrumb>
                 <section class="content-header">
                     <h1>
                       Beneficios  
