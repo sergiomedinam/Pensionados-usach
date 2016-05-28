@@ -12,28 +12,18 @@
             <h:form id="cargasEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{cargasController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditcargasLabel_titular}" for="titular" />
-                        <p:inputText id="titular" value="#{cargasController.selected.titular}" title="#{bundle.EditcargasTitle_titular}" />
                         <p:outputLabel value="#{bundle.EditcargasLabel_conyuge}" for="conyuge" />
-                        <p:inputText id="conyuge" value="#{cargasController.selected.conyuge}" title="#{bundle.EditcargasTitle_conyuge}" />
+                        <p:inputText id="conyuge" value="#{cargasController.selected.conyuge}" title="#{bundle.EditcargasTitle_conyuge}"  validator="#{cargasController.validaConyugeNumerico}" />
                         <p:outputLabel value="#{bundle.EditcargasLabel_hijos}" for="hijos" />
-                        <p:inputText id="hijos" value="#{cargasController.selected.hijos}" title="#{bundle.EditcargasTitle_hijos}" />
+                        <p:inputText id="hijos" value="#{cargasController.selected.hijos}" title="#{bundle.EditcargasTitle_hijos}"  validator="#{cargasController.validaHijosNumerico}" />
                         <p:outputLabel value="#{bundle.EditcargasLabel_otros}" for="otros" />
-                        <p:inputText id="otros" value="#{cargasController.selected.otros}" title="#{bundle.EditcargasTitle_otros}" />
+                        <p:inputText id="otros" value="#{cargasController.selected.otros}" title="#{bundle.EditcargasTitle_otros}" validator="#{cargasController.validaOtrosNumerico}"  />
                         <p:outputLabel value="#{bundle.EditcargasLabel_pensionado}" for="pensionado" />
-                        <p:selectOneMenu id="pensionado" value="#{cargasController.selected.pensionado}" >
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{pensionadoController.itemsAvailableSelectOne}"
-                                           var="pensionadoItem"
-                                           itemValue="#{pensionadoItem}"/>
-                        </p:selectOneMenu>
+                        <p:outputLabel id="pensionado" value="#{cargasController.selected.pensionado.rut_pensionado}" />
+                        
                         <p:outputLabel value="#{bundle.EditcargasLabel_seguro}" for="seguro" />
-                        <p:selectOneMenu id="seguro" value="#{cargasController.selected.seguro}" >
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{seguroController.itemsAvailableSelectOne}"
-                                           var="seguroItem"
-                                           itemValue="#{seguroItem}"/>
-                        </p:selectOneMenu>
+                        <p:outputLabel id="seguro" value="#{cargasController.selected.seguro.nombre_seguro}" />
+
  
                     </p:panelGrid>
                     <p:commandButton actionListener="#{cargasController.update}" value="#{bundle.Save}" update="display,:cargasListForm:datalist,:growl" oncomplete="handleSubmit(args, 'cargasEditDialog');"/>
