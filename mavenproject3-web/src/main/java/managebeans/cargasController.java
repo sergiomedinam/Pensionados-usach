@@ -14,7 +14,9 @@ import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
+import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
@@ -56,6 +58,7 @@ public class cargasController implements Serializable {
     }
 
     public void create() {
+        selected.setTitular(1);
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("cargasCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
@@ -121,6 +124,95 @@ public class cargasController implements Serializable {
         return getFacade().findAll();
     }
 
+    public void validaTitularNumerico(FacesContext context, UIComponent toValidate, Object value){
+        context = FacesContext.getCurrentInstance();
+        try{
+        int numero = (int) value;}
+        catch (ClassCastException e){
+            String texto = (String) value.toString();
+            boolean alpha = texto.matches("[0-9]");
+
+            if (!alpha) {
+                ((UIInput) toValidate).setValid(false);
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Titular debe ser un valor numérico sin puntos ni comas.") );
+            }
+        }
+    }
+    
+    public void validaHijosNumerico(FacesContext context, UIComponent toValidate, Object value){
+        context = FacesContext.getCurrentInstance();
+        try{
+            int numero = (int) value;
+            if (numero < 0) {
+                ((UIInput) toValidate).setValid(false);
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Hijos debe ser un valor mayor o igual a 0.") );
+            }
+        }
+        catch (ClassCastException e){
+            String texto = (String) value.toString();
+            boolean alpha = texto.matches("[0-9]");
+
+            if (!alpha) {
+                ((UIInput) toValidate).setValid(false);
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Hijos debe ser un valor numérico sin puntos ni comas.") );
+            }
+        }
+    }
+    
+    public void validaConyugeNumerico(FacesContext context, UIComponent toValidate, Object value){
+        context = FacesContext.getCurrentInstance();
+        try{
+            int numero = (int) value;
+            if (numero < 0 || numero > 1) {
+                ((UIInput) toValidate).setValid(false);
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Conyuge debe ser un valor mayor o igual a 0.") );
+            }
+        }
+        catch (ClassCastException e){
+            String texto = (String) value.toString();
+            boolean alpha = texto.matches("[0-9]");
+
+            if (!alpha) {
+                ((UIInput) toValidate).setValid(false);
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Conyuge debe ser un valor numérico sin puntos ni comas.") );
+            }
+        }
+    }
+    
+    public void validaOtrosNumerico(FacesContext context, UIComponent toValidate, Object value){
+        context = FacesContext.getCurrentInstance();
+        try{
+            int numero = (int) value;
+            if (numero < 0) {
+                ((UIInput) toValidate).setValid(false);
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Otros debe ser un valor mayor o igual a 0.") );
+            }
+        }
+        catch (ClassCastException e){
+            String texto = (String) value.toString();
+            boolean alpha = texto.matches("[0-9]");
+
+            if (!alpha) {
+                ((UIInput) toValidate).setValid(false);
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Otros debe ser un valor numérico sin puntos ni comas.") );
+            }
+        }
+    }
+    
+    public void validaExistenciaPensionadoSeguro(FacesContext context, UIComponent toValidate, Object value){
+        context = FacesContext.getCurrentInstance();
+        String texto = (String) value.toString();
+        System.out.println(texto);
+        getItems();
+        for (cargas item : items) {
+            System.out.println(item.getPensionado());
+            if (item.getSeguro().toString().equals(texto) ) {
+                ((UIInput) toValidate).setValid(false);
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Este pensionado ya posee este seguro.") );
+            }
+        }
+    }
+    
     @FacesConverter(forClass = cargas.class)
     public static class cargasControllerConverter implements Converter {
 
