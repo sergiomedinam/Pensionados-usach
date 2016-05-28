@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="43" failures="0" name="entities.pensionadoTest" time="0.116" errors="0" skipped="0">
+<testsuite tests="43" failures="0" name="entities.pensionadoTest" time="0.234" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_65\jre\bin"/>
@@ -61,47 +61,47 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="entities.pensionadoTest" name="testToString" time="0.003"/>
-  <testcase classname="entities.pensionadoTest" name="testGetId" time="0.002"/>
+  <testcase classname="entities.pensionadoTest" name="testGetId" time="0"/>
+  <testcase classname="entities.pensionadoTest" name="testSetId" time="0"/>
   <testcase classname="entities.pensionadoTest" name="testHashCode" time="0"/>
-  <testcase classname="entities.pensionadoTest" name="testSetId" time="0.001"/>
   <testcase classname="entities.pensionadoTest" name="testEquals" time="0"/>
-  <testcase classname="entities.pensionadoTest" name="testSetEmail_alternativo" time="0.001"/>
-  <testcase classname="entities.pensionadoTest" name="testSetEmail_pensionado" time="0"/>
-  <testcase classname="entities.pensionadoTest" name="testGetMedicamentos" time="0.001"/>
-  <testcase classname="entities.pensionadoTest" name="testSetMedicamentos" time="0.001"/>
-  <testcase classname="entities.pensionadoTest" name="testGetEmail_alternativo" time="0"/>
-  <testcase classname="entities.pensionadoTest" name="testGetEmail_pensionado" time="0"/>
-  <testcase classname="entities.pensionadoTest" name="testSetPatologias" time="0"/>
-  <testcase classname="entities.pensionadoTest" name="testGetOtros_datos" time="0"/>
-  <testcase classname="entities.pensionadoTest" name="testGetRut_pensionado" time="0.001"/>
-  <testcase classname="entities.pensionadoTest" name="testSetApellido_p_pensionado" time="0.001"/>
-  <testcase classname="entities.pensionadoTest" name="testGetApellido_m_pensionado" time="0.002"/>
-  <testcase classname="entities.pensionadoTest" name="testSetNombre_pensionado" time="0"/>
-  <testcase classname="entities.pensionadoTest" name="testSetEstado_civil" time="0"/>
-  <testcase classname="entities.pensionadoTest" name="testGetNombre_pensionado" time="0"/>
-  <testcase classname="entities.pensionadoTest" name="testSetRut_pensionado" time="0"/>
-  <testcase classname="entities.pensionadoTest" name="testSetOtros_datos" time="0"/>
-  <testcase classname="entities.pensionadoTest" name="testGetPatologias" time="0.001"/>
-  <testcase classname="entities.pensionadoTest" name="testSetTelefono_fijo" time="0"/>
-  <testcase classname="entities.pensionadoTest" name="testGetBeneficios" time="0"/>
-  <testcase classname="entities.pensionadoTest" name="testSetFecha_nacimiento" time="0"/>
-  <testcase classname="entities.pensionadoTest" name="testGetApellido_p_pensionado" time="0.001"/>
-  <testcase classname="entities.pensionadoTest" name="testGetEstado_civil" time="0.001"/>
+  <testcase classname="entities.pensionadoTest" name="testToString" time="0"/>
   <testcase classname="entities.pensionadoTest" name="testSetBeneficios" time="0"/>
-  <testcase classname="entities.pensionadoTest" name="testGetTelefono_fijo" time="0"/>
-  <testcase classname="entities.pensionadoTest" name="testSetApellido_m_pensionado" time="0"/>
-  <testcase classname="entities.pensionadoTest" name="testGetFecha_nacimiento" time="0.001"/>
+  <testcase classname="entities.pensionadoTest" name="testGetPatologias" time="0"/>
+  <testcase classname="entities.pensionadoTest" name="testGetApellido_m_pensionado" time="0.016"/>
+  <testcase classname="entities.pensionadoTest" name="testSetEmail_alternativo" time="0"/>
+  <testcase classname="entities.pensionadoTest" name="testSetPatologias" time="0"/>
+  <testcase classname="entities.pensionadoTest" name="testSetTelefono_fijo" time="0"/>
+  <testcase classname="entities.pensionadoTest" name="testSetOtros_datos" time="0.016"/>
+  <testcase classname="entities.pensionadoTest" name="testGetEstado_civil" time="0"/>
+  <testcase classname="entities.pensionadoTest" name="testSetNombre_pensionado" time="0"/>
+  <testcase classname="entities.pensionadoTest" name="testGetBeneficios" time="0.028"/>
+  <testcase classname="entities.pensionadoTest" name="testGetRut_pensionado" time="0.005"/>
+  <testcase classname="entities.pensionadoTest" name="testSetApellido_p_pensionado" time="0.006"/>
+  <testcase classname="entities.pensionadoTest" name="testSetEmail_pensionado" time="0.001"/>
+  <testcase classname="entities.pensionadoTest" name="testSetMedicamentos" time="0.001"/>
+  <testcase classname="entities.pensionadoTest" name="testSetRut_pensionado" time="0"/>
+  <testcase classname="entities.pensionadoTest" name="testGetApellido_p_pensionado" time="0"/>
+  <testcase classname="entities.pensionadoTest" name="testGetEmail_pensionado" time="0"/>
+  <testcase classname="entities.pensionadoTest" name="testGetMedicamentos" time="0.004"/>
+  <testcase classname="entities.pensionadoTest" name="testSetApellido_m_pensionado" time="0.001"/>
+  <testcase classname="entities.pensionadoTest" name="testGetFecha_nacimiento" time="0.002"/>
+  <testcase classname="entities.pensionadoTest" name="testSetFecha_nacimiento" time="0.003"/>
+  <testcase classname="entities.pensionadoTest" name="testSetEstado_civil" time="0.001"/>
+  <testcase classname="entities.pensionadoTest" name="testGetNombre_pensionado" time="0.002"/>
+  <testcase classname="entities.pensionadoTest" name="testGetEmail_alternativo" time="0.001"/>
+  <testcase classname="entities.pensionadoTest" name="testGetTelefono_fijo" time="0.001"/>
+  <testcase classname="entities.pensionadoTest" name="testGetOtros_datos" time="0.001"/>
   <testcase classname="entities.pensionadoTest" name="testGetPrestamos" time="0.007"/>
   <testcase classname="entities.pensionadoTest" name="testGetComuna" time="0"/>
-  <testcase classname="entities.pensionadoTest" name="testSetRegion" time="0.001"/>
-  <testcase classname="entities.pensionadoTest" name="testSetCelular" time="0.001"/>
-  <testcase classname="entities.pensionadoTest" name="testGetDireccion" time="0.001"/>
-  <testcase classname="entities.pensionadoTest" name="testSetComuna" time="0.001"/>
-  <testcase classname="entities.pensionadoTest" name="testGetRegion" time="0.001"/>
-  <testcase classname="entities.pensionadoTest" name="testGetContactos" time="0.001"/>
-  <testcase classname="entities.pensionadoTest" name="testGetCelular" time="0.001"/>
-  <testcase classname="entities.pensionadoTest" name="testSetDireccion" time="0.001"/>
-  <testcase classname="entities.pensionadoTest" name="testSetPrestamos" time="0"/>
-  <testcase classname="entities.pensionadoTest" name="testSetContactos" time="0.001"/>
+  <testcase classname="entities.pensionadoTest" name="testGetCelular" time="0"/>
+  <testcase classname="entities.pensionadoTest" name="testSetCelular" time="0"/>
+  <testcase classname="entities.pensionadoTest" name="testSetDireccion" time="0"/>
+  <testcase classname="entities.pensionadoTest" name="testGetContactos" time="0.015"/>
+  <testcase classname="entities.pensionadoTest" name="testSetContactos" time="0"/>
+  <testcase classname="entities.pensionadoTest" name="testGetDireccion" time="0"/>
+  <testcase classname="entities.pensionadoTest" name="testSetComuna" time="0"/>
+  <testcase classname="entities.pensionadoTest" name="testSetPrestamos" time="0.016"/>
+  <testcase classname="entities.pensionadoTest" name="testGetRegion" time="0"/>
+  <testcase classname="entities.pensionadoTest" name="testSetRegion" time="0"/>
 </testsuite>

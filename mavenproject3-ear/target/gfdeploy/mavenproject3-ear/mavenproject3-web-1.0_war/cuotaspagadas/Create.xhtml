@@ -22,14 +22,14 @@
                         </p:selectOneMenu>
                         
                         <p:outputLabel value="#{bundle.CreatecuotaspagadasLabel_ano}" for="ano" />
-                        <p:selectOneMenu  id="ano" required="true" requiredMessage="Se necesita un año"  value="#{cuotaspagadasController.selected.ano}" style="width:155px" >
+                        <p:selectOneMenu  id="ano" required="true" requiredMessage="Se necesita un año"  value="#{cuotaspagadasController.selected.ano}" style="width:155px">
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{añosCuotas.añosCuotas}" />
                         </p:selectOneMenu>
                         
                         <p:outputLabel value="#{bundle.CreatecuotaspagadasLabel_cuotas}" for="cuotas" />
                        
-                        <p:selectOneMenu  id="cuotas" value="#{cuotaspagadasController.selected.cuotas}" style="width:155px">
+                        <p:selectOneMenu  id="cuotas" required="true" requiredMessage="Se necesita el mes más reciente pagado" value="#{cuotaspagadasController.selected.cuotas}" style="width:155px">
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{añosCuotas.numeroCuotas}" />
                         </p:selectOneMenu>
