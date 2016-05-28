@@ -1,5 +1,6 @@
 package managebeans;
 
+import entities.cargas;
 import entities.pensionado;
 import managebeans.util.JsfUtil;
 import managebeans.util.JsfUtil.PersistAction;
@@ -22,6 +23,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.faces.validator.ValidatorException;
+import javax.inject.Inject;
 import org.primefaces.context.RequestContext;
 
 @Named("pensionadoController")
@@ -32,6 +34,8 @@ public class pensionadoController implements Serializable {
     private pensionadoFacadeLocal ejbFacade;
     private List<pensionado> items = null;
     private pensionado selected;
+    @Inject
+    private cargasController cargasdelPensionado;
 
     public pensionadoController() {
     }
@@ -43,6 +47,7 @@ public class pensionadoController implements Serializable {
     public void setSelected(pensionado selected) {
         this.selected = selected;
     }
+    
 
     protected void setEmbeddableKeys() {
     }
