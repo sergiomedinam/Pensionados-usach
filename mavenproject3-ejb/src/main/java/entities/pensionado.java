@@ -111,6 +111,7 @@ public class pensionado implements Serializable {
     @OneToMany(mappedBy = "pensionado")
     private Set<pensionadoprestamo> pensionadoprestamo = new HashSet<pensionadoprestamo>();
     
+    
     @ManyToOne
     private pago pagos;
     

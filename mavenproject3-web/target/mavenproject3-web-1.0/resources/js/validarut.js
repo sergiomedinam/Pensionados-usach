@@ -155,29 +155,14 @@ function Rut(texto)
 function validateRut() {
     
 //    document.getElementById("myP").style.visibility = "hidden";
-                var string = document.forms["form1"]["j_username"].value;
-//                var re1 = new RegExp("^([0-9]{1,2}.[0-9]{3}.[0-9]{3}-[0-9kK]{1})$");
-//                var re2 = new RegExp("^([0-9]{1,2}[0-9]{3}[0-9]{3}-[0-9kK]{1})$");
-//                var re3 = new RegExp("^([0-9]{1,2}[0-9]{3}[0-9]{3}[0-9kK]{1})$");
-//                if (re1.test(string)) {
-//                    //alert("Valid");
-//                    var aTestear = "";
-//                    for (var i = 0, max = string.length; i < max; i++) {
-//                        if (string.charAt(i) != ".") {
-//                            aTestear = aTestear + string.charAt(i);
-//                        }
-//                    }
-//                    
-//                    return Rut(aTestear);
-//                } else if (re2.test(string)) { 
-//                    
-//                    return Rut(string);
-//                } else if (re3.test(string)) { 
-//                    alert("Validod");
-//                    return false;
-//                }else {
-//                    alert("El rut no es válido");
-//                    return false;
-//                }
-                    return Rut(string);
-            }
+    var string = document.forms["form1"]["j_username"].value;
+
+    var alpha = new RegExp("^([0-9]{1}.[0-9]{3}.[0-9]{3}-[0-9kK]{1})$");
+    var beta = new RegExp("^([0-9]{1}[0-9]{3}[0-9]{3}-[0-9kK]{1})$");
+    var gamma = new RegExp("^([0-9]{1}[0-9]{3}[0-9]{3}[0-9kK]{1})$");
+    
+    if (alpha.test(string) || beta.test(string) || gamma.test(string)) {
+        string = '0' + string;
+    }
+    return Rut(string);
+}
