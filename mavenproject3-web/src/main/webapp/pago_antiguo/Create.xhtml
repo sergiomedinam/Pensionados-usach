@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="pagoCreateDlg" widgetVar="pagoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatepagoTitle}">
+            <h:form id="pagoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{pagoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreatepagoLabel_pago}" for="pago" />
+                        <p:inputText id="pago" value="#{pagoController.selected.pago}" title="#{bundle.CreatepagoTitle_pago}" />
+                        
+                        <p:outputLabel value="#{bundle.CreatepagodetalleLabel_seguro_catastrofico}" for="catastrofico" />
+                        <p:selectBooleanCheckbox id="catastrofico" value="#{pagoController.catastrofico}" />
+                        <p:outputLabel value="#{bundle.CreatepagodetalleLabel_seguro_vida}" for="vida" />
+                        <p:selectBooleanCheckbox id="vida" value="#{pagoController.vida}" />
+                        <p:outputLabel value="#{bundle.CreatepagodetalleLabel_seguro_hospitalario}" for="hospitalario" />
+                        <p:selectBooleanCheckbox id="hospitalario" value="#{pagoController.hospitalario}" />
+                        <p:outputLabel value="#{bundle.CreatepagodetalleLabel_seguro_ucm}" for="ucm" />
+                        <p:selectBooleanCheckbox id="ucm" value="#{pagoController.ucm}" />
+                        <p:outputLabel value="#{bundle.CreatepagodetalleLabel_seguro_paux}" for="paux" />
+                        <p:selectBooleanCheckbox id="paux" value="#{pagoController.paux}" />
+                        <p:outputLabel value="#{bundle.CreatepagodetalleLabel_seguro_jardin}" for="jardin" />
+                        <p:selectBooleanCheckbox id="jardin" value="#{pagoController.jardin}" />
+                        <p:outputLabel value="#{bundle.CreatepagodetalleLabel_aportes}" for="aportes" />
+                        <p:selectBooleanCheckbox id="aportes" value="#{pagoController.aportes}" />
+                        <p:outputLabel value="#{bundle.CreatepagodetalleLabel_otros}" for="otros" />
+                        <p:selectBooleanCheckbox id="otros" value="#{pagoController.otros}" />
+                        
+                        <p:outputLabel value="Seguro PMED" for="pmed" />
+                        <p:selectBooleanCheckbox id="pmed" value="#{pagoController.pmed}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{pagoController.create}" value="#{bundle.Save}" update="display,:pagoListForm:datalist,:growl" oncomplete="handleSubmit(args,'pagoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="pagoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
