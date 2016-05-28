@@ -176,6 +176,7 @@ public class pagoController implements Serializable {
         pmed = null;
         ucm = null;
         aportes = null;
+        prestamos = null;
         
         selected = new pago();
         initializeEmbeddableKey();
@@ -189,7 +190,7 @@ public class pagoController implements Serializable {
         pagodetalle.getSelected().setSeguro_vida(vida);
         pagodetalle.getSelected().setAportes(aportes);
         pagodetalle.getSelected().setOtros(otros);
-        pagodetalle.getSelected().setOtros(prestamos);
+        pagodetalle.getSelected().setPrestamos(prestamos);
         selected.setPagodetalles(pagodetalle.getSelected());
         pagodetalle.create();
         
