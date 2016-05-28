@@ -10,6 +10,7 @@
 
         <p:dialog id="cargasCreateDlg" widgetVar="cargasCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatecargasTitle}">
             <h:form id="cargasCreateForm">
+                <p:growl id="growl" showDetail="true" showSummary="true" autoUpdate="true" />
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{cargasController.selected != null}">
  
