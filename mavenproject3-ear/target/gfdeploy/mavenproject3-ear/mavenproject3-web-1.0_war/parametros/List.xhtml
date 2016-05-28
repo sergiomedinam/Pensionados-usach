@@ -14,6 +14,28 @@
         </ui:define>
 
         <ui:define name="body">
+             <p:breadCrumb > 
+                <p:menuitem value="Inicio" url="#" />
+                <p:menuitem value="Inicio" url="/" />
+                <p:menuitem value="Parametros" url="/faces/parametros/List.xhtml" />
+            </p:breadCrumb>
+            <section class="content-header">
+                    <h1>
+                      Parametros del Sistema de Pensionados  
+                      <small>Panel de administrador</small> <a href="#demo" data-toggle="collapse" class="btn btn-info">Informacion</a>
+
+                    </h1>
+                  
+                    <div id="demo" class=" collapse">
+                          <br/>
+                         <div class="panel panel-default">
+                        
+                             <div class="panel-footer"> <b>¿Que hacer aqui?</b> Los valores en esta seccion se utilizan para los calculos de los pagos que deben realizarse.</div>
+                        </div>
+                    </div>
+                <br/>
+                  </section>
+            
             <h:form id="parametrosListForm">
                 <p:panel header="Seguros Catastroficos">
                     <p:dataTable id="datalist" value="#{parametrosController.items}" var="item"
