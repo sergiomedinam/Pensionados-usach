@@ -6,6 +6,7 @@ import managebeans.util.JsfUtil.PersistAction;
 import sessionsbeans.cargasFacadeLocal;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -83,6 +84,22 @@ public class cargasController implements Serializable {
         }
         return items;
     }
+    
+    
+    public List<cargas> CargasPensionados(String rut) {
+        List<cargas> Cargas = new ArrayList<cargas>();
+        getItems();
+        for (cargas item : items) {
+            if (item.getPensionado().getRut_pensionado().equals(rut)){
+                    Cargas.add(item);          
+            }
+        }
+        return Cargas;
+    }
+    
+    
+    
+    
 
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
