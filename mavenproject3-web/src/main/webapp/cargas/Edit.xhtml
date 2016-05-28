@@ -10,6 +10,7 @@
 
         <p:dialog id="cargasEditDlg" widgetVar="cargasEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditcargasTitle}">
             <h:form id="cargasEditForm">
+                <p:growl id="growl" showDetail="true" showSummary="true" autoUpdate="true" />
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{cargasController.selected != null}">
                         <p:outputLabel value="#{bundle.EditcargasLabel_conyuge}" for="conyuge" />

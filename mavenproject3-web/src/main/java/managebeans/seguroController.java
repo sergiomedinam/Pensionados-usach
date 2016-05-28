@@ -14,7 +14,9 @@ import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
+import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
@@ -56,6 +58,7 @@ public class seguroController implements Serializable {
     }
 
     public void create() {
+        selected.setNombre_seguro(selected.getNombre_seguro().toUpperCase());
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("seguroCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
@@ -63,6 +66,7 @@ public class seguroController implements Serializable {
     }
 
     public void update() {
+        selected.setNombre_seguro(selected.getNombre_seguro().toUpperCase());
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("seguroUpdated"));
     }
 
@@ -81,6 +85,52 @@ public class seguroController implements Serializable {
         return items;
     }
 
+    public void validarNotNullNotExistente(FacesContext context, UIComponent toValidate, Object value){
+        context = FacesContext.getCurrentInstance();
+        FacesMessage message = null;
+        String texto = (String) value;
+        texto = texto.toUpperCase();
+        
+        if (texto.equals("")) {
+            ((UIInput) toValidate).setValid(false);
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Debe ingresar un nombre para el seguro.") );
+        }
+        
+        getItems();
+        
+        for (seguro item : items) {
+            if (item.getNombre_seguro().equals(texto)) {
+                ((UIInput) toValidate).setValid(false);
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Este seguro ya existe en la base de datos.") );
+            }
+        }
+    }
+    
+    public void validarNotNullExistenteUno(FacesContext context, UIComponent toValidate, Object value){
+        context = FacesContext.getCurrentInstance();
+        FacesMessage message = null;
+        String texto = (String) value;
+        texto = texto.toUpperCase();
+        
+        if (texto.equals("")) {
+            ((UIInput) toValidate).setValid(false);
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Debe ingresar un nombre para el seguro.") );
+        }
+        
+        getItems();
+        
+        int contador = 0;
+        for (seguro item : items) {
+            if (item.getNombre_seguro().equals(texto)) {
+                contador++;                
+            }
+        }
+        if (contador > 0) {
+            ((UIInput) toValidate).setValid(false);
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Este seguro ya existe en la base de datos. Si no ha modificado el nombre, solo presione cancelar.") );
+        }
+    }
+    
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
             setEmbeddableKeys();
