@@ -24,6 +24,7 @@ public class AñosCuotas implements Serializable {
      
     private Map<Integer,Integer> añosCuotas;
     private Map<String,Integer> numeroCuotas;
+    private Map<String,Integer> nCuotas;
      
     @PostConstruct
     public void init() {
@@ -85,6 +86,23 @@ public class AñosCuotas implements Serializable {
         numeroCuotas.put("NINGUNO",0);
         
         numeroCuotas = OrdenarValores(numeroCuotas);
+
+        nCuotas  = new HashMap<String, Integer>();
+        
+        nCuotas.put("ENERO", 1);
+        nCuotas.put("FEBRERO", 2);
+        nCuotas.put("MARZO", 3);
+        nCuotas.put("ABRIL", 4);
+        nCuotas.put("MAYO", 5);
+        nCuotas.put("JUNIO", 6);
+        nCuotas.put("JULIO", 7);
+        nCuotas.put("AGOSTO", 8);
+        nCuotas.put("SEPTIEMBRE", 9);
+        nCuotas.put("OCTUBRE", 10);
+        nCuotas.put("NOVIEMBRE", 11);
+        nCuotas.put("DICIEMBRE", 12);
+        
+        nCuotas = OrdenarValores(nCuotas);
     }
     
     private Map<Integer,Integer> Ordenar(Map mapa){
@@ -129,5 +147,8 @@ public class AñosCuotas implements Serializable {
     
     public Map<String, Integer> getNumeroCuotas() {
         return numeroCuotas;
+    }   
+    public Map<String, Integer> getNCuotas() {
+        return nCuotas;
     }   
 }
