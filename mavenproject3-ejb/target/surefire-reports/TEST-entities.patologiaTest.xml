@@ -63,11 +63,11 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="entities.patologiaTest" name="testGetNombre_patologia" time="0"/>
   <testcase classname="entities.patologiaTest" name="testSetNombre_patologia" time="0"/>
+  <testcase classname="entities.patologiaTest" name="testGetNombre_patologia" time="0"/>
+  <testcase classname="entities.patologiaTest" name="testHashCode" time="0"/>
   <testcase classname="entities.patologiaTest" name="testGetId" time="0"/>
-  <testcase classname="entities.patologiaTest" name="testEquals" time="0"/>
   <testcase classname="entities.patologiaTest" name="testSetId" time="0"/>
   <testcase classname="entities.patologiaTest" name="testToString" time="0"/>
-  <testcase classname="entities.patologiaTest" name="testHashCode" time="0"/>
+  <testcase classname="entities.patologiaTest" name="testEquals" time="0"/>
 </testsuite>

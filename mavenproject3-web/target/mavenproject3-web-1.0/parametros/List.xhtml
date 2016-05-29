@@ -40,7 +40,7 @@
                 <p:panel header="Seguros Catastroficos">
                     <p:dataTable id="datalist" value="#{parametrosController.items}" var="item"
                                  selectionMode="single" selection="#{parametrosController.selected}"
-                                 
+                                 emptyMessage="No existen datos"
                                  rowKey="#{item.id}"
                               
                                  >
@@ -80,6 +80,7 @@
                     <p:dataTable id="datalist" value="#{parametrosController.items}" var="item"
                                  selectionMode="single" selection="#{parametrosController.selected}"
                                  rowKey="#{item.id}"
+                                 emptyMessage="No existen datos"
                                  >
 
                         <p:ajax event="rowSelect"   update="editButton"/>
@@ -117,6 +118,7 @@
                     <p:dataTable id="datalist" value="#{parametrosController.items}" var="item"
                                  selectionMode="single" selection="#{parametrosController.selected}"
                                  rowKey="#{item.id}"
+                                 emptyMessage="No existen datos"
                                  >
 
                         <p:ajax event="rowSelect"   update="editButton"/>
