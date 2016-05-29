@@ -369,5 +369,5 @@ public class pensionado implements Serializable {
     public String toString() {
         return "entities.pensionado[ id=" + id + " ]";
     }
-    
+   
 }

@@ -220,7 +220,7 @@ public class pagoController implements Serializable {
         }
         return items;
     }
-
+    
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
             setEmbeddableKeys();
