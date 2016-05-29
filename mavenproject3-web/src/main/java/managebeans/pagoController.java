@@ -223,7 +223,6 @@ public class pagoController implements Serializable {
     
     public boolean Complete(boolean cat,boolean vida,boolean hosp,boolean aporte,boolean otros,boolean prest){
         boolean valor = cat && vida && hosp && aporte && otros && prest;
-        System.out.println("resultado: " + valor);
         return valor;
     }
     
