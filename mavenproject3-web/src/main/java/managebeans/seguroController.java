@@ -20,6 +20,7 @@ import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.faces.event.ComponentSystemEvent;
 
 @Named("seguroController")
 @SessionScoped
@@ -84,50 +85,40 @@ public class seguroController implements Serializable {
         }
         return items;
     }
+  
+    public void validaCreate(ComponentSystemEvent event){
+        FacesContext context = FacesContext.getCurrentInstance();
+        UIComponent components = event.getComponent();          
+        UIInput uiseguronombre = (UIInput) components.findComponent("nombre_seguro");
+        
+        String seguro_nombre = uiseguronombre.getSubmittedValue().toString().trim().toUpperCase();
 
-    public void validarNotNullNotExistente(FacesContext context, UIComponent toValidate, Object value){
-        context = FacesContext.getCurrentInstance();
-        FacesMessage message = null;
-        String texto = (String) value;
-        texto = texto.toUpperCase();
-        
-        if (texto.equals("")) {
-            ((UIInput) toValidate).setValid(false);
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Debe ingresar un nombre para el seguro.") );
-        }
-        
         getItems();
-        
         for (seguro item : items) {
-            if (item.getNombre_seguro().equals(texto)) {
-                ((UIInput) toValidate).setValid(false);
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Este seguro ya existe en la base de datos.") );
+            if (item.getNombre_seguro().equals(seguro_nombre)) {
+                uiseguronombre.setValid(false);
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Este Seguro ya existe en el sistema.") );
             }
         }
     }
     
-    public void validarNotNullExistenteUno(FacesContext context, UIComponent toValidate, Object value){
-        context = FacesContext.getCurrentInstance();
-        FacesMessage message = null;
-        String texto = (String) value;
-        texto = texto.toUpperCase();
+    public void validaEdit(ComponentSystemEvent event){
+         
+        FacesContext context = FacesContext.getCurrentInstance();
+        UIComponent components = event.getComponent();          
+        UIInput uiseguronombre = (UIInput) components.findComponent("nombre_seguro");
+        UIInput uiidSeguro = (UIInput) components.findComponent("id");
         
-        if (texto.equals("")) {
-            ((UIInput) toValidate).setValid(false);
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Debe ingresar un nombre para el seguro.") );
-        }
+        int idseguro = Integer.parseInt(uiidSeguro.getSubmittedValue().toString().trim());
         
+        String seguro_nombre = uiseguronombre.getSubmittedValue().toString().trim().toUpperCase();
+
         getItems();
-        
-        int contador = 0;
         for (seguro item : items) {
-            if (item.getNombre_seguro().equals(texto)) {
-                contador++;                
+            if (item.getId() != idseguro && item.getNombre_seguro().equals(seguro_nombre)) {
+                uiseguronombre.setValid(false);
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Este Seguro ya existe en el sistema.") );
             }
-        }
-        if (contador > 0) {
-            ((UIInput) toValidate).setValid(false);
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Este seguro ya existe en la base de datos. Si no ha modificado el nombre, solo presione cancelar.") );
         }
     }
     
