@@ -190,7 +190,18 @@
             
             <div id="cargasPensionado" class=" collapse">
                 <div class="panel panel-default">
-                #{cargasController.ValorTotal(cargasController.CargasPensionados(pensionadoController.selected.rut_pensionado))}
+                valor total:
+                #{cargasController.ValorTotal(pensionadoController.selected.rut_pensionado)}
+                
+                valor catastrófico:
+                #{cargasController.ValorCatastrofico(pensionadoController.selected.rut_pensionado)}
+
+                valor hospitalario:
+                #{cargasController.ValorHospitalario(pensionadoController.selected.rut_pensionado)}
+                
+                aporte:
+                #{pensionadoController.selected.}
+                
                 <h:form id="cargasListForm">
                 <p:panel header="#{bundle.ListcargasTitle}">
                     <p:dataTable id="datalist" value="#{cargasController.CargasPensionados(pensionadoController.selected.rut_pensionado)}" var="item"
