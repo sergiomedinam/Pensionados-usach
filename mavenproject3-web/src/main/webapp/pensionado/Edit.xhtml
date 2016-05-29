@@ -12,8 +12,8 @@
             <h:form id="pensionadoEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{pensionadoController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditpensionadoLabel_aporte}" for="aporte" />
-                        <p:inputText id="aporte" value="#{pensionadoController.selected.aporte}" title="#{bundle.EditpensionadoTitle_aporte}" />
+                        <p:outputLabel value="Valor del Aporte" for="aporte" />
+                        <p:inputText id="aporte" value="#{pensionadoController.selected.aporte}" title="#{bundle.EditpensionadoTitle_aporte}" placeholder="Valor sin puntos"/>
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_rut_pensionado}" for="rut_pensionado" />
                         <p:outputLabel id="rut_pensionado" value="#{pensionadoController.selected.rut_pensionado}" title="#{bundle.EditpensionadoTitle_rut_pensionado}"/>
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_nombre_pensionado}" for="nombre_pensionado" />
