@@ -62,23 +62,16 @@ public class cuotaspagadasController implements Serializable {
     }
 
     public void create() {
-        System.out.println("********************************************************");
         String rut = selected.getPensionado().getRut_pensionado();
         String nuevoAño = selected.getAno();
         List<cuotaspagadas> cuotas = CuotasPensionados(rut);
-        System.out.println("RUT: "+selected.getPensionado().getRut_pensionado());
-        System.out.println("añoNuevo: "+nuevoAño);
-        System.out.println("CUOTAS: "+cuotas.size());
         boolean existeAño = false;
         for(cuotaspagadas item : cuotas){
-            System.out.println("años en cuotas: "+item.getAno());
-            System.out.println("item.getAno().equals(nuevoAño): "+item.getAno().equals(nuevoAño));
             if(item.getAno().equals(nuevoAño)){
                 destroyAño();
             }
         }
         
-        System.out.println("********************************************************");
         if (!existeAño) {
             persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("cuotaspagadasCreated"));
             if (!JsfUtil.isValidationFailed()) {
