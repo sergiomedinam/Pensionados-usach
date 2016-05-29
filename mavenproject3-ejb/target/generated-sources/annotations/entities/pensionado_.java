@@ -16,7 +16,7 @@ import javax.persistence.metamodel.SetAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-05-28T18:37:12")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-05-28T23:52:57")
 @StaticMetamodel(pensionado.class)
 public class pensionado_ { 
 
@@ -32,6 +32,7 @@ public class pensionado_ {
     public static volatile SingularAttribute<pensionado, String> apellido_m_pensionado;
     public static volatile SingularAttribute<pensionado, Long> telefono_fijo;
     public static volatile SingularAttribute<pensionado, String> email_alternativo;
+    public static volatile SingularAttribute<pensionado, Integer> aporte;
     public static volatile SingularAttribute<pensionado, String> apellido_p_pensionado;
     public static volatile SingularAttribute<pensionado, String> direccion;
     public static volatile SingularAttribute<pensionado, Integer> saldo;

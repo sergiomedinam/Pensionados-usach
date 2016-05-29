@@ -15,7 +15,10 @@
                 <p:growl id="growl" showDetail="true" showSummary="true" autoUpdate="true" />  
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{pensionadoController.selected != null}">
-
+                        <p:outputLabel value="Valor del Aporte" for="aporte" />
+                        <p:inputText id="aporte" value="#{pensionadoController.selected.aporte}" title="#{bundle.EditpensionadoTitle_aporte}"  placeholder="Se puede modificar despues"/>
+                        
+                        
                         <p:outputLabel value="#{bundle.CreatepensionadoLabel_rut_pensionado}" for="rut_pensionado" />
                         <p:inputMask required="true" mask="99.999.999-9" placeholder="12.345.678-9" requiredMessage="Se necesita un rut" id="rut_pensionado" value="#{pensionadoController.selected.rut_pensionado}" title="#{bundle.CreatepensionadoTitle_rut_pensionado}" validator="#{pensionadoController.verificarRutExistencia}" />
                         
