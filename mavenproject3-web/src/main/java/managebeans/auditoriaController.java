@@ -3,7 +3,7 @@ package managebeans;
 import entities.auditoria;
 import managebeans.util.JsfUtil;
 import managebeans.util.JsfUtil.PersistAction;
-import borrar.auditoriaFacade;
+import sessionsbeans.auditoriaFacadeLocal;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +24,7 @@ import javax.faces.convert.FacesConverter;
 public class auditoriaController implements Serializable {
 
     @EJB
-    private borrar.auditoriaFacade ejbFacade;
+    private auditoriaFacadeLocal ejbFacade;
     private List<auditoria> items = null;
     private auditoria selected;
 
@@ -45,7 +45,7 @@ public class auditoriaController implements Serializable {
     protected void initializeEmbeddableKey() {
     }
 
-    private auditoriaFacade getFacade() {
+    private auditoriaFacadeLocal getFacade() {
         return ejbFacade;
     }
 
