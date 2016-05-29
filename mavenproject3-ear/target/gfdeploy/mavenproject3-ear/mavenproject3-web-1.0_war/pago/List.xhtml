@@ -24,40 +24,49 @@
                                  rowsPerPageTemplate="10,20,30,40,50"
                                  >
 
-                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
-                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton"/>
 
+                        
+                        
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpagoTitle_completo}"/>
-                            </f:facet>
-                            <p:selectBooleanCheckbox value="#{item.completo}" disabled="true"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpagoTitle_mes}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.mes}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpagoTitle_pensionado}"/>
+                                <h:outputText value="Rut"/>
                             </f:facet>
                             <h:outputText value="#{item.pensionado.rut_pensionado}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
+                                <h:outputText value="Nombre"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pensionado.nombre_pensionado} #{item.pensionado.apellido_p_pensionado} #{item.pensionado.apellido_m_pensionado}"/>
+                        </p:column>
+                        
+                        <p:column>
+                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListpagoTitle_pago}"/>
                             </f:facet>
-                            <h:outputText value="#{item.pago}"/>
+                            <h:outputText value="$ #{item.pago}"/>
                         </p:column>
-
+                        
+                        <p:column style="width: 100px;" >
+                            <f:facet name="header">
+                                <h:outputText value="Cuota"/>
+                            </f:facet>
+                            <h:outputText value="#{item.mes}/12"/>
+                        </p:column>
+                        
+                        <p:column style="width: 100px;" >
+                            <f:facet name="header">
+                                <h:outputText  value="#{bundle.ListpagoTitle_completo}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.completo}" disabled="true"/>
+                        </p:column>
  
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{pagoController.prepareCreate}" update=":pagoCreateForm" oncomplete="PF('pagoCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":pagoViewForm" oncomplete="PF('pagoViewDialog').show()" disabled="#{empty pagoController.selected}"/>
                             <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":pagoEditForm" oncomplete="PF('pagoEditDialog').show()" disabled="#{empty pagoController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{pagoController.destroy}" update=":growl,datalist" disabled="#{empty pagoController.selected}"/>
                         </f:facet>
                     </p:dataTable>
                 </p:panel>

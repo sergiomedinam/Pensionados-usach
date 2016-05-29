@@ -202,6 +202,15 @@ public class pagoController implements Serializable {
     }
 
     public void update() {
+        pagodetalle.getSelected().setSeguro_catastrofico(catastrofico);
+        pagodetalle.getSelected().setSeguro_hospitalario(hospitalario);
+        pagodetalle.getSelected().setSeguro_vida(vida);
+        pagodetalle.getSelected().setAportes(aportes);
+        pagodetalle.getSelected().setOtros(otros);
+        pagodetalle.getSelected().setPrestamos(prestamos);
+        selected.setPagodetalles(pagodetalle.getSelected());
+        pagodetalle.update();
+        
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("pagoUpdated"));
     }
 
@@ -220,7 +229,12 @@ public class pagoController implements Serializable {
         }
         return items;
     }
-
+    
+    public boolean Complete(boolean cat,boolean vida,boolean hosp,boolean aporte,boolean otros,boolean prest){
+        boolean valor = cat && vida && hosp && aporte && otros && prest;
+        return valor;
+    }
+    
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
             setEmbeddableKeys();

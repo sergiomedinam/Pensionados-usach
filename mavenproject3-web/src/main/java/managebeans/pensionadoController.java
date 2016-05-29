@@ -22,16 +22,20 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.faces.validator.ValidatorException;
+import javax.inject.Inject;
 import org.primefaces.context.RequestContext;
 
 @Named("pensionadoController")
 @SessionScoped
 public class pensionadoController implements Serializable {
-
+    
     @EJB
     private pensionadoFacadeLocal ejbFacade;
     private List<pensionado> items = null;
     private pensionado selected;
+    
+    @Inject
+    private cargasController cargasController;
 
     public pensionadoController() {
     }
@@ -97,7 +101,7 @@ public class pensionadoController implements Serializable {
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
-
+    
     public List<pensionado> getItems() {
         if (items == null) {
             items = getFacade().findAll();
@@ -126,7 +130,29 @@ public class pensionadoController implements Serializable {
         }
         return perteneceRegion;
     }
-        
+    
+    public int Aporte(String rut){
+        int aporte = 0;
+        getItems();
+        for(pensionado item : items){
+            if (item.getRut_pensionado().equals(rut)) {
+                aporte = item.getAporte();
+            }
+        }
+        return aporte;
+    }
+    
+    public int Total(String rut,boolean cat,boolean vida,boolean hosp,boolean aporte,boolean otros,boolean prest){
+        int valor = 0;
+        if(cat) valor = valor + cargasController.ValorCatastrofico(rut);
+        if(vida) valor = valor + cargasController.ValorVida(rut);
+        if(hosp) valor = valor + cargasController.ValorHospitalario(rut);
+        if(aporte) valor = valor + Aporte(rut);
+        if(otros) valor = valor + 0;
+        if(prest) valor = valor + 0;
+        return valor;
+    }
+    
     public String getUsername(String rut){
         String nombre = "";
         getItems();
@@ -137,7 +163,7 @@ public class pensionadoController implements Serializable {
         }
         return nombre;
     }
-    
+        
     public void validarRut(FacesContext context, UIComponent toValidate, Object value) {
         context = FacesContext.getCurrentInstance();
         FacesMessage message = null;
