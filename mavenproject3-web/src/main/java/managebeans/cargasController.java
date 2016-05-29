@@ -96,7 +96,15 @@ public class cargasController implements Serializable {
         }
         return Cargas;
     }
-    
+    public int ValorTotal( List<cargas> Cargas) {
+        int total = 0;
+        for (cargas item : Cargas) {
+            if (item.getSeguro().getNombre_seguro().equals("CATASTROFICO")){
+                total = total+1;
+            }
+        }
+        return total;
+    }
     
     
     

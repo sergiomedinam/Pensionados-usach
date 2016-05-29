@@ -190,7 +190,7 @@
             
             <div id="cargasPensionado" class=" collapse">
                 <div class="panel panel-default">
-                
+                #{cargasController.ValorTotal(cargasController.CargasPensionados(pensionadoController.selected.rut_pensionado))}
                 <h:form id="cargasListForm">
                 <p:panel header="#{bundle.ListcargasTitle}">
                     <p:dataTable id="datalist" value="#{cargasController.CargasPensionados(pensionadoController.selected.rut_pensionado)}" var="item"
