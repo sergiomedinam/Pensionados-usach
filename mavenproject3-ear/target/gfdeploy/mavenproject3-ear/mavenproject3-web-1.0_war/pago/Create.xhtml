@@ -15,10 +15,8 @@
                     <p:panelGrid columns="3" rendered="#{pagoController.selected != null}">
                         
                         <p:outputLabel value="#{bundle.CreatepagoLabel_pensionado}" for="pensionado" />
-                        <p:outputLabel>
-                            
-                        </p:outputLabel>
-                        <p:selectOneMenu id="pensionado" filter="true" filterMatchMode="contains" value="#{pagoController.selected.pensionado}" style="width:155px">
+                        <p:outputLabel/>
+                        <p:selectOneMenu id="pensionado" required="true" requiredMessage="Se requiere un pensionado" filter="true" filterMatchMode="contains" value="#{pagoController.selected.pensionado}" style="width:155px">
                             <p:ajax  update="cat,vi,hosp,ap,ot,prest,pago"/>
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{pensionadoController.itemsAvailableSelectOne}"
@@ -29,9 +27,9 @@
                         
                         <p:outputLabel value="#{bundle.CreatepagoLabel_mes}" for="mes" />
                         <p:outputLabel />
-                        <p:selectOneMenu  id="mes" value="#{pagoController.selected.mes}" style="width:155px">
+                        <p:selectOneMenu  required="true" requiredMessage="Se requiere un mes a cancelar" id="mes" value="#{pagoController.selected.mes}" style="width:155px">
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
-                            <f:selectItems value="#{añosCuotas.numeroCuotas}" />
+                            <f:selectItems value="#{añosCuotas.NCuotas}" />
                         </p:selectOneMenu>
                         
                         <p:outputLabel value="#{bundle.CreatepagodetalleLabel_seguro_catastrofico}" for="catastrofico" />
@@ -86,7 +84,7 @@
                         <p:outputLabel value="Pago Total" for="pago" />
                         <p:outputLabel></p:outputLabel>
                         <p:outputLabel id="pago" >
-                            #{pensionadoController.Total(pagoController.selected.pensionado.rut_pensionado,
+                            $ #{pensionadoController.Total(pagoController.selected.pensionado.rut_pensionado,
                                                          pagoController.catastrofico,
                                                          pagoController.vida,
                                                          pagoController.hospitalario,
