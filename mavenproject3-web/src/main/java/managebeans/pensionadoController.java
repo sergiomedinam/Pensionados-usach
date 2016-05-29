@@ -142,9 +142,15 @@ public class pensionadoController implements Serializable {
         return aporte;
     }
     
-    public int Total(String rut){
+    public int Total(String rut,boolean cat,boolean vida,boolean hosp,boolean aporte,boolean otros,boolean prest){
         int valor = 0;
-        valor = cargasController.ValorSeguros(rut) + Aporte(rut);
+        System.out.println( cat +" "+ vida +" "+ hosp +" "+ aporte +" "+ otros +" "+ prest);
+        if(cat) valor = valor + cargasController.ValorCatastrofico(rut);
+        if(vida) valor = valor + cargasController.ValorVida(rut);
+        if(hosp) valor = valor + cargasController.ValorHospitalario(rut);
+        if(aporte) valor = valor + Aporte(rut);
+        if(otros) valor = valor + 0;
+        if(prest) valor = valor + 0;
         return valor;
     }
     
