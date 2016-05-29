@@ -34,6 +34,64 @@ public class pagodetalle implements Serializable {
     private Boolean aportes;
     private Boolean prestamos;
     private Boolean otros;
+    
+    
+    private Integer monto_seguro_catastrofico;
+    private Integer monto_seguro_vida;
+    private Integer monto_seguro_hospitalario;
+    private Integer monto_aportes;
+    private Integer monto_otros;
+    private Integer monto_prestamos;
+
+    public Integer getMonto_seguro_catastrofico() {
+        return monto_seguro_catastrofico;
+    }
+
+    public void setMonto_seguro_catastrofico(Integer monto_seguro_catastrofico) {
+        this.monto_seguro_catastrofico = monto_seguro_catastrofico;
+    }
+
+    public Integer getMonto_seguro_vida() {
+        return monto_seguro_vida;
+    }
+
+    public void setMonto_seguro_vida(Integer monto_seguro_vida) {
+        this.monto_seguro_vida = monto_seguro_vida;
+    }
+
+    public Integer getMonto_seguro_hospitalario() {
+        return monto_seguro_hospitalario;
+    }
+
+    public void setMonto_seguro_hospitalario(Integer monto_seguro_hospitalario) {
+        this.monto_seguro_hospitalario = monto_seguro_hospitalario;
+    }
+
+    public Integer getMonto_aportes() {
+        return monto_aportes;
+    }
+
+    public void setMonto_aportes(Integer monto_aportes) {
+        this.monto_aportes = monto_aportes;
+    }
+
+    public Integer getMonto_otros() {
+        return monto_otros;
+    }
+
+    public void setMonto_otros(Integer monto_otros) {
+        this.monto_otros = monto_otros;
+    }
+
+    public Integer getMonto_prestamos() {
+        return monto_prestamos;
+    }
+
+    public void setMonto_prestamos(Integer monto_prestamos) {
+        this.monto_prestamos = monto_prestamos;
+    }
+    
+    
 
     public Boolean getSeguro_catastrofico() {
         return seguro_catastrofico;

@@ -142,7 +142,7 @@ public class cuotaspagadasController implements Serializable {
                         alDia = false;
                     }
                 }else{
-                    if(item.getCuotas() == mesActual){
+                    if(item.getCuotas() >= mesActual){
                         alDia = true;
                     }else{
                         alDia = false;
