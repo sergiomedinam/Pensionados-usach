@@ -27,7 +27,7 @@
                         
                         <p:outputLabel value="#{bundle.CreatepagoLabel_mes}" for="mes" />
                         <p:outputLabel />
-                        <p:selectOneMenu  required="true" requiredMessage="Se requiere un pensionado" id="mes" value="#{pagoController.selected.mes}" style="width:155px">
+                        <p:selectOneMenu  required="true" requiredMessage="Se requiere un mes a cancelar" id="mes" value="#{pagoController.selected.mes}" style="width:155px">
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{añosCuotas.NCuotas}" />
                         </p:selectOneMenu>
@@ -84,7 +84,7 @@
                         <p:outputLabel value="Pago Total" for="pago" />
                         <p:outputLabel></p:outputLabel>
                         <p:outputLabel id="pago" >
-                            #{pensionadoController.Total(pagoController.selected.pensionado.rut_pensionado,
+                            $ #{pensionadoController.Total(pagoController.selected.pensionado.rut_pensionado,
                                                          pagoController.catastrofico,
                                                          pagoController.vida,
                                                          pagoController.hospitalario,
