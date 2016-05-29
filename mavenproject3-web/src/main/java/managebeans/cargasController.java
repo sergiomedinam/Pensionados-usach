@@ -1,11 +1,14 @@
 package managebeans;
 
 import entities.cargas;
+import entities.parametros;
+
 import managebeans.util.JsfUtil;
 import managebeans.util.JsfUtil.PersistAction;
 import sessionsbeans.cargasFacadeLocal;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -20,11 +23,14 @@ import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.inject.Inject;
 
 @Named("cargasController")
 @SessionScoped
 public class cargasController implements Serializable {
-
+    
+    @Inject
+    private parametrosController parametros;
     @EJB
     private cargasFacadeLocal ejbFacade;
     private List<cargas> items = null;
@@ -83,6 +89,111 @@ public class cargasController implements Serializable {
         }
         return items;
     }
+    
+    
+    public List<cargas> CargasPensionados(String rut) {
+        List<cargas> Cargas = new ArrayList<cargas>();
+        getItems();
+        for (cargas item : items) {
+            if (item.getPensionado().getRut_pensionado().equals(rut)){
+                    Cargas.add(item);          
+            }
+        }
+        return Cargas;
+    }
+    public int ValorSeguros(String rut) {
+        int total = 0;
+        total = total + ValorCatastrofico(rut) + ValorHospitalario(rut) + ValorVida(rut);
+        return total;
+    }
+    
+    public int ValorCatastrofico(String rut){
+        List <parametros> Parametros = parametros.getItems();
+        List <cargas> Cargas = CargasPensionados(rut);
+        int total = 0;
+        int UF = 0;
+        int prima_titular = 0;
+        int prima_conyuge = 0;
+        int prima_hijo = 0;
+        int Nhijo = 0;
+        int Nconyuge = 0;
+        for(parametros par : Parametros){
+            if (par.getId() == 1) {
+                UF = par.getValor_uf();
+                prima_titular = par.getPrima_catastrofico_titular();
+                prima_conyuge = par.getPrima_catastrofico_conyuge();
+                prima_hijo = par.getPrima_catastrofico_hijos();
+            }
+        }
+        
+        for (cargas item : Cargas) {
+            if (item.getSeguro().getNombre_seguro().equals("CATASTROFICO")){
+                Nhijo = item.getHijos();
+                Nconyuge = item.getConyuge();
+            }
+        }
+        if(Cargas.size() > 0){
+            total = UF*(prima_titular + (Nconyuge*prima_conyuge) + (Nhijo*prima_hijo));
+        }
+        
+        return total;
+    }
+    
+        public int ValorHospitalario(String rut){
+        List <parametros> Parametros = parametros.getItems();
+        List <cargas> Cargas = CargasPensionados(rut);
+        int total = 0;
+        int UF = 0;
+        int prima_titular = 0;
+        int prima_titular1 = 0;
+        int prima_titular2 = 0;
+        int Nhijo = 0;
+        int Nconyuge = 0;
+        int Notros = 0;
+        for(parametros par : Parametros){
+            if (par.getId() == 1) {
+                UF = par.getValor_uf();
+                prima_titular = par.getPrima_hospitalario_titular();
+                prima_titular1 = par.getPrima_hospitalario_titularmas1();
+                prima_titular2 = par.getPrima_hospitalario_titular2omas();
+            }
+        }
+        for (cargas item : Cargas) {
+            if (item.getSeguro().getNombre_seguro().equals("HOSPITALARIO")){
+                Nhijo = item.getHijos();
+                Nconyuge = item.getConyuge();
+                Notros = item.getOtros();
+            }
+        }
+        int n = Nhijo + Nconyuge + Notros;
+        if(Cargas.size() > 0){
+            if (n == 0){
+                total = prima_titular*UF;
+            }if(n == 1){
+                total = prima_titular1*UF;
+            }if(n>=2){
+                total = prima_titular2*UF;
+            }
+        }
+        return total;
+    }
+    
+    public int ValorVida(String rut){
+        List <parametros> Parametros = parametros.getItems();
+        List <cargas> Cargas = CargasPensionados(rut);
+        int total = 0;
+        int UF = 0;
+        for(parametros par : Parametros){
+            if (par.getId() == 1) {
+                UF = par.getValor_uf();
+            }
+        }
+        if(Cargas.size() > 0){
+            total = UF;
+        }
+        return total;
+    }
+    
 
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {

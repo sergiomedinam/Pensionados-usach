@@ -31,6 +31,7 @@ C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\session
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\sessionsbeans\prestamoFacadeLocal.java
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\sessionsbeans\tipo_prestamoFacade.java
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\sessionsbeans\medicamentoFacadeLocal.java
+C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\entities\auditoria.java
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\entities\cuotaspagadas.java
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\sessionsbeans\tipo_beneficioFacade.java
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\entities\contacto.java
@@ -42,6 +43,7 @@ C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\session
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\sessionsbeans\usuarioFacadeLocal.java
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\sessionsbeans\cuotaspagadasFacade.java
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\sessionsbeans\pensionadoFacade.java
+C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\sessionsbeans\auditoriaFacade.java
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\sessionsbeans\cargasFacade.java
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\sessionsbeans\medicamentoFacade.java
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\sessionsbeans\pensionadoFacadeLocal.java
@@ -56,3 +58,4 @@ C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\session
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\sessionsbeans\parametrosFacadeLocal.java
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\sessionsbeans\contactoFacadeLocal.java
 C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\entities\parametros.java
+C:\Users\seerg\Desktop\Pensionados-usach\mavenproject3-ejb\src\main\java\sessionsbeans\auditoriaFacadeLocal.java

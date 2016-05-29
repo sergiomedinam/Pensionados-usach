@@ -14,8 +14,7 @@
                     <p:panelGrid columns="2" rendered="#{seguroController.selected != null}">
                         <h:outputText value="#{bundle.ViewseguroLabel_nombre_seguro}"/>
                         <h:outputText value="#{seguroController.selected.nombre_seguro}" title="#{bundle.ViewseguroTitle_nombre_seguro}"/>
-                        <h:outputText value="#{bundle.ViewseguroLabel_id}"/>
-                        <h:outputText value="#{seguroController.selected.id}" title="#{bundle.ViewseguroTitle_id}"/>
+                        
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="seguroViewDialog.hide()"/>
                 </h:panelGroup>

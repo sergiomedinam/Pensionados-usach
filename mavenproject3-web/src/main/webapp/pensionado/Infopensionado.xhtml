@@ -62,13 +62,13 @@
                             <!-- small box -->
                             <div class="small-box bg-aqua">
                                 <div class="inner">
-                                    <h3>0</h3>
+                                    <h3>#{cargasController.CargasPensionados(pensionadoController.selected.rut_pensionado).size()}</h3>
                                     <p>Seguros asociados</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-bag"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
+                                <a href="#cargasPensionado" data-toggle="collapse" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->
@@ -152,9 +152,6 @@
                                          emptyMessage="No hay resultados."
                                          >
 
-                                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
-                                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
-
                                 <p:column id="rut">
                                     <f:facet name="header">
                                         <h:outputText value="#{bundle.ListcuotaspagadasTitle_pensionado}"/>
@@ -185,17 +182,71 @@
                                     </f:facet>
                                     <h:outputText value="#{item.cuotas}"/>
                                 </p:column>
-                                <f:facet name="footer">
-                                    <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{cuotaspagadasController.prepareCreate}" update=":cuotaspagadasCreateForm" oncomplete="PF('cuotaspagadasCreateDialog').show()"/>
-                                    <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":cuotaspagadasViewForm" oncomplete="PF('cuotaspagadasViewDialog').show()" disabled="#{empty cuotaspagadasController.selected}"/>
-                                    <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":cuotaspagadasEditForm" oncomplete="PF('cuotaspagadasEditDialog').show()" disabled="#{empty cuotaspagadasController.selected}"/>
-                                    <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{cuotaspagadasController.destroy}" update=":growl,datalist" disabled="#{empty cuotaspagadasController.selected}"/>
-                                </f:facet>
                             </p:dataTable>
                         </p:panel>
                     </h:form>
-                    </div>
-                    </div>
+                </div>
+            </div>
+            
+            <div id="cargasPensionado" class=" collapse">
+                <div class="panel panel-default">
+                
+                <h:form id="cargasListForm">
+                <p:panel header="#{bundle.ListcargasTitle}">
+                    <p:dataTable id="datalist" value="#{cargasController.CargasPensionados(pensionadoController.selected.rut_pensionado)}" var="item"
+                                 selectionMode="single" selection="#{cargasController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.id}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+                        
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListcargasTitle_pensionado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pensionado.rut_pensionado}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListpensionadoTitle_nombre_pensionado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pensionado.nombre_pensionado} #{item.pensionado.apellido_p_pensionado} #{item.pensionado.apellido_m_pensionado}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListcargasTitle_seguro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.seguro.nombre_seguro}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListcargasTitle_conyuge}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.conyuge}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListcargasTitle_hijos}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hijos}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListcargasTitle_otros}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.otros}"/>
+                        </p:column>
+                        
+                    </p:dataTable>
+                </p:panel>
+            </h:form>    
+                
+                </div>
+            </div>   
+                
+                
+                
                 
 
                
