@@ -221,6 +221,12 @@ public class pagoController implements Serializable {
         return items;
     }
     
+    public boolean Complete(boolean cat,boolean vida,boolean hosp,boolean aporte,boolean otros,boolean prest){
+        boolean valor = cat && vida && hosp && aporte && otros && prest;
+        System.out.println("resultado: " + valor);
+        return valor;
+    }
+    
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
             setEmbeddableKeys();

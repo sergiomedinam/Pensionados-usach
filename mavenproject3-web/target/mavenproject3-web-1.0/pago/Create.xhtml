@@ -84,7 +84,7 @@
                      
                         
                         <p:outputLabel value="Pago Total" for="pago" />
-                        <p:selectBooleanCheckbox id="completo" value="#{pagoController.selected.completo}"  />
+                        <p:outputLabel></p:outputLabel>
                         <p:outputLabel id="pago" >
                             #{pensionadoController.Total(pagoController.selected.pensionado.rut_pensionado,
                                                          pagoController.catastrofico,
@@ -107,6 +107,12 @@
                                                          pagoController.aportes,
                                                          pagoController.otros,
                                                          pagoController.prestamos))}
+                                #{pagoController.selected.setCompleto(pagoController.Complete(pagoController.catastrofico,
+                                                                                              pagoController.vida,
+                                                                                              pagoController.hospitalario,
+                                                                                              pagoController.aportes,
+                                                                                              pagoController.otros,
+                                                                                              pagoController.prestamos))}
                             </c:if>
                             
                         </p:outputLabel>
