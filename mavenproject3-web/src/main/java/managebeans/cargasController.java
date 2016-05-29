@@ -101,9 +101,9 @@ public class cargasController implements Serializable {
         }
         return Cargas;
     }
-    public int ValorTotal(String rut) {
+    public int ValorSeguros(String rut) {
         int total = 0;
-        
+        total = total + ValorCatastrofico(rut) + ValorHospitalario(rut) + ValorVida(rut);
         return total;
     }
     
@@ -132,8 +132,9 @@ public class cargasController implements Serializable {
                 Nconyuge = item.getConyuge();
             }
         }
-        total = UF*(prima_titular + (Nconyuge*prima_conyuge) + (Nhijo*prima_hijo));
-        
+        if(Cargas.size() > 0){
+            total = UF*(prima_titular + (Nconyuge*prima_conyuge) + (Nhijo*prima_hijo));
+        }
         
         return total;
     }
@@ -165,16 +166,33 @@ public class cargasController implements Serializable {
             }
         }
         int n = Nhijo + Nconyuge + Notros;
-        if (n == 0){
-            total = prima_titular*UF;
-        }if(n == 1){
-            total = prima_titular1*UF;
-        }if(n>=2){
-            total = prima_titular2*UF;
+        if(Cargas.size() > 0){
+            if (n == 0){
+                total = prima_titular*UF;
+            }if(n == 1){
+                total = prima_titular1*UF;
+            }if(n>=2){
+                total = prima_titular2*UF;
+            }
         }
         return total;
     }
     
+    public int ValorVida(String rut){
+        List <parametros> Parametros = parametros.getItems();
+        List <cargas> Cargas = CargasPensionados(rut);
+        int total = 0;
+        int UF = 0;
+        for(parametros par : Parametros){
+            if (par.getId() == 1) {
+                UF = par.getValor_uf();
+            }
+        }
+        if(Cargas.size() > 0){
+            total = UF;
+        }
+        return total;
+    }
     
 
     private void persist(PersistAction persistAction, String successMessage) {
