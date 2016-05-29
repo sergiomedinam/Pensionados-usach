@@ -6,6 +6,7 @@ entities\contacto_.class
 entities\designado_fallecimiento.class
 sessionsbeans\beneficioFacadeLocal.class
 entities\beneficio_.class
+sessionsbeans\auditoriaFacadeLocal.class
 sessionsbeans\pensionadoFacade.class
 sessionsbeans\usuarioFacadeLocal.class
 sessionsbeans\prestamoFacade.class
@@ -39,9 +40,11 @@ entities\beneficio.class
 entities\pago.class
 sessionsbeans\rolFacade.class
 entities\pensionado_.class
+sessionsbeans\auditoriaFacade.class
 entities\tipo_prestamo_.class
 entities\cuotaspagadas.class
 entities\otros_datos.class
+entities\auditoria_.class
 entities\rol.class
 entities\medicamento_.class
 sessionsbeans\cargasFacade.class
@@ -68,6 +71,7 @@ sessionsbeans\designado_fallecimientoFacadeLocal.class
 sessionsbeans\patologiaFacadeLocal.class
 entities\tipo_beneficio.class
 entities\cargas.class
+entities\auditoria.class
 sessionsbeans\contactoFacade.class
 sessionsbeans\otros_datosFacade.class
 entities\otros_datos_.class

@@ -63,21 +63,21 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="entities.designado_fallecimientoTest" name="testGetTelefono" time="0"/>
   <testcase classname="entities.designado_fallecimientoTest" name="testSetTelefono" time="0"/>
-  <testcase classname="entities.designado_fallecimientoTest" name="testSetNombre_designado" time="0"/>
-  <testcase classname="entities.designado_fallecimientoTest" name="testGetRut_designado" time="0"/>
-  <testcase classname="entities.designado_fallecimientoTest" name="testGetApellido_designado" time="0"/>
-  <testcase classname="entities.designado_fallecimientoTest" name="testSetParentesco" time="0"/>
+  <testcase classname="entities.designado_fallecimientoTest" name="testGetTelefono" time="0"/>
+  <testcase classname="entities.designado_fallecimientoTest" name="testSetPensionados" time="0"/>
   <testcase classname="entities.designado_fallecimientoTest" name="testGetPensionados" time="0"/>
-  <testcase classname="entities.designado_fallecimientoTest" name="testGetParentesco" time="0"/>
-  <testcase classname="entities.designado_fallecimientoTest" name="testSetApellido_designado" time="0"/>
   <testcase classname="entities.designado_fallecimientoTest" name="testSetRut_designado" time="0"/>
   <testcase classname="entities.designado_fallecimientoTest" name="testGetNombre_designado" time="0"/>
-  <testcase classname="entities.designado_fallecimientoTest" name="testSetPensionados" time="0"/>
-  <testcase classname="entities.designado_fallecimientoTest" name="testHashCode" time="0"/>
-  <testcase classname="entities.designado_fallecimientoTest" name="testGetId" time="0"/>
-  <testcase classname="entities.designado_fallecimientoTest" name="testSetId" time="0"/>
-  <testcase classname="entities.designado_fallecimientoTest" name="testToString" time="0"/>
+  <testcase classname="entities.designado_fallecimientoTest" name="testGetParentesco" time="0"/>
+  <testcase classname="entities.designado_fallecimientoTest" name="testGetApellido_designado" time="0"/>
+  <testcase classname="entities.designado_fallecimientoTest" name="testSetApellido_designado" time="0"/>
+  <testcase classname="entities.designado_fallecimientoTest" name="testGetRut_designado" time="0"/>
+  <testcase classname="entities.designado_fallecimientoTest" name="testSetParentesco" time="0"/>
+  <testcase classname="entities.designado_fallecimientoTest" name="testSetNombre_designado" time="0"/>
   <testcase classname="entities.designado_fallecimientoTest" name="testEquals" time="0"/>
+  <testcase classname="entities.designado_fallecimientoTest" name="testSetId" time="0"/>
+  <testcase classname="entities.designado_fallecimientoTest" name="testHashCode" time="0"/>
+  <testcase classname="entities.designado_fallecimientoTest" name="testToString" time="0"/>
+  <testcase classname="entities.designado_fallecimientoTest" name="testGetId" time="0"/>
 </testsuite>

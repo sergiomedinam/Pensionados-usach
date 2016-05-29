@@ -12,7 +12,8 @@
             <h:form id="pensionadoEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{pensionadoController.selected != null}">
-                    
+                        <p:outputLabel value="#{bundle.EditpensionadoLabel_aporte}" for="aporte" />
+                        <p:inputText id="aporte" value="#{pensionadoController.selected.aporte}" title="#{bundle.EditpensionadoTitle_aporte}" />
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_rut_pensionado}" for="rut_pensionado" />
                         <p:outputLabel id="rut_pensionado" value="#{pensionadoController.selected.rut_pensionado}" title="#{bundle.EditpensionadoTitle_rut_pensionado}"/>
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_nombre_pensionado}" for="nombre_pensionado" />
@@ -21,9 +22,7 @@
                         <p:inputText id="apellido_p_pensionado" value="#{pensionadoController.selected.apellido_p_pensionado}" title="#{bundle.EditpensionadoTitle_apellido_p_pensionado}" />
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_apellido_m_pensionado}" for="apellido_m_pensionado" />
                         <p:inputText id="apellido_m_pensionado" value="#{pensionadoController.selected.apellido_m_pensionado}" title="#{bundle.EditpensionadoTitle_apellido_m_pensionado}" />
-                        
-                        
-                       
+
                         <p:outputLabel for="fecha_nacimiento" value="Fecha Nacimiento:" />
                         <p:inputMask mask="99/99/9999" id="fecha_nacimiento" value="#{pensionadoController.selected.fecha_nacimiento}" placeholder="dd/mm/yyyy"/>
                         
