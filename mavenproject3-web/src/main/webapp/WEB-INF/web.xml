@@ -73,29 +73,67 @@
         <web-resource-collection>
             <web-resource-name>Protected General Area</web-resource-name>
             <description></description>
+            
             <url-pattern>/faces/beneficio/*</url-pattern> 
-            <url-pattern>/faces/contacto/*</url-pattern> 
-            <url-pattern>/faces/designado_fallecimiento/*</url-pattern> 
-            <url-pattern>/faces/medicamento/*</url-pattern> 
-            <url-pattern>/faces/otros_datos/*</url-pattern> 
-            <url-pattern>/faces/patologia/*</url-pattern> 
-            <url-pattern>/faces/pensionado/*</url-pattern> 
-            <url-pattern>/faces/prestamo/*</url-pattern> 
-            <url-pattern>/faces/resources/*</url-pattern> 
-            <url-pattern>/faces/seguro/*</url-pattern> 
-            <url-pattern>/faces/tipo_beneficio/*</url-pattern> 
-            <url-pattern>/faces/tipo_prestamo/*</url-pattern> 
             <url-pattern>/beneficio/*</url-pattern>
-            <url-pattern>/contacto/*</url-pattern>
-            <url-pattern>/designado_fallecimiento/*</url-pattern>
-            <url-pattern>/medicamento/*</url-pattern>
-            <url-pattern>/otros_datos/*</url-pattern>
-            <url-pattern>/patologia/*</url-pattern>
-            <url-pattern>/pensionado/*</url-pattern>
-            <url-pattern>/prestamo/*</url-pattern>
-            <url-pattern>/seguro/*</url-pattern>
-            <url-pattern>/tipo_beneficio/*</url-pattern>
-            <url-pattern>/tipo_prestamo/*</url-pattern>
+            
+            <url-pattern>/faces/cargas/*</url-pattern> 
+            <url-pattern>/cargas/*</url-pattern>
+            
+            <url-pattern>/faces/contacto/*</url-pattern> 
+            <url-pattern>/contacto/*</url-pattern> 
+            
+            <url-pattern>/faces/coutaspagadas/*</url-pattern> 
+            <url-pattern>/coutaspagadas/*</url-pattern> 
+            
+            <url-pattern>/faces/designado_fallecimiento/*</url-pattern> 
+            <url-pattern>/designado_fallecimiento/*</url-pattern> 
+            
+            <url-pattern>/faces/medicamento/*</url-pattern> 
+            <url-pattern>/medicamento/*</url-pattern> 
+            
+            <url-pattern>/faces/otros_datos/*</url-pattern> 
+            <url-pattern>/otros_datos/*</url-pattern> 
+            
+            <url-pattern>/faces/pago/*</url-pattern> 
+            <url-pattern>/pago/*</url-pattern> 
+            
+            <url-pattern>/faces/pago_antiguo/*</url-pattern> 
+            <url-pattern>/pago_antiguo/*</url-pattern> 
+            
+            <url-pattern>/faces/pagodetalle/*</url-pattern> 
+            <url-pattern>/pagodetalle/*</url-pattern> 
+            
+            <url-pattern>/faces/parametros/*</url-pattern> 
+            <url-pattern>/parametros/*</url-pattern> 
+            
+            <url-pattern>/faces/patologia/*</url-pattern> 
+            <url-pattern>/patologia/*</url-pattern> 
+            
+            <url-pattern>/faces/pensionado/*</url-pattern> 
+            <url-pattern>/pensionado/*</url-pattern> 
+            
+            <url-pattern>/faces/pensionadoprestamo/*</url-pattern> 
+            <url-pattern>/pensionadoprestamo/*</url-pattern> 
+            
+            <url-pattern>/faces/prestamo/*</url-pattern> 
+            <url-pattern>/prestamo/*</url-pattern> 
+            
+            <url-pattern>/faces/relacionSEGUROCARGAPENSIONADO/*</url-pattern> 
+            <url-pattern>/relacionSEGUROCARGAPENSIONADO/*</url-pattern> 
+            
+<!--            <url-pattern>/faces/resources/*</url-pattern> 
+            <url-pattern>/resources/*</url-pattern> -->
+            
+            <url-pattern>/faces/seguro/*</url-pattern> 
+            <url-pattern>/seguro/*</url-pattern> 
+            
+            <url-pattern>/faces/tipo_beneficio/*</url-pattern> 
+            <url-pattern>/tipo_beneficio/*</url-pattern> 
+            
+            <url-pattern>/faces/tipo_prestamo/*</url-pattern> 
+            <url-pattern>/tipo_prestamo/*</url-pattern> 
+            
             <http-method>GET</http-method>
             <http-method>POST</http-method>
             <http-method>HEAD</http-method>
