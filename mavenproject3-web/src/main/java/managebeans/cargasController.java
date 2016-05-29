@@ -1,6 +1,8 @@
 package managebeans;
 
 import entities.cargas;
+import entities.parametros;
+
 import managebeans.util.JsfUtil;
 import managebeans.util.JsfUtil.PersistAction;
 import sessionsbeans.cargasFacadeLocal;
@@ -21,11 +23,14 @@ import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.inject.Inject;
 
 @Named("cargasController")
 @SessionScoped
 public class cargasController implements Serializable {
-
+    
+    @Inject
+    private parametrosController parametros;
     @EJB
     private cargasFacadeLocal ejbFacade;
     private List<cargas> items = null;
@@ -96,16 +101,79 @@ public class cargasController implements Serializable {
         }
         return Cargas;
     }
-    public int ValorTotal( List<cargas> Cargas) {
+    public int ValorTotal(String rut) {
         int total = 0;
-        for (cargas item : Cargas) {
-            if (item.getSeguro().getNombre_seguro().equals("CATASTROFICO")){
-                total = total+1;
-            }
-        }
+        
         return total;
     }
     
+    public int ValorCatastrofico(String rut){
+        List <parametros> Parametros = parametros.getItems();
+        List <cargas> Cargas = CargasPensionados(rut);
+        int total = 0;
+        int UF = 0;
+        int prima_titular = 0;
+        int prima_conyuge = 0;
+        int prima_hijo = 0;
+        int Nhijo = 0;
+        int Nconyuge = 0;
+        for(parametros par : Parametros){
+            if (par.getId() == 1) {
+                UF = par.getValor_uf();
+                prima_titular = par.getPrima_catastrofico_titular();
+                prima_conyuge = par.getPrima_catastrofico_conyuge();
+                prima_hijo = par.getPrima_catastrofico_hijos();
+            }
+        }
+        
+        for (cargas item : Cargas) {
+            if (item.getSeguro().getNombre_seguro().equals("CATASTROFICO")){
+                Nhijo = item.getHijos();
+                Nconyuge = item.getConyuge();
+            }
+        }
+        total = UF*(prima_titular + (Nconyuge*prima_conyuge) + (Nhijo*prima_hijo));
+        
+        
+        return total;
+    }
+    
+        public int ValorHospitalario(String rut){
+        List <parametros> Parametros = parametros.getItems();
+        List <cargas> Cargas = CargasPensionados(rut);
+        int total = 0;
+        int UF = 0;
+        int prima_titular = 0;
+        int prima_titular1 = 0;
+        int prima_titular2 = 0;
+        int Nhijo = 0;
+        int Nconyuge = 0;
+        int Notros = 0;
+        for(parametros par : Parametros){
+            if (par.getId() == 1) {
+                UF = par.getValor_uf();
+                prima_titular = par.getPrima_hospitalario_titular();
+                prima_titular1 = par.getPrima_hospitalario_titularmas1();
+                prima_titular2 = par.getPrima_hospitalario_titular2omas();
+            }
+        }
+        for (cargas item : Cargas) {
+            if (item.getSeguro().getNombre_seguro().equals("HOSPITALARIO")){
+                Nhijo = item.getHijos();
+                Nconyuge = item.getConyuge();
+                Notros = item.getOtros();
+            }
+        }
+        int n = Nhijo + Nconyuge + Notros;
+        if (n == 0){
+            total = prima_titular*UF;
+        }if(n == 1){
+            total = prima_titular1*UF;
+        }if(n>=2){
+            total = prima_titular2*UF;
+        }
+        return total;
+    }
     
     
 
