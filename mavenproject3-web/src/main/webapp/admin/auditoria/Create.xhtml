@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="auditoriaCreateDlg" widgetVar="auditoriaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateauditoriaTitle}">
+            <h:form id="auditoriaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{auditoriaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateauditoriaLabel_fechayhora}" for="fechayhora" />
+                        <p:calendar id="fechayhora" pattern="MM/dd/yyyy HH:mm:ss" value="#{auditoriaController.selected.fechayhora}" title="#{bundle.EditauditoriaTitle_fechayhora}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateauditoriaLabel_nombre_usuario}" for="nombre_usuario" />
+                        <p:inputText id="nombre_usuario" value="#{auditoriaController.selected.nombre_usuario}" title="#{bundle.CreateauditoriaTitle_nombre_usuario}" />
+                        <p:outputLabel value="#{bundle.CreateauditoriaLabel_nombre_tabla}" for="nombre_tabla" />
+                        <p:inputText id="nombre_tabla" value="#{auditoriaController.selected.nombre_tabla}" title="#{bundle.CreateauditoriaTitle_nombre_tabla}" />
+                        <p:outputLabel value="#{bundle.CreateauditoriaLabel_id_registro}" for="id_registro" />
+                        <p:inputText id="id_registro" value="#{auditoriaController.selected.id_registro}" title="#{bundle.CreateauditoriaTitle_id_registro}" />
+                        <p:outputLabel value="#{bundle.CreateauditoriaLabel_valor_antiguo}" for="valor_antiguo" />
+                        <p:inputText id="valor_antiguo" value="#{auditoriaController.selected.valor_antiguo}" title="#{bundle.CreateauditoriaTitle_valor_antiguo}" />
+                        <p:outputLabel value="#{bundle.CreateauditoriaLabel_valor_nuevo}" for="valor_nuevo" />
+                        <p:inputText id="valor_nuevo" value="#{auditoriaController.selected.valor_nuevo}" title="#{bundle.CreateauditoriaTitle_valor_nuevo}" />
+                        <p:outputLabel value="#{bundle.CreateauditoriaLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{auditoriaController.selected.id}" title="#{bundle.CreateauditoriaTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{auditoriaController.create}" value="#{bundle.Save}" update="display,:auditoriaListForm:datalist,:growl" oncomplete="handleSubmit(args,'auditoriaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="auditoriaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
