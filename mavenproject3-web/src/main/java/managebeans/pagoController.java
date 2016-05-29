@@ -42,6 +42,17 @@ public class pagoController implements Serializable {
     private Boolean jardin;
     private Boolean aportes;
     private Boolean otros;
+    private Boolean prestamos;
+
+    public Boolean getPrestamos() {
+        return prestamos;
+    }
+
+    public void setPrestamos(Boolean prestamos) {
+        this.prestamos = prestamos;
+    }
+    
+    
 
     public pagoFacadeLocal getEjbFacade() {
         return ejbFacade;
@@ -165,6 +176,7 @@ public class pagoController implements Serializable {
         pmed = null;
         ucm = null;
         aportes = null;
+        prestamos = null;
         
         selected = new pago();
         initializeEmbeddableKey();
@@ -177,11 +189,8 @@ public class pagoController implements Serializable {
         pagodetalle.getSelected().setSeguro_hospitalario(hospitalario);
         pagodetalle.getSelected().setSeguro_vida(vida);
         pagodetalle.getSelected().setAportes(aportes);
-        pagodetalle.getSelected().setSeguro_jardin(jardin);
-        pagodetalle.getSelected().setSeguro_paux(paux);
-        pagodetalle.getSelected().setSeguro_pmed(pmed);
-        pagodetalle.getSelected().setSeguro_ucm(ucm);
         pagodetalle.getSelected().setOtros(otros);
+        pagodetalle.getSelected().setPrestamos(prestamos);
         selected.setPagodetalles(pagodetalle.getSelected());
         pagodetalle.create();
         

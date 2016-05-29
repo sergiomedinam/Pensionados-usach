@@ -7,20 +7,19 @@
       xmlns:p="http://primefaces.org/ui">
 
     <ui:composition>
-
         <p:dialog id="seguroEditDlg" widgetVar="seguroEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditseguroTitle}">
             <h:form id="seguroEditForm">
+                <p:growl id="growl" showDetail="true" showSummary="true" autoUpdate="true" /> 
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{seguroController.selected != null}">
                         <p:outputLabel value="#{bundle.EditseguroLabel_nombre_seguro}" for="nombre_seguro" />
-                        <p:inputText id="nombre_seguro" value="#{seguroController.selected.nombre_seguro}" title="#{bundle.EditseguroTitle_nombre_seguro}" />
-                        <p:outputLabel value="#{bundle.EditseguroLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{seguroController.selected.id}" title="#{bundle.EditseguroTitle_id}" />
+                        <p:inputText id="nombre_seguro" value="#{seguroController.selected.nombre_seguro}" title="#{bundle.EditseguroTitle_nombre_seguro}" validator="#{seguroController.validarNotNullExistenteUno}" />
+                        
                     </p:panelGrid>
                     <p:commandButton actionListener="#{seguroController.update}" value="#{bundle.Save}" update="display,:seguroListForm:datalist,:growl" oncomplete="handleSubmit(args, 'seguroEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="seguroEditDialog.hide()"/>
                 </h:panelGroup>
-            </h:form>
+            </h:form> 
         </p:dialog>
 
     </ui:composition>

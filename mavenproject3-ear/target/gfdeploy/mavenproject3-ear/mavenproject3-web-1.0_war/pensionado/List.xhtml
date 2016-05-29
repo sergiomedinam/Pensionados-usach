@@ -52,8 +52,8 @@
                         <c:set var="rol" value="observador"/>
                         <c:choose>
                             <c:when test="${ name_rol != rol }">
-                                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
-                                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+                                <p:ajax event="rowSelect"   update="createButton viewButton editButton"/>
+                                <p:ajax event="rowUnselect" update="createButton viewButton editButton"/>
                             </c:when>    
                             <c:otherwise>
                                 <p:ajax event="rowSelect"   update="viewButton"/>
@@ -93,13 +93,7 @@
                             <c:if test="${ name_rol != rol }">   
                                 <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{pensionadoController.prepareCreate}" update=":pensionadoCreateForm" oncomplete="PF('pensionadoCreateDialog').show()"/>
                                 <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":pensionadoEditForm" oncomplete="PF('pensionadoEditDialog').show()" disabled="#{empty pensionadoController.selected}"/>
-                                <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{pensionadoController.destroy}" update=":growl,datalist" disabled="#{empty pensionadoController.selected}">
-                                <p:confirm header="Eliminar pensionado" message="Estas seguro?" icon="ui-icon-alert" />
-                                </p:commandButton>
-                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                                    <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                                </p:confirmDialog>
+                                
                             </c:if>
                         </f:facet>
                     </p:dataTable>

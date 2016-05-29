@@ -37,6 +37,17 @@ public class pensionado implements Serializable {
     
     private String email_pensionado;
     private String email_alternativo;
+    private Integer aporte;
+
+    public Integer getAporte() {
+        return aporte;
+    }
+
+    public void setAporte(Integer aporte) {
+        this.aporte = aporte;
+    }
+    
+    
 
     public Integer getSaldo() {
         return saldo;
