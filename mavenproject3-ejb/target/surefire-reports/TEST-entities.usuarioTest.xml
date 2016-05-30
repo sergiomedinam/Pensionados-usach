@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="17" failures="0" name="entities.usuarioTest" time="0.063" errors="0" skipped="0">
+<testsuite tests="17" failures="0" name="entities.usuarioTest" time="0.08" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_65\jre\bin"/>
@@ -61,21 +61,21 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="entities.usuarioTest" name="testEquals" time="0"/>
-  <testcase classname="entities.usuarioTest" name="testSetId" time="0"/>
+  <testcase classname="entities.usuarioTest" name="testToString" time="0.016"/>
+  <testcase classname="entities.usuarioTest" name="testGetId" time="0.018"/>
   <testcase classname="entities.usuarioTest" name="testHashCode" time="0"/>
-  <testcase classname="entities.usuarioTest" name="testGetId" time="0"/>
-  <testcase classname="entities.usuarioTest" name="testToString" time="0.015"/>
+  <testcase classname="entities.usuarioTest" name="testSetId" time="0"/>
+  <testcase classname="entities.usuarioTest" name="testEquals" time="0"/>
   <testcase classname="entities.usuarioTest" name="testSetNombre" time="0"/>
-  <testcase classname="entities.usuarioTest" name="testSetRut" time="0"/>
+  <testcase classname="entities.usuarioTest" name="testSetApellido" time="0"/>
+  <testcase classname="entities.usuarioTest" name="testGetRut" time="0.016"/>
   <testcase classname="entities.usuarioTest" name="testGetNombre" time="0"/>
   <testcase classname="entities.usuarioTest" name="testGetApellido" time="0"/>
-  <testcase classname="entities.usuarioTest" name="testSetApellido" time="0"/>
-  <testcase classname="entities.usuarioTest" name="testGetRut" time="0"/>
-  <testcase classname="entities.usuarioTest" name="testGetContrasena" time="0"/>
-  <testcase classname="entities.usuarioTest" name="testSetEmail_usuario" time="0"/>
-  <testcase classname="entities.usuarioTest" name="testGetEmail_usuario" time="0.016"/>
+  <testcase classname="entities.usuarioTest" name="testSetRut" time="0"/>
+  <testcase classname="entities.usuarioTest" name="testGetEmail_usuario" time="0"/>
+  <testcase classname="entities.usuarioTest" name="testGetContrasena" time="0.015"/>
   <testcase classname="entities.usuarioTest" name="testSetTipo_usuario" time="0"/>
+  <testcase classname="entities.usuarioTest" name="testSetEmail_usuario" time="0"/>
   <testcase classname="entities.usuarioTest" name="testGetTipo_usuario" time="0"/>
   <testcase classname="entities.usuarioTest" name="testSetContrasena" time="0"/>
 </testsuite>

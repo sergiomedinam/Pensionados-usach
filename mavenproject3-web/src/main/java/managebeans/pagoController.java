@@ -43,6 +43,63 @@ public class pagoController implements Serializable {
     private Boolean aportes;
     private Boolean otros;
     private Boolean prestamos;
+    
+    private Integer monto_seguro_catastrofico;
+    private Integer monto_seguro_vida;
+    private Integer monto_seguro_hospitalario;
+    private Integer monto_aportes;
+    private Integer monto_otros;
+    private Integer monto_prestamos;
+
+    public Integer getMonto_seguro_catastrofico() {
+        return monto_seguro_catastrofico;
+    }
+
+    public void setMonto_seguro_catastrofico(Integer monto_seguro_catastrofico) {
+        this.monto_seguro_catastrofico = monto_seguro_catastrofico;
+    }
+
+    public Integer getMonto_seguro_vida() {
+        return monto_seguro_vida;
+    }
+
+    public void setMonto_seguro_vida(Integer monto_seguro_vida) {
+        this.monto_seguro_vida = monto_seguro_vida;
+    }
+
+    public Integer getMonto_seguro_hospitalario() {
+        return monto_seguro_hospitalario;
+    }
+
+    public void setMonto_seguro_hospitalario(Integer monto_seguro_hospitalario) {
+        this.monto_seguro_hospitalario = monto_seguro_hospitalario;
+    }
+
+    public Integer getMonto_aportes() {
+        return monto_aportes;
+    }
+
+    public void setMonto_aportes(Integer monto_aportes) {
+        this.monto_aportes = monto_aportes;
+    }
+
+    public Integer getMonto_otros() {
+        return monto_otros;
+    }
+
+    public void setMonto_otros(Integer monto_otros) {
+        this.monto_otros = monto_otros;
+    }
+
+    public Integer getMonto_prestamos() {
+        return monto_prestamos;
+    }
+
+    public void setMonto_prestamos(Integer monto_prestamos) {
+        this.monto_prestamos = monto_prestamos;
+    }
+    
+    
 
     public Boolean getPrestamos() {
         return prestamos;
@@ -177,7 +234,12 @@ public class pagoController implements Serializable {
         ucm = null;
         aportes = null;
         prestamos = null;
-        
+        monto_seguro_catastrofico = 0;
+        monto_seguro_hospitalario = 0;
+        monto_seguro_vida = 0;
+        monto_aportes = 0;
+        monto_prestamos = 0;
+        monto_otros = 0;
         selected = new pago();
         initializeEmbeddableKey();
         return selected;
@@ -191,6 +253,14 @@ public class pagoController implements Serializable {
         pagodetalle.getSelected().setAportes(aportes);
         pagodetalle.getSelected().setOtros(otros);
         pagodetalle.getSelected().setPrestamos(prestamos);
+        pagodetalle.getSelected().setMonto_seguro_catastrofico(monto_seguro_catastrofico);
+        pagodetalle.getSelected().setMonto_seguro_hospitalario(monto_seguro_hospitalario);
+        pagodetalle.getSelected().setMonto_seguro_vida(monto_seguro_vida);
+        pagodetalle.getSelected().setMonto_aportes(monto_aportes);
+        pagodetalle.getSelected().setMonto_prestamos(monto_prestamos);
+        pagodetalle.getSelected().setMonto_otros(monto_otros);
+        
+        
         selected.setPagodetalles(pagodetalle.getSelected());
         pagodetalle.create();
         
