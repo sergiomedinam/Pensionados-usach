@@ -46,14 +46,18 @@
                         </p:selectBooleanCheckbox>
                         <p:outputLabel id="cat">
                             $ #{cargasController.ValorCatastrofico(pagoController.selected.pensionado.rut_pensionado)}
+                            #{pagoController.selected.pagodetalles.setMonto_seguro_catastrofico(cargasController.ValorCatastrofico(pagoController.selected.pensionado.rut_pensionado))}
                         </p:outputLabel>
-                            
+                        
+                        
+                        
                         <p:outputLabel value="#{bundle.CreatepagodetalleLabel_seguro_vida}" for="vida" />
                         <p:selectBooleanCheckbox id="vida" value="#{pagoController.vida}" >
                             <p:ajax  update="pago"/>
                         </p:selectBooleanCheckbox>
                         <p:outputLabel id="vi">
                             $ #{cargasController.ValorVida(pagoController.selected.pensionado.rut_pensionado)}
+                            #{pagoController.selected.pagodetalles.setMonto_seguro_vida(cargasController.ValorVida(pagoController.selected.pensionado.rut_pensionado))}
                         </p:outputLabel>
 
                         <p:outputLabel value="#{bundle.CreatepagodetalleLabel_seguro_hospitalario}" for="hospitalario" />
@@ -62,6 +66,7 @@
                         </p:selectBooleanCheckbox>
                         <p:outputLabel id="hosp">
                             $ #{cargasController.ValorHospitalario(pagoController.selected.pensionado.rut_pensionado)}
+                            #{pagoController.selected.pagodetalles.setMonto_seguro_hospitalario(cargasController.ValorHospitalario(pagoController.selected.pensionado.rut_pensionado))}
                         </p:outputLabel>
                     
                         <p:outputLabel value="#{bundle.CreatepagodetalleLabel_aportes}" for="aportes" />
@@ -70,14 +75,7 @@
                         </p:selectBooleanCheckbox>
                         <p:outputLabel id="ap">
                             $ #{pensionadoController.Aporte(pagoController.selected.pensionado.rut_pensionado)}
-                        </p:outputLabel>
-
-                        <p:outputLabel value="#{bundle.CreatepagodetalleLabel_otros}" for="otros" />
-                        <p:selectBooleanCheckbox id="otros" value="#{pagoController.otros}" >
-                            <p:ajax  update="pago"/>
-                        </p:selectBooleanCheckbox>
-                        <p:outputLabel id="ot">
-                            $ 0
+                            #{pagoController.selected.pagodetalles.setMonto_aportes(pensionadoController.Aporte(pagoController.selected.pensionado.rut_pensionado))}
                         </p:outputLabel>
 
                         <p:outputLabel value="#{bundle.CreatepagodetalleLabel_prestamos}" for="prestamos" />
@@ -86,7 +84,20 @@
                         </p:selectBooleanCheckbox>
                         <p:outputLabel id="prest">
                             $ 0
+                            #{pagoController.selected.pagodetalles.setMonto_prestamos(0)}
                         </p:outputLabel>
+                        
+
+                        <p:outputLabel value="#{bundle.CreatepagodetalleLabel_otros}" for="otros" />
+                        <p:selectBooleanCheckbox id="otros" value="#{pagoController.otros}" >
+                            <p:ajax  update="pago"/>
+                        </p:selectBooleanCheckbox>
+                        <p:outputLabel id="ot">
+                            $ 0
+                            #{pagoController.selected.pagodetalles.setMonto_otros(0)}
+                        </p:outputLabel>
+
+                        
                      
                         
                         <p:outputLabel value="Pago Total" for="pago" />
