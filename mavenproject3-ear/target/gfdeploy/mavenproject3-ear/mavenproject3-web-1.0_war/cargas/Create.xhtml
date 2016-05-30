@@ -13,13 +13,15 @@
                 <p:growl id="growl" showDetail="true" showSummary="true" autoUpdate="true" />
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{cargasController.selected != null}">
- 
+                        
+                        <f:event listener="#{cargasController.validaCreate}" type="preValidate" />
+                        
                         <p:outputLabel value="#{bundle.CreatecargasLabel_conyuge}" for="conyuge" />
-                        <p:inputText id="conyuge" value="#{cargasController.selected.conyuge}" title="#{bundle.CreatecargasTitle_conyuge}" validator="#{cargasController.validaConyugeNumerico}" />
+                        <p:inputText id="conyuge" value="#{cargasController.selected.conyuge}" title="#{bundle.CreatecargasTitle_conyuge}"/>
                         <p:outputLabel value="#{bundle.CreatecargasLabel_hijos}" for="hijos" />
-                        <p:inputText id="hijos" value="#{cargasController.selected.hijos}" title="#{bundle.CreatecargasTitle_hijos}" validator="#{cargasController.validaHijosNumerico}" />
+                        <p:inputText id="hijos" value="#{cargasController.selected.hijos}" title="#{bundle.CreatecargasTitle_hijos}" />
                         <p:outputLabel value="#{bundle.CreatecargasLabel_otros}" for="otros" />
-                        <p:inputText id="otros" value="#{cargasController.selected.otros}" title="#{bundle.CreatecargasTitle_otros}" validator="#{cargasController.validaOtrosNumerico}" />
+                        <p:inputText id="otros" value="#{cargasController.selected.otros}" title="#{bundle.CreatecargasTitle_otros}"  />
                         <p:outputLabel value="#{bundle.CreatecargasLabel_pensionado}" for="pensionado" />
                         <p:selectOneMenu id="pensionado" style="width:155px" filter="true" filterMatchMode="contains" value="#{cargasController.selected.pensionado}" >
                             <f:selectItems value="#{pensionadoController.itemsAvailableSelectOne}"
@@ -28,7 +30,7 @@
                                            itemLabel="#{pensionadoItem.rut_pensionado}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreatecargasLabel_seguro}" for="seguro" />
-                        <p:selectOneMenu id="seguro"  style="width:155px" value="#{cargasController.selected.seguro}" validator="#{cargasController.validaExistenciaPensionadoSeguro}" >
+                        <p:selectOneMenu id="seguro"  style="width:155px" value="#{cargasController.selected.seguro}" >
                             <f:selectItems value="#{seguroController.itemsAvailableSelectOne}"
                                            var="seguroItem"
                                            itemValue="#{seguroItem}"

@@ -13,12 +13,16 @@
                 <p:growl id="growl" showDetail="true" showSummary="true" autoUpdate="true" />
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{cargasController.selected != null}">
+                        
+                        <f:event listener="#{cargasController.validaEdit}" type="preValidate" />
+                        
                         <p:outputLabel value="#{bundle.EditcargasLabel_conyuge}" for="conyuge" />
-                        <p:inputText id="conyuge" value="#{cargasController.selected.conyuge}" title="#{bundle.EditcargasTitle_conyuge}"  validator="#{cargasController.validaConyugeNumerico}" />
+                        <p:inputText id="conyuge" value="#{cargasController.selected.conyuge}" title="#{bundle.EditcargasTitle_conyuge}"/>
                         <p:outputLabel value="#{bundle.EditcargasLabel_hijos}" for="hijos" />
-                        <p:inputText id="hijos" value="#{cargasController.selected.hijos}" title="#{bundle.EditcargasTitle_hijos}"  validator="#{cargasController.validaHijosNumerico}" />
+                        <p:inputText id="hijos" value="#{cargasController.selected.hijos}" title="#{bundle.EditcargasTitle_hijos}"/>
                         <p:outputLabel value="#{bundle.EditcargasLabel_otros}" for="otros" />
-                        <p:inputText id="otros" value="#{cargasController.selected.otros}" title="#{bundle.EditcargasTitle_otros}" validator="#{cargasController.validaOtrosNumerico}"  />
+                        <p:inputText id="otros" value="#{cargasController.selected.otros}" title="#{bundle.EditcargasTitle_otros}"/>
+                        
                         <p:outputLabel value="#{bundle.EditcargasLabel_pensionado}" for="pensionado" />
                         <p:outputLabel id="pensionado" value="#{cargasController.selected.pensionado.rut_pensionado}" />
                         
