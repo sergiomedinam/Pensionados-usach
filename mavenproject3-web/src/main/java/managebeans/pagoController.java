@@ -7,6 +7,7 @@ import managebeans.util.JsfUtil.PersistAction;
 import sessionsbeans.pagoFacadeLocal;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -253,22 +254,33 @@ public class pagoController implements Serializable {
         pagodetalle.getSelected().setAportes(aportes);
         pagodetalle.getSelected().setOtros(otros);
         pagodetalle.getSelected().setPrestamos(prestamos);
-        
         pagodetalle.getSelected().setMonto_seguro_catastrofico(monto_seguro_catastrofico);
         pagodetalle.getSelected().setMonto_seguro_hospitalario(monto_seguro_hospitalario);
         pagodetalle.getSelected().setMonto_seguro_vida(monto_seguro_vida);
         pagodetalle.getSelected().setMonto_aportes(monto_aportes);
         pagodetalle.getSelected().setMonto_prestamos(monto_prestamos);
         pagodetalle.getSelected().setMonto_otros(monto_otros);
-        
-        
         selected.setPagodetalles(pagodetalle.getSelected());
         pagodetalle.create();
         
-        
-        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("pagoCreated"));
-        if (!JsfUtil.isValidationFailed()) {
-            items = null;    // Invalidate list of items to trigger re-query.
+        String rut = selected.getPensionado().getRut_pensionado();
+        String Año = selected.getAno();
+        String Mes = selected.getMes();
+        System.out.println("*************************");
+        System.out.println(selected.getMes() + selected.getAno());
+        List<pago> Pagos = PagosPensionados(rut);
+        boolean existeMes = false;
+        for(pago item : Pagos){
+            if(item.getAno().equals(Año)){
+                if(item.getMes().equals(Mes))
+                    destroyMes();
+            }
+        }
+        if(!existeMes){
+            persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("pagoCreated"));
+            if (!JsfUtil.isValidationFailed()) {
+                items = null;    // Invalidate list of items to trigger re-query.
+            }
         }
     }
 
@@ -286,6 +298,15 @@ public class pagoController implements Serializable {
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
+    
+    public void destroyMes() {
+        pagodetalle.destroy();
+        persist(PersistAction.DELETE, "Error: Pera el pensionado, ya existe un pago con este mes y año");
+        if (!JsfUtil.isValidationFailed()) {
+            selected = null; // Remove selection
+            items = null;    // Invalidate list of items to trigger re-query.
+        }
+    }
 
     public List<pago> getItems() {
         if (items == null) {
@@ -293,6 +314,18 @@ public class pagoController implements Serializable {
         }
         return items;
     }
+    
+        public List<pago> PagosPensionados(String rut) {
+        List<pago> Pagos = new ArrayList<pago>();
+        getItems();
+        for (pago item : items) {
+            if (item.getPensionado().getRut_pensionado().equals(rut)){
+                    Pagos.add(item);          
+            }
+        }
+        return Pagos;
+    }
+    
     
     public boolean Complete(boolean cat,boolean vida,boolean hosp,boolean aporte,boolean otros,boolean prest){
         boolean valor = cat && vida && hosp && aporte && otros && prest;
