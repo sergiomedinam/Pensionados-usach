@@ -116,6 +116,7 @@ public class cargasController implements Serializable {
         int prima_titular = 0;
         int prima_conyuge = 0;
         int prima_hijo = 0;
+        int Ntitular = 0;
         int Nhijo = 0;
         int Nconyuge = 0;
         for(parametros par : Parametros){
@@ -129,12 +130,13 @@ public class cargasController implements Serializable {
         
         for (cargas item : Cargas) {
             if (item.getSeguro().getNombre_seguro().equals("CATASTROFICO")){
+                Ntitular = item.getTitular();
                 Nhijo = item.getHijos();
                 Nconyuge = item.getConyuge();
             }
         }
         if(Cargas.size() > 0){
-            total = UF*(prima_titular + (Nconyuge*prima_conyuge) + (Nhijo*prima_hijo));
+            total = UF*((Ntitular*prima_titular) + (Nconyuge*prima_conyuge) + (Nhijo*prima_hijo));
         }
         
         return total;
@@ -148,6 +150,7 @@ public class cargasController implements Serializable {
         int prima_titular = 0;
         int prima_titular1 = 0;
         int prima_titular2 = 0;
+        int Ntitular = 0;
         int Nhijo = 0;
         int Nconyuge = 0;
         int Notros = 0;
@@ -161,6 +164,7 @@ public class cargasController implements Serializable {
         }
         for (cargas item : Cargas) {
             if (item.getSeguro().getNombre_seguro().equals("HOSPITALARIO")){
+                Ntitular = item.getTitular();
                 Nhijo = item.getHijos();
                 Nconyuge = item.getConyuge();
                 Notros = item.getOtros();
@@ -168,12 +172,14 @@ public class cargasController implements Serializable {
         }
         int n = Nhijo + Nconyuge + Notros;
         if(Cargas.size() > 0){
-            if (n == 0){
-                total = prima_titular*UF;
-            }if(n == 1){
-                total = prima_titular1*UF;
-            }if(n>=2){
-                total = prima_titular2*UF;
+            if(Ntitular == 1){
+                if (n == 0){
+                    total = prima_titular*UF;
+                }if(n == 1){
+                    total = prima_titular1*UF;
+                }if(n>=2){
+                    total = prima_titular2*UF;
+                }
             }
         }
         return total;
@@ -184,13 +190,19 @@ public class cargasController implements Serializable {
         List <cargas> Cargas = CargasPensionados(rut);
         int total = 0;
         int UF = 0;
+        int Ntitular = 0;
         for(parametros par : Parametros){
             if (par.getId() == 1) {
                 UF = par.getValor_uf();
             }
         }
+        for (cargas item : Cargas) {
+            if (item.getSeguro().getNombre_seguro().equals("VIDA")){
+                Ntitular = item.getTitular();
+            }
+        }
         if(Cargas.size() > 0){
-            total = UF;
+            total = UF*Ntitular;
         }
         return total;
     }

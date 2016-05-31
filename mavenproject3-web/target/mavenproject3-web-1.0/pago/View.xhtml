@@ -41,28 +41,29 @@
                         <h:outputText/>
                         
                         <h:outputText value="#{bundle.ViewpagodetalleLabel_seguro_catastrofico}"/>
-                        <h:outputText value="$ #{pagodetalleController.selected.monto_seguro_catastrofico}" />
-                        <p:selectBooleanCheckbox value="#{pagodetalleController.selected.seguro_catastrofico}" disabled="true"/>
+                        <h:outputText value="$ #{pagoController.selected.pagodetalles.monto_seguro_catastrofico}" />
+                        <p:selectBooleanCheckbox value="#{pagoController.selected.pagodetalles.seguro_catastrofico}" disabled="true"/>
                         
                         <h:outputText value="#{bundle.ViewpagodetalleLabel_seguro_vida}"/>
-                        <h:outputText value="$ #{pagodetalleController.selected.monto_seguro_vida}" />
-                        <p:selectBooleanCheckbox value="#{pagodetalleController.selected.seguro_vida}" disabled="true"/>
+                        <h:outputText value="$ #{pagoController.selected.pagodetalles.monto_seguro_vida}" />
+                        <p:selectBooleanCheckbox value="#{pagoController.selected.pagodetalles.seguro_vida}" disabled="true"/>
                         
                         <h:outputText value="#{bundle.ViewpagodetalleLabel_seguro_hospitalario}"/>
-                        <h:outputText value="$ #{pagodetalleController.selected.monto_seguro_hospitalario}" />
-                        <p:selectBooleanCheckbox value="#{pagodetalleController.selected.seguro_hospitalario}" disabled="true"/>
+                        <h:outputText value="$ #{pagoController.selected.pagodetalles.monto_seguro_hospitalario}" />
+                        <p:selectBooleanCheckbox value="#{pagoController.selected.pagodetalles.seguro_hospitalario}" disabled="true"/>
                         
                         <h:outputText value="#{bundle.ViewpagodetalleLabel_aportes}"/>
-                        <h:outputText value="$ #{pagodetalleController.selected.monto_aportes}" />
-                        <p:selectBooleanCheckbox value="#{pagodetalleController.selected.aportes}" disabled="true"/>
+                        <h:outputText value="$ #{pagoController.selected.pagodetalles.monto_aportes}" />
+                        <p:selectBooleanCheckbox value="#{pagoController.selected.pagodetalles.aportes}" disabled="true"/>
                         
                         <h:outputText value="#{bundle.ViewpagodetalleLabel_prestamos}"/>
-                        <h:outputText value="$ #{pagodetalleController.selected.monto_prestamos}" />
-                        <p:selectBooleanCheckbox value="#{pagodetalleController.selected.prestamos}" disabled="true"/>
+                        <h:outputText value="$ #{pagoController.selected.pagodetalles.monto_prestamos}" />
+                        <p:selectBooleanCheckbox value="#{pagoController.selected.pagodetalles.prestamos}" disabled="true"/>
                         
                         <h:outputText value="#{bundle.ViewpagodetalleLabel_otros}"/>
-                        <h:outputText value="$ #{pagodetalleController.selected.monto_otros}" />
-                        <p:selectBooleanCheckbox value="#{pagodetalleController.selected.otros}" disabled="true"/>
+                        <h:outputText value="$ #{pagoController.selected.pagodetalles.monto_otros}" />
+                        <p:selectBooleanCheckbox value="#{pagoController.selected.pagodetalles.otros}" disabled="true"/>
+                        
                         
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="pagoViewDialog.hide()"/>

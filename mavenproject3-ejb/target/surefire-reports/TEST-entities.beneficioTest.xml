@@ -67,9 +67,10 @@
   <testcase classname="entities.beneficioTest" name="testGetNombre_beneficio" time="0"/>
   <testcase classname="entities.beneficioTest" name="testSetNombre_beneficio" time="0"/>
   <testcase classname="entities.beneficioTest" name="testGetTipo_beneficio" time="0"/>
+  <testcase classname="entities.beneficioTest" name="testSetTipo_beneficio" time="0"/>
+  <testcase classname="entities.beneficioTest" name="testGetId" time="0"/>
   <testcase classname="entities.beneficioTest" name="testHashCode" time="0"/>
   <testcase classname="entities.beneficioTest" name="testToString" time="0"/>
-  <testcase classname="entities.beneficioTest" name="testSetId" time="0"/>
   <testcase classname="entities.beneficioTest" name="testGetId" time="0"/>
   <testcase classname="entities.beneficioTest" name="testEquals" time="0"/>
 </testsuite>
