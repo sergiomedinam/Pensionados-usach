@@ -253,6 +253,7 @@ public class pagoController implements Serializable {
         pagodetalle.getSelected().setAportes(aportes);
         pagodetalle.getSelected().setOtros(otros);
         pagodetalle.getSelected().setPrestamos(prestamos);
+        
         pagodetalle.getSelected().setMonto_seguro_catastrofico(monto_seguro_catastrofico);
         pagodetalle.getSelected().setMonto_seguro_hospitalario(monto_seguro_hospitalario);
         pagodetalle.getSelected().setMonto_seguro_vida(monto_seguro_vida);
@@ -272,13 +273,6 @@ public class pagoController implements Serializable {
     }
 
     public void update() {
-        pagodetalle.getSelected().setSeguro_catastrofico(catastrofico);
-        pagodetalle.getSelected().setSeguro_hospitalario(hospitalario);
-        pagodetalle.getSelected().setSeguro_vida(vida);
-        pagodetalle.getSelected().setAportes(aportes);
-        pagodetalle.getSelected().setOtros(otros);
-        pagodetalle.getSelected().setPrestamos(prestamos);
-        selected.setPagodetalles(pagodetalle.getSelected());
         pagodetalle.update();
         
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("pagoUpdated"));
@@ -304,6 +298,18 @@ public class pagoController implements Serializable {
         boolean valor = cat && vida && hosp && aporte && otros && prest;
         return valor;
     }
+    
+    public int Total(boolean cat,boolean vida,boolean hosp,boolean aporte,boolean otros,boolean prest){
+        int valor = 0;
+        if(cat) valor = valor + selected.getPagodetalles().getMonto_seguro_catastrofico();
+        if(vida) valor = valor + selected.getPagodetalles().getMonto_seguro_vida();
+        if(hosp) valor = valor + selected.getPagodetalles().getMonto_seguro_hospitalario();
+        if(aporte) valor = valor + selected.getPagodetalles().getMonto_aportes();
+        if(otros) valor = valor + selected.getPagodetalles().getMonto_otros();
+        if(prest) valor = valor + selected.getPagodetalles().getMonto_prestamos();
+        return valor;
+    }
+    
     
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
