@@ -109,7 +109,7 @@ public class cuotaspagadasController implements Serializable {
         auditoria.prepareCreate();
         auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
         auditoria.getSelected().setNombre_tabla("CUOTAS PAGADAS");
-        auditoria.getSelected().setNombre_columna("AÑo");
+        auditoria.getSelected().setNombre_columna("AÑO");
         auditoria.getSelected().setValor_antiguo("NULL");
         auditoria.getSelected().setValor_nuevo(selected.getAno());
         auditoria.getSelected().setFechayhora(ahora);
