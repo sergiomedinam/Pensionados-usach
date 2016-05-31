@@ -10,7 +10,6 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,7 +23,7 @@ public class auditoria implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
     @Temporal(TemporalType.TIMESTAMP)
@@ -33,6 +32,8 @@ public class auditoria implements Serializable {
     private String nombre_usuario;
     
     private String nombre_tabla;
+    
+    private String nombre_columna;
     
     private Long id_registro;
     
@@ -64,6 +65,16 @@ public class auditoria implements Serializable {
         this.nombre_tabla = nombre_tabla;
     }
 
+    public String getNombre_columna() {
+        return nombre_columna;
+    }
+
+    public void setNombre_columna(String nombre_columna) {
+        this.nombre_columna = nombre_columna;
+    }
+    
+    
+    
     public Long getId_registro() {
         return id_registro;
     }
