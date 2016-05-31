@@ -52,12 +52,12 @@
                         <c:set var="rol" value="observador"/>
                         <c:choose>
                             <c:when test="${ name_rol != rol }">
-                                <p:ajax event="rowSelect"   update="viewButton"/>
-                                <p:ajax event="rowUnselect" update="viewButton"/>
+                                <p:ajax event="rowSelect"   update=" viewButton "/>
+                                <p:ajax event="rowUnselect" update=" viewButton "/>
                             </c:when>    
                             <c:otherwise>
-                                <p:ajax event="rowSelect"   update="viewButton"/>
-                                <p:ajax event="rowUnselect" update="viewButton"/>
+                                <p:ajax event="rowSelect"   update=" viewButton "/>
+                                <p:ajax event="rowUnselect" update=" viewButton "/>
                             </c:otherwise>
                         </c:choose>
                         
