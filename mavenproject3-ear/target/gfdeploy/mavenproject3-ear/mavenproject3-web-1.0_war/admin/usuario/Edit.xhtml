@@ -41,7 +41,6 @@
                         
                     </p:panelGrid>
                     <p:commandButton actionListener="#{usuarioController.update}" value="#{bundle.Save}" update="display,:usuarioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'usuarioEditDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="usuarioEditDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

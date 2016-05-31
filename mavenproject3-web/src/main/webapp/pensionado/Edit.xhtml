@@ -71,7 +71,6 @@
                         </p:inputText>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{pensionadoController.update}" value="#{bundle.Save}" update="display,:pensionadoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'pensionadoEditDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="pensionadoEditDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

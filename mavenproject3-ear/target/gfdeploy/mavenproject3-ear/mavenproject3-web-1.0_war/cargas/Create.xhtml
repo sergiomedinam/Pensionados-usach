@@ -18,14 +18,16 @@
                         
                         
                         <p:outputLabel value="#{bundle.CreatecargasLabel_pensionado}" for="pensionado" />
-                        <p:selectOneMenu id="pensionado" style="width:155px" filter="true" filterMatchMode="contains" value="#{cargasController.selected.pensionado}" >
+                        <p:selectOneMenu id="pensionado" required="true" requiredMessage="Se necesita un pensionado" style="width:155px" filter="true" filterMatchMode="contains" value="#{cargasController.selected.pensionado}" >
+                            <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{pensionadoController.itemsAvailableSelectOne}"
                                            var="pensionadoItem"
                                            itemValue="#{pensionadoItem}"
                                            itemLabel="#{pensionadoItem.rut_pensionado}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreatecargasLabel_seguro}" for="seguro" />
-                        <p:selectOneMenu id="seguro"  style="width:155px" value="#{cargasController.selected.seguro}" >
+                        <p:selectOneMenu id="seguro" required="true" requiredMessage="Se necesita un seguro" style="width:155px" value="#{cargasController.selected.seguro}" >
+                            <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{seguroController.itemsAvailableSelectOne}"
                                            var="seguroItem"
                                            itemValue="#{seguroItem}"
