@@ -11,32 +11,57 @@
         <p:dialog id="pagoViewDlg" widgetVar="pagoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewpagoTitle}">
             <h:form id="pagoViewForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{pagoController.selected != null}">
+                    <p:panelGrid columns="3" rendered="#{pagoController.selected != null}">
                         <h:outputText value="Rut"/>
                         <h:outputText value="#{pagoController.selected.pensionado.rut_pensionado}" title="#{bundle.ViewpagoTitle_pensionado}"/>
+                        <h:outputText/>
+                        
                         <h:outputText value="Nombre"/>
                         <h:outputText value="#{pagoController.selected.pensionado.nombre_pensionado} #{pagoController.selected.pensionado.apellido_p_pensionado} #{pagoController.selected.pensionado.apellido_m_pensionado}" title="#{bundle.ViewpagoTitle_pensionado}"/>
+                        <h:outputText/>
+                        
+                        <h:outputText value="Año"/>
+                        <h:outputText value="#{pagoController.selected.ano}" title="#{bundle.ViewpagoTitle_ano}"/>
+                        <h:outputText/>
                         
                         <h:outputText value="Cuota"/>
                         <h:outputText value="#{pagoController.selected.mes}/12" title="#{bundle.ViewpagoTitle_mes}"/>
+                        <h:outputText/>
+                        
                         <h:outputText value="Pago Total"/>
                         <h:outputText value="$ #{pagoController.selected.pago}" title="#{bundle.ViewpagoTitle_pago}"/>
+                        <h:outputText/>
                         
                         <h:outputText value="#{bundle.ViewpagoLabel_completo}"/>
+                        <h:outputText/>
                         <p:selectBooleanCheckbox value="#{pagoController.selected.completo}" disabled="true"/>
-                        <h:outputText value=""/>
-                        <h:outputText value=""/>
+                        
+                        <h:outputText/>
+                        <h:outputText/>
+                        <h:outputText/>
+                        
                         <h:outputText value="#{bundle.ViewpagodetalleLabel_seguro_catastrofico}"/>
+                        <h:outputText value="$ #{pagodetalleController.selected.monto_seguro_catastrofico}" />
                         <p:selectBooleanCheckbox value="#{pagodetalleController.selected.seguro_catastrofico}" disabled="true"/>
+                        
                         <h:outputText value="#{bundle.ViewpagodetalleLabel_seguro_vida}"/>
+                        <h:outputText value="$ #{pagodetalleController.selected.monto_seguro_vida}" />
                         <p:selectBooleanCheckbox value="#{pagodetalleController.selected.seguro_vida}" disabled="true"/>
+                        
                         <h:outputText value="#{bundle.ViewpagodetalleLabel_seguro_hospitalario}"/>
+                        <h:outputText value="$ #{pagodetalleController.selected.monto_seguro_hospitalario}" />
                         <p:selectBooleanCheckbox value="#{pagodetalleController.selected.seguro_hospitalario}" disabled="true"/>
+                        
                         <h:outputText value="#{bundle.ViewpagodetalleLabel_aportes}"/>
+                        <h:outputText value="$ #{pagodetalleController.selected.monto_aportes}" />
                         <p:selectBooleanCheckbox value="#{pagodetalleController.selected.aportes}" disabled="true"/>
+                        
                         <h:outputText value="#{bundle.ViewpagodetalleLabel_prestamos}"/>
+                        <h:outputText value="$ #{pagodetalleController.selected.monto_prestamos}" />
                         <p:selectBooleanCheckbox value="#{pagodetalleController.selected.prestamos}" disabled="true"/>
+                        
                         <h:outputText value="#{bundle.ViewpagodetalleLabel_otros}"/>
+                        <h:outputText value="$ #{pagodetalleController.selected.monto_otros}" />
                         <p:selectBooleanCheckbox value="#{pagodetalleController.selected.otros}" disabled="true"/>
                         
                     </p:panelGrid>
