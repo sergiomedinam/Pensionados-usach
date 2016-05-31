@@ -29,7 +29,6 @@
                        
                     </p:panelGrid>
                     <p:commandButton actionListener="#{parametrosController.update}" value="#{bundle.Save}" update="display,:parametrosListForm:datalist,:growl" oncomplete="handleSubmit(args, 'parametrosEditDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="parametrosEditDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

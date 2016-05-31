@@ -30,7 +30,6 @@
                         
                     </p:panelGrid>
                     <p:commandButton actionListener="#{cuotaspagadasController.update}" value="#{bundle.Save}" update="display,:cuotaspagadasListForm:datalist,:growl" oncomplete="handleSubmit(args, 'cuotaspagadasEditDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="cuotaspagadasEditDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

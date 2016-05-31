@@ -15,6 +15,12 @@
                     <p:panelGrid columns="2" rendered="#{cargasController.selected != null}">
                         
                         <f:event listener="#{cargasController.validaEdit}" type="preValidate" />
+                        <p:outputLabel value="#{bundle.EditcargasLabel_pensionado}" for="pensionado" />
+                        <p:outputLabel id="pensionado" value="#{cargasController.selected.pensionado.rut_pensionado}" />
+                        
+                        <p:outputLabel value="#{bundle.EditcargasLabel_seguro}" for="seguro" />
+                        <p:outputLabel id="seguro" value="#{cargasController.selected.seguro.nombre_seguro}" />
+
                         
                         <p:outputLabel value="#{bundle.EditcargasLabel_conyuge}" for="conyuge" />
                         <p:inputText id="conyuge" value="#{cargasController.selected.conyuge}" title="#{bundle.EditcargasTitle_conyuge}"/>
@@ -23,16 +29,10 @@
                         <p:outputLabel value="#{bundle.EditcargasLabel_otros}" for="otros" />
                         <p:inputText id="otros" value="#{cargasController.selected.otros}" title="#{bundle.EditcargasTitle_otros}"/>
                         
-                        <p:outputLabel value="#{bundle.EditcargasLabel_pensionado}" for="pensionado" />
-                        <p:outputLabel id="pensionado" value="#{cargasController.selected.pensionado.rut_pensionado}" />
                         
-                        <p:outputLabel value="#{bundle.EditcargasLabel_seguro}" for="seguro" />
-                        <p:outputLabel id="seguro" value="#{cargasController.selected.seguro.nombre_seguro}" />
-
  
                     </p:panelGrid>
                     <p:commandButton actionListener="#{cargasController.update}" value="#{bundle.Save}" update="display,:cargasListForm:datalist,:growl" oncomplete="handleSubmit(args, 'cargasEditDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="cargasEditDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

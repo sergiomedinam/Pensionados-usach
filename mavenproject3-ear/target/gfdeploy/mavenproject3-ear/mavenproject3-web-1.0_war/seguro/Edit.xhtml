@@ -18,11 +18,9 @@
                         <p:outputLabel value="#{bundle.EditseguroLabel_nombre_seguro}" for="nombre_seguro" />
                         <p:inputText id="nombre_seguro" value="#{seguroController.selected.nombre_seguro}" title="#{bundle.EditseguroTitle_nombre_seguro}"/>
                         
-                        <p:inputText type="hidden" id="id" value="#{seguroController.selected.id}" />
                         
                     </p:panelGrid>
                     <p:commandButton actionListener="#{seguroController.update}" value="#{bundle.Save}" update="display,:seguroListForm:datalist,:growl" oncomplete="handleSubmit(args, 'seguroEditDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="seguroEditDialog.hide()"/>
                 </h:panelGroup>
             </h:form> 
         </p:dialog>

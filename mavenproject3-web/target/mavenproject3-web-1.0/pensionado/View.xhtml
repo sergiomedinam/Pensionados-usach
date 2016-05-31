@@ -54,7 +54,9 @@
 
                         <h:outputText value="#{bundle.ViewpensionadoLabel_email_alternativo}"/>
                         <h:outputText value="#{pensionadoController.selected.email_alternativo}" title="#{bundle.ViewpensionadoTitle_email_alternativo}"/>
-
+                        
+                        <h:outputText value="Valor del Aporte" />
+                        <h:outputText value="$ #{pensionadoController.selected.aporte}" title="#{bundle.ViewpensionadoTitle_aporte}" />
                         
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="pensionadoViewDialog.hide()"/>

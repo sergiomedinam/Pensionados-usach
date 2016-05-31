@@ -14,8 +14,31 @@
         </ui:define>
 
         <ui:define name="body">
+            
+            <p:breadCrumb > 
+                <p:menuitem value="Inicio" url="#" />
+                <p:menuitem value="Inicio" url="/" />
+                <p:menuitem value="Pagos" url="/faces/pago/List.xhtml" />
+            </p:breadCrumb>
+                <section class="content-header">
+                    <h1>
+                      Pagos  
+                      <small>Panel de administrador</small> <a href="#demo" data-toggle="collapse" class="btn btn-info">Informacion</a>
+
+                    </h1>
+                  
+                    <div id="demo" class=" collapse">
+                          <br/>
+                         <div class="panel panel-default">
+                        
+                             <div class="panel-footer"> <b>¿Que hacer aqui?</b> En esta seccion del sistema es posible agregar las pagos por pensionados, además de modificar éstos.</div>
+                        </div>
+                    </div>
+                  </section>
+            <br/>
+            
             <h:form id="pagoListForm">
-                <p:panel header="#{bundle.ListpagoTitle}">
+                <p:panel header="LISTA DE PAGOS">
                     <p:dataTable id="datalist" value="#{pagoController.items}" var="item"
                                  selectionMode="single" selection="#{pagoController.selected}"
                                  paginator="true"

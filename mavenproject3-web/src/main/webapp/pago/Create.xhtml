@@ -15,7 +15,6 @@
                     <p:panelGrid columns="3" rendered="#{pagoController.selected != null}">
                         
                         <p:outputLabel value="#{bundle.CreatepagoLabel_pensionado}" for="pensionado" />
-                        <p:outputLabel/>
                         <p:selectOneMenu id="pensionado" required="true" requiredMessage="Se requiere un pensionado" filter="true" filterMatchMode="contains" value="#{pagoController.selected.pensionado}" style="width:155px">
                             <p:ajax  update="cat,vi,hosp,ap,ot,prest,pago"/>
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
@@ -24,84 +23,82 @@
                                            itemLabel="#{pensionadoItem.rut_pensionado}"
                                            itemValue="#{pensionadoItem}"/>
                         </p:selectOneMenu>
+                        <p:outputLabel/>
                         
                         <p:outputLabel value="Año" for="ano" />
-                        <p:outputLabel />
                         <p:selectOneMenu  required="true" requiredMessage="Se requiere un año" id="ano" value="#{pagoController.selected.ano}" style="width:155px">
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{añosCuotas.añosCuotas}" />
                         </p:selectOneMenu>
-                        
+                        <p:outputLabel />
+
                         
                         <p:outputLabel value="#{bundle.CreatepagoLabel_mes}" for="mes" />
-                        <p:outputLabel />
                         <p:selectOneMenu  required="true" requiredMessage="Se requiere un mes a cancelar" id="mes" value="#{pagoController.selected.mes}" style="width:155px">
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{añosCuotas.NCuotas}" />
                         </p:selectOneMenu>
+                        <p:outputLabel />
                         
                         <p:outputLabel value="#{bundle.CreatepagodetalleLabel_seguro_catastrofico}" for="catastrofico" />
-                        <p:selectBooleanCheckbox id="catastrofico" value="#{pagoController.catastrofico}">
-                            <p:ajax  update="pago"/>
-                        </p:selectBooleanCheckbox>
                         <p:outputLabel id="cat">
                             $ #{cargasController.ValorCatastrofico(pagoController.selected.pensionado.rut_pensionado)}
                             #{pagoController.setMonto_seguro_catastrofico(cargasController.ValorCatastrofico(pagoController.selected.pensionado.rut_pensionado))}
                         </p:outputLabel>
-                        
-                        
-                        
-                        <p:outputLabel value="#{bundle.CreatepagodetalleLabel_seguro_vida}" for="vida" />
-                        <p:selectBooleanCheckbox id="vida" value="#{pagoController.vida}" >
+                        <p:selectBooleanCheckbox id="catastrofico" value="#{pagoController.catastrofico}">
                             <p:ajax  update="pago"/>
                         </p:selectBooleanCheckbox>
+                        
+                        <p:outputLabel value="#{bundle.CreatepagodetalleLabel_seguro_vida}" for="vida" />
                         <p:outputLabel id="vi">
                             $ #{cargasController.ValorVida(pagoController.selected.pensionado.rut_pensionado)}
                             #{pagoController.setMonto_seguro_vida(cargasController.ValorVida(pagoController.selected.pensionado.rut_pensionado))}
                         </p:outputLabel>
-
-                        <p:outputLabel value="#{bundle.CreatepagodetalleLabel_seguro_hospitalario}" for="hospitalario" />
-                        <p:selectBooleanCheckbox id="hospitalario" value="#{pagoController.hospitalario}" >
+                        <p:selectBooleanCheckbox id="vida" value="#{pagoController.vida}" >
                             <p:ajax  update="pago"/>
                         </p:selectBooleanCheckbox>
+
+                        <p:outputLabel value="#{bundle.CreatepagodetalleLabel_seguro_hospitalario}" for="hospitalario" />
                         <p:outputLabel id="hosp">
                             $ #{cargasController.ValorHospitalario(pagoController.selected.pensionado.rut_pensionado)}
                             #{pagoController.setMonto_seguro_hospitalario(cargasController.ValorHospitalario(pagoController.selected.pensionado.rut_pensionado))}
                         </p:outputLabel>
-                    
-                        <p:outputLabel value="#{bundle.CreatepagodetalleLabel_aportes}" for="aportes" />
-                        <p:selectBooleanCheckbox id="aportes" value="#{pagoController.aportes}" >
+                        <p:selectBooleanCheckbox id="hospitalario" value="#{pagoController.hospitalario}" >
                             <p:ajax  update="pago"/>
                         </p:selectBooleanCheckbox>
+                    
+                        <p:outputLabel value="#{bundle.CreatepagodetalleLabel_aportes}" for="aportes" />
                         <p:outputLabel id="ap">
                             $ #{pensionadoController.Aporte(pagoController.selected.pensionado.rut_pensionado)}
                             #{pagoController.setMonto_aportes(pensionadoController.Aporte(pagoController.selected.pensionado.rut_pensionado))}
                         </p:outputLabel>
-
-                        <p:outputLabel value="#{bundle.CreatepagodetalleLabel_prestamos}" for="prestamos" />
-                        <p:selectBooleanCheckbox id="prestamos" value="#{pagoController.prestamos}" >
+                        <p:selectBooleanCheckbox id="aportes" value="#{pagoController.aportes}" >
                             <p:ajax  update="pago"/>
                         </p:selectBooleanCheckbox>
+
+                        <p:outputLabel value="#{bundle.CreatepagodetalleLabel_prestamos}" for="prestamos" />
                         <p:outputLabel id="prest">
                             $ 0
                             #{pagoController.setMonto_prestamos(0)}
                         </p:outputLabel>
+                        <p:selectBooleanCheckbox id="prestamos" value="#{pagoController.prestamos}" >
+                            <p:ajax  update="pago"/>
+                        </p:selectBooleanCheckbox>
                         
 
                         <p:outputLabel value="#{bundle.CreatepagodetalleLabel_otros}" for="otros" />
-                        <p:selectBooleanCheckbox id="otros" value="#{pagoController.otros}" >
-                            <p:ajax  update="pago"/>
-                        </p:selectBooleanCheckbox>
                         <p:outputLabel id="ot">
                             $ 0
                             #{pagoController.setMonto_otros(0)}
                         </p:outputLabel>
+                        <p:selectBooleanCheckbox id="otros" value="#{pagoController.otros}" >
+                            <p:ajax  update="pago"/>
+                        </p:selectBooleanCheckbox>
 
                         
                      
                         
                         <p:outputLabel value="Pago Total" for="pago" />
-                        <p:outputLabel></p:outputLabel>
                         <p:outputLabel id="pago" >
                             $ #{pensionadoController.Total(pagoController.selected.pensionado.rut_pensionado,
                                                          pagoController.catastrofico,
@@ -133,12 +130,12 @@
                             </c:if>
                             
                         </p:outputLabel>
+                        <p:outputLabel/>
                        
                        
                        
                     </p:panelGrid>
                     <p:commandButton actionListener="#{pagoController.create}" value="#{bundle.Save}" update="display,:pagoListForm:datalist,:growl" oncomplete="handleSubmit(args,'pagoCreateDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="pagoCreateDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>
