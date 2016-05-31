@@ -493,7 +493,7 @@ public class usuarioController implements Serializable {
         return getFacade().findAll();
     }
 
-    private String getNombreCompleto() {
+    public String getNombreCompleto() {
         String nombre = getUsername(selected.getRut());
         String apellido = getApellido(selected.getRut());
         String respuesta = nombre +" "+apellido;
