@@ -30,80 +30,141 @@
                 
                 <section class="content " >
                     
-                    <div class="container panel panel-default">
-                        <h3>Informacion Básica</h3>
-                               
+                    <div class="row">
+                    
+                    <div class="container panel panel-default col-md-4">
+                        
                         <table class="table table-hover">
-                          <thead>
-                            <tr>
-                              <th>Rut</th>
-                              <th>Correo</th>
-                              <th>Telefono</th>
-                              <th>Comuna</th>
-                              <th>Region</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                                <td>#{pensionadoController.selected.rut_pensionado}</td>
-                                <td>#{pensionadoController.selected.email_pensionado}</td>
-                                <td>#{pensionadoController.selected.celular}</td>
-                                <td>#{pensionadoController.selected.comuna}</td>
-                                <td>#{pensionadoController.selected.region}</td>
-                            </tr>
-                          </tbody>
+                            <h3>Informacion Básica</h3>
+                            <thead>
+                                <tr>
+                                    <th rowspan="1">Dato personal</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td rowspan="1">Rut</td>
+                                    <td>#{pensionadoController.selected.rut_pensionado}</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="1">Nombre</td>
+                                    <td>#{pensionadoController.selected.nombre_pensionado} #{pensionadoController.selected.apellido_p_pensionado} #{pensionadoController.selected.apellido_m_pensionado}</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="1">Estado Civil</td>
+                                    <td>#{pensionadoController.selected.estado_civil}</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="1">Correo</td>
+                                    <td>#{pensionadoController.selected.email_pensionado}</td>
+                                </tr>
+                                 <tr>
+                                    <td rowspan="1">Correo Alternativo</td>
+                                    <td>#{pensionadoController.selected.email_alternativo}</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="1">Telefono Fijo</td>
+                                    <td>#{pensionadoController.selected.telefono_fijo}</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="1">Telefono Celular</td>
+                                    <td>#{pensionadoController.selected.celular}</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="1">Dirección</td>
+                                    <td>#{pensionadoController.selected.direccion}</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="1">Región</td>
+                                    <td>#{pensionadoController.selected.region}</td>
+                                </tr>
+                            </tbody>
                         </table>
+
                       </div>
 
 
                     
-                    <div class="container" align="center">
-                        <div class="col-lg-3 col-xs-6">
+                    <div class="container col-md-8" >
+                        
+                        <div class="container panel panel-default col-md-12">
+                        
+                        <table class="table table-hover">
+                          
+                            <thead>
+                                <tr>
+                                    <th rowspan="1">Compromisos</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                               
+                                <tr>
+                                    <td rowspan="1">Monto Pension</td>
+                                    <td>#{pensionadoController.selected.monto_pension}</td>
+                                </tr>
+                                 <tr>
+                                    <td rowspan="1">Aporte</td>
+                                    <td>#{pensionadoController.selected.aporte}</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="1">Saldo</td>
+                                    <td>#{pensionadoController.selected.saldo}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                      </div>
+                        
+                        
+                        <div class="col-md-6">
                             <!-- small box -->
                             <div class="small-box bg-aqua">
-                                <div class="inner">
+                                <div class="inner" align="center">
                                     <h3>#{cargasController.CargasPensionados(pensionadoController.selected.rut_pensionado).size()}</h3>
                                     <p>Seguros asociados</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-bag"></i>
                                 </div>
-                                <a href="#cargasPensionado" data-toggle="collapse" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
+                                <a href="#cargasPensionado" data-toggle="collapse" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->
-                        <div class="col-lg-3 col-xs-6">
+                        <div class="col-md-6">
                             <!-- small box -->
                             <c:if test="${cuotaspagadasController.alDia(pensionadoController.selected.rut_pensionado) == true}" >
                                 <div class="small-box bg-green">
-                                    <div class="inner">
+                                    <div class="inner" align="center">
                                         <h3>Si</h3>
                                         <p>¿Esta al dia?</p>
                                     </div>
                                     <div class="icon">
                                         <i class="ion ion-stats-bars"></i>
                                     </div>
-                                    <a href="#cuotasPensionado" data-toggle="collapse" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="#cuotasPensionado" data-toggle="collapse" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </c:if>
                             <c:if test="${cuotaspagadasController.alDia(pensionadoController.selected.rut_pensionado) == false}" >
                                 <div class="small-box bg-red">
-                                    <div class="inner">
+                                    <div class="inner" align="center">
                                         <h3>No</h3>
                                         <p>¿Esta al dia?</p>
                                     </div>
                                     <div class="icon">
                                         <i class="ion ion-stats-bars"></i>
                                     </div>
-                                    <a href="#cuotasPensionado" data-toggle="collapse" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="#cuotasPensionado" data-toggle="collapse" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </c:if>
                         </div>
                         <!-- ./col -->
-                        <div class="col-lg-3 col-xs-6">
+                        <div class="col-md-6">
                             <!-- small box -->
                             <div class="small-box bg-yellow">
-                                <div class="inner">
+                                <div class="inner" align="center" >
                                     <h3>0</h3>
 
                                     <p>Prestamos actuales</p>
@@ -111,13 +172,13 @@
                                 <div class="icon">
                                     <i class="ion ion-person-add"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
+                                <a href="#" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-xs-6">
+                        <div class="col-md-6" >
                             <!-- small box -->
                             <div class="small-box bg-maroon">
-                                <div class="inner">
+                                <div class="inner" align="center">
                                     <h3>0</h3>
 
                                     <p>Beneficios actuales</p>
@@ -125,13 +186,15 @@
                                 <div class="icon">
                                     <i class="ion ion-person-add"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
+                                <a href="#" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->
                         
                         <!-- ./col -->
                     </div>
+                        
+                   </div>
                 </section>
                 <div id="cuotasPensionado" class=" collapse">
                     <c:if test="${cuotaspagadasController.esMoroso(pensionadoController.selected.rut_pensionado) == true}" >
@@ -142,7 +205,7 @@
                     <div class="panel panel-default">
                     
                     <h:form id="cuotaspagadasListForm">
-                        <p:panel header="#{bundle.ListcuotaspagadasTitle}">
+                        <p:panel header="CUOTAS DEL PENSIONADO">
                             <p:dataTable id="datalist" value="#{cuotaspagadasController.CuotasPensionados(pensionadoController.selected.rut_pensionado)}" var="item"
                                          selectionMode="single" selection="#{cuotaspagadasController.selected}"
                                          paginator="false"
@@ -192,7 +255,7 @@
                 <div class="panel panel-default">
                 
                 <h:form id="cargasListForm">
-                <p:panel header="#{bundle.ListcargasTitle}">
+                <p:panel header="SEGUROS Y CARGAS DEL PENSIONADO">
                     <p:dataTable id="datalist" value="#{cargasController.CargasPensionados(pensionadoController.selected.rut_pensionado)}" var="item"
                                  selectionMode="single" selection="#{cargasController.selected}"
                                  paginator="true"

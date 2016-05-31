@@ -30,6 +30,8 @@ public class pago implements Serializable {
     @NotNull
     private Integer pago;
     
+    private String ano;
+    
     @OneToOne
     private pagodetalle pagodetalles;
     
@@ -39,6 +41,16 @@ public class pago implements Serializable {
     private Boolean completo;
     
     private String mes;
+
+    public String getAno() {
+        return ano;
+    }
+
+    public void setAno(String ano) {
+        this.ano = ano;
+    }
+    
+    
 
     public Boolean getCompleto() {
         return completo;

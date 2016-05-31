@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="9" failures="0" name="entities.beneficioTest" time="0.076" errors="0" skipped="0">
+<testsuite tests="9" failures="0" name="entities.beneficioTest" time="0.099" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_71\jre\bin"/>
@@ -30,7 +30,7 @@
     <property name="maven.ext.class.path" value="C:\Program Files\NetBeans 8.1\java\maven-nblib\netbeans-eventspy.jar"/>
     <property name="classworlds.conf" value="C:\Program Files\NetBeans 8.1\java\maven\bin\m2.conf"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_71\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\ImageMagick-6.9.3-Q16;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Calibre2\;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files (x86)\Skype\Phone\;C:\Program Files\nodejs\;C:\Program Files (x86)\GnuWin32\bin;C:\RailsInstaller\Git\cmd;C:\RailsInstaller\Ruby2.1.0\bin;C:\Users\seerg\AppData\Roaming\npm;C:\adb;C:\Users\seerg\Desktop;C:\RailsInstaller\Git\cmd;C:\RailsInstaller\Ruby2.1.0\bin;C:\Users\seerg\AppData\Roaming\npm;C:\Program Files (x86)\GnuWin32\bin;."/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_71\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\ImageMagick-6.9.3-Q16;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Calibre2\;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files (x86)\Skype\Phone\;C:\Program Files\nodejs\;C:\Program Files (x86)\GnuWin32\bin;C:\RailsInstaller\Git\cmd;C:\RailsInstaller\Ruby2.1.0\bin;C:\Users\seerg\AppData\Roaming\npm;C:\adb;C:\Users\seerg\Desktop;C:\Program Files\MiKTeX 2.9\miktex\bin\x64\;C:\RailsInstaller\Git\cmd;C:\RailsInstaller\Ruby2.1.0\bin;C:\Users\seerg\AppData\Roaming\npm;C:\Program Files (x86)\GnuWin32\bin;."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="52.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
@@ -63,13 +63,13 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="entities.beneficioTest" name="testSetTipo_beneficio" time="0.003"/>
+  <testcase classname="entities.beneficioTest" name="testSetTipo_beneficio" time="0.005"/>
+  <testcase classname="entities.beneficioTest" name="testGetNombre_beneficio" time="0"/>
   <testcase classname="entities.beneficioTest" name="testSetNombre_beneficio" time="0"/>
   <testcase classname="entities.beneficioTest" name="testGetTipo_beneficio" time="0"/>
-  <testcase classname="entities.beneficioTest" name="testGetNombre_beneficio" time="0"/>
-  <testcase classname="entities.beneficioTest" name="testEquals" time="0"/>
-  <testcase classname="entities.beneficioTest" name="testSetId" time="0"/>
   <testcase classname="entities.beneficioTest" name="testHashCode" time="0"/>
   <testcase classname="entities.beneficioTest" name="testToString" time="0"/>
+  <testcase classname="entities.beneficioTest" name="testSetId" time="0"/>
   <testcase classname="entities.beneficioTest" name="testGetId" time="0"/>
+  <testcase classname="entities.beneficioTest" name="testEquals" time="0"/>
 </testsuite>

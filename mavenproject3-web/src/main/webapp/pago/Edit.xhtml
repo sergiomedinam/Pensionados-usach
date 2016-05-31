@@ -25,6 +25,15 @@
                                            itemValue="#{pensionadoItem}"/>
                         </p:selectOneMenu>
                         
+                        <p:outputLabel value="Año" for="ano" />
+                        <p:outputLabel />
+                        <p:selectOneMenu disabled="true" required="true" requiredMessage="Se requiere un año" id="ano" value="#{pagoController.selected.ano}" style="width:155px">
+                            <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{añosCuotas.añosCuotas}" />
+                        </p:selectOneMenu>
+                        
+                        
+                        
                         <p:outputLabel value="#{bundle.CreatepagoLabel_mes}" for="mes" />
                         <p:outputLabel />
                         <p:selectOneMenu disabled="true" required="true" requiredMessage="Se requiere un mes a cancelar" id="mes" value="#{pagoController.selected.mes}" style="width:155px">

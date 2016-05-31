@@ -22,6 +22,7 @@
                                  rowKey="#{item.id}"
                                  rows="10"
                                  rowsPerPageTemplate="10,20,30,40,50"
+                                 emptyMessage="No hay resultados."
                                  >
 
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton"/>
@@ -54,6 +55,13 @@
                                 <h:outputText value="Cuota"/>
                             </f:facet>
                             <h:outputText value="#{item.mes}/12"/>
+                        </p:column>
+                        
+                        <p:column style="width: 100px;" >
+                            <f:facet name="header">
+                                <h:outputText value="Año"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ano}"/>
                         </p:column>
                         
                         <p:column style="width: 100px;" >
