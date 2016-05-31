@@ -41,54 +41,54 @@
                         </p:selectOneMenu>
                         
                         <p:outputLabel value="#{bundle.CreatepagodetalleLabel_seguro_catastrofico}" for="catastrofico" />
-                        <p:selectBooleanCheckbox  id="catastrofico" value="#{pagoController.selected.pagodetalles.seguro_catastrofico}">
-                                <p:ajax  update="pago"/>
-                        </p:selectBooleanCheckbox>
                         <p:outputLabel>
                             $ #{pagoController.selected.pagodetalles.monto_seguro_catastrofico}
                         </p:outputLabel>
+                        <p:selectBooleanCheckbox  id="catastrofico" value="#{pagoController.selected.pagodetalles.seguro_catastrofico}">
+                                <p:ajax  update="pago"/>
+                        </p:selectBooleanCheckbox>
                             
                         <p:outputLabel value="#{bundle.CreatepagodetalleLabel_seguro_vida}" for="vida" />
-                        <p:selectBooleanCheckbox id="vida" value="#{pagoController.selected.pagodetalles.seguro_vida}" >
-                            <p:ajax  update="pago"/>
-                        </p:selectBooleanCheckbox>
                         <p:outputLabel>
                             $ #{pagoController.selected.pagodetalles.monto_seguro_vida}
                         </p:outputLabel>
-
-                        <p:outputLabel value="#{bundle.CreatepagodetalleLabel_seguro_hospitalario}" for="hospitalario" />
-                        <p:selectBooleanCheckbox id="hospitalario" value="#{pagoController.selected.pagodetalles.seguro_hospitalario}" >
+                        <p:selectBooleanCheckbox id="vida" value="#{pagoController.selected.pagodetalles.seguro_vida}" >
                             <p:ajax  update="pago"/>
                         </p:selectBooleanCheckbox>
+                        
+                        <p:outputLabel value="#{bundle.CreatepagodetalleLabel_seguro_hospitalario}" for="hospitalario" />
                         <p:outputLabel>
                             $ #{pagoController.selected.pagodetalles.monto_seguro_hospitalario}
                         </p:outputLabel>
-                    
-                        <p:outputLabel value="#{bundle.CreatepagodetalleLabel_aportes}" for="aportes" />
-                        <p:selectBooleanCheckbox id="aportes" value="#{pagoController.selected.pagodetalles.aportes}" >
+                        <p:selectBooleanCheckbox id="hospitalario" value="#{pagoController.selected.pagodetalles.seguro_hospitalario}" >
                             <p:ajax  update="pago"/>
                         </p:selectBooleanCheckbox>
+                    
+                        <p:outputLabel value="#{bundle.CreatepagodetalleLabel_aportes}" for="aportes" />
                         <p:outputLabel>
                             $ #{pagoController.selected.pagodetalles.monto_aportes}
                         </p:outputLabel>
+                        <p:selectBooleanCheckbox id="aportes" value="#{pagoController.selected.pagodetalles.aportes}" >
+                            <p:ajax  update="pago"/>
+                        </p:selectBooleanCheckbox>
 
                         
                         <p:outputLabel value="#{bundle.CreatepagodetalleLabel_prestamos}" for="prestamos" />
-                        <p:selectBooleanCheckbox id="prestamos" value="#{pagoController.selected.pagodetalles.prestamos}" >
-                            <p:ajax  update="pago"/>
-                        </p:selectBooleanCheckbox>
                         <p:outputLabel>
                             $ #{pagoController.selected.pagodetalles.monto_prestamos}
                         </p:outputLabel>
+                        <p:selectBooleanCheckbox id="prestamos" value="#{pagoController.selected.pagodetalles.prestamos}" >
+                            <p:ajax  update="pago"/>
+                        </p:selectBooleanCheckbox>
                         
                         
                         <p:outputLabel value="#{bundle.CreatepagodetalleLabel_otros}" for="otros" />
-                        <p:selectBooleanCheckbox id="otros" value="#{pagoController.selected.pagodetalles.otros}" >
-                            <p:ajax  update="pago"/>
-                        </p:selectBooleanCheckbox>
                         <p:outputLabel>
                             $ #{pagoController.selected.pagodetalles.monto_otros}
                         </p:outputLabel>
+                        <p:selectBooleanCheckbox id="otros" value="#{pagoController.selected.pagodetalles.otros}" >
+                            <p:ajax  update="pago"/>
+                        </p:selectBooleanCheckbox>
 
                      
                         
