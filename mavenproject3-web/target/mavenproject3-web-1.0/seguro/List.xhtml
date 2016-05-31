@@ -14,6 +14,29 @@
         </ui:define>
 
         <ui:define name="body">
+            <p:breadCrumb > 
+                <p:menuitem value="Inicio" url="#" />
+                <p:menuitem value="Inicio" url="/" />
+                <p:menuitem value="Pagos" url="/faces/seguro/List.xhtml" />
+            </p:breadCrumb>
+                <section class="content-header">
+                    <h1>
+                      Seguros  
+                      <small>Panel de administrador</small> <a href="#demo" data-toggle="collapse" class="btn btn-info">Informacion</a>
+
+                    </h1>
+                  
+                    <div id="demo" class=" collapse">
+                          <br/>
+                         <div class="panel panel-default">
+                        
+                             <div class="panel-footer"> <b>¿Que hacer aqui?</b> En esta seccion del sistema es posible agregar los seguros, además de modificar éstos.</div>
+                        </div>
+                    </div>
+                  </section>
+            <br/>
+            
+            
             <h:form id="seguroListForm">
                 <p:panel header="LISTA DE SEGUROS">
                     <p:dataTable id="datalist" value="#{seguroController.items}" var="item"
