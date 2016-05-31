@@ -143,7 +143,7 @@ public class cargasController implements Serializable {
         
         Date ahora = Date.from(Instant.now());
         getItems();
-        Long ultimo = items.get(items.size()-1).getId();
+        Long ultimo = selected.getId();
         auditoria.prepareCreate();
         auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
         auditoria.getSelected().setNombre_tabla("CARGAS");
