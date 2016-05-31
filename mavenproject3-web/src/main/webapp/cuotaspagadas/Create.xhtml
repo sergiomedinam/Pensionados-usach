@@ -29,15 +29,14 @@
                         
                         <p:outputLabel value="#{bundle.CreatecuotaspagadasLabel_cuotas}" for="cuotas" />
                        
-                        <p:selectOneMenu  id="cuotas" value="#{cuotaspagadasController.selected.cuotas}" style="width:155px">
-                            <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
+                        <p:selectOneMenu  id="cuotas" required="true" requiredMessage="Se necesita número de cuotas" value="#{cuotaspagadasController.selected.cuotas}" style="width:155px">
+                            <f:selectItem itemLabel="Selecionar"  itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{añosCuotas.numeroCuotas}" />
                         </p:selectOneMenu>
                         
                         
                     </p:panelGrid>
                     <p:commandButton actionListener="#{cuotaspagadasController.create}" value="#{bundle.Save}" update="display,:cuotaspagadasListForm:datalist,:growl" oncomplete="handleSubmit(args,'cuotaspagadasCreateDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="cuotaspagadasCreateDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>
