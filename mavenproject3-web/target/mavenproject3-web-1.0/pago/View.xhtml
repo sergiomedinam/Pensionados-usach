@@ -64,9 +64,6 @@
                         <h:outputText value="$ #{pagoController.selected.pagodetalles.monto_otros}" />
                         <p:selectBooleanCheckbox value="#{pagoController.selected.pagodetalles.otros}" disabled="true"/>
                         
-                        <h:outputText value="#{bundle.ViewpagodetalleLabel_id}"/>
-                        <h:outputText value="$ #{pagoController.selected.pagodetalles.id}" />
-                        <h:outputText/>
                         
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="pagoViewDialog.hide()"/>
