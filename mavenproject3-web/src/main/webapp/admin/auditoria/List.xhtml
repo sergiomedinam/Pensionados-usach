@@ -73,6 +73,12 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
+                                <h:outputText value="ATRIBUTO"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre_columna}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
                                 <h:outputText value="ID del registro"/>
                             </f:facet>
                             <h:outputText value="#{item.id_registro}"/>

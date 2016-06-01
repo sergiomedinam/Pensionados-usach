@@ -279,6 +279,12 @@ public class usuarioController implements Serializable {
         String respuesta = nombre +" "+apellido;
         return respuesta;
     }
+    public String getNombreCompleto(String rut) {
+        String nombre = getUsername(rut);
+        String apellido = getApellido(rut);  
+        String respuesta = nombre +" "+apellido;
+        return respuesta;
+    }
     
     public void verificarRutExistencia(FacesContext context, UIComponent toValidate, Object value){
         context = FacesContext.getCurrentInstance();
