@@ -8,7 +8,9 @@ import managebeans.util.JsfUtil.PersistAction;
 import sessionsbeans.cargasFacadeLocal;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -32,6 +34,10 @@ public class cargasController implements Serializable {
     
     @Inject
     private parametrosController parametros;
+    @Inject
+    private usuarioController usuario;
+    @Inject
+    private auditoriaController auditoria;
     @EJB
     private cargasFacadeLocal ejbFacade;
     private List<cargas> items = null;
@@ -70,10 +76,99 @@ public class cargasController implements Serializable {
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
         }
+        
+        Date ahora = Date.from(Instant.now());
+        getItems();
+        Long ultimo = items.get(items.size()-1).getId();        
+        auditoria.prepareCreate();
+        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
+        auditoria.getSelected().setNombre_tabla("CARGAS");
+        auditoria.getSelected().setNombre_columna("RUT");
+        auditoria.getSelected().setValor_antiguo("NULL");
+        auditoria.getSelected().setValor_nuevo(selected.getPensionado().getRut_pensionado());
+        auditoria.getSelected().setFechayhora(ahora);
+        auditoria.getSelected().setId_registro(ultimo);
+        auditoria.create();        
+        auditoria.prepareCreate();
+        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
+        auditoria.getSelected().setNombre_tabla("CARGAS");
+        auditoria.getSelected().setNombre_columna("NOMBRE");
+        auditoria.getSelected().setValor_antiguo("NULL");
+        auditoria.getSelected().setValor_nuevo(selected.getPensionado().getNombre_pensionado()+" "+selected.getPensionado().getApellido_p_pensionado()+" "+selected.getPensionado().getApellido_m_pensionado());
+        auditoria.getSelected().setFechayhora(ahora);
+        auditoria.getSelected().setId_registro(ultimo);
+        auditoria.create();        
+        auditoria.prepareCreate();
+        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
+        auditoria.getSelected().setNombre_tabla("CARGAS");
+        auditoria.getSelected().setNombre_columna("SEGURO");
+        auditoria.getSelected().setValor_antiguo("NULL");
+        auditoria.getSelected().setValor_nuevo(selected.getSeguro().getNombre_seguro());
+        auditoria.getSelected().setFechayhora(ahora);
+        auditoria.getSelected().setId_registro(ultimo);
+        auditoria.create();
+        auditoria.prepareCreate();
+        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
+        auditoria.getSelected().setNombre_tabla("CARGAS");
+        auditoria.getSelected().setNombre_columna("CONYUGE");
+        auditoria.getSelected().setValor_antiguo("NULL");
+        auditoria.getSelected().setValor_nuevo(selected.getConyuge().toString());
+        auditoria.getSelected().setFechayhora(ahora);
+        auditoria.getSelected().setId_registro(ultimo);
+        auditoria.create();
+        auditoria.prepareCreate();
+        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
+        auditoria.getSelected().setNombre_tabla("CARGAS");
+        auditoria.getSelected().setNombre_columna("HIJOS");
+        auditoria.getSelected().setValor_antiguo("NULL");
+        auditoria.getSelected().setValor_nuevo(selected.getHijos().toString());
+        auditoria.getSelected().setFechayhora(ahora);
+        auditoria.getSelected().setId_registro(ultimo);
+        auditoria.create();   
+        auditoria.prepareCreate();
+        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
+        auditoria.getSelected().setNombre_tabla("CARGAS");
+        auditoria.getSelected().setNombre_columna("OTROS");
+        auditoria.getSelected().setValor_antiguo("NULL");
+        auditoria.getSelected().setValor_nuevo(selected.getOtros().toString());
+        auditoria.getSelected().setFechayhora(ahora);
+        auditoria.getSelected().setId_registro(ultimo);
+        auditoria.create();   
     }
 
     public void update() {
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("cargasUpdated"));
+        
+        Date ahora = Date.from(Instant.now());
+        getItems();
+        Long ultimo = selected.getId();
+        auditoria.prepareCreate();
+        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
+        auditoria.getSelected().setNombre_tabla("CARGAS");
+        auditoria.getSelected().setNombre_columna("CONYUGE");
+        auditoria.getSelected().setValor_antiguo("NULL");
+        auditoria.getSelected().setValor_nuevo(selected.getConyuge().toString());
+        auditoria.getSelected().setFechayhora(ahora);
+        auditoria.getSelected().setId_registro(ultimo);
+        auditoria.create();
+        auditoria.prepareCreate();
+        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
+        auditoria.getSelected().setNombre_tabla("CARGAS");
+        auditoria.getSelected().setNombre_columna("HIJOS");
+        auditoria.getSelected().setValor_antiguo("NULL");
+        auditoria.getSelected().setValor_nuevo(selected.getHijos().toString());
+        auditoria.getSelected().setFechayhora(ahora);
+        auditoria.getSelected().setId_registro(ultimo);
+        auditoria.create();   
+        auditoria.prepareCreate();
+        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
+        auditoria.getSelected().setNombre_tabla("CARGAS");
+        auditoria.getSelected().setNombre_columna("OTROS");
+        auditoria.getSelected().setValor_antiguo("NULL");
+        auditoria.getSelected().setValor_nuevo(selected.getOtros().toString());
+        auditoria.getSelected().setFechayhora(ahora);
+        auditoria.getSelected().setId_registro(ultimo);
+        auditoria.create(); 
     }
 
     public void destroy() {
