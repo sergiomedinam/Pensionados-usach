@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListpensionadoTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <p:breadCrumb > 
+                <p:menuitem value="Inicio" url="#" />
+                <p:menuitem value="Inicio" url="/" />
+                <p:menuitem value="Mapa de ubicaciones" url="/faces/pensionado/Mapa.xhtml" />
+                <p:menuitem value="Resultado" url="#" />
+            </p:breadCrumb>
+                <section class="content-header">
+                    <h1>
+                        Comuna: Maipú
+                    </h1>
+                    
+                  </section>
+            <h:form id="pensionadoListForm">
+                <p:panel header="#{bundle.ListpensionadoTitle}">
+                    <p:dataTable id="datalist" value="#{pensionadoController.PensionadosComuna('MAIPU')}" var="item"
+                                 selectionMode="single" selection="#{pensionadoController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.id}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 emptyMessage="No hay resultados."
+                                 >
+                        <c:set var="name_rol" value="#{usuarioController.getTipo(request.userPrincipal.name)}"/>
+                        <c:set var="rol" value="observador"/>
+                        <c:choose>
+                            <c:when test="${ name_rol != rol }">
+                                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+                            </c:when>    
+                            <c:otherwise>
+                                <p:ajax event="rowSelect"   update="viewButton"/>
+                                <p:ajax event="rowUnselect" update="viewButton"/>
+                            </c:otherwise>
+                        </c:choose>
+                        
+                        <p:column headerText="Rut pensionado">
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListpensionadoTitle_rut_pensionado}"/>
+                                </f:facet>
+                            <h:outputText value="#{item.rut_pensionado}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Nombre pensionado">
+                            <f:facet name="header">
+                                <h:outputText value="Nombres"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre_pensionado} #{item.apellido_p_pensionado} #{item.apellido_m_pensionado}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Comuna">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListpensionadoTitle_comuna}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.comuna}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Region">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListpensionadoTitle_region}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.region}"/>
+                        </p:column>
+                        
+                        
+                        <f:facet name="footer">
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":pensionadoViewForm" oncomplete="PF('pensionadoViewDialog').show()" disabled="#{empty pensionadoController.selected}"/>
+                            <c:set var="name_rol" value="#{usuarioController.getTipo(request.userPrincipal.name)}"/>
+                            <c:set var="rol" value="observador"/> 
+                            <c:if test="${ name_rol != rol }">   
+                                <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{pensionadoController.prepareCreate}" update=":pensionadoCreateForm" oncomplete="PF('pensionadoCreateDialog').show()"/>
+                                <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":pensionadoEditForm" oncomplete="PF('pensionadoEditDialog').show()" disabled="#{empty pensionadoController.selected}"/>
+                                <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{pensionadoController.destroy}" update=":growl,datalist" disabled="#{empty pensionadoController.selected}"/>
+                            </c:if>
+                        </f:facet>
+                    </p:dataTable>
+                    <br></br>
+                    <br></br>
+                    <p:fieldset legend="Resultados">
+                        <h:outputText  class="center" value="En la comuna de Maipu, actualmente, se encuentran "/>
+                        <h:outputText class="center" value="#{pensionadoController.PensionadosComuna('MAIPU').size()}"/>
+                        <h:outputText class="center" value=" pensionados viviendo."/>
+                    </p:fieldset>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="/pensionado/Create.xhtml"/>
+            <ui:include src="/pensionado/Edit.xhtml"/>
+            <ui:include src="/pensionado/View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+</html>

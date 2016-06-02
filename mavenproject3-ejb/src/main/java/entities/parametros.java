@@ -29,65 +29,67 @@ public class parametros implements Serializable {
     private Integer valor_uf;
     
     @NotNull
-    private Integer prima_catastrofico_titular;
+    private Float prima_catastrofico_titular;
     @NotNull
-    private Integer prima_catastrofico_conyuge;
+    private Float prima_catastrofico_conyuge;
     @NotNull
-    private Integer prima_catastrofico_hijos;
+    private Float prima_catastrofico_hijos;
     @NotNull
-    private Integer prima_hospitalario_titular;
+    private Float prima_hospitalario_titular;
     @NotNull
-    private Integer prima_hospitalario_titularmas1;
+    private Float prima_hospitalario_titularmas1;
     @NotNull
-    private Integer prima_hospitalario_titular2omas;
+    private Float prima_hospitalario_titular2omas;
 
-    public Integer getPrima_catastrofico_titular() {
+    public Float getPrima_catastrofico_titular() {
         return prima_catastrofico_titular;
     }
 
-    public void setPrima_catastrofico_titular(Integer prima_catastrofico_titular) {
+    public void setPrima_catastrofico_titular(Float prima_catastrofico_titular) {
         this.prima_catastrofico_titular = prima_catastrofico_titular;
     }
 
-    public Integer getPrima_catastrofico_conyuge() {
+    public Float getPrima_catastrofico_conyuge() {
         return prima_catastrofico_conyuge;
     }
 
-    public void setPrima_catastrofico_conyuge(Integer prima_catastrofico_conyuge) {
+    public void setPrima_catastrofico_conyuge(Float prima_catastrofico_conyuge) {
         this.prima_catastrofico_conyuge = prima_catastrofico_conyuge;
     }
 
-    public Integer getPrima_catastrofico_hijos() {
+    public Float getPrima_catastrofico_hijos() {
         return prima_catastrofico_hijos;
     }
 
-    public void setPrima_catastrofico_hijos(Integer prima_catastrofico_hijos) {
+    public void setPrima_catastrofico_hijos(Float prima_catastrofico_hijos) {
         this.prima_catastrofico_hijos = prima_catastrofico_hijos;
     }
 
-    public Integer getPrima_hospitalario_titular() {
+    public Float getPrima_hospitalario_titular() {
         return prima_hospitalario_titular;
     }
 
-    public void setPrima_hospitalario_titular(Integer prima_hospitalario_titular) {
+    public void setPrima_hospitalario_titular(Float prima_hospitalario_titular) {
         this.prima_hospitalario_titular = prima_hospitalario_titular;
     }
 
-    public Integer getPrima_hospitalario_titularmas1() {
+    public Float getPrima_hospitalario_titularmas1() {
         return prima_hospitalario_titularmas1;
     }
 
-    public void setPrima_hospitalario_titularmas1(Integer prima_hospitalario_titularmas1) {
+    public void setPrima_hospitalario_titularmas1(Float prima_hospitalario_titularmas1) {
         this.prima_hospitalario_titularmas1 = prima_hospitalario_titularmas1;
     }
 
-    public Integer getPrima_hospitalario_titular2omas() {
+    public Float getPrima_hospitalario_titular2omas() {
         return prima_hospitalario_titular2omas;
     }
 
-    public void setPrima_hospitalario_titular2omas(Integer prima_hospitalario_titular2omas) {
+    public void setPrima_hospitalario_titular2omas(Float prima_hospitalario_titular2omas) {
         this.prima_hospitalario_titular2omas = prima_hospitalario_titular2omas;
     }
+
+    
     
     
 
