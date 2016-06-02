@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="cargasCreateDlg" widgetVar="cargasCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatecargasTitle}">
+            <h:form id="cargasCreateForm">
+                <p:growl id="growl" showDetail="true" showSummary="true" autoUpdate="true" />
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cargasController.selected != null}">
+                        
+                        <f:event listener="#{cargasController.validaCreate}" type="preValidate" />
+                        
+                        
+                        <p:outputLabel value="#{bundle.CreatecargasLabel_pensionado}" for="pensionado" />
+                        <p:selectOneMenu id="pensionado" required="true" requiredMessage="Se necesita un pensionado" style="width:155px" filter="true" filterMatchMode="contains" value="#{cargasController.selected.pensionado}" >
+                            <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{pensionadoController.itemsAvailableSelectOne}"
+                                           var="pensionadoItem"
+                                           itemValue="#{pensionadoItem}"
+                                           itemLabel="#{pensionadoItem.rut_pensionado}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreatecargasLabel_seguro}" for="seguro" />
+                        <p:selectOneMenu id="seguro" required="true" requiredMessage="Se necesita un seguro" style="width:155px" value="#{cargasController.selected.seguro}" >
+                            <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{seguroController.itemsAvailableSelectOne}"
+                                           var="seguroItem"
+                                           itemValue="#{seguroItem}"
+                                           itemLabel="#{seguroItem.nombre_seguro}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreatecargasLabel_conyuge}" for="conyuge" />
+                        <p:inputText id="conyuge" value="#{cargasController.selected.conyuge}" title="#{bundle.CreatecargasTitle_conyuge}"/>
+                        <p:outputLabel value="#{bundle.CreatecargasLabel_hijos}" for="hijos" />
+                        <p:inputText id="hijos" value="#{cargasController.selected.hijos}" title="#{bundle.CreatecargasTitle_hijos}" />
+                        <p:outputLabel value="#{bundle.CreatecargasLabel_otros}" for="otros" />
+                        <p:inputText id="otros" value="#{cargasController.selected.otros}" title="#{bundle.CreatecargasTitle_otros}"  />
+                        
+                       
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cargasController.create}" value="#{bundle.Save}" update="display,:cargasListForm:datalist,:growl" oncomplete="handleSubmit(args,'cargasCreateDialog');"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

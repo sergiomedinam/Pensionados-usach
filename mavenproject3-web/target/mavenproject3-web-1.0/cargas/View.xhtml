@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="cargasViewDlg" widgetVar="cargasViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewcargasTitle}">
+            <h:form id="cargasViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cargasController.selected != null}">
+                        <h:outputText value="#{bundle.ViewcargasLabel_pensionado}"/>
+                        <h:outputText value="#{cargasController.selected.pensionado.rut_pensionado}" title="#{bundle.ViewcargasTitle_pensionado}"/>
+                        <h:outputText value="#{bundle.ViewpensionadoLabel_nombre_pensionado}"/>
+                        <h:outputText value="#{cargasController.selected.pensionado.nombre_pensionado} #{cargasController.selected.pensionado.apellido_p_pensionado} #{cargasController.selected.pensionado.apellido_m_pensionado} " title="#{bundle.ViewpensionadoTitle_pensionado}"/>
+                        <h:outputText value="#{bundle.ViewcargasLabel_seguro}"/>
+                        <h:outputText value="#{cargasController.selected.seguro.nombre_seguro}" title="#{bundle.ViewcargasTitle_seguro}"/>
+                        <h:outputText value="#{bundle.ViewcargasLabel_conyuge}"/>
+                        <h:outputText value="#{cargasController.selected.conyuge}" title="#{bundle.ViewcargasTitle_conyuge}"/>
+                        <h:outputText value="#{bundle.ViewcargasLabel_hijos}"/>
+                        <h:outputText value="#{cargasController.selected.hijos}" title="#{bundle.ViewcargasTitle_hijos}"/>
+                        <h:outputText value="#{bundle.ViewcargasLabel_otros}"/>
+                        <h:outputText value="#{cargasController.selected.otros}" title="#{bundle.ViewcargasTitle_otros}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="cargasViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

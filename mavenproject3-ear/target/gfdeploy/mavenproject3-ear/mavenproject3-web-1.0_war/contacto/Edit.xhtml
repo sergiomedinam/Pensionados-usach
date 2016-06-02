@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="contactoEditDlg" widgetVar="contactoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditcontactoTitle}">
+            <h:form id="contactoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{contactoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditcontactoLabel_nombre_contacto}" for="nombre_contacto" />
+                        <p:inputText id="nombre_contacto" value="#{contactoController.selected.nombre_contacto}" title="#{bundle.EditcontactoTitle_nombre_contacto}" />
+                        <p:outputLabel value="#{bundle.EditcontactoLabel_apellido_contacto}" for="apellido_contacto" />
+                        <p:inputText id="apellido_contacto" value="#{contactoController.selected.apellido_contacto}" title="#{bundle.EditcontactoTitle_apellido_contacto}" />
+                        <p:outputLabel value="#{bundle.EditcontactoLabel_parentesco}" for="parentesco" />
+                        <p:inputText id="parentesco" value="#{contactoController.selected.parentesco}" title="#{bundle.EditcontactoTitle_parentesco}" />
+                        <p:outputLabel value="#{bundle.EditcontactoLabel_telefono_contacto}" for="telefono_contacto" />
+                        <p:inputText id="telefono_contacto" value="#{contactoController.selected.telefono_contacto}" title="#{bundle.EditcontactoTitle_telefono_contacto}" />
+                        <p:outputLabel value="#{bundle.EditcontactoLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{contactoController.selected.id}" title="#{bundle.EditcontactoTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{contactoController.update}" value="#{bundle.Save}" update="display,:contactoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'contactoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="contactoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
