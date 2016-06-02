@@ -30,7 +30,6 @@
                         <p:inputText id="id" value="#{parametrosController.selected.id}" title="#{bundle.CreateparametrosTitle_id}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{parametrosController.create}" value="#{bundle.Save}" update="display,:parametrosListForm:datalist,:growl" oncomplete="handleSubmit(args,'parametrosCreateDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="parametrosCreateDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

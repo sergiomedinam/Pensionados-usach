@@ -34,6 +34,8 @@ public class auditoria implements Serializable {
     
     private String nombre_tabla;
     
+    private String nombre_columna;
+    
     private Long id_registro;
     
     private String valor_antiguo;
@@ -62,6 +64,14 @@ public class auditoria implements Serializable {
 
     public void setNombre_tabla(String nombre_tabla) {
         this.nombre_tabla = nombre_tabla;
+    }
+
+    public String getNombre_columna() {
+        return nombre_columna;
+    }
+
+    public void setNombre_columna(String nombre_columna) {
+        this.nombre_columna = nombre_columna;
     }
 
     public Long getId_registro() {

@@ -37,7 +37,7 @@
             <br/>
             
             <h:form id="cuotaspagadasListForm">
-                <p:panel header="#{bundle.ListcuotaspagadasTitle}">
+                <p:panel header="LISTA DE CUOTAS PAGADAS">
                     <p:dataTable id="datalist" value="#{cuotaspagadasController.items}" var="item"
                                  selectionMode="single" selection="#{cuotaspagadasController.selected}"
                                  paginator="true"
@@ -87,7 +87,7 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListcuotaspagadasTitle_cuotas}"/>
                             </f:facet>
-                            <h:outputText value="#{item.cuotas}"/>
+                            <h:outputText value="#{item.cuotas}/12"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{cuotaspagadasController.prepareCreate}" update=":cuotaspagadasCreateForm" oncomplete="PF('cuotaspagadasCreateDialog').show()"/>

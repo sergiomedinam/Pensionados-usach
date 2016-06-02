@@ -14,8 +14,30 @@
         </ui:define>
 
         <ui:define name="body">
+            <p:breadCrumb > 
+                <p:menuitem value="Inicio" url="#" />
+                <p:menuitem value="Inicio" url="/" />
+                <p:menuitem value="Pagos" url="/faces/cargas/List.xhtml" />
+            </p:breadCrumb>
+                <section class="content-header">
+                    <h1>
+                      Cargas y Seguros
+                      <small>Panel de administrador</small> <a href="#demo" data-toggle="collapse" class="btn btn-info">Informacion</a>
+
+                    </h1>
+                  
+                    <div id="demo" class=" collapse">
+                          <br/>
+                         <div class="panel panel-default">
+                        
+                             <div class="panel-footer"> <b>¿Que hacer aqui?</b> En esta seccion del sistema es posible agregar los seguros de los pensionados, además de las cargas por pensionados, además de modificar éstos.</div>
+                        </div>
+                    </div>
+                  </section>
+            <br/>
+            
             <h:form id="cargasListForm">
-                <p:panel header="#{bundle.ListcargasTitle}">
+                <p:panel header="LISTA DE CARGAS">
                     <p:dataTable id="datalist" value="#{cargasController.items}" var="item"
                                  selectionMode="single" selection="#{cargasController.selected}"
                                  paginator="true"
@@ -24,8 +46,8 @@
                                  rowsPerPageTemplate="10,20,30,40,50"
                                  >
 
-                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
-                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton"/>
                         
                         <p:column>
                             <f:facet name="header">
@@ -67,7 +89,6 @@
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{cargasController.prepareCreate}" update=":cargasCreateForm" oncomplete="PF('cargasCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":cargasViewForm" oncomplete="PF('cargasViewDialog').show()" disabled="#{empty cargasController.selected}"/>
                             <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":cargasEditForm" oncomplete="PF('cargasEditDialog').show()" disabled="#{empty cargasController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{cargasController.destroy}" update=":growl,datalist" disabled="#{empty cargasController.selected}"/>
                         </f:facet>
                     </p:dataTable>
                 </p:panel>
