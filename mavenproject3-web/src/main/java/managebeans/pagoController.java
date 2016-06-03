@@ -296,9 +296,8 @@ public class pagoController implements Serializable {
         }catch(ArrayIndexOutOfBoundsException e){
             ultimo =  Long.valueOf("1");
         } 
-        String nombreAux = selected.getPensionado().getRut_pensionado();
         auditoria.prepareCreate();
-        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto(nombreAux));
+        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
         auditoria.getSelected().setNombre_tabla("PAGO");
         auditoria.getSelected().setNombre_columna("RUT");
         auditoria.getSelected().setValor_antiguo("NULL");
@@ -307,7 +306,7 @@ public class pagoController implements Serializable {
         auditoria.getSelected().setId_registro(ultimo);
         auditoria.create();        
         auditoria.prepareCreate();
-        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto(nombreAux));
+        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
         auditoria.getSelected().setNombre_tabla("PAGO");
         auditoria.getSelected().setNombre_columna("NOMBRE");
         auditoria.getSelected().setValor_antiguo("NULL");
@@ -316,7 +315,7 @@ public class pagoController implements Serializable {
         auditoria.getSelected().setId_registro(ultimo);
         auditoria.create();
         auditoria.prepareCreate();
-        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto(nombreAux));
+        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
         auditoria.getSelected().setNombre_tabla("PAGO");
         auditoria.getSelected().setNombre_columna("MES");
         auditoria.getSelected().setValor_antiguo("NULL");
@@ -325,7 +324,7 @@ public class pagoController implements Serializable {
         auditoria.getSelected().setId_registro(ultimo);
         auditoria.create(); 
         auditoria.prepareCreate();
-        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto(nombreAux));
+        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
         auditoria.getSelected().setNombre_tabla("PAGO");
         auditoria.getSelected().setNombre_columna("AÑO");
         auditoria.getSelected().setValor_antiguo("NULL");
@@ -334,7 +333,7 @@ public class pagoController implements Serializable {
         auditoria.getSelected().setId_registro(ultimo);
         auditoria.create();          
         auditoria.prepareCreate();
-        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto(nombreAux));
+        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
         auditoria.getSelected().setNombre_tabla("PAGO");
         auditoria.getSelected().setNombre_columna("PAGO (TOTAL)");
         auditoria.getSelected().setValor_antiguo("NULL");
@@ -348,13 +347,31 @@ public class pagoController implements Serializable {
         pagodetalle.update();
         
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("pagoUpdated"));
-        String nombreAux = selected.getPensionado().getRut_pensionado();
+        
         Date ahora = Date.from(Instant.now());
         getItems();
         Long ultimo = selected.getId();
-//        String catastrofico = (selected.getPagodetalles().) ? a : b;
+         
+        auditoria.prepareCreate();
+        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
+        auditoria.getSelected().setNombre_tabla("PAGO");
+        auditoria.getSelected().setNombre_columna("RUT");
+        auditoria.getSelected().setValor_antiguo("NULL");
+        auditoria.getSelected().setValor_nuevo(selected.getPensionado().getRut_pensionado());
+        auditoria.getSelected().setFechayhora(ahora);
+        auditoria.getSelected().setId_registro(ultimo);
+        auditoria.create();        
+        auditoria.prepareCreate();
+        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
+        auditoria.getSelected().setNombre_tabla("PAGO");
+        auditoria.getSelected().setNombre_columna("NOMBRE");
+        auditoria.getSelected().setValor_antiguo("NULL");
+        auditoria.getSelected().setValor_nuevo(selected.getPensionado().getNombre_pensionado()+" "+selected.getPensionado().getApellido_p_pensionado()+" "+selected.getPensionado().getApellido_m_pensionado());
+        auditoria.getSelected().setFechayhora(ahora);
+        auditoria.getSelected().setId_registro(ultimo);
+        auditoria.create();
         auditoria.prepareCreate(); 
-        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto(nombreAux));
+        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
         auditoria.getSelected().setNombre_tabla("PAGO");
         auditoria.getSelected().setNombre_columna("MES");
         auditoria.getSelected().setValor_antiguo("NULL");
@@ -363,7 +380,7 @@ public class pagoController implements Serializable {
         auditoria.getSelected().setId_registro(ultimo);
         auditoria.create(); 
         auditoria.prepareCreate();
-        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto(nombreAux));
+        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
         auditoria.getSelected().setNombre_tabla("PAGO");
         auditoria.getSelected().setNombre_columna("AÑO");
         auditoria.getSelected().setValor_antiguo("NULL");
@@ -372,7 +389,7 @@ public class pagoController implements Serializable {
         auditoria.getSelected().setId_registro(ultimo);
         auditoria.create();        
         auditoria.prepareCreate();
-        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto(nombreAux));
+        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
         auditoria.getSelected().setNombre_tabla("PAGO");
         auditoria.getSelected().setNombre_columna("PAGO (TOTAL)");
         boolean xcat  = selected.getPagodetalles().getSeguro_catastrofico();
