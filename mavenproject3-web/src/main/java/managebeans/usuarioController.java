@@ -1,5 +1,6 @@
 package managebeans;
 
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import entities.usuario;
 import managebeans.util.JsfUtil;
 import managebeans.util.JsfUtil.PersistAction;
@@ -274,14 +275,8 @@ public class usuarioController implements Serializable {
     }
     
     public String getNombreCompleto() {
-        String nombre = getUsername(selected.getRut());
-        String apellido = getApellido(selected.getRut());
-        String respuesta = nombre +" "+apellido;
-        return respuesta;
-    }
-    public String getNombreCompleto(String rut) {
-        String nombre = getUsername(rut);
-        String apellido = getApellido(rut);  
+        String nombre = getUsername(FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal().getName());
+        String apellido = getApellido(FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal().getName());
         String respuesta = nombre +" "+apellido;
         return respuesta;
     }
