@@ -430,16 +430,17 @@ public class cargasController implements Serializable {
             uihijos.setValid(false);
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Otros debe ser un numero sin comas ni puntos.") );                   
         }
-        
-        int seguro = Integer.parseInt(uiseguro.getSubmittedValue().toString());
-        int pensionado = Integer.parseInt(uipensionado.getSubmittedValue().toString());
+        if(!uiseguro.getSubmittedValue().toString().equals("") && !uipensionado.getSubmittedValue().toString().equals("")){
+            int seguro = Integer.parseInt(uiseguro.getSubmittedValue().toString());
+            int pensionado = Integer.parseInt(uipensionado.getSubmittedValue().toString());
 
-        getItems();
-        for (cargas item : items) {
-            if (item.getPensionado().getId() == pensionado && item.getSeguro().getId() == seguro) {
-                uipensionado.setValid(false);
-                uiseguro.setValid(false);
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Este pensionado ya posee este seguro.") );
+            getItems();
+            for (cargas item : items) {
+                if (item.getPensionado().getId() == pensionado && item.getSeguro().getId() == seguro) {
+                    uipensionado.setValid(false);
+                    uiseguro.setValid(false);
+                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Este pensionado ya posee este seguro.") );
+                }
             }
         }
     }
