@@ -29,6 +29,8 @@ public class usuario implements Serializable {
        
     private String email_usuario;
     
+    private String estado;
+    
     
     @NotNull(message = "debe ingresar nombre")
     private String nombre;
@@ -48,6 +50,16 @@ public class usuario implements Serializable {
     public String getEmail_usuario() {
         return email_usuario;
     }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+    
+    
 
     public void setEmail_usuario(String email_usuario) {
         this.email_usuario = email_usuario.toUpperCase();

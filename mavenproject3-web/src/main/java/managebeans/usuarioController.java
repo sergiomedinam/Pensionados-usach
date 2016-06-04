@@ -1,5 +1,6 @@
 package managebeans;
 
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import entities.usuario;
 import managebeans.util.JsfUtil;
 import managebeans.util.JsfUtil.PersistAction;
@@ -10,6 +11,8 @@ import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -25,11 +28,14 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.faces.validator.ValidatorException;
+import javax.inject.Inject;
 
 @Named("usuarioController")
 @SessionScoped
 public class usuarioController implements Serializable {
-
+    
+    @Inject
+    private auditoriaController auditoria;
     @EJB
     private usuarioFacadeLocal ejbFacade;
     private List<usuario> items = null;
@@ -64,6 +70,17 @@ public class usuarioController implements Serializable {
         for (usuario item : items) {
             if (item.getRut().equals(rut)) {
                 nombre = item.getNombre();
+            }
+        }
+        return nombre;
+    }
+    
+    public String getApellido(String rut){
+        String nombre = "";
+        getItems();
+        for (usuario item : items) {
+            if (item.getRut().equals(rut)) {
+                nombre = item.getApellido();
             }
         }
         return nombre;
@@ -114,6 +131,64 @@ public class usuarioController implements Serializable {
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
         }
+        
+        Date ahora = Date.from(Instant.now());
+        getItems();
+        Long ultimo = items.get(items.size()-1).getId();        
+        auditoria.prepareCreate();
+        auditoria.getSelected().setNombre_usuario(getNombreCompleto());
+        auditoria.getSelected().setNombre_tabla("USUARIO");
+        auditoria.getSelected().setNombre_columna("ROL");
+        auditoria.getSelected().setValor_antiguo("NULL");
+        auditoria.getSelected().setValor_nuevo(selected.getTipo_usuario().getNombre_rol());
+        auditoria.getSelected().setFechayhora(ahora);
+        auditoria.getSelected().setId_registro(ultimo);
+        auditoria.create();        
+        auditoria.prepareCreate();
+        auditoria.getSelected().setNombre_usuario(getNombreCompleto());
+        auditoria.getSelected().setNombre_tabla("USUARIO");
+        auditoria.getSelected().setNombre_columna("RUT");
+        auditoria.getSelected().setValor_antiguo("NULL");
+        auditoria.getSelected().setValor_nuevo(selected.getRut());
+        auditoria.getSelected().setFechayhora(ahora);
+        auditoria.getSelected().setId_registro(ultimo);
+        auditoria.create();        
+        auditoria.prepareCreate();
+        auditoria.getSelected().setNombre_usuario(getNombreCompleto());
+        auditoria.getSelected().setNombre_tabla("USUARIO");
+        auditoria.getSelected().setNombre_columna("NOMBRE");
+        auditoria.getSelected().setValor_antiguo("NULL");
+        auditoria.getSelected().setValor_nuevo(selected.getNombre());
+        auditoria.getSelected().setFechayhora(ahora);
+        auditoria.getSelected().setId_registro(ultimo);
+        auditoria.create();
+        auditoria.prepareCreate();
+        auditoria.getSelected().setNombre_usuario(getNombreCompleto());
+        auditoria.getSelected().setNombre_tabla("USUARIO");
+        auditoria.getSelected().setNombre_columna("APELLIDO");
+        auditoria.getSelected().setValor_antiguo("NULL");
+        auditoria.getSelected().setValor_nuevo(selected.getApellido());
+        auditoria.getSelected().setFechayhora(ahora);
+        auditoria.getSelected().setId_registro(ultimo);
+        auditoria.create();
+        auditoria.prepareCreate();
+        auditoria.getSelected().setNombre_usuario(getNombreCompleto());
+        auditoria.getSelected().setNombre_tabla("USUARIO");
+        auditoria.getSelected().setNombre_columna("EMAIL");
+        auditoria.getSelected().setValor_antiguo("NULL");
+        auditoria.getSelected().setValor_nuevo(selected.getEmail_usuario());
+        auditoria.getSelected().setFechayhora(ahora);
+        auditoria.getSelected().setId_registro(ultimo);
+        auditoria.create();   
+        auditoria.prepareCreate();
+        auditoria.getSelected().setNombre_usuario(getNombreCompleto());
+        auditoria.getSelected().setNombre_tabla("USUARIO");
+        auditoria.getSelected().setNombre_columna("CONTRASEÑA");
+        auditoria.getSelected().setValor_antiguo("NULL");
+        auditoria.getSelected().setValor_nuevo(selected.getContrasena());
+        auditoria.getSelected().setFechayhora(ahora);
+        auditoria.getSelected().setId_registro(ultimo);
+        auditoria.create();   
     }
 
     public void update() {
@@ -139,6 +214,71 @@ public class usuarioController implements Serializable {
         }
         selected.setRut(texto);
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("usuarioUpdated"));
+        
+        Date ahora = Date.from(Instant.now());
+        getItems();
+        Long ultimo = selected.getId();        
+        auditoria.prepareCreate();
+        auditoria.getSelected().setNombre_usuario(getNombreCompleto());
+        auditoria.getSelected().setNombre_tabla("USUARIO");
+        auditoria.getSelected().setNombre_columna("ROL");
+        auditoria.getSelected().setValor_antiguo("NULL");
+        auditoria.getSelected().setValor_nuevo(selected.getTipo_usuario().getNombre_rol());
+        auditoria.getSelected().setFechayhora(ahora);
+        auditoria.getSelected().setId_registro(ultimo);
+        auditoria.create();        
+        auditoria.prepareCreate();
+        auditoria.getSelected().setNombre_usuario(getNombreCompleto());
+        auditoria.getSelected().setNombre_tabla("USUARIO");
+        auditoria.getSelected().setNombre_columna("RUT");
+        auditoria.getSelected().setValor_antiguo("NULL");
+        auditoria.getSelected().setValor_nuevo(selected.getRut());
+        auditoria.getSelected().setFechayhora(ahora);
+        auditoria.getSelected().setId_registro(ultimo);
+        auditoria.create();        
+        auditoria.prepareCreate();
+        auditoria.getSelected().setNombre_usuario(getNombreCompleto());
+        auditoria.getSelected().setNombre_tabla("USUARIO");
+        auditoria.getSelected().setNombre_columna("NOMBRE");
+        auditoria.getSelected().setValor_antiguo("NULL");
+        auditoria.getSelected().setValor_nuevo(selected.getNombre());
+        auditoria.getSelected().setFechayhora(ahora);
+        auditoria.getSelected().setId_registro(ultimo);
+        auditoria.create();
+        auditoria.prepareCreate();
+        auditoria.getSelected().setNombre_usuario(getNombreCompleto());
+        auditoria.getSelected().setNombre_tabla("USUARIO");
+        auditoria.getSelected().setNombre_columna("APELLIDO");
+        auditoria.getSelected().setValor_antiguo("NULL");
+        auditoria.getSelected().setValor_nuevo(selected.getApellido());
+        auditoria.getSelected().setFechayhora(ahora);
+        auditoria.getSelected().setId_registro(ultimo);
+        auditoria.create();
+        auditoria.prepareCreate();
+        auditoria.getSelected().setNombre_usuario(getNombreCompleto());
+        auditoria.getSelected().setNombre_tabla("USUARIO");
+        auditoria.getSelected().setNombre_columna("EMAIL");
+        auditoria.getSelected().setValor_antiguo("NULL");
+        auditoria.getSelected().setValor_nuevo(selected.getEmail_usuario());
+        auditoria.getSelected().setFechayhora(ahora);
+        auditoria.getSelected().setId_registro(ultimo);
+        auditoria.create();   
+        auditoria.prepareCreate();
+        auditoria.getSelected().setNombre_usuario(getNombreCompleto());
+        auditoria.getSelected().setNombre_tabla("USUARIO");
+        auditoria.getSelected().setNombre_columna("CONTRASEÑA");
+        auditoria.getSelected().setValor_antiguo("NULL");
+        auditoria.getSelected().setValor_nuevo(selected.getContrasena());
+        auditoria.getSelected().setFechayhora(ahora);
+        auditoria.getSelected().setId_registro(ultimo);
+        auditoria.create();   
+    }
+    
+    public String getNombreCompleto() {
+        String nombre = getUsername(FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal().getName());
+        String apellido = getApellido(FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal().getName());
+        String respuesta = nombre +" "+apellido;
+        return respuesta;
     }
     
     public void verificarRutExistencia(FacesContext context, UIComponent toValidate, Object value){

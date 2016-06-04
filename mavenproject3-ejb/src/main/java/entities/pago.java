@@ -32,6 +32,9 @@ public class pago implements Serializable {
     
     private String ano;
     
+    private String observaciones;
+    
+    
     @OneToOne
     private pagodetalle pagodetalles;
     
@@ -48,6 +51,14 @@ public class pago implements Serializable {
 
     public void setAno(String ano) {
         this.ano = ano;
+    }
+
+    public String getObservaciones() {
+        return observaciones;
+    }
+
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
     }
     
     

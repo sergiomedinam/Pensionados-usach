@@ -38,6 +38,27 @@ public class pensionado implements Serializable {
     private String email_pensionado;
     private String email_alternativo;
     private Integer aporte;
+    
+    private String estado;
+    private String causal;
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getCausal() {
+        return causal;
+    }
+
+    public void setCausal(String causal) {
+        this.causal = causal;
+    }
+    
+    
 
     public Integer getAporte() {
         return aporte;
@@ -52,6 +73,8 @@ public class pensionado implements Serializable {
     public Integer getSaldo() {
         return saldo;
     }
+    
+    
 
     public void setSaldo(Integer saldo) {
         this.saldo = saldo;
