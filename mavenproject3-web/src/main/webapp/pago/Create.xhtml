@@ -87,10 +87,10 @@
                         
 
                         <p:outputLabel value="#{bundle.CreatepagodetalleLabel_otros}" for="otros" />
-                        <p:outputLabel id="ot">
-                            $ 0
-                            #{pagoController.setMonto_otros(0)}
-                        </p:outputLabel>
+                        <p:inputText id="ot" value="#{pagoController.monto_otros}" style="width: 138px;">
+                            <f:validateLongRange minimum="0" />
+                            <p:ajax update="pago"/>
+                        </p:inputText>
                         <p:selectBooleanCheckbox id="otros" value="#{pagoController.otros}" >
                             <p:ajax  update="pago"/>
                         </p:selectBooleanCheckbox>
@@ -108,21 +108,24 @@
                                                          pagoController.hospitalario,
                                                          pagoController.aportes,
                                                          pagoController.otros,
-                                                         pagoController.prestamos)}
+                                                         pagoController.prestamos,
+                                                         pagoController.monto_otros)}
                             <c:if id="if" test="${ pensionadoController.Total(pagoController.selected.pensionado.rut_pensionado,
                                                          pagoController.catastrofico,
                                                          pagoController.vida,
                                                          pagoController.hospitalario,
                                                          pagoController.aportes,
                                                          pagoController.otros,
-                                                         pagoController.prestamos) >= 0}">
+                                                         pagoController.prestamos,
+                                                         pagoController.monto_otros) >= 0}">
                                 #{pagoController.selected.setPago(pensionadoController.Total(pagoController.selected.pensionado.rut_pensionado,
                                                          pagoController.catastrofico,
                                                          pagoController.vida,
                                                          pagoController.hospitalario,
                                                          pagoController.aportes,
                                                          pagoController.otros,
-                                                         pagoController.prestamos))}
+                                                         pagoController.prestamos,
+                                                         pagoController.monto_otros))}
                                 #{pagoController.selected.setCompleto(pagoController.Complete(pagoController.catastrofico,
                                                                                               pagoController.vida,
                                                                                               pagoController.hospitalario,
