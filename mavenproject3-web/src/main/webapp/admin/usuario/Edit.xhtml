@@ -31,7 +31,10 @@
                         <p:inputText id="apellido" required="true" requiredMessage="Se necesita apellido" value="#{usuarioController.selected.apellido}" title="#{bundle.CreateusuarioTitle_apellido}" />
 
                         <p:outputLabel value="#{bundle.EditusuarioLabel_email_usuario}" for="email_usuario" />
-                        <p:inputText id="email_usuario"  required="true" requiredMessage="Se necesita email" value="#{usuarioController.selected.email_usuario}" title="#{bundle.CreateusuarioTitle_email_usuario}" />
+                        <p:inputText id="email_usuario" validatorMessage="Email con formato invalido" required="true" requiredMessage="Se necesita email" value="#{usuarioController.selected.email_usuario}" title="#{bundle.CreateusuarioTitle_email_usuario}" >
+                        <f:validateRegex
+                            pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                        </p:inputText>
 
                         <p:outputLabel value="#{bundle.EditusuarioLabel_contrasena}" for="contrasena" />
                         <p:password id="contrasena" required="true" requiredMessage="Se necesita contraseña" value="#{usuarioController.selected.contrasena}" title="#{bundle.CreateusuarioTitle_contrasena}" />
