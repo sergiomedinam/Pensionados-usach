@@ -272,14 +272,14 @@ public class pagoController implements Serializable {
         String rut = selected.getPensionado().getRut_pensionado();
         String Año = selected.getAno();
         String Mes = selected.getMes();
-        System.out.println("*************************");
-        System.out.println(selected.getMes() + selected.getAno());
         List<pago> Pagos = PagosPensionados(rut);
         boolean existeMes = false;
         for(pago item : Pagos){
             if(item.getAno().equals(Año)){
-                if(item.getMes().equals(Mes))
+                if(item.getMes().equals(Mes)){
                     destroyMes();
+                    existeMes = true;
+                }
             }
         }
         if(!existeMes){
@@ -287,60 +287,62 @@ public class pagoController implements Serializable {
             if (!JsfUtil.isValidationFailed()) {
                 items = null;    // Invalidate list of items to trigger re-query.
             }
+            
+            Date ahora = Date.from(Instant.now());
+            getItems();
+            Long ultimo = null;
+            try{
+                ultimo = items.get(items.size()-1).getId(); 
+            }catch(ArrayIndexOutOfBoundsException e){
+                ultimo =  Long.valueOf("1");
+            } 
+            auditoria.prepareCreate();
+            auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
+            auditoria.getSelected().setNombre_tabla("PAGO");
+            auditoria.getSelected().setNombre_columna("RUT");
+            auditoria.getSelected().setValor_antiguo("NULL");
+            auditoria.getSelected().setValor_nuevo(selected.getPensionado().getRut_pensionado());
+            auditoria.getSelected().setFechayhora(ahora);
+            auditoria.getSelected().setId_registro(ultimo);
+            auditoria.create();        
+            auditoria.prepareCreate();
+            auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
+            auditoria.getSelected().setNombre_tabla("PAGO");
+            auditoria.getSelected().setNombre_columna("NOMBRE");
+            auditoria.getSelected().setValor_antiguo("NULL");
+            auditoria.getSelected().setValor_nuevo(selected.getPensionado().getNombre_pensionado()+" "+selected.getPensionado().getApellido_p_pensionado()+" "+selected.getPensionado().getApellido_m_pensionado());
+            auditoria.getSelected().setFechayhora(ahora);
+            auditoria.getSelected().setId_registro(ultimo);
+            auditoria.create();
+            auditoria.prepareCreate();
+            auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
+            auditoria.getSelected().setNombre_tabla("PAGO");
+            auditoria.getSelected().setNombre_columna("MES");
+            auditoria.getSelected().setValor_antiguo("NULL");
+            auditoria.getSelected().setValor_nuevo(selected.getMes());
+            auditoria.getSelected().setFechayhora(ahora);
+            auditoria.getSelected().setId_registro(ultimo);
+            auditoria.create(); 
+            auditoria.prepareCreate();
+            auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
+            auditoria.getSelected().setNombre_tabla("PAGO");
+            auditoria.getSelected().setNombre_columna("AÑO");
+            auditoria.getSelected().setValor_antiguo("NULL");
+            auditoria.getSelected().setValor_nuevo(selected.getAno());
+            auditoria.getSelected().setFechayhora(ahora);
+            auditoria.getSelected().setId_registro(ultimo);
+            auditoria.create();          
+            auditoria.prepareCreate();
+            auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
+            auditoria.getSelected().setNombre_tabla("PAGO");
+            auditoria.getSelected().setNombre_columna("PAGO (TOTAL)");
+            auditoria.getSelected().setValor_antiguo("NULL");
+            auditoria.getSelected().setValor_nuevo(selected.getPago().toString());
+            auditoria.getSelected().setFechayhora(ahora);
+            auditoria.getSelected().setId_registro(ultimo);
+            auditoria.create();
+
         }
-        Date ahora = Date.from(Instant.now());
-        getItems();
-        Long ultimo = null;
-        try{
-            ultimo = items.get(items.size()-1).getId(); 
-        }catch(ArrayIndexOutOfBoundsException e){
-            ultimo =  Long.valueOf("1");
-        } 
-        auditoria.prepareCreate();
-        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
-        auditoria.getSelected().setNombre_tabla("PAGO");
-        auditoria.getSelected().setNombre_columna("RUT");
-        auditoria.getSelected().setValor_antiguo("NULL");
-        auditoria.getSelected().setValor_nuevo(selected.getPensionado().getRut_pensionado());
-        auditoria.getSelected().setFechayhora(ahora);
-        auditoria.getSelected().setId_registro(ultimo);
-        auditoria.create();        
-        auditoria.prepareCreate();
-        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
-        auditoria.getSelected().setNombre_tabla("PAGO");
-        auditoria.getSelected().setNombre_columna("NOMBRE");
-        auditoria.getSelected().setValor_antiguo("NULL");
-        auditoria.getSelected().setValor_nuevo(selected.getPensionado().getNombre_pensionado()+" "+selected.getPensionado().getApellido_p_pensionado()+" "+selected.getPensionado().getApellido_m_pensionado());
-        auditoria.getSelected().setFechayhora(ahora);
-        auditoria.getSelected().setId_registro(ultimo);
-        auditoria.create();
-        auditoria.prepareCreate();
-        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
-        auditoria.getSelected().setNombre_tabla("PAGO");
-        auditoria.getSelected().setNombre_columna("MES");
-        auditoria.getSelected().setValor_antiguo("NULL");
-        auditoria.getSelected().setValor_nuevo(selected.getMes());
-        auditoria.getSelected().setFechayhora(ahora);
-        auditoria.getSelected().setId_registro(ultimo);
-        auditoria.create(); 
-        auditoria.prepareCreate();
-        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
-        auditoria.getSelected().setNombre_tabla("PAGO");
-        auditoria.getSelected().setNombre_columna("AÑO");
-        auditoria.getSelected().setValor_antiguo("NULL");
-        auditoria.getSelected().setValor_nuevo(selected.getAno());
-        auditoria.getSelected().setFechayhora(ahora);
-        auditoria.getSelected().setId_registro(ultimo);
-        auditoria.create();          
-        auditoria.prepareCreate();
-        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
-        auditoria.getSelected().setNombre_tabla("PAGO");
-        auditoria.getSelected().setNombre_columna("PAGO (TOTAL)");
-        auditoria.getSelected().setValor_antiguo("NULL");
-        auditoria.getSelected().setValor_nuevo(selected.getPago().toString());
-        auditoria.getSelected().setFechayhora(ahora);
-        auditoria.getSelected().setId_registro(ultimo);
-        auditoria.create();
     }
 
     public void update() {
@@ -416,7 +418,7 @@ public class pagoController implements Serializable {
     
     public void destroyMes() {
         pagodetalle.destroy();
-        persist(PersistAction.DELETE, "Error: Pera el pensionado, ya existe un pago con este mes y año");
+        persist(PersistAction.DELETE, "Error: Para el pensionado, ya existe un pago con este mes y año");
         if (!JsfUtil.isValidationFailed()) {
             selected = null; // Remove selection
             items = null;    // Invalidate list of items to trigger re-query.
