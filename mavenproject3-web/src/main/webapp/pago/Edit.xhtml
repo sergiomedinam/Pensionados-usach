@@ -101,15 +101,6 @@
                                                         pagoController.selected.pagodetalles.aportes,
                                                         pagoController.selected.pagodetalles.otros,
                                                         pagoController.selected.pagodetalles.prestamos)}
-                            
-                            
-                        </p:outputLabel>
-                        <p:outputLabel></p:outputLabel>
-                       
-                       
-                       
-                    </p:panelGrid>
-                    <p:commandButton actionListener="#{pagoController.update}" value="#{bundle.Save}" update="display,:pagoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'pagoEditDialog');">
                             #{pagoController.selected.setPago(  pagoController.Total(   pagoController.selected.pagodetalles.seguro_catastrofico,
                                                                                         pagoController.selected.pagodetalles.seguro_vida,
                                                                                         pagoController.selected.pagodetalles.seguro_hospitalario,
@@ -122,8 +113,15 @@
                                                                                                 pagoController.selected.pagodetalles.aportes,
                                                                                                 pagoController.selected.pagodetalles.otros,
                                                                                                 pagoController.selected.pagodetalles.prestamos))}
-                    
-                    </p:commandButton>
+                            
+                            
+                        </p:outputLabel>
+                        <p:outputLabel></p:outputLabel>
+                       
+                       
+                       
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{pagoController.update}" value="#{bundle.Save}" update="display,:pagoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'pagoEditDialog');"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>
