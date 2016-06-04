@@ -96,7 +96,9 @@
                         </p:selectBooleanCheckbox>
 
                         
-                     
+                        <p:outputLabel value="Observaciones:" for="observaciones" />
+                        <p:inputTextarea id="observaciones" value="#{pagoController.selected.observaciones}" title="Observaciones" />
+                        <p:outputLabel/>
                         
                         <p:outputLabel value="Pago Total" for="pago" />
                         <p:outputLabel id="pago" >
