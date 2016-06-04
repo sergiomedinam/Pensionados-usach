@@ -224,20 +224,20 @@ public class cargasController implements Serializable {
         }
         return Cargas;
     }
-    public int ValorSeguros(String rut) {
-        int total = 0;
+    public float ValorSeguros(String rut) {
+        float total = 0;
         total = total + ValorCatastrofico(rut) + ValorHospitalario(rut) + ValorVida(rut);
         return total;
     }
     
-    public int ValorCatastrofico(String rut){
+    public float ValorCatastrofico(String rut){
         List <parametros> Parametros = parametros.getItems();
         List <cargas> Cargas = CargasPensionados(rut);
-        int total = 0;
+        float total = 0;
         int UF = 0;
-        int prima_titular = 0;
-        int prima_conyuge = 0;
-        int prima_hijo = 0;
+        float prima_titular = 0;
+        float prima_conyuge = 0;
+        float prima_hijo = 0;
         int Ntitular = 0;
         int Nhijo = 0;
         int Nconyuge = 0;
@@ -264,14 +264,14 @@ public class cargasController implements Serializable {
         return total;
     }
     
-        public int ValorHospitalario(String rut){
+    public float ValorHospitalario(String rut){
         List <parametros> Parametros = parametros.getItems();
         List <cargas> Cargas = CargasPensionados(rut);
-        int total = 0;
+        float total = 0;
         int UF = 0;
-        int prima_titular = 0;
-        int prima_titular1 = 0;
-        int prima_titular2 = 0;
+        float prima_titular = 0;
+        float prima_titular1 = 0;
+        float prima_titular2 = 0;
         int Ntitular = 0;
         int Nhijo = 0;
         int Nconyuge = 0;
@@ -307,10 +307,10 @@ public class cargasController implements Serializable {
         return total;
     }
     
-    public int ValorVida(String rut){
+    public float ValorVida(String rut){
         List <parametros> Parametros = parametros.getItems();
         List <cargas> Cargas = CargasPensionados(rut);
-        int total = 0;
+        float total = 0;
         int UF = 0;
         int Ntitular = 0;
         for(parametros par : Parametros){
@@ -324,7 +324,7 @@ public class cargasController implements Serializable {
             }
         }
         if(Cargas.size() > 0){
-            total = UF*Ntitular;
+            total = UF*Ntitular/4;
         }
         return total;
     }
@@ -430,16 +430,17 @@ public class cargasController implements Serializable {
             uihijos.setValid(false);
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Otros debe ser un numero sin comas ni puntos.") );                   
         }
-        
-        int seguro = Integer.parseInt(uiseguro.getSubmittedValue().toString());
-        int pensionado = Integer.parseInt(uipensionado.getSubmittedValue().toString());
+        if(!uiseguro.getSubmittedValue().toString().equals("") && !uipensionado.getSubmittedValue().toString().equals("")){
+            int seguro = Integer.parseInt(uiseguro.getSubmittedValue().toString());
+            int pensionado = Integer.parseInt(uipensionado.getSubmittedValue().toString());
 
-        getItems();
-        for (cargas item : items) {
-            if (item.getPensionado().getId() == pensionado && item.getSeguro().getId() == seguro) {
-                uipensionado.setValid(false);
-                uiseguro.setValid(false);
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Este pensionado ya posee este seguro.") );
+            getItems();
+            for (cargas item : items) {
+                if (item.getPensionado().getId() == pensionado && item.getSeguro().getId() == seguro) {
+                    uipensionado.setValid(false);
+                    uiseguro.setValid(false);
+                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Este pensionado ya posee este seguro.") );
+                }
             }
         }
     }

@@ -17,7 +17,7 @@
             <p:breadCrumb > 
                 <p:menuitem value="Inicio" url="#" />
                 <p:menuitem value="Inicio" url="/" />
-                <p:menuitem value="Pagos" url="/faces/cargas/List.xhtml" />
+                <p:menuitem value="Cargas" url="/faces/cargas/List.xhtml" />
             </p:breadCrumb>
                 <section class="content-header">
                     <h1>
@@ -44,6 +44,7 @@
                                  rowKey="#{item.id}"
                                  rows="10"
                                  rowsPerPageTemplate="10,20,30,40,50"
+                                 emptyMessage="No hay resultados."
                                  >
 
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton"/>
