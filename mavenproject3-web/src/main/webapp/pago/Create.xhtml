@@ -141,6 +141,7 @@
                        
                     </p:panelGrid>
                     <p:commandButton actionListener="#{pagoController.create}" value="#{bundle.Save}" update="display,:pagoListForm:datalist,:growl" oncomplete="handleSubmit(args,'pagoCreateDialog');"/>
+                    <p:commandButton actionListener="#{pagoController.createPDF}" value="Crear PDF" ajax="false" update="display,:pagoListForm:datalist,:growl" oncomplete="handleSubmit(args,'pagoCreateDialog');"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>
