@@ -142,14 +142,21 @@ public class pensionadoController implements Serializable {
         return aporte;
     }
     
-    public int Total(String rut,boolean cat,boolean vida,boolean hosp,boolean aporte,boolean otros,boolean prest){
-        int valor = 0;
+    public float Total(String rut,boolean cat,boolean vida,boolean hosp,boolean aporte,boolean otros,boolean prest,float valor_otros){
+        float valor = 0;
+        System.out.println("**************************************************");
+        System.out.println("cat: "+cargasController.ValorCatastrofico(rut));
+        System.out.println("vid: "+cargasController.ValorVida(rut));
+        System.out.println("hos: "+cargasController.ValorHospitalario(rut));
+        System.out.println("apo: "+Aporte(rut));
+        System.out.println("otr: "+valor_otros);
+        System.out.println("**************************************************");
         if(cat) valor = valor + cargasController.ValorCatastrofico(rut);
         if(vida) valor = valor + cargasController.ValorVida(rut);
         if(hosp) valor = valor + cargasController.ValorHospitalario(rut);
         if(aporte) valor = valor + Aporte(rut);
-        if(otros) valor = valor + 0;
         if(prest) valor = valor + 0;
+        if(otros) valor = valor + valor_otros;
         return valor;
     }
     

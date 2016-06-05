@@ -76,6 +76,7 @@ public class cuotaspagadasController implements Serializable {
         for(cuotaspagadas item : cuotas){
             if(item.getAno().equals(nuevoAño)){
                 destroyAño();
+                existeAño = true;
             }
         }
         
@@ -84,10 +85,54 @@ public class cuotaspagadasController implements Serializable {
             if (!JsfUtil.isValidationFailed()) {
                 items = null;    // Invalidate list of items to trigger re-query.
             }
+            Date ahora = Date.from(Instant.now());
+            getItems();
+            Long ultimo = items.get(items.size()-1).getId();        
+            auditoria.prepareCreate();
+            auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
+            auditoria.getSelected().setNombre_tabla("CUOTAS PAGADAS");
+            auditoria.getSelected().setNombre_columna("RUT");
+            auditoria.getSelected().setValor_antiguo("NULL");
+            auditoria.getSelected().setValor_nuevo(selected.getPensionado().getRut_pensionado());
+            auditoria.getSelected().setFechayhora(ahora);
+            auditoria.getSelected().setId_registro(ultimo);
+            auditoria.create();        
+            auditoria.prepareCreate();
+            auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
+            auditoria.getSelected().setNombre_tabla("CUOTAS PAGADAS");
+            auditoria.getSelected().setNombre_columna("NOMBRE");
+            auditoria.getSelected().setValor_antiguo("NULL");
+            auditoria.getSelected().setValor_nuevo(selected.getPensionado().getNombre_pensionado()+" "+selected.getPensionado().getApellido_p_pensionado()+" "+selected.getPensionado().getApellido_m_pensionado());
+            auditoria.getSelected().setFechayhora(ahora);
+            auditoria.getSelected().setId_registro(ultimo);
+            auditoria.create();        
+            auditoria.prepareCreate();
+            auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
+            auditoria.getSelected().setNombre_tabla("CUOTAS PAGADAS");
+            auditoria.getSelected().setNombre_columna("AÑO");
+            auditoria.getSelected().setValor_antiguo("NULL");
+            auditoria.getSelected().setValor_nuevo(selected.getAno());
+            auditoria.getSelected().setFechayhora(ahora);
+            auditoria.getSelected().setId_registro(ultimo);
+            auditoria.create();
+            auditoria.prepareCreate();
+            auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
+            auditoria.getSelected().setNombre_tabla("CUOTAS PAGADAS");
+            auditoria.getSelected().setNombre_columna("CUOTAS");
+            auditoria.getSelected().setValor_antiguo("NULL"); 
+            auditoria.getSelected().setValor_nuevo(selected.getCuotas().toString());
+            auditoria.getSelected().setFechayhora(ahora);
+            auditoria.getSelected().setId_registro(ultimo);
+            auditoria.create();
         }
+    }
+
+    public void update() {
+        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("cuotaspagadasUpdated"));
+        
         Date ahora = Date.from(Instant.now());
         getItems();
-        Long ultimo = items.get(items.size()-1).getId();        
+        Long ultimo = selected.getId(); 
         auditoria.prepareCreate();
         auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
         auditoria.getSelected().setNombre_tabla("CUOTAS PAGADAS");
@@ -124,24 +169,6 @@ public class cuotaspagadasController implements Serializable {
         auditoria.getSelected().setFechayhora(ahora);
         auditoria.getSelected().setId_registro(ultimo);
         auditoria.create(); 
-        
-    }
-
-    public void update() {
-        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("cuotaspagadasUpdated"));
-        
-        Date ahora = Date.from(Instant.now());
-        getItems();
-        Long ultimo = selected.getId(); 
-        auditoria.prepareCreate();
-        auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
-        auditoria.getSelected().setNombre_tabla("CUOTAS PAGADAS");
-        auditoria.getSelected().setNombre_columna("CUOTAS");
-        auditoria.getSelected().setValor_antiguo("NULL");
-        auditoria.getSelected().setValor_nuevo(selected.getCuotas().toString());
-        auditoria.getSelected().setFechayhora(ahora);
-        auditoria.getSelected().setId_registro(ultimo);
-        auditoria.create(); 
     }
 
     public void destroy() {
@@ -153,7 +180,7 @@ public class cuotaspagadasController implements Serializable {
     }
     
     public void destroyAño() {
-        persist(PersistAction.DELETE, "Error: Para este pensionado, ya existe el año");
+        persist(PersistAction.DELETE, "Error: Para este pensionado, ya existe el año.");
         if (!JsfUtil.isValidationFailed()) {
             selected = null; // Remove selection
             items = null;    // Invalidate list of items to trigger re-query.

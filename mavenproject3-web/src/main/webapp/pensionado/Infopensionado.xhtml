@@ -38,7 +38,7 @@
                             <h3>Informacion Básica</h3>
                             <thead>
                                 <tr>
-                                    <th rowspan="1">Dato personal</th>
+                                    <th rowspan="1">Datos personales</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -102,7 +102,7 @@
                                 
                                
                                 <tr>
-                                    <td rowspan="1">Monto Pension</td>
+                                    <td rowspan="1">Monto Pensión</td>
                                     <td>$ #{pensionadoController.selected.monto_pension}</td>
                                 </tr>
                                  <tr>
@@ -139,7 +139,7 @@
                                 <div class="small-box bg-green">
                                     <div class="inner" align="center">
                                         <h3>Si</h3>
-                                        <p>¿Esta al dia?</p>
+                                        <p>¿Esta al día?</p>
                                     </div>
                                     <div class="icon">
                                         <i class="ion ion-stats-bars"></i>
@@ -258,10 +258,11 @@
                 <p:panel header="SEGUROS Y CARGAS DEL PENSIONADO">
                     <p:dataTable id="datalist" value="#{cargasController.CargasPensionados(pensionadoController.selected.rut_pensionado)}" var="item"
                                  selectionMode="single" selection="#{cargasController.selected}"
-                                 paginator="true"
+                                 paginator="false"
                                  rowKey="#{item.id}"
                                  rows="10"
                                  rowsPerPageTemplate="10,20,30,40,50"
+                                 emptyMessage="No hay resultados."
                                  >
                         
                         <p:column>
