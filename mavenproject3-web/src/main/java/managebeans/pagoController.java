@@ -336,7 +336,7 @@ public class pagoController implements Serializable {
             auditoria.prepareCreate();
             auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
             auditoria.getSelected().setNombre_tabla("PAGO");
-            auditoria.getSelected().setNombre_columna("AÃ‘O");
+            auditoria.getSelected().setNombre_columna("AÑO");
             auditoria.getSelected().setValor_antiguo("NULL");
             auditoria.getSelected().setValor_nuevo(selected.getAno());
             auditoria.getSelected().setFechayhora(ahora);
@@ -750,7 +750,7 @@ public class pagoController implements Serializable {
         auditoria.prepareCreate();
         auditoria.getSelected().setNombre_usuario(usuario.getNombreCompleto());
         auditoria.getSelected().setNombre_tabla("PAGO");
-        auditoria.getSelected().setNombre_columna("AÃ‘O");
+        auditoria.getSelected().setNombre_columna("AÑO");
         auditoria.getSelected().setValor_antiguo("NULL");
         auditoria.getSelected().setValor_nuevo(selected.getAno());
         auditoria.getSelected().setFechayhora(ahora);
@@ -784,7 +784,7 @@ public class pagoController implements Serializable {
     
     public void destroyMes() {
         pagodetalle.destroy();
-        persist(PersistAction.DELETE, "Error: Para el pensionado, ya existe un pago con este mes y aÃ±o");
+        persist(PersistAction.DELETE, "Error: Para el pensionado, ya existe un pago con este mes y año");
         if (!JsfUtil.isValidationFailed()) {
             selected = null; // Remove selection
             items = null;    // Invalidate list of items to trigger re-query.
