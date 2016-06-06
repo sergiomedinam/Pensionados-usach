@@ -30,8 +30,8 @@
                         <p:outputLabel value="#{bundle.CreatecuotaspagadasLabel_cuotas}" for="cuotas" />
                        
                         <p:selectOneMenu  id="cuotas" required="true" requiredMessage="Se necesita número de cuotas" value="#{cuotaspagadasController.selected.cuotas}" style="width:155px">
-                            <f:selectItem itemLabel="Selecionar"  itemValue="" noSelectionOption="true" />
-                            <f:selectItems value="#{añosCuotas.numeroCuotas}" />
+                            <f:selectItem itemLabel="NINGUNO"  itemValue="#{0}" noSelectionOption="false" />
+                            <f:selectItems value="#{añosCuotas.NCuotas}" />
                         </p:selectOneMenu>
                         
                         
