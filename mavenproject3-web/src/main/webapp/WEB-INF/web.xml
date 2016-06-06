@@ -83,8 +83,8 @@
             <url-pattern>/faces/contacto/*</url-pattern> 
             <url-pattern>/contacto/*</url-pattern> 
             
-            <url-pattern>/faces/coutaspagadas/*</url-pattern> 
-            <url-pattern>/coutaspagadas/*</url-pattern> 
+            <url-pattern>/faces/cuotaspagadas/*</url-pattern> 
+            <url-pattern>/cuotaspagadas/*</url-pattern> 
             
             <url-pattern>/faces/designado_fallecimiento/*</url-pattern> 
             <url-pattern>/designado_fallecimiento/*</url-pattern> 

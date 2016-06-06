@@ -490,7 +490,7 @@ public class pagoController implements Serializable {
         document.add(table);
         if (restante != 0) {
             document.add(new Paragraph(" "));
-            document.add(new Paragraph("Quedan por cancelar " + Integer.toString(restante) +" pesos." ));
+            document.add(new Paragraph("Quedan por cancelar $" + Integer.toString(restante) +" pesos." ));
         }
         document.add(new Paragraph(" "));
         document.add(new Paragraph("Observaciones:"));
@@ -648,7 +648,7 @@ public class pagoController implements Serializable {
 //        table.addCell(cell_total_pagado);
         document.add(new Paragraph("Universidad de Santiago de Chile | Bienestar"));
         document.add(new Paragraph(" "));
-        document.add(new Paragraph("Detalle de pago -  cuota "+ mes + " de " + selected.getAno()));
+        document.add(new Paragraph("Detalle de deuda -  cuota "+ mes + " de " + selected.getAno()));
         document.add(new Paragraph(" "));
         document.add(new Paragraph("Pensionado: "+nombre_completo));
         document.add(new Paragraph("Rut: "+ selected.getPensionado().getRut_pensionado() ));
@@ -656,7 +656,7 @@ public class pagoController implements Serializable {
         document.add(table);
         if (restante != 0) {
             document.add(new Paragraph(" "));
-            document.add(new Paragraph("Quedan por cancelar " + Integer.toString(restante) +" pesos." ));
+            document.add(new Paragraph("Quedan por cancelar $" + Integer.toString(restante) +" pesos." ));
         }
         document.add(new Paragraph(" "));
         document.add(new Paragraph("Observaciones:"));
