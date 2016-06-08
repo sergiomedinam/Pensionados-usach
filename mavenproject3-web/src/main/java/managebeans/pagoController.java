@@ -364,25 +364,13 @@ public class pagoController implements Serializable {
         String añoPago = selected.getAno();
         String mesPago = selected.getMes();
         String rutPago = selected.getPensionado().getRut_pensionado();
-        System.out.println("*********************************************");
-        System.out.println("rut: "+rutPago);
-        System.out.println("año: "+añoPago);
-        System.out.println("mes: "+mesPago);
-        System.out.println("*********************************************");
         List<cuotaspagadas> CuotasPagadas = cuotaspagadas.getItems();
         boolean existeCuota = false;
         if(selected.getCompleto()){
             for(cuotaspagadas cuota : CuotasPagadas){
-                System.out.println("////////////////////////////////////////////////////");
-                System.out.println("-----> "+cuota.getPensionado().getRut_pensionado()+" <-----");
-                System.out.println("-----> "+cuota.getPensionado().getNombre_pensionado()+" <-----");
-                System.out.println("-----> "+cuota.getAno()+" <-----");
-                System.out.println("-----> "+cuota.getCuotas()+" <-----");
-                System.out.println("////////////////////////////////////////////////////");
                 if(cuota.getPensionado().getRut_pensionado().equals(rutPago)){    
                     if(cuota.getAno().equals(añoPago)){
                         existeCuota = true;
-                        System.out.println("Esta cuota debe aumentar ++");
                         int nuevoValor = cuota.getCuotas() + 1;
                         cuotaspagadas.setSelected(cuota);
                         cuotaspagadas.getSelected().setCuotas(nuevoValor);
@@ -397,11 +385,8 @@ public class pagoController implements Serializable {
                 cuotaspagadas.getSelected().setAno(añoPago);
                 cuotaspagadas.getSelected().setCuotas(1);
                 cuotaspagadas.create();
-
-                System.out.println("Cree cuota--");
             }
         }
-        
     }
 
     public void createPDF() throws IOException, DocumentException{
