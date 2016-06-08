@@ -16,17 +16,8 @@
                         <h:outputText value="#{pensionadoController.selected.rut_pensionado}" title="#{bundle.ViewpensionadoTitle_rut_pensionado}"/>
                         
                         <h:outputText value="#{bundle.ViewpensionadoLabel_nombre_pensionado}"/>
-                        <h:outputText value="#{pensionadoController.selected.nombre_pensionado}" title="#{bundle.ViewpensionadoTitle_nombre_pensionado}"/>
+                        <h:outputText value="#{pensionadoController.selected.nombre_pensionado} #{pensionadoController.selected.apellido_p_pensionado} #{pensionadoController.selected.apellido_m_pensionado}" title="#{bundle.ViewpensionadoTitle_nombre_pensionado}"/>
 
-                        <h:outputText value="#{bundle.ViewpensionadoLabel_apellido_p_pensionado}"/>
-                        <h:outputText value="#{pensionadoController.selected.apellido_p_pensionado}" title="#{bundle.ViewpensionadoTitle_apellido_p_pensionado}"/>
-                     
-                        <h:outputText value="#{bundle.ViewpensionadoLabel_apellido_m_pensionado}"/>
-                        <h:outputText value="#{pensionadoController.selected.apellido_m_pensionado}" title="#{bundle.ViewpensionadoTitle_apellido_m_pensionado}"/>
-                     
-                        
-                       
-                        
                         <h:outputText value="#{bundle.ViewpensionadoLabel_fecha_nacimiento}"/>
                         <h:outputText value="#{pensionadoController.selected.fecha_nacimiento}" title="#{bundle.ViewpensionadoTitle_fecha_nacimiento}"/>
                         
@@ -52,11 +43,6 @@
                         <h:outputText value="#{bundle.ViewpensionadoLabel_email_pensionado}"/>
                         <h:outputText value="#{pensionadoController.selected.email_pensionado}" title="#{bundle.ViewpensionadoTitle_email_pensionado}"/>
 
-                        <h:outputText value="#{bundle.ViewpensionadoLabel_email_alternativo}"/>
-                        <h:outputText value="#{pensionadoController.selected.email_alternativo}" title="#{bundle.ViewpensionadoTitle_email_alternativo}"/>
-                        
-                        <h:outputText value="Valor del Aporte" />
-                        <h:outputText value="$ #{pensionadoController.selected.aporte}" title="#{bundle.ViewpensionadoTitle_aporte}" />
                         
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="pensionadoViewDialog.hide()"/>
