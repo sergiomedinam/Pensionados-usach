@@ -87,7 +87,7 @@
                         
 
                         <p:outputLabel value="#{bundle.CreatepagodetalleLabel_otros}" for="otros" />
-                        <p:inputText id="ot" value="#{pagoController.monto_otros}" style="width: 138px;">
+                        <p:inputText id="ot" required="true" requiredMessage="Otros no puede estar vacío." value="#{pagoController.monto_otros}" style="width: 155px;">
                             <f:validateLongRange minimum="0" />
                             <p:ajax update="pago"/>
                         </p:inputText>
