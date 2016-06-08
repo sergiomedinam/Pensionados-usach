@@ -382,24 +382,26 @@ public class pagoController implements Serializable {
                 if(cuota.getPensionado().getRut_pensionado().equals(rutPago)){    
                     if(cuota.getAno().equals(añoPago)){
                         existeCuota = true;
-                        System.out.println("Esta cuota debe aumentar");
+                        System.out.println("Esta cuota debe aumentar ++");
                         int nuevoValor = cuota.getCuotas() + 1;
-                        cuota.setCuotas(nuevoValor);
+                        cuotaspagadas.setSelected(cuota);
+                        cuotaspagadas.getSelected().setCuotas(nuevoValor);
+                        cuotaspagadas.update();
                         break;
                     }
                 }
             }
+            if(!existeCuota){
+                cuotaspagadas.prepareCreate();
+                cuotaspagadas.getSelected().setPensionado(selected.getPensionado());
+                cuotaspagadas.getSelected().setAno(añoPago);
+                cuotaspagadas.getSelected().setCuotas(1);
+                cuotaspagadas.create();
+
+                System.out.println("Cree cuota--");
+            }
         }
-        System.out.println(existeCuota+" "+!existeCuota);
-        if(!existeCuota){
-            cuotaspagadas.prepareCreate();
-            cuotaspagadas.getSelected().setPensionado(selected.getPensionado());
-            cuotaspagadas.getSelected().setAno(añoPago);
-            cuotaspagadas.getSelected().setCuotas(1);
-            cuotaspagadas.create();
-            
-            System.out.println("Cree cuota");
-        }
+        
     }
 
     public void createPDF() throws IOException, DocumentException{
