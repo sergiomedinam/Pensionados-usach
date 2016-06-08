@@ -764,6 +764,7 @@ public class pagoController implements Serializable {
         pagodetalle.update();
         
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("pagoUpdated"));
+        Incremento();
         
         Date ahora = Date.from(Instant.now());
         getItems();
