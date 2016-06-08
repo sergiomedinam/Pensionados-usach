@@ -11,6 +11,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import entities.pago;
 import entities.pagodetalle;
+import entities.cuotaspagadas;
 import java.awt.Font;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -56,6 +57,8 @@ public class pagoController implements Serializable {
     private usuarioController usuario;
     @Inject
     private auditoriaController auditoria;
+    @Inject
+    private cuotaspagadasController cuotaspagadas;
     
     private Boolean vida;
     private Boolean hospitalario;
@@ -293,6 +296,8 @@ public class pagoController implements Serializable {
             }
         }
         if(!existeMes){
+            
+            Incremento();
             persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("pagoCreated"));
             if (!JsfUtil.isValidationFailed()) {
                 items = null;    // Invalidate list of items to trigger re-query.
@@ -352,6 +357,48 @@ public class pagoController implements Serializable {
             auditoria.getSelected().setId_registro(ultimo);
             auditoria.create();
 
+        }
+    }
+    
+    public void Incremento(){
+        String añoPago = selected.getAno();
+        String mesPago = selected.getMes();
+        String rutPago = selected.getPensionado().getRut_pensionado();
+        System.out.println("*********************************************");
+        System.out.println("rut: "+rutPago);
+        System.out.println("año: "+añoPago);
+        System.out.println("mes: "+mesPago);
+        System.out.println("*********************************************");
+        List<cuotaspagadas> CuotasPagadas = cuotaspagadas.getItems();
+        boolean existeCuota = false;
+        if(selected.getCompleto()){
+            for(cuotaspagadas cuota : CuotasPagadas){
+                System.out.println("////////////////////////////////////////////////////");
+                System.out.println("-----> "+cuota.getPensionado().getRut_pensionado()+" <-----");
+                System.out.println("-----> "+cuota.getPensionado().getNombre_pensionado()+" <-----");
+                System.out.println("-----> "+cuota.getAno()+" <-----");
+                System.out.println("-----> "+cuota.getCuotas()+" <-----");
+                System.out.println("////////////////////////////////////////////////////");
+                if(cuota.getPensionado().getRut_pensionado().equals(rutPago)){    
+                    if(cuota.getAno().equals(añoPago)){
+                        existeCuota = true;
+                        System.out.println("Esta cuota debe aumentar");
+                        int nuevoValor = cuota.getCuotas() + 1;
+                        cuota.setCuotas(nuevoValor);
+                        break;
+                    }
+                }
+            }
+        }
+        System.out.println(existeCuota+" "+!existeCuota);
+        if(!existeCuota){
+            cuotaspagadas.prepareCreate();
+            cuotaspagadas.getSelected().setPensionado(selected.getPensionado());
+            cuotaspagadas.getSelected().setAno(añoPago);
+            cuotaspagadas.getSelected().setCuotas(1);
+            cuotaspagadas.create();
+            
+            System.out.println("Cree cuota");
         }
     }
 
