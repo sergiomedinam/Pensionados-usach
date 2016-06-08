@@ -47,8 +47,8 @@
                                  emptyMessage="No hay resultados."
                                  >
 
-                        <p:ajax event="rowSelect"   update="createButton viewButton editButton"/>
-                        <p:ajax event="rowUnselect" update="createButton viewButton editButton"/>
+                        <p:ajax event="rowSelect"   update="createButton viewButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton"/>
 
                         <p:column filterBy="#{item.pensionado.rut_pensionado}"  filterStyle="width:200px;" id="rut" filterMatchMode="contains" sortBy="#{item.pensionado.rut_pensionado}">
                             <f:facet name="header">
@@ -92,7 +92,6 @@
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{cuotaspagadasController.prepareCreate}" update=":cuotaspagadasCreateForm" oncomplete="PF('cuotaspagadasCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":cuotaspagadasViewForm" oncomplete="PF('cuotaspagadasViewDialog').show()" disabled="#{empty cuotaspagadasController.selected}"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":cuotaspagadasEditForm" oncomplete="PF('cuotaspagadasEditDialog').show()" disabled="#{empty cuotaspagadasController.selected}"/>
                         </f:facet>
                     </p:dataTable>
                 </p:panel>
