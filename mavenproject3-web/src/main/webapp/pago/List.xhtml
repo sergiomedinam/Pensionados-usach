@@ -23,7 +23,7 @@
                 <section class="content-header">
                     <h1>
                       Pagos  
-                      <small>Panel de administrador</small> <a href="#demo" data-toggle="collapse" class="btn btn-info">Informacion</a>
+                      <small>Panel de administrador</small> <a href="#demo" data-toggle="collapse" class="btn btn-info">Información</a>
 
                     </h1>
                   
@@ -31,7 +31,7 @@
                           <br/>
                          <div class="panel panel-default">
                         
-                             <div class="panel-footer"> <b>¿Que hacer aqui?</b> En esta seccion del sistema es posible agregar las pagos por pensionados, además de modificar éstos.</div>
+                             <div class="panel-footer"> <b>¿Que hacer aquí?</b> En esta sección del sistema es posible agregar las pagos por pensionados, además de modificar éstos, según sean los pagos que deseen realizar.</div>
                         </div>
                     </div>
                   </section>
@@ -76,23 +76,24 @@
                             <h:outputText value="#{item.pensionado.nombre_pensionado} #{item.pensionado.apellido_p_pensionado} #{item.pensionado.apellido_m_pensionado}"/>
                         </p:column>
                         
-                        <p:column>
+                        <p:column id="pago" sortBy="#{item.pago}">
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpagoTitle_pago}"/>
+                                <h:outputText value="Monto #{bundle.ListpagoTitle_pago}"/>
                             </f:facet>
                             <h:outputText value="$ #{item.pago}"/>
                         </p:column>
                         
-                        <p:column style="width: 100px;" >
+                        <p:column id="mes" sortBy="#{item.mes}" style="width: 100px;" >
                             <f:facet name="header">
                                 <h:outputText value="Cuota"/>
                             </f:facet>
                             <h:outputText value="#{item.mes}/12"/>
                         </p:column>
                         
-                        <p:column style="width: 100px;" >
+                        <p:column id="año" sortBy="#{item.ano}" filterBy="#{item.ano}" filterMatchMode="contains" filterMaxLength="4" filterStyle="width: 75px;" style="width: 100px;" >
                             <f:facet name="header">
                                 <h:outputText value="Año"/>
+                                <p:watermark for="año" value="Buscar Año" />
                             </f:facet>
                             <h:outputText value="#{item.ano}"/>
                         </p:column>
