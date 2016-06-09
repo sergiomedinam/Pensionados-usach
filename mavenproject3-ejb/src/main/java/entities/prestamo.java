@@ -33,6 +33,18 @@ public class prestamo implements Serializable {
         
     @OneToMany(mappedBy = "prestamo")
     private Set<pensionadoprestamo> pensionadoprestamo = new HashSet<pensionadoprestamo>();
+    
+    private Integer monto_max_prestamo;
+
+    public Integer getMonto_max_prestamo() {
+        return monto_max_prestamo;
+    }
+
+    public void setMonto_max_prestamo(Integer monto_max_prestamo) {
+        this.monto_max_prestamo = monto_max_prestamo;
+    }
+    
+    
 
     public Set<pensionadoprestamo> getPensionadoprestamo() {
         return pensionadoprestamo;
