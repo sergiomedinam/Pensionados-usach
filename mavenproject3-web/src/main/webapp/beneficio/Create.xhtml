@@ -12,12 +12,7 @@
             <h:form id="beneficioCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{beneficioController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreatebeneficioLabel_tipo_beneficio}" for="tipo_beneficio" />
-                        <p:selectOneMenu id="tipo_beneficio" value="#{beneficioController.selected.tipo_beneficio}" >
-                            <f:selectItems value="#{tipo_beneficioController.itemsAvailableSelectOne}"
-                                           var="tipo_beneficioItem"
-                                           itemValue="#{tipo_beneficioItem}"/>
-                        </p:selectOneMenu>
+                       
                         <p:outputLabel value="#{bundle.CreatebeneficioLabel_nombre_beneficio}" for="nombre_beneficio" />
                         <p:inputText id="nombre_beneficio" value="#{beneficioController.selected.nombre_beneficio}" title="#{bundle.CreatebeneficioTitle_nombre_beneficio}" />
                         <p:outputLabel value="#{bundle.CreatebeneficioLabel_id}" for="id" />
