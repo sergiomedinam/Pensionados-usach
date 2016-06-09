@@ -3,7 +3,7 @@ package managebeans;
 import entities.pensionadobeneficio;
 import managebeans.util.JsfUtil;
 import managebeans.util.JsfUtil.PersistAction;
-import dsaasd.pensionadobeneficioFacade;
+import sessionsbeans.pensionadobeneficioFacadeLocal;
 
 import java.io.Serializable;
 import java.util.List;
@@ -18,13 +18,14 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import sessionsbeans.pensionadobeneficioFacadeLocal;
 
 @Named("pensionadobeneficioController")
 @SessionScoped
 public class pensionadobeneficioController implements Serializable {
 
     @EJB
-    private dsaasd.pensionadobeneficioFacade ejbFacade;
+    private pensionadobeneficioFacadeLocal ejbFacade;
     private List<pensionadobeneficio> items = null;
     private pensionadobeneficio selected;
 
@@ -45,7 +46,7 @@ public class pensionadobeneficioController implements Serializable {
     protected void initializeEmbeddableKey() {
     }
 
-    private pensionadobeneficioFacade getFacade() {
+    private pensionadobeneficioFacadeLocal getFacade() {
         return ejbFacade;
     }
 
