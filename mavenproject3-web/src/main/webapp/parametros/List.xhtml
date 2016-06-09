@@ -139,6 +139,65 @@
                 </p:panel>
             </h:form>
 
+            <h:form id="parametrosListForm3">
+                <p:panel header="Correo Administrador">
+                    <p:dataTable id="datalist" value="#{parametrosController.items}" var="item"
+                                 selectionMode="single" selection="#{parametrosController.selected}"
+                                 rowKey="#{item.id}"
+                                 emptyMessage="No existen datos"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="editButton"/>
+                        <p:ajax event="rowUnselect" update="editButton"/>
+
+                      
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Correo"/> 
+                            </f:facet>
+                            <h:outputText value="#{item.correo_s_admin}"/>
+                        </p:column>
+                      
+                        <f:facet name="footer">
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":parametrosEditForm" oncomplete="PF('parametrosEditDialog').show()" disabled="#{empty parametrosController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+            
+            
+            <h:form id="parametrosListForm4">
+                <p:panel header="Correo aplicación">
+                    <p:dataTable id="datalist" value="#{parametrosController.items}" var="item"
+                                 selectionMode="single" selection="#{parametrosController.selected}"
+                                 rowKey="#{item.id}"
+                                 emptyMessage="No existen datos"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="editButton"/>
+                        <p:ajax event="rowUnselect" update="editButton"/>
+
+                       
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Correo"/>
+                            </f:facet>
+                            <h:outputText value="#{item.correo_aplicacion}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Contraseña"/>
+                            </f:facet>
+                            <h:outputText value="#{item.contrasena_correo_aplicacion}"/>
+                        </p:column>
+                     
+                        <f:facet name="footer">
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":parametrosEditForm" oncomplete="PF('parametrosEditDialog').show()" disabled="#{empty parametrosController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+            
             <ui:include src="Create.xhtml"/>
             <ui:include src="Edit.xhtml"/>
             <ui:include src="View.xhtml"/>

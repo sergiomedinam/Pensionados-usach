@@ -26,6 +26,12 @@
                         <p:inputText id="prima_hospitalario_titular2omas" value="#{parametrosController.selected.prima_hospitalario_titular2omas}" title="#{bundle.EditparametrosTitle_prima_hospitalario_titular2omas}" />
                         <p:outputLabel value="Valor UF" for="valor_uf" />
                         <p:inputText id="valor_uf" value="#{parametrosController.selected.valor_uf}" title="#{bundle.EditparametrosTitle_valor_uf}" />
+                        <p:outputLabel value="Correo Administrador" for="correo_s_admin" />
+                        <p:inputText id="correo_s_admin" value="#{parametrosController.selected.correo_s_admin}" title="#{bundle.EditparametrosTitle_correo_s_admin}" />
+                        <p:outputLabel value="Correo Aplicación" for="correo_s_admin" />
+                        <p:inputText id="correo_aplicacion" value="#{parametrosController.selected.correo_aplicacion}" title="#{bundle.EditparametrosTitle_correo_aplicacion}" />
+                        <p:outputLabel value="Contraseña" for="correo_s_admin" />
+                        <p:inputText id="contrasena_correo_aplicacion" value="#{parametrosController.selected.contrasena_correo_aplicacion}" title="#{bundle.EditparametrosTitle_contrasena_correo_aplicacion}" />
                        
                     </p:panelGrid>
                     <p:commandButton actionListener="#{parametrosController.update}" value="#{bundle.Save}" update="display,:parametrosListForm:datalist,:growl" oncomplete="handleSubmit(args, 'parametrosEditDialog');"/>

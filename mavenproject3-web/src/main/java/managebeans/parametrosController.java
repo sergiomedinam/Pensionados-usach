@@ -43,7 +43,28 @@ public class parametrosController implements Serializable {
     public void setSelected(parametros selected) {
         this.selected = selected;
     }
-
+    
+    public String getCorreoAdmin(){
+        String correo;
+        getItems();
+        correo = items.get(0).getCorreo_s_admin();        
+        return correo;
+    }
+    
+    public String getCorreoApp(){
+        String correo;
+        getItems();
+        correo = items.get(0).getCorreo_aplicacion();        
+        return correo;
+    }
+    
+    public String getContrasenaApp(){
+        String correo;
+        getItems();
+        correo = items.get(0).getContrasena_correo_aplicacion();        
+        return correo;
+    }
+    
     protected void setEmbeddableKeys() {
     }
 
