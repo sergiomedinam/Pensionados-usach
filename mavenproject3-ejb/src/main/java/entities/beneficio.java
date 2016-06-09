@@ -6,11 +6,14 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
@@ -41,6 +44,18 @@ public class beneficio implements Serializable {
     @NotNull(message = "Debe tener un tipo")
     @OneToOne
     private tipo_beneficio tipo_beneficio;
+    
+    @OneToMany(mappedBy = "beneficio")
+    private Set<pensionadobeneficio> pensionadobeneficio = new HashSet<pensionadobeneficio>();
+
+    public Set<pensionadobeneficio> getPensionadobeneficio() {
+        return pensionadobeneficio;
+    }
+
+    public void setPensionadobeneficio(Set<pensionadobeneficio> pensionadobeneficio) {
+        this.pensionadobeneficio = pensionadobeneficio;
+    }
+    
     
     public String getNombre_beneficio() {
         return nombre_beneficio;

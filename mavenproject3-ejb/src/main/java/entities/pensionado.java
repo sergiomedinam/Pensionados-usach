@@ -149,9 +149,21 @@ public class pensionado implements Serializable {
     @OneToMany(mappedBy = "pensionado")
     private Set<pensionadoprestamo> pensionadoprestamo = new HashSet<pensionadoprestamo>();
     
+    @OneToMany(mappedBy = "pensionado")
+    private Set<pensionadobeneficio> pensionadobeneficio = new HashSet<pensionadobeneficio>();
     
     @OneToMany
     private List<pago> pagos;
+
+    public Set<pensionadobeneficio> getPensionadobeneficio() {
+        return pensionadobeneficio;
+    }
+
+    public void setPensionadobeneficio(Set<pensionadobeneficio> pensionadobeneficio) {
+        this.pensionadobeneficio = pensionadobeneficio;
+    }
+    
+    
 
     public Set<pensionadoprestamo> getPensionadoprestamo() {
         return pensionadoprestamo;
