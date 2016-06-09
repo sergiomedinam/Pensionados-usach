@@ -40,33 +40,7 @@ public class beneficioTest {
     /**
      * Test of getTipo_beneficio method, of class beneficio.
      */
-    @org.junit.Test
-    public void testGetTipo_beneficio() {
-        System.out.println("getTipo_beneficio");
-        beneficio instance = new beneficio();
-        tipo_beneficio instance2 = new tipo_beneficio();
-        instance2.setId(new Long("1"));
-        instance.setTipo_beneficio(instance2);
-        tipo_beneficio expResult = instance2;
-        tipo_beneficio result = instance.getTipo_beneficio();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-    }
-
-    /**
-     * Test of setTipo_beneficio method, of class beneficio.
-     */
-    @org.junit.Test
-    public void testSetTipo_beneficio() {
-        System.out.println("setTipo_beneficio");
-        tipo_beneficio tipo_beneficio = new tipo_beneficio();
-        tipo_beneficio.setId(new Long("1"));
-        beneficio instance = new beneficio();
-        instance.setTipo_beneficio(tipo_beneficio);
-        assertEquals(instance.getTipo_beneficio(), tipo_beneficio);
-        // TODO review the generated test code and remove the default call to fail.
-    }
-
+   
     /**
      * Test of getNombre_beneficio method, of class beneficio.
      */

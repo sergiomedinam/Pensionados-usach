@@ -12,8 +12,7 @@
             <h:form id="beneficioViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{beneficioController.selected != null}">
-                        <h:outputText value="#{bundle.ViewbeneficioLabel_tipo_beneficio}"/>
-                        <h:outputText value="#{beneficioController.selected.tipo_beneficio}" title="#{bundle.ViewbeneficioTitle_tipo_beneficio}"/>
+                       
                         <h:outputText value="#{bundle.ViewbeneficioLabel_nombre_beneficio}"/>
                         <h:outputText value="#{beneficioController.selected.nombre_beneficio}" title="#{bundle.ViewbeneficioTitle_nombre_beneficio}"/>
                         <h:outputText value="#{bundle.ViewbeneficioLabel_id}"/>

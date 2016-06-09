@@ -40,28 +40,11 @@ public class prestamoTest {
     /**
      * Test of getTipo_prestamo method, of class prestamo.
      */
-    @Test
-    public void testGetTipo_prestamo() {
-        System.out.println("getTipo_prestamo");
-        prestamo instance = new prestamo();
-        tipo_prestamo expResult = new tipo_prestamo();
-        instance.setTipo_prestamo(expResult);
-        tipo_prestamo result = instance.getTipo_prestamo();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-    }
+    
 
     /**
      * Test of setTipo_prestamo method, of class prestamo.
-     */
-    @Test
-    public void testSetTipo_prestamo() {
-        System.out.println("setTipo_prestamo");
-        tipo_prestamo tipo_prestamo = new tipo_prestamo();
-        prestamo instance = new prestamo();
-        instance.setTipo_prestamo(tipo_prestamo);
-        // TODO review the generated test code and remove the default call to fail.
-    }
+  
 
     /**
      * Test of getNombre_prestamo method, of class prestamo.

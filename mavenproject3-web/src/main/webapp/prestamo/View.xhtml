@@ -12,8 +12,7 @@
             <h:form id="prestamoViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{prestamoController.selected != null}">
-                        <h:outputText value="#{bundle.ViewprestamoLabel_tipo_prestamo}"/>
-                        <h:outputText value="#{prestamoController.selected.tipo_prestamo}" title="#{bundle.ViewprestamoTitle_tipo_prestamo}"/>
+                        
                         <h:outputText value="#{bundle.ViewprestamoLabel_nombre_prestamo}"/>
                         <h:outputText value="#{prestamoController.selected.nombre_prestamo}" title="#{bundle.ViewprestamoTitle_nombre_prestamo}"/>
                         <h:outputText value="#{bundle.ViewprestamoLabel_total_prestamo}"/>

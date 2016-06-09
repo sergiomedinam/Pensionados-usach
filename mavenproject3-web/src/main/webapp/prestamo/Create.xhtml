@@ -12,12 +12,7 @@
             <h:form id="prestamoCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{prestamoController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateprestamoLabel_tipo_prestamo}" for="tipo_prestamo" />
-                        <p:selectOneMenu id="tipo_prestamo" value="#{prestamoController.selected.tipo_prestamo}" >
-                            <f:selectItems value="#{tipo_prestamoController.itemsAvailableSelectOne}"
-                                           var="tipo_prestamoItem"
-                                           itemValue="#{tipo_prestamoItem}"/>
-                        </p:selectOneMenu>
+                        
                         <p:outputLabel value="#{bundle.CreateprestamoLabel_nombre_prestamo}" for="nombre_prestamo" />
                         <p:inputText id="nombre_prestamo" value="#{prestamoController.selected.nombre_prestamo}" title="#{bundle.CreateprestamoTitle_nombre_prestamo}" />
                         <p:outputLabel value="#{bundle.CreateprestamoLabel_total_prestamo}" for="total_prestamo" />
