@@ -11,6 +11,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import entities.pago;
 import entities.pagodetalle;
+import entities.cuotaspagadas;
 import java.awt.Font;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -56,6 +57,8 @@ public class pagoController implements Serializable {
     private usuarioController usuario;
     @Inject
     private auditoriaController auditoria;
+    @Inject
+    private cuotaspagadasController cuotaspagadas;
     
     private Boolean vida;
     private Boolean hospitalario;
@@ -293,6 +296,8 @@ public class pagoController implements Serializable {
             }
         }
         if(!existeMes){
+            
+            Incremento();
             persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("pagoCreated"));
             if (!JsfUtil.isValidationFailed()) {
                 items = null;    // Invalidate list of items to trigger re-query.
@@ -352,6 +357,35 @@ public class pagoController implements Serializable {
             auditoria.getSelected().setId_registro(ultimo);
             auditoria.create();
 
+        }
+    }
+    
+    public void Incremento(){
+        String añoPago = selected.getAno();
+        String mesPago = selected.getMes();
+        String rutPago = selected.getPensionado().getRut_pensionado();
+        List<cuotaspagadas> CuotasPagadas = cuotaspagadas.getItems();
+        boolean existeCuota = false;
+        if(selected.getCompleto()){
+            for(cuotaspagadas cuota : CuotasPagadas){
+                if(cuota.getPensionado().getRut_pensionado().equals(rutPago)){    
+                    if(cuota.getAno().equals(añoPago)){
+                        existeCuota = true;
+                        int nuevoValor = cuota.getCuotas() + 1;
+                        cuotaspagadas.setSelected(cuota);
+                        cuotaspagadas.getSelected().setCuotas(nuevoValor);
+                        cuotaspagadas.update();
+                        break;
+                    }
+                }
+            }
+            if(!existeCuota){
+                cuotaspagadas.prepareCreate();
+                cuotaspagadas.getSelected().setPensionado(selected.getPensionado());
+                cuotaspagadas.getSelected().setAno(añoPago);
+                cuotaspagadas.getSelected().setCuotas(1);
+                cuotaspagadas.create();
+            }
         }
     }
 
@@ -715,6 +749,7 @@ public class pagoController implements Serializable {
         pagodetalle.update();
         
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("pagoUpdated"));
+        Incremento();
         
         Date ahora = Date.from(Instant.now());
         getItems();
