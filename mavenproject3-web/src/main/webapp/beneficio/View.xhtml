@@ -15,8 +15,8 @@
                        
                         <h:outputText value="#{bundle.ViewbeneficioLabel_nombre_beneficio}"/>
                         <h:outputText value="#{beneficioController.selected.nombre_beneficio}" title="#{bundle.ViewbeneficioTitle_nombre_beneficio}"/>
-                        <h:outputText value="#{bundle.ViewbeneficioLabel_id}"/>
-                        <h:outputText value="#{beneficioController.selected.id}" title="#{bundle.ViewbeneficioTitle_id}"/>
+                        <h:outputText value="Monto máximo:"/>
+                        <h:outputText value="$ #{beneficioController.selected.monto_max_beneficio}" title="Monto máximo"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="beneficioViewDialog.hide()"/>
                 </h:panelGroup>

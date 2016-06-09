@@ -15,8 +15,18 @@
                        
                         <p:outputLabel value="#{bundle.CreatebeneficioLabel_nombre_beneficio}" for="nombre_beneficio" />
                         <p:inputText id="nombre_beneficio" value="#{beneficioController.selected.nombre_beneficio}" title="#{bundle.CreatebeneficioTitle_nombre_beneficio}" />
-                        <p:outputLabel value="#{bundle.CreatebeneficioLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{beneficioController.selected.id}" title="#{bundle.CreatebeneficioTitle_id}" />
+                        
+                        
+                        <p:outputLabel value="Monto máximo:" for="monto" />
+                        <p:inputText id="monto" value="#{beneficioController.selected.monto_max_beneficio}" title="Monto máximo" >
+                            <f:validateLongRange minimum="0"/>
+                        </p:inputText>
+                        
+                        
+                        
+                        
+                        
+                        
                     </p:panelGrid>
                     <p:commandButton actionListener="#{beneficioController.create}" value="#{bundle.Save}" update="display,:beneficioListForm:datalist,:growl" oncomplete="handleSubmit(args,'beneficioCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="beneficioCreateDialog.hide()"/>
