@@ -14,6 +14,28 @@
         </ui:define>
 
         <ui:define name="body">
+            <p:breadCrumb > 
+                <p:menuitem value="Inicio" url="#" />
+                <p:menuitem value="Inicio" url="/" />
+                <p:menuitem value="Beneficios" url="/faces/pensionadobeneficio/List.xhtml" />
+            </p:breadCrumb>
+                <section class="content-header">
+                    <h1>
+                      Beneficiados
+                      <small>Panel de administrador</small> <a href="#demo" data-toggle="collapse" class="btn btn-info">Información</a>
+
+                    </h1>
+                  
+                    <div id="demo" class=" collapse">
+                          <br/>
+                         <div class="panel panel-default">
+                        
+                             <div class="panel-footer"> <b>¿Que hacer aquí?</b> En esta sección del sistema es posible agregar los beneficios de los pensionados, además de los detalles de éstos.</div>
+                        </div>
+                    </div>
+                  </section>
+            <br/>
+            
             <h:form id="pensionadobeneficioListForm">
                 <p:panel header="LISTA DE BENEFICIOS">
                     <p:dataTable id="datalist" value="#{pensionadobeneficioController.items}" var="item"
