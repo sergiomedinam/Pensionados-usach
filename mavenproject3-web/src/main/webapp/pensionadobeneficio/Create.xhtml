@@ -12,24 +12,33 @@
             <h:form id="pensionadobeneficioCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{pensionadobeneficioController.selected != null}">
+                        
                         <p:outputLabel value="#{bundle.CreatepensionadobeneficioLabel_pensionado}" for="pensionado" />
-                        <p:selectOneMenu id="pensionado" value="#{pensionadobeneficioController.selected.pensionado}" >
+                        <p:selectOneMenu id="pensionado" required="true" requiredMessage="Se necesita un pensionado." style="width:155px" filter="true" filterMatchMode="contains" value="#{pensionadobeneficioController.selected.pensionado}" >
+                            <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{pensionadoController.itemsAvailableSelectOne}"
                                            var="pensionadoItem"
-                                           itemValue="#{pensionadoItem}"/>
+                                           itemValue="#{pensionadoItem}"
+                                           itemLabel="#{pensionadoItem.rut_pensionado}"/>
                         </p:selectOneMenu>
+                        
                         <p:outputLabel value="#{bundle.CreatepensionadobeneficioLabel_beneficio}" for="beneficio" />
-                        <p:selectOneMenu id="beneficio" value="#{pensionadobeneficioController.selected.beneficio}" >
+                        <p:selectOneMenu id="beneficio" required="true" requiredMessage="Se necesita un beneficio." style="width:155px" filter="true" filterMatchMode="contains" value="#{pensionadobeneficioController.selected.beneficio}" >
+                            <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{beneficioController.itemsAvailableSelectOne}"
                                            var="beneficioItem"
-                                           itemValue="#{beneficioItem}"/>
+                                           itemValue="#{beneficioItem}"
+                                           itemLabel="#{beneficioItem.nombre_beneficio}"/>
                         </p:selectOneMenu>
+                        
                         <p:outputLabel value="#{bundle.CreatepensionadobeneficioLabel_monto}" for="monto" />
-                        <p:inputText id="monto" value="#{pensionadobeneficioController.selected.monto}" title="#{bundle.CreatepensionadobeneficioTitle_monto}" />
+                        <p:inputText id="monto" required="true" requiredMessage="Se necesita un monto." value="#{pensionadobeneficioController.selected.monto}" title="#{bundle.CreatepensionadobeneficioTitle_monto}" >
+                            <f:validateLongRange minimum="0" />
+                        </p:inputText>
+                        
                         <p:outputLabel value="#{bundle.CreatepensionadobeneficioLabel_fecha_beneficio}" for="fecha_beneficio" />
-                        <p:inputText id="fecha_beneficio" value="#{pensionadobeneficioController.selected.fecha_beneficio}" title="#{bundle.CreatepensionadobeneficioTitle_fecha_beneficio}" />
-                        <p:outputLabel value="#{bundle.CreatepensionadobeneficioLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{pensionadobeneficioController.selected.id}" title="#{bundle.CreatepensionadobeneficioTitle_id}" />
+                        <p:inputMask id="fecha_beneficio" mask="99/99/9999" placeholder="DD/MM/AAAA" required="true" requiredMessage="Se necesita una fecha." value="#{pensionadobeneficioController.selected.fecha_beneficio}" title="#{bundle.CreatepensionadobeneficioTitle_fecha_beneficio}" />
+                         
                     </p:panelGrid>
                     <p:commandButton actionListener="#{pensionadobeneficioController.create}" value="#{bundle.Save}" update="display,:pensionadobeneficioListForm:datalist,:growl" oncomplete="handleSubmit(args,'pensionadobeneficioCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="pensionadobeneficioCreateDialog.hide()"/>
