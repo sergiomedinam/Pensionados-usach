@@ -37,11 +37,10 @@
                         </p:inputText>
                         
                         <p:outputLabel value="Fecha beneficio" for="fecha_beneficio" />
-                        <p:inputMask id="fecha_beneficio" mask="99/99/9999" placeholder="DD/MM/AAAA" required="true" requiredMessage="Se necesita una fecha." value="#{pensionadobeneficioController.selected.fecha_beneficio}" title="#{bundle.CreatepensionadobeneficioTitle_fecha_beneficio}" />
+                        <p:inputMask id="fecha_beneficio" mask="99/99/9999" placeholder="DD/MM/AAAA" required="true" requiredMessage="Se necesita una fecha." value="#{pensionadobeneficioController.selected.fecha_beneficio}" title="Fecha beneficio" />
                          
                     </p:panelGrid>
                     <p:commandButton actionListener="#{pensionadobeneficioController.create}" value="#{bundle.Save}" update="display,:pensionadobeneficioListForm:datalist,:growl" oncomplete="handleSubmit(args,'pensionadobeneficioCreateDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="pensionadobeneficioCreateDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

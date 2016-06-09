@@ -12,16 +12,20 @@
             <h:form id="pensionadobeneficioViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{pensionadobeneficioController.selected != null}">
-                        <h:outputText value="#{bundle.ViewpensionadobeneficioLabel_pensionado}"/>
-                        <h:outputText value="#{pensionadobeneficioController.selected.pensionado}" title="#{bundle.ViewpensionadobeneficioTitle_pensionado}"/>
+                        <h:outputText value="Rut"/>
+                        <h:outputText value="#{pensionadobeneficioController.selected.pensionado.rut_pensionado}" title="Rut"/>
+                        
+                        <h:outputText value="Nombre"/>
+                        <h:outputText value="#{pensionadobeneficioController.selected.pensionado.nombre_pensionado} #{pensionadobeneficioController.selected.pensionado.apellido_p_pensionado} #{pensionadobeneficioController.selected.pensionado.apellido_m_pensionado}" title="Nombre"/>
+                        
                         <h:outputText value="#{bundle.ViewpensionadobeneficioLabel_beneficio}"/>
-                        <h:outputText value="#{pensionadobeneficioController.selected.beneficio}" title="#{bundle.ViewpensionadobeneficioTitle_beneficio}"/>
+                        <h:outputText value="#{pensionadobeneficioController.selected.beneficio.nombre_beneficio}" title="#{bundle.ViewpensionadobeneficioTitle_beneficio}"/>
+                        
                         <h:outputText value="#{bundle.ViewpensionadobeneficioLabel_monto}"/>
-                        <h:outputText value="#{pensionadobeneficioController.selected.monto}" title="#{bundle.ViewpensionadobeneficioTitle_monto}"/>
-                        <h:outputText value="#{bundle.ViewpensionadobeneficioLabel_fecha_beneficio}"/>
-                        <h:outputText value="#{pensionadobeneficioController.selected.fecha_beneficio}" title="#{bundle.ViewpensionadobeneficioTitle_fecha_beneficio}"/>
-                        <h:outputText value="#{bundle.ViewpensionadobeneficioLabel_id}"/>
-                        <h:outputText value="#{pensionadobeneficioController.selected.id}" title="#{bundle.ViewpensionadobeneficioTitle_id}"/>
+                        <h:outputText value="$ #{pensionadobeneficioController.selected.monto}" title="#{bundle.ViewpensionadobeneficioTitle_monto}"/>
+                        
+                        <h:outputText value="Fecha beneficio"/>
+                        <h:outputText value="#{pensionadobeneficioController.selected.fecha_beneficio}" title="Fecha beneficio"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="pensionadobeneficioViewDialog.hide()"/>
                 </h:panelGroup>
