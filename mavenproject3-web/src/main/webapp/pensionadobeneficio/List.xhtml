@@ -50,33 +50,45 @@
                         <p:ajax event="rowSelect"   update="createButton viewButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton"/>
 
-                        <p:column>
+                        <p:column id="rut" sortBy="#{item.pensionado.rut_pensionado}" filterBy="#{item.pensionado.rut_pensionado}" filterMatchMode="contains" filterStyle="width:200px;" >
                             <f:facet name="header">
                                 <h:outputText value="Rut"/>
+                                <p:watermark for="rut" value="Buscar Rut (con puntos y guión)" />
                             </f:facet>
                             <h:outputText value="#{item.pensionado.rut_pensionado}"/>
                         </p:column>
-                        <p:column>
+                        <p:column id="nombre"   sortBy="#{item.pensionado.nombre_pensionado}
+                                                        #{item.pensionado.apellido_p_pensionado}
+                                                        #{item.pensionado.apellido_m_pensionado}"
+                                                        filterBy="#{item.pensionado.nombre_pensionado} #{item.pensionado.nombre_pensionado.toLowerCase()}
+                                                                  #{item.pensionado.apellido_p_pensionado} #{item.pensionado.apellido_p_pensionado.toLowerCase()}
+                                                                  #{item.pensionado.apellido_m_pensionado} #{item.pensionado.apellido_m_pensionado.toLowerCase()}"
+                                                        filterMatchMode="contains"
+                                                        filterStyle="width:200px;" 
+                                                        >
                             <f:facet name="header">
                                 <h:outputText value="Nombre"/>
+                                <p:watermark for="nombre" value="Buscar Nombre" />
                             </f:facet>
                             <h:outputText value="#{item.pensionado.nombre_pensionado} #{item.pensionado.apellido_p_pensionado} #{item.pensionado.apellido_m_pensionado}"/>
                         </p:column>
-                        <p:column>
+                        
+                        <p:column id="beneficio" sortBy="#{item.beneficio.nombre_beneficio}" filterBy="#{item.beneficio.nombre_beneficio} #{item.beneficio.nombre_beneficio.toLowerCase()}" filterMatchMode="contains" filterStyle="width:200px;">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListpensionadobeneficioTitle_beneficio}"/>
+                                <p:watermark for="beneficio" value="Buscar Beneficio" />
                             </f:facet>
                             <h:outputText value="#{item.beneficio.nombre_beneficio}"/>
                         </p:column>
-                        <p:column>
+                        <p:column id="monto" sortBy="#{item.monto}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListpensionadobeneficioTitle_monto}"/>
                             </f:facet>
                             <h:outputText value="$ #{item.monto}"/>
                         </p:column>
-                        <p:column>
+                        <p:column style="width: 100px;">
                             <f:facet name="header">
-                                <h:outputText value="Fecha beneficio"/>
+                                <h:outputText value="Fecha Beneficio"/>
                             </f:facet>
                             <h:outputText value="#{item.fecha_beneficio}"/>
                         </p:column>
