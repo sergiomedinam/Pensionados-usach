@@ -30,13 +30,21 @@ public class prestamo implements Serializable {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
     
-    
-    @NotNull(message = "Debe ser de un tipo de prestamo")
-    @OneToOne
-    private tipo_prestamo tipo_prestamo;
-    
+        
     @OneToMany(mappedBy = "prestamo")
     private Set<pensionadoprestamo> pensionadoprestamo = new HashSet<pensionadoprestamo>();
+    
+    private Integer monto_max_prestamo;
+
+    public Integer getMonto_max_prestamo() {
+        return monto_max_prestamo;
+    }
+
+    public void setMonto_max_prestamo(Integer monto_max_prestamo) {
+        this.monto_max_prestamo = monto_max_prestamo;
+    }
+    
+    
 
     public Set<pensionadoprestamo> getPensionadoprestamo() {
         return pensionadoprestamo;
@@ -50,16 +58,7 @@ public class prestamo implements Serializable {
         this.pensionadoprestamo.add(pensionadoprestamo);
     }
     
-    
-    public tipo_prestamo getTipo_prestamo() {
-        return tipo_prestamo;
-    }
-
-    public void setTipo_prestamo(tipo_prestamo tipo_prestamo) {
-        this.tipo_prestamo = tipo_prestamo;
-    }
-    
-    
+        
     
     @NotNull(message = "Debe tener un nombre")
     private String nombre_prestamo;

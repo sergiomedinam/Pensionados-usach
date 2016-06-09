@@ -33,20 +33,21 @@ public class beneficio implements Serializable {
     @NotNull(message = "Debe tener un nombre")
     private String nombre_beneficio;
 
-    public tipo_beneficio getTipo_beneficio() {
-        return tipo_beneficio;
-    }
-
-    public void setTipo_beneficio(tipo_beneficio tipo_beneficio) {
-        this.tipo_beneficio = tipo_beneficio;
-    }
-
-    @NotNull(message = "Debe tener un tipo")
-    @OneToOne
-    private tipo_beneficio tipo_beneficio;
-    
+        
     @OneToMany(mappedBy = "beneficio")
     private Set<pensionadobeneficio> pensionadobeneficio = new HashSet<pensionadobeneficio>();
+    
+    private Integer monto_max_beneficio;
+
+    public Integer getMonto_max_beneficio() {
+        return monto_max_beneficio;
+    }
+
+    public void setMonto_max_beneficio(Integer monto_max_beneficio) {
+        this.monto_max_beneficio = monto_max_beneficio;
+    }
+    
+    
 
     public Set<pensionadobeneficio> getPensionadobeneficio() {
         return pensionadobeneficio;

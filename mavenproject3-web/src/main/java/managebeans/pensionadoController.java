@@ -33,7 +33,7 @@ public class pensionadoController implements Serializable {
     private pensionadoFacadeLocal ejbFacade;
     private List<pensionado> items = null;
     private pensionado selected;
-    private Boolean habilitado;
+    private String estado;
 
     private String causal;
     @Inject
@@ -61,14 +61,6 @@ public class pensionadoController implements Serializable {
         this.ejbFacade = ejbFacade;
     }
 
-    public Boolean getHabilitado() {
-        return habilitado;
-    }
-
-    public void setHabilitado(Boolean habilitado) {
-        this.habilitado = habilitado;
-    }
-
     public cargasController getCargasController() {
         return cargasController;
     }
@@ -78,8 +70,8 @@ public class pensionadoController implements Serializable {
     }
     
     public void addMessage() {
-        String summary = habilitado ? "Pensionado ha sido Habilitado" : "Pensionado ha sido desactivado";
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
+        //String summary = estado ? "Pensionado ha sido Habilitado" : "Pensionado ha sido desactivado";
+        //FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
     }
 
     public pensionado getSelected() {
@@ -138,7 +130,7 @@ public class pensionadoController implements Serializable {
     
     public void deshabilitar() {
         getSelected().setCausal(causal);
-        getSelected().setHabilitado(true);
+        getSelected().setEstado(estado);
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("pensionadoUpdated"));
     }
 

@@ -39,59 +39,8 @@ public class pensionado implements Serializable {
     private String email_alternativo;
     private Integer aporte;
     
-    private Boolean habilitado = true;
+    private String estado;
     private String causal;
-
-    public Boolean getHabilitado() {
-        return habilitado;
-    }
-
-    public void setHabilitado(Boolean habilitado) {
-        this.habilitado = habilitado;
-    }
-
-    
-
-    
-
-    public String getCausal() {
-        return causal;
-    }
-
-    public void setCausal(String causal) {
-        this.causal = causal;
-    }
-    
-    
-
-    public Integer getAporte() {
-        return aporte;
-    }
-
-    public void setAporte(Integer aporte) {
-        this.aporte = aporte;
-    }
-    
-    
-
-    public Integer getSaldo() {
-        return saldo;
-    }
-    
-    
-
-    public void setSaldo(Integer saldo) {
-        this.saldo = saldo;
-    }
-
-    public Integer getMonto_pension() {
-        return monto_pension;
-    }
-
-    public void setMonto_pension(Integer monto_pension) {
-        this.monto_pension = monto_pension;
-    }
-   
     
     @NotNull
     private Integer saldo = 0;
@@ -154,6 +103,56 @@ public class pensionado implements Serializable {
     
     @OneToMany
     private List<pago> pagos;
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+      
+
+    
+
+    public String getCausal() {
+        return causal;
+    }
+
+    public void setCausal(String causal) {
+        this.causal = causal;
+    }
+    
+    
+
+    public Integer getAporte() {
+        return aporte;
+    }
+
+    public void setAporte(Integer aporte) {
+        this.aporte = aporte;
+    }
+    
+    
+
+    public Integer getSaldo() {
+        return saldo;
+    }
+    
+    
+
+    public void setSaldo(Integer saldo) {
+        this.saldo = saldo;
+    }
+
+    public Integer getMonto_pension() {
+        return monto_pension;
+    }
+
+    public void setMonto_pension(Integer monto_pension) {
+        this.monto_pension = monto_pension;
+    }
 
     public Set<pensionadobeneficio> getPensionadobeneficio() {
         return pensionadobeneficio;
