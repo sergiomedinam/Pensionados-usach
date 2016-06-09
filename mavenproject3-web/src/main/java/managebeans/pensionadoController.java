@@ -33,11 +33,51 @@ public class pensionadoController implements Serializable {
     private pensionadoFacadeLocal ejbFacade;
     private List<pensionado> items = null;
     private pensionado selected;
-    
+    private Boolean habilitado;
+
+    private String causal;
     @Inject
     private cargasController cargasController;
 
     public pensionadoController() {
+    }
+
+    public String getCausal() {
+        return causal;
+    }
+
+    public void setCausal(String causal) {
+        this.causal = causal;
+    }
+    
+
+    public pensionadoFacadeLocal getEjbFacade() {
+        return ejbFacade;
+    }
+
+    public void setEjbFacade(pensionadoFacadeLocal ejbFacade) {
+        this.ejbFacade = ejbFacade;
+    }
+
+    public Boolean getHabilitado() {
+        return habilitado;
+    }
+
+    public void setHabilitado(Boolean habilitado) {
+        this.habilitado = habilitado;
+    }
+
+    public cargasController getCargasController() {
+        return cargasController;
+    }
+
+    public void setCargasController(cargasController cargasController) {
+        this.cargasController = cargasController;
+    }
+    
+    public void addMessage() {
+        String summary = habilitado ? "Pensionado ha sido Habilitado" : "Pensionado ha sido desactivado";
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
     }
 
     public pensionado getSelected() {
@@ -91,6 +131,12 @@ public class pensionadoController implements Serializable {
     }
 
     public void update() {
+        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("pensionadoUpdated"));
+    }
+    
+    public void deshabilitar() {
+        getSelected().setCausal(causal);
+        getSelected().setHabilitado(true);
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("pensionadoUpdated"));
     }
 
@@ -375,6 +421,8 @@ public class pensionadoController implements Serializable {
             sb.append(value);
             return sb.toString();
         }
+        
+        
 
         @Override
         public String getAsString(FacesContext facesContext, UIComponent component, Object object) {
