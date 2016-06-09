@@ -39,11 +39,24 @@ public class usuarioController implements Serializable {
     @EJB
     private usuarioFacadeLocal ejbFacade;
     private List<usuario> items = null;
+   private List<usuario> deshabilitados = null;
     private usuario selected;
     private String passTemp;
     private Object fma;
 
     public usuarioController() {
+    }
+    
+    public List<usuario> deshabilitados(){
+        getItems();
+        List<usuario> deshabilitados= null;
+        for (usuario item :items){
+            if(item.getEstado()==null){
+                deshabilitados.add(item);
+            }
+            System.out.println("USUARIO");
+        }
+        return deshabilitados;
     }
 
     public usuario getSelected() {

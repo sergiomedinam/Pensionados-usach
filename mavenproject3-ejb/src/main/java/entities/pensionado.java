@@ -39,8 +39,7 @@ public class pensionado implements Serializable {
     private String email_alternativo;
     private Integer aporte;
     
-    private String estado;
-    private String causal;
+    
     
     @NotNull
     private Integer saldo = 0;
@@ -73,6 +72,8 @@ public class pensionado implements Serializable {
     private String region;
     private Long telefono_fijo;
     private Long celular;
+    private String estado;
+    private String causal;
 
     @ManyToOne
     private patologia patologias;

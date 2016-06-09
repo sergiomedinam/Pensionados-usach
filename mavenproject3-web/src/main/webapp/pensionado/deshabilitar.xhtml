@@ -1,108 +1,36 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-    <h:head>
-        <title>FP-Usach | Deshabilitar Pensionado</title>
-    </h:head>
-    <h:body>
-        <ui:composition template="/template.xhtml"> 
-            <ui:define name="body">
-                <p:breadCrumb > 
-                <p:menuitem value="Inicio" url="#" />
-                <p:menuitem value="Inicio" url="/" />
-                <p:menuitem value="Pensionados" url="/faces/pensionado/List.xhtml" />
-                <p:menuitem value="Deshabilitar" url="#" />
-                </p:breadCrumb>
-                
-                <section class="content-header">
-                        <h1>Pensionado: #{pensionadoController.selected.nombre_pensionado} #{pensionadoController.selected.apellido_p_pensionado}
-                        <small>Panel administrador</small>
-                        </h1>    
 
-                    
-                </section>
-                
-                <div class="row">
-                    <br></br>
-                    <div class="container panel panel-default col-md-4">
-                        
-                        <table class="table table-hover">
-                            <h3>Informacion Básica</h3>
-                            <thead>
-                                <tr>
-                                    <th rowspan="1">Datos personales</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td rowspan="1">Rut</td>
-                                    <td>#{pensionadoController.selected.rut_pensionado}</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan="1">Nombre</td>
-                                    <td>#{pensionadoController.selected.nombre_pensionado} #{pensionadoController.selected.apellido_p_pensionado} #{pensionadoController.selected.apellido_m_pensionado}</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan="1">Estado Civil</td>
-                                    <td>#{pensionadoController.selected.estado_civil}</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan="1">Correo</td>
-                                    <td>#{pensionadoController.selected.email_pensionado}</td>
-                                </tr>
-                                 <tr>
-                                    <td rowspan="1">Correo Alternativo</td>
-                                    <td>#{pensionadoController.selected.email_alternativo}</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan="1">Telefono Fijo</td>
-                                    <td>#{pensionadoController.selected.telefono_fijo}</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan="1">Telefono Celular</td>
-                                    <td>#{pensionadoController.selected.celular}</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan="1">Dirección</td>
-                                    <td>#{pensionadoController.selected.direccion}</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan="1">Región</td>
-                                    <td>#{pensionadoController.selected.region}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+    <ui:composition>
 
-                      </div>
-                    
-                    <div class="container col-md-8" >
+        <p:dialog id="pensionadoEditDlg1" widgetVar="pensionadoEditDialog1" modal="true" resizable="false" appendTo="@(body)" header="Deshabilitar Pensionado del Sistema">
+            <h:form id="pensionadoEditForm1">
+                <p:growl id="growl" showDetail="true" showSummary="true" autoUpdate="true" />  
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{pensionadoController.selected != null}">
                         
-                        <div class="container panel panel-default col-md-12">
-                            <br/>
-                            <div class="alert alert-danger" role="alert">
-                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                                <span class="sr-only">Cuidado:</span>
-                                Esto deshabilitará al pensionado y no podrá ser manipulado posteriormente en el sistema.
-                              </div>
-                            
-                            <h:form id="pensionadoEditForm">
-                                <p:growl id="growl" life="3000" />
-                                <h3 style="margin-top: 1">Deshabilitar Pensionado</h3>
-                                <p>En el siguiente campo es necesario detallar la causa de la deshabilitación.</p>
-                                <p:outputLabel value="Causal" for="causal" />
-                                <p:inputTextarea rows="10" cols="100" queryDelay="750" minQueryLength="4" id="causal" />
-                                <p:commandButton actionListener="#{pensionadoController.deshabilitar()}" value="Deshabilitar" update="growl" />
-                           </h:form>
-                      </div>
-                        
-                    </div>
-                </div>
-            </ui:define>
-        </ui:composition>
-    </h:body>
+
+                        <p:outputLabel value="Causal" for="causal" />
+                        <p:selectOneMenu id="causal" required="true" requiredMessage="Se necesita una causal de deshabilitación" value="#{pensionadoController.selected.causal}" style="width:125px">
+                            <f:selectItem itemLabel="Selecciona una causal" itemValue="" />
+                            <f:selectItem itemLabel="Fallecimiento" itemValue="Fallecimiento" />
+                            <f:selectItem itemLabel="Desafiliación" itemValue="Desafiliación" />
+                            <f:selectItem itemLabel="Otro" itemValue="Otro" />
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Estado a modificar" for="estado" />      
+                        <p:selectOneMenu id="estado" required="true" requiredMessage="Se necesita un estado de pensionado" value="#{pensionadoController.selected.estado}"   style="width:125px">
+                            <f:selectItem itemLabel="Deshabilitado" itemValue="Deshabilitado" />
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{pensionadoController.update}" value="Deshabilitar" update="display,:pensionadoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'pensionadoEditDialog1');"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
 </html>
-
