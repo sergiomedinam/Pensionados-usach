@@ -38,6 +38,8 @@ public class pensionadoController implements Serializable {
     private String causal;
     @Inject
     private cargasController cargasController;
+    @Inject
+    private pensionadobeneficioController pensionadobeneficioController;
 
     public pensionadoController() {
     }
@@ -153,6 +155,21 @@ public class pensionadoController implements Serializable {
             items = getFacade().findAll();
         }
         return items;
+    }
+    
+    public int porcentajeBeneficios(){
+        getItems();
+        int porcentaje = 0;
+        float numeroBeneficiados = 0;
+        float numeroPensionados = getItems().size();
+        for (pensionado item : items) {
+            if(pensionadobeneficioController.BeneficiosPensionados(item.getRut_pensionado()).size()>0){
+                numeroBeneficiados = numeroBeneficiados + 1;
+            }
+        }
+        float cuenta = (numeroBeneficiados/numeroPensionados)*100;
+        porcentaje = (int)(Math.round(cuenta));
+        return porcentaje;
     }
     
     public List<pensionado> PensionadosComuna(String Comuna) {
