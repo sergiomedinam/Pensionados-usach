@@ -40,6 +40,19 @@ public class parametros implements Serializable {
     private Float prima_hospitalario_titularmas1;
     @NotNull
     private Float prima_hospitalario_titular2omas;
+    
+    @NotNull
+    private Integer aporte_institucional;
+
+    public Integer getAporte_institucional() {
+        return aporte_institucional;
+    }
+
+    public void setAporte_institucional(Integer aporte_institucional) {
+        this.aporte_institucional = aporte_institucional;
+    }
+    
+    
 
     public Float getPrima_catastrofico_titular() {
         return prima_catastrofico_titular;

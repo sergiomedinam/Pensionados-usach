@@ -39,16 +39,20 @@ public class pensionado implements Serializable {
     private String email_alternativo;
     private Integer aporte;
     
-    private String estado;
+    private Boolean habilitado = true;
     private String causal;
 
-    public String getEstado() {
-        return estado;
+    public Boolean getHabilitado() {
+        return habilitado;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setHabilitado(Boolean habilitado) {
+        this.habilitado = habilitado;
     }
+
+    
+
+    
 
     public String getCausal() {
         return causal;
@@ -145,9 +149,21 @@ public class pensionado implements Serializable {
     @OneToMany(mappedBy = "pensionado")
     private Set<pensionadoprestamo> pensionadoprestamo = new HashSet<pensionadoprestamo>();
     
+    @OneToMany(mappedBy = "pensionado")
+    private Set<pensionadobeneficio> pensionadobeneficio = new HashSet<pensionadobeneficio>();
     
     @OneToMany
     private List<pago> pagos;
+
+    public Set<pensionadobeneficio> getPensionadobeneficio() {
+        return pensionadobeneficio;
+    }
+
+    public void setPensionadobeneficio(Set<pensionadobeneficio> pensionadobeneficio) {
+        this.pensionadobeneficio = pensionadobeneficio;
+    }
+    
+    
 
     public Set<pensionadoprestamo> getPensionadoprestamo() {
         return pensionadoprestamo;
