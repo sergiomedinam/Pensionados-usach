@@ -22,22 +22,29 @@
                                  rowKey="#{item.id}"
                                  rows="10"
                                  rowsPerPageTemplate="10,20,30,40,50"
+                                 emptyMessage="No hay resultados."
                                  >
 
-                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
-                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowSelect"   update="createButton viewButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton"/>
 
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadobeneficioTitle_pensionado}"/>
+                                <h:outputText value="Rut"/>
                             </f:facet>
-                            <h:outputText value="#{item.pensionado}"/>
+                            <h:outputText value="#{item.pensionado.rut_pensionado}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nombre"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pensionado.nombre_pensionado} #{item.pensionado.apellido_p_pensionado} #{item.pensionado.apellido_m_pensionado}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListpensionadobeneficioTitle_beneficio}"/>
                             </f:facet>
-                            <h:outputText value="#{item.beneficio}"/>
+                            <h:outputText value="#{item.beneficio.nombre_beneficio}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
@@ -47,21 +54,13 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadobeneficioTitle_fecha_beneficio}"/>
+                                <h:outputText value="Fecha beneficio"/>
                             </f:facet>
                             <h:outputText value="#{item.fecha_beneficio}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadobeneficioTitle_id}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.id}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{pensionadobeneficioController.prepareCreate}" update=":pensionadobeneficioCreateForm" oncomplete="PF('pensionadobeneficioCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":pensionadobeneficioViewForm" oncomplete="PF('pensionadobeneficioViewDialog').show()" disabled="#{empty pensionadobeneficioController.selected}"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":pensionadobeneficioEditForm" oncomplete="PF('pensionadobeneficioEditDialog').show()" disabled="#{empty pensionadobeneficioController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{pensionadobeneficioController.destroy}" update=":growl,datalist" disabled="#{empty pensionadobeneficioController.selected}"/>
                         </f:facet>
                     </p:dataTable>
                 </p:panel>
