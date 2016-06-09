@@ -112,10 +112,6 @@ public class pensionado implements Serializable {
         this.estado = estado;
     }
 
-      
-
-    
-
     public String getCausal() {
         return causal;
     }

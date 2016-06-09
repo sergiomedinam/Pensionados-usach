@@ -15,12 +15,19 @@
                     <p:panelGrid columns="2" rendered="#{usuarioController.selected != null}">
                         
 
-                        <p:outputLabel value="Estado" for="estado" />
-                        <p:password id="estado" required="true" requiredMessage="Se necesita un estado" value="#{usuarioController.selected.estado}" title="Estado" />
-                        
-                       
+                        <p:outputLabel value="Causal" for="causal" />
+                        <p:selectOneMenu id="causal" required="true" requiredMessage="Se necesita una causal de deshabilitación" value="#{usuarioController.selected.causal}" style="width:125px">
+                            <f:selectItem itemLabel="Selecciona una causal" itemValue="" />
+                            <f:selectItem itemLabel="Fallecimiento" itemValue="Fallecimiento" />
+                            <f:selectItem itemLabel="Desafilación" itemValue="Desafilación" />
+                            <f:selectItem itemLabel="Otro" itemValue="Otro" />
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Estado a modificar" for="estado" />      
+                        <p:selectOneMenu id="estado" required="true" requiredMessage="Se necesita un estado de usuario" value="#{usuarioController.selected.estado}"   style="width:125px">
+                            <f:selectItem itemLabel="Deshabilitado" itemValue="Deshabilitado" />
+                        </p:selectOneMenu>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{usuarioController.update}" value="#{bundle.Save}" update="display,:usuarioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'usuarioEditDialog');"/>
+                    <p:commandButton actionListener="#{usuarioController.update}" value="Deshabilitar" update="display,:usuarioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'usuarioEditDialog1');"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>
