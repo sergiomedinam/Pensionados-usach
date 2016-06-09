@@ -30,6 +30,7 @@ public class usuario implements Serializable {
     private String email_usuario;
     
     private String estado;
+    private String causal;
     
     
     @NotNull(message = "debe ingresar nombre")
@@ -110,6 +111,15 @@ public class usuario implements Serializable {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
+
+    public String getCausal() {
+        return causal;
+    }
+
+    public void setCausal(String causal) {
+        this.causal = causal;
+    }
+    
     
     
 
