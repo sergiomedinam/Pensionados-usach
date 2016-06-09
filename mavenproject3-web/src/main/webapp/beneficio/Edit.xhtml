@@ -14,9 +14,15 @@
                     <p:panelGrid columns="2" rendered="#{beneficioController.selected != null}">
                   
                         <p:outputLabel value="#{bundle.EditbeneficioLabel_nombre_beneficio}" for="nombre_beneficio" />
-                        <p:inputText id="nombre_beneficio" value="#{beneficioController.selected.nombre_beneficio}" title="#{bundle.EditbeneficioTitle_nombre_beneficio}" />
-                        <p:outputLabel value="#{bundle.EditbeneficioLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{beneficioController.selected.id}" title="#{bundle.EditbeneficioTitle_id}" />
+                        <p:outputLabel id="nombre_beneficio" value="#{beneficioController.selected.nombre_beneficio}" title="#{bundle.EditbeneficioTitle_nombre_beneficio}" />
+                        
+                        <p:outputLabel value="Monto máximo:" for="monto" />
+                        <p:inputText id="monto" required="true" requiredMessage="Se necesita un monto para el beneficio." value="#{beneficioController.selected.monto_max_beneficio}" title="Monto máximo" >
+                            <f:validateLongRange minimum="0"/>
+                        </p:inputText>
+                        
+                        
+                        
                     </p:panelGrid>
                     <p:commandButton actionListener="#{beneficioController.update}" value="#{bundle.Save}" update="display,:beneficioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'beneficioEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="beneficioEditDialog.hide()"/>

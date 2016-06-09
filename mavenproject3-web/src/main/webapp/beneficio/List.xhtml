@@ -22,15 +22,23 @@
             </p:breadCrumb>
                 <section class="content-header">
                     <h1>
-                      Beneficios  
-                      <small>Panel de administrador</small>
+                      Beneficios
+                      <small>Panel de administrador</small> <a href="#demo" data-toggle="collapse" class="btn btn-info">Información</a>
+
                     </h1>
-                    
+                  
+                    <div id="demo" class=" collapse">
+                          <br/>
+                         <div class="panel panel-default">
+                        
+                             <div class="panel-footer"> <b>¿Que hacer aquí?</b> En esta sección del sistema es posible ver los beneficios existentes, además de modificar los valores máximos de éstos.</div>
+                        </div>
+                    </div>
                   </section>
             
             
             
-            
+            <br/>
             
             
             <h:form id="beneficioListForm">
@@ -40,7 +48,7 @@
                                  paginator="true"
                                  rowKey="#{item.id}"
                                  rows="10"
-                                 emptyMessage="No existen resultados."
+                                 emptyMessage="No hay resultados."
                                  rowsPerPageTemplate="10,20,30,40,50"
                                  >
 
@@ -48,8 +56,8 @@
                         <c:set var="rol" value="observador"/>
                         <c:choose>
                             <c:when test="${ name_rol != rol }">
-                                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
-                                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+                                <p:ajax event="rowSelect"   update="viewButton editButton"/>
+                                <p:ajax event="rowUnselect" update="viewButton editButton"/>
                             </c:when>    
                             <c:otherwise>
                                 <p:ajax event="rowSelect"   update="viewButton"/>
@@ -58,26 +66,24 @@
                         </c:choose>
 
                        
-                        <p:column>
+                        <p:column id="nombre" sortBy="#{item.nombre_beneficio}"> 
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListbeneficioTitle_nombre_beneficio}"/>
                             </f:facet>
                             <h:outputText value="#{item.nombre_beneficio}"/>
                         </p:column>
-                        <p:column>
+                        <p:column id="monto" sortBy="#{item.monto_max_beneficio}">
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListbeneficioTitle_id}"/>
+                                <h:outputText value="Monto máximo"/>
                             </f:facet>
-                            <h:outputText value="#{item.id}"/>
+                            <h:outputText value="$ #{item.monto_max_beneficio}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":beneficioViewForm" oncomplete="PF('beneficioViewDialog').show()" disabled="#{empty beneficioController.selected}"/>
                             <c:set var="name_rol" value="#{usuarioController.getTipo(request.userPrincipal.name)}"/>
                             <c:set var="rol" value="observador"/>
                             <c:if test="${ name_rol != rol }">   
-                                <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{beneficioController.prepareCreate}" update=":beneficioCreateForm" oncomplete="PF('beneficioCreateDialog').show()"/>
                                 <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":beneficioEditForm" oncomplete="PF('beneficioEditDialog').show()" disabled="#{empty beneficioController.selected}"/>
-                                <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{beneficioController.destroy}" update=":growl,datalist" disabled="#{empty beneficioController.selected}"/>
                             </c:if>
                         </f:facet>
                     </p:dataTable>
