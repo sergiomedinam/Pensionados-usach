@@ -167,7 +167,7 @@
                                 <div class="inner" align="center" >
                                     <h3>0</h3>
 
-                                    <p>Prestamos actuales</p>
+                                    <p>Prestamos</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-person-add"></i>
@@ -179,14 +179,14 @@
                             <!-- small box -->
                             <div class="small-box bg-maroon">
                                 <div class="inner" align="center">
-                                    <h3>0</h3>
+                                    <h3>#{pensionadobeneficioController.BeneficiosPensionados(pensionadoController.selected.rut_pensionado).size()}</h3>
 
-                                    <p>Beneficios actuales</p>
+                                    <p>Beneficios</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-person-add"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
+                                <a href="#beneficiosPensionado" data-toggle="collapse" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->
@@ -196,62 +196,8 @@
                         
                    </div>
                 </section>
-                <div id="cuotasPensionado" class=" collapse">
-                    <c:if test="${cuotaspagadasController.esMoroso(pensionadoController.selected.rut_pensionado) == true}" >
-                        <p id="failtext" class="alert alert-danger" align="center" style="font-size:100%;" >
-                                El pensionado se encuentra moroso.
-                            </p>        
-                    </c:if>
-                    <div class="panel panel-default">
-                    
-                    <h:form id="cuotaspagadasListForm">
-                        <p:panel header="CUOTAS DEL PENSIONADO">
-                            <p:dataTable id="datalist" value="#{cuotaspagadasController.CuotasPensionados(pensionadoController.selected.rut_pensionado)}" var="item"
-                                         selectionMode="single" selection="#{cuotaspagadasController.selected}"
-                                         paginator="false"
-                                         rowKey="#{item.id}"
-                                         rows="10"
-                                         rowsPerPageTemplate="10,20,30,40,50"
-                                         emptyMessage="No hay resultados."
-                                         >
-
-                                <p:column id="rut">
-                                    <f:facet name="header">
-                                        <h:outputText value="#{bundle.ListcuotaspagadasTitle_pensionado}"/>
-                                        <p:watermark for="rut" value="Buscar Rut (con puntos y guión)" />
-                                    </f:facet>
-                                    <h:outputText value="#{item.pensionado.rut_pensionado}"/>
-                                </p:column>
-                                <p:column id="nombre">
-                                    <f:facet name="header">
-                                        <h:outputText value="Nombre"/>
-                                        <p:watermark for="nombre" value="Buscar Nombre" />
-                                    </f:facet>
-                                    <h:outputText value="#{item.pensionado.nombre_pensionado}
-                                                         #{item.pensionado.apellido_p_pensionado}
-                                                         #{item.pensionado.apellido_m_pensionado}"/>
-                                </p:column>
-
-                                <p:column id="año" >
-                                    <f:facet name="header">
-                                        <h:outputText value="#{bundle.ListcuotaspagadasTitle_ano}"/>
-                                        <p:watermark for="año" value="Buscar Año" />
-                                    </f:facet>
-                                    <h:outputText value="#{item.ano}"/>
-                                </p:column>
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="#{bundle.ListcuotaspagadasTitle_cuotas}"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.cuotas}"/>
-                                </p:column>
-                            </p:dataTable>
-                        </p:panel>
-                    </h:form>
-                </div>
-            </div>
-            
-            <div id="cargasPensionado" class=" collapse">
+                
+                <div id="cargasPensionado" class=" collapse">
                 <div class="panel panel-default">
                 
                 <h:form id="cargasListForm">
@@ -265,19 +211,19 @@
                                  emptyMessage="No hay resultados."
                                  >
                         
-                        <p:column>
+                        <p:column >
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListcargasTitle_pensionado}"/>
                             </f:facet>
                             <h:outputText value="#{item.pensionado.rut_pensionado}"/>
                         </p:column>
-                        <p:column>
+                        <p:column >
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListpensionadoTitle_nombre_pensionado}"/>
                             </f:facet>
                             <h:outputText value="#{item.pensionado.nombre_pensionado} #{item.pensionado.apellido_p_pensionado} #{item.pensionado.apellido_m_pensionado}"/>
                         </p:column>
-                        <p:column>
+                        <p:column >
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListcargasTitle_seguro}"/>
                             </f:facet>
@@ -307,7 +253,119 @@
             </h:form>    
             </div>
         </div>
+                
+                <div id="cuotasPensionado" class=" collapse">
+                    <c:if test="${cuotaspagadasController.esMoroso(pensionadoController.selected.rut_pensionado) == true}" >
+                        <p id="failtext" class="alert alert-danger" align="center" style="font-size:100%;" >
+                                El pensionado se encuentra moroso.
+                            </p>        
+                    </c:if>
+                    <div class="panel panel-default">
+                    
+                    <h:form id="cuotaspagadasListForm">
+                        <p:panel header="CUOTAS DEL PENSIONADO">
+                            <p:dataTable id="datalist" value="#{cuotaspagadasController.CuotasPensionados(pensionadoController.selected.rut_pensionado)}" var="item"
+                                         selectionMode="single" selection="#{cuotaspagadasController.selected}"
+                                         paginator="false"
+                                         rowKey="#{item.id}"
+                                         rows="10"
+                                         rowsPerPageTemplate="10,20,30,40,50"
+                                         emptyMessage="No hay resultados."
+                                         >
+
+                                <p:column >
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListcuotaspagadasTitle_pensionado}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.pensionado.rut_pensionado}"/>
+                                </p:column>
+                                <p:column >
+                                    <f:facet name="header">
+                                        <h:outputText value="Nombre"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.pensionado.nombre_pensionado}
+                                                         #{item.pensionado.apellido_p_pensionado}
+                                                         #{item.pensionado.apellido_m_pensionado}"/>
+                                </p:column>
+
+                                <p:column >
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListcuotaspagadasTitle_ano}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.ano}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListcuotaspagadasTitle_cuotas}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.cuotas}"/>
+                                </p:column>
+                            </p:dataTable>
+                        </p:panel>
+                    </h:form>
+                </div>
+            </div>
+            
+            
      
+                
+                
+                
+                
+                
+                
+                <div id="beneficiosPensionado" class=" collapse">
+                <div class="panel panel-default">
+                
+                <h:form id="pensionadobeneficioListForm">
+                <p:panel header="BENEFICIOS DEL PENSIONADO">
+                    <p:dataTable id="datalist" value="#{pensionadobeneficioController.BeneficiosPensionados(pensionadoController.selected.rut_pensionado)}" var="item"
+                                 selectionMode="single" selection="#{pensionadobeneficioController.selected}"
+                                 paginator="false"
+                                 rowKey="#{item.id}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 emptyMessage="No hay resultados."
+                                 >
+
+                        <p:column >
+                            <f:facet name="header">
+                                <h:outputText value="Rut"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pensionado.rut_pensionado}"/>
+                        </p:column>
+                        <p:column >
+                            <f:facet name="header">
+                                <h:outputText value="Nombre"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pensionado.nombre_pensionado} #{item.pensionado.apellido_p_pensionado} #{item.pensionado.apellido_m_pensionado}"/>
+                        </p:column>
+                        
+                        <p:column >
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListpensionadobeneficioTitle_beneficio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.beneficio.nombre_beneficio}"/>
+                        </p:column>
+                        <p:column >
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListpensionadobeneficioTitle_monto}"/>
+                            </f:facet>
+                            <h:outputText value="$ #{item.monto}"/>
+                        </p:column>
+                        <p:column >
+                            <f:facet name="header">
+                                <h:outputText value="Fecha Beneficio"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecha_beneficio}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+            </div>
+        </div>
                 
         </ui:define> 
         </ui:composition>
