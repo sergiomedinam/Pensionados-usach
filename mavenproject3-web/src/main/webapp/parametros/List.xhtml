@@ -129,7 +129,32 @@
                             <f:facet name="header">
                                 <h:outputText value="Valor de la UF"/>
                             </f:facet>
-                            <h:outputText value="#{item.valor_uf}"/>
+                            <h:outputText value="$ #{item.valor_uf}"/>
+                        </p:column>
+                      
+                        <f:facet name="footer">
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":parametrosEditForm" oncomplete="PF('parametrosEditDialog').show()" disabled="#{empty parametrosController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+            <h:form id="parametrosListForm3">
+                <p:panel header="APORTE INSTITUCIONAL">
+                    <p:dataTable id="datalist" value="#{parametrosController.items}" var="item"
+                                 selectionMode="single" selection="#{parametrosController.selected}"
+                                 rowKey="#{item.id}"
+                                 emptyMessage="No existen datos"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="editButton"/>
+                        <p:ajax event="rowUnselect" update="editButton"/>
+
+                      
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Valor Aporte Institucional"/>
+                            </f:facet>
+                            <h:outputText value="$ #{item.aporte_institucional}"/>
                         </p:column>
                       
                         <f:facet name="footer">
