@@ -13,16 +13,10 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{prestamoController.selected != null}">
                         
-                        <h:outputText value="#{bundle.ViewprestamoLabel_nombre_prestamo}"/>
+                        <h:outputText value="Nombre préstamo:"/>
                         <h:outputText value="#{prestamoController.selected.nombre_prestamo}" title="#{bundle.ViewprestamoTitle_nombre_prestamo}"/>
-                        <h:outputText value="#{bundle.ViewprestamoLabel_total_prestamo}"/>
-                        <h:outputText value="#{prestamoController.selected.total_prestamo}" title="#{bundle.ViewprestamoTitle_total_prestamo}"/>
-                        <h:outputText value="#{bundle.ViewprestamoLabel_cuotas_prestamo}"/>
-                        <h:outputText value="#{prestamoController.selected.cuotas_prestamo}" title="#{bundle.ViewprestamoTitle_cuotas_prestamo}"/>
-                        <h:outputText value="#{bundle.ViewprestamoLabel_interes_prestamo}"/>
-                        <h:outputText value="#{prestamoController.selected.interes_prestamo}" title="#{bundle.ViewprestamoTitle_interes_prestamo}"/>
-                        <h:outputText value="#{bundle.ViewprestamoLabel_id}"/>
-                        <h:outputText value="#{prestamoController.selected.id}" title="#{bundle.ViewprestamoTitle_id}"/>
+                        <h:outputText value="Monto máximo:"/>
+                        <h:outputText value="#{prestamoController.selected.monto_max_prestamo}" title="Monto máximo"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="prestamoViewDialog.hide()"/>
                 </h:panelGroup>
