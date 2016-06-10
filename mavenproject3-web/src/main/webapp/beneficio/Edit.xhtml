@@ -25,7 +25,6 @@
                         
                     </p:panelGrid>
                     <p:commandButton actionListener="#{beneficioController.update}" value="#{bundle.Save}" update="display,:beneficioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'beneficioEditDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="beneficioEditDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>
