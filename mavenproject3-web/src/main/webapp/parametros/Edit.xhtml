@@ -12,19 +12,19 @@
             <h:form id="parametrosEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{parametrosController.selected != null}">
-                        <p:outputLabel value="Prima Catastrofico Titular" for="prima_catastrofico_titular" />
+                        <p:outputLabel value="Prima Catastrofico Titular:" for="prima_catastrofico_titular" />
                         <p:inputText id="prima_catastrofico_titular" value="#{parametrosController.selected.prima_catastrofico_titular}" title="#{bundle.EditparametrosTitle_prima_catastrofico_titular}" />
-                        <p:outputLabel value="Prima Catastrofico Conyuge" for="prima_catastrofico_conyuge" />
+                        <p:outputLabel value="Prima Catastrofico Conyuge:" for="prima_catastrofico_conyuge" />
                         <p:inputText id="prima_catastrofico_conyuge" value="#{parametrosController.selected.prima_catastrofico_conyuge}" title="#{bundle.EditparametrosTitle_prima_catastrofico_conyuge}" />
-                        <p:outputLabel value="Prima Catastrofico Hijos" for="prima_catastrofico_hijos" />
+                        <p:outputLabel value="Prima Catastrofico Hijos:" for="prima_catastrofico_hijos" />
                         <p:inputText id="prima_catastrofico_hijos" value="#{parametrosController.selected.prima_catastrofico_hijos}" title="#{bundle.EditparametrosTitle_prima_catastrofico_hijos}" />
-                        <p:outputLabel value="Prima Hospitalario Titular" for="prima_hospitalario_titular" />
+                        <p:outputLabel value="Prima Hospitalario Titular:" for="prima_hospitalario_titular" />
                         <p:inputText id="prima_hospitalario_titular" value="#{parametrosController.selected.prima_hospitalario_titular}" title="#{bundle.EditparametrosTitle_prima_hospitalario_titular}" />
-                        <p:outputLabel value="Prima Hospitalario Titular + 1" for="prima_hospitalario_titularmas1" />
+                        <p:outputLabel value="Prima Hospitalario Titular + 1:" for="prima_hospitalario_titularmas1" />
                         <p:inputText id="prima_hospitalario_titularmas1" value="#{parametrosController.selected.prima_hospitalario_titularmas1}" title="#{bundle.EditparametrosTitle_prima_hospitalario_titularmas1}" />
-                        <p:outputLabel value="Prima Hospitalario Titular + 2 o mas" for="prima_hospitalario_titular2omas" />
+                        <p:outputLabel value="Prima Hospitalario Titular + 2 o más:" for="prima_hospitalario_titular2omas" />
                         <p:inputText id="prima_hospitalario_titular2omas" value="#{parametrosController.selected.prima_hospitalario_titular2omas}" title="#{bundle.EditparametrosTitle_prima_hospitalario_titular2omas}" />
-                        <p:outputLabel value="Valor UF" for="valor_uf" />
+                        <p:outputLabel value="Valor UF:" for="valor_uf" />
                         <p:inputText id="valor_uf" value="#{parametrosController.selected.valor_uf}" title="#{bundle.EditparametrosTitle_valor_uf}" />
                         <p:outputLabel value="Correo Administrador" for="correo_s_admin" />
                         <p:inputText id="correo_s_admin" value="#{parametrosController.selected.correo_s_admin}" title="#{bundle.EditparametrosTitle_correo_s_admin}" />
@@ -32,6 +32,9 @@
                         <p:inputText id="correo_aplicacion" value="#{parametrosController.selected.correo_aplicacion}" title="#{bundle.EditparametrosTitle_correo_aplicacion}" />
                         <p:outputLabel value="Contraseña" for="correo_s_admin" />
                         <p:inputText id="contrasena_correo_aplicacion" value="#{parametrosController.selected.contrasena_correo_aplicacion}" title="#{bundle.EditparametrosTitle_contrasena_correo_aplicacion}" />
+                       
+                        <p:outputLabel value="Aporte Institucional:" for="ap_inst" />
+                        <p:inputText id="ap_inst" value="#{parametrosController.selected.aporte_institucional}" title="Aporte instituconal" />
                        
                     </p:panelGrid>
                     <p:commandButton actionListener="#{parametrosController.update}" value="#{bundle.Save}" update="display,:parametrosListForm:datalist,:growl" oncomplete="handleSubmit(args, 'parametrosEditDialog');"/>
