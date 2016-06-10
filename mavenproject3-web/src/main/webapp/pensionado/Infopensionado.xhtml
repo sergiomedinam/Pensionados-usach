@@ -23,8 +23,33 @@
                 <section class="content-header">
                         <h1>Pensionado: #{pensionadoController.selected.nombre_pensionado} #{pensionadoController.selected.apellido_p_pensionado}
                         <small>Panel administrador</small>
-                        </h1>    
+                        <p:commandButton id="editButton1"   icon="ui-icon-circle-close" value="Deshabilitar" update=":pensionadoEditForm1" oncomplete="PF('pensionadoEditDialog1').show()"/>
+                            
+                      <p:dialog id="pensionadoEditDlg1" widgetVar="pensionadoEditDialog1" modal="true" resizable="false" appendTo="@(body)" header="Deshabilitar Pensionado del Sistema">
+                            <h:form id="pensionadoEditForm1">
+                                <p:growl id="growl" showDetail="true" showSummary="true" autoUpdate="true" />  
+                                <h:panelGroup id="display">
+                                    <p:panelGrid columns="2" rendered="#{pensionadoController.selected != null}">
 
+
+                                        <p:outputLabel value="Causal" for="causal" />
+                                        <p:selectOneMenu id="causal" required="true" requiredMessage="Se necesita una causal de deshabilitación" value="#{pensionadoController.selected.causal}" style="width:125px">
+                                            <f:selectItem itemLabel="Selecciona una causal" itemValue="" />
+                                            <f:selectItem itemLabel="Fallecimiento" itemValue="Fallecimiento" />
+                                            <f:selectItem itemLabel="Desafiliación" itemValue="Desafiliación" />
+                                            <f:selectItem itemLabel="Otro" itemValue="Otro" />
+                                        </p:selectOneMenu>
+                                        <p:outputLabel value="Estado a modificar" for="estado" />      
+                                        <p:selectOneMenu id="estado" required="true" requiredMessage="Se necesita un estado de pensionado" value="#{pensionadoController.selected.estado}"   style="width:125px">
+                                            <f:selectItem itemLabel="Deshabilitado" itemValue="Deshabilitado" />
+                                        </p:selectOneMenu>
+                                    </p:panelGrid>
+                                    <p:commandButton actionListener="#{pensionadoController.update}" value="Deshabilitar" update="growl" oncomplete="handleSubmit(args, 'pensionadoEditDialog1');"/>
+                                </h:panelGroup>
+                            </h:form>
+                        </p:dialog>
+                        </h1>    
+                     
                     
                 </section>
                 

@@ -30,6 +30,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
 import javax.faces.component.UIViewRoot;
@@ -42,7 +43,7 @@ import javax.faces.validator.ValidatorException;
 import javax.inject.Inject;
 
 @Named("usuarioController")
-@SessionScoped
+@ViewScoped
 public class usuarioController implements Serializable {
     
     @Inject
@@ -52,7 +53,8 @@ public class usuarioController implements Serializable {
     @EJB
     private usuarioFacadeLocal ejbFacade;
     private List<usuario> items = null;
-    private usuario selected;
+   private List<usuario> deshabilitados = null;
+    private usuario selected;   
     private String passTemp;
     private Object fma;
 
@@ -75,6 +77,18 @@ public class usuarioController implements Serializable {
     public String submit(){
             this.userInput = "The user has entered \""+this.userInput+" \"";
             return "";
+    }
+    
+    public List<usuario> deshabilitados(){
+        getItems();
+        List<usuario> deshabilitados= null;
+        for (usuario item :items){
+            if(item.getEstado()==null){
+                deshabilitados.add(item);
+            }
+            System.out.println("USUARIO");
+        }
+        return deshabilitados;
     }
 
     public usuario getSelected() {

@@ -67,6 +67,12 @@
             <type>jar</type>
         </dependency>
         <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy</artifactId>
+            <version>1.8.3</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
@@ -85,6 +91,7 @@
     </dependencies>
 
     <build>
+         <finalName>FP-Usach</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
