@@ -13,19 +13,12 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{prestamoController.selected != null}">
                       
-                        <p:outputLabel value="#{bundle.EditprestamoLabel_nombre_prestamo}" for="nombre_prestamo" />
-                        <p:inputText id="nombre_prestamo" value="#{prestamoController.selected.nombre_prestamo}" title="#{bundle.EditprestamoTitle_nombre_prestamo}" />
-                        <p:outputLabel value="#{bundle.EditprestamoLabel_total_prestamo}" for="total_prestamo" />
-                        <p:inputText id="total_prestamo" value="#{prestamoController.selected.total_prestamo}" title="#{bundle.EditprestamoTitle_total_prestamo}" />
-                        <p:outputLabel value="#{bundle.EditprestamoLabel_cuotas_prestamo}" for="cuotas_prestamo" />
-                        <p:inputText id="cuotas_prestamo" value="#{prestamoController.selected.cuotas_prestamo}" title="#{bundle.EditprestamoTitle_cuotas_prestamo}" />
-                        <p:outputLabel value="#{bundle.EditprestamoLabel_interes_prestamo}" for="interes_prestamo" />
-                        <p:inputText id="interes_prestamo" value="#{prestamoController.selected.interes_prestamo}" title="#{bundle.EditprestamoTitle_interes_prestamo}" />
-                        <p:outputLabel value="#{bundle.EditprestamoLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{prestamoController.selected.id}" title="#{bundle.EditprestamoTitle_id}" />
+                        <p:outputLabel value="Nombre préstamo:" />
+                        <p:outputLabel value="#{prestamoController.selected.nombre_prestamo}" title="Nombre préstamo" />
+                        <p:outputLabel value="Monto máximo" for="monto" />
+                        <p:inputText id="monto" required="true" requiredMessage="Se necesita un monto máximo para el préstamo." value="#{prestamoController.selected.monto_max_prestamo}" title="Monto máximo" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{prestamoController.update}" value="#{bundle.Save}" update="display,:prestamoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'prestamoEditDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="prestamoEditDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

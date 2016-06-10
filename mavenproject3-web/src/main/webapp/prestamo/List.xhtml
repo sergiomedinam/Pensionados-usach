@@ -14,55 +14,61 @@
         </ui:define>
 
         <ui:define name="body">
+                       <p:breadCrumb > 
+                <p:menuitem value="Inicio" url="#" />
+                <p:menuitem value="Inicio" url="/" />
+                <p:menuitem value="Préstamos" url="/faces/prestamo/List.xhtml" />
+            </p:breadCrumb>
+                <section class="content-header">
+                    <h1>
+                      Préstamos
+                      <small>Panel de administrador</small> <a href="#demo" data-toggle="collapse" class="btn btn-info">Información</a>
+
+                    </h1>
+                  
+                    <div id="demo" class=" collapse">
+                          <br/>
+                         <div class="panel panel-default">
+                        
+                             <div class="panel-footer"> <b>¿Que hacer aquí?</b> En esta sección del sistema es posible ver los préstamos existentes, además de modificar los valores máximos de éstos.</div>
+                        </div>
+                    </div>
+                  </section>
+            
+            
+            
+            <br/>
+
             <h:form id="prestamoListForm">
-                <p:panel header="#{bundle.ListprestamoTitle}">
+                <p:panel header="LISTA DE PRÉSTAMOS">
                     <p:dataTable id="datalist" value="#{prestamoController.items}" var="item"
                                  selectionMode="single" selection="#{prestamoController.selected}"
                                  paginator="true"
                                  rowKey="#{item.id}"
                                  rows="10"
                                  rowsPerPageTemplate="10,20,30,40,50"
+                                 emptyMessage="No hay resultados."
                                  >
 
-                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
-                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowSelect"   update="viewButton editButton"/>
+                        <p:ajax event="rowUnselect" update="viewButton editButton"/>
 
                       
-                        <p:column>
+                        <p:column id="nombre" sortBy="#{item.nombre_prestamo}">
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListprestamoTitle_nombre_prestamo}"/>
+                                <h:outputText value="Nombre préstamo"/>
                             </f:facet>
                             <h:outputText value="#{item.nombre_prestamo}"/>
                         </p:column>
-                        <p:column>
+                        <p:column id="monto" sortBy="#{item.monto_max_prestamo}" >
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListprestamoTitle_total_prestamo}"/>
+                                <h:outputText value="Monto máximo"/>
                             </f:facet>
-                            <h:outputText value="#{item.total_prestamo}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListprestamoTitle_cuotas_prestamo}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.cuotas_prestamo}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListprestamoTitle_interes_prestamo}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.interes_prestamo}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListprestamoTitle_id}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.id}"/>
+                            <h:outputText value="$ #{item.monto_max_prestamo}"/>
                         </p:column>
                         <f:facet name="footer">
-                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{prestamoController.prepareCreate}" update=":prestamoCreateForm" oncomplete="PF('prestamoCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":prestamoViewForm" oncomplete="PF('prestamoViewDialog').show()" disabled="#{empty prestamoController.selected}"/>
                             <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":prestamoEditForm" oncomplete="PF('prestamoEditDialog').show()" disabled="#{empty prestamoController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{prestamoController.destroy}" update=":growl,datalist" disabled="#{empty prestamoController.selected}"/>
                         </f:facet>
                     </p:dataTable>
                 </p:panel>
