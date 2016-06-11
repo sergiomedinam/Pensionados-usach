@@ -43,7 +43,7 @@ import javax.faces.validator.ValidatorException;
 import javax.inject.Inject;
 
 @Named("usuarioController")
-@ViewScoped
+@SessionScoped
 public class usuarioController implements Serializable {
     
     @Inject
