@@ -6,9 +6,11 @@
 package sessionsbeans;
 
 import entities.usuario;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,6 +29,14 @@ public class usuarioFacade extends AbstractFacade<usuario> implements usuarioFac
 
     public usuarioFacade() {
         super(usuario.class);
+    }
+    
+    public List<usuario> findbyEstado() {
+        Query query;
+        query = em.createNamedQuery("usuario.findByEstado")
+                .setParameter("estado", "Deshabilitado");
+        return query.getResultList();  
+                
     }
     
 }

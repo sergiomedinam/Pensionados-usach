@@ -30,4 +30,6 @@ public interface usuarioFacadeLocal {
 
     int count();
     
+    List<usuario> findbyEstado(); 
+    
 }
