@@ -105,9 +105,9 @@ public class prestamoTest {
     public void testGetCuotas_prestamo() {
         System.out.println("getCuotas_prestamo");
         prestamo instance = new prestamo();
-        int expResult = 1;
+        String expResult = "asdasd";
         instance.setCuotas_prestamo(expResult);
-        int result = instance.getCuotas_prestamo();
+        String result = instance.getCuotas_prestamo();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
     }
@@ -118,7 +118,7 @@ public class prestamoTest {
     @Test
     public void testSetCuotas_prestamo() {
         System.out.println("setCuotas_prestamo");
-        int cuotas_prestamo = 1;
+        String cuotas_prestamo = "asdsd";
         prestamo instance = new prestamo();
         instance.setCuotas_prestamo(cuotas_prestamo);
         // TODO review the generated test code and remove the default call to fail.
