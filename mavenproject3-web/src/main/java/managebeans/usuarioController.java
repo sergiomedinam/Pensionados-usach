@@ -14,16 +14,28 @@ import java.security.NoSuchAlgorithmException;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.inject.Named;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
+import javax.faces.component.UIViewRoot;
+import javax.faces.component.html.HtmlInputText;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
@@ -31,19 +43,52 @@ import javax.faces.validator.ValidatorException;
 import javax.inject.Inject;
 
 @Named("usuarioController")
-@SessionScoped
+@ViewScoped
 public class usuarioController implements Serializable {
     
     @Inject
     private auditoriaController auditoria;
+    @Inject
+    private parametrosController parametros;
     @EJB
     private usuarioFacadeLocal ejbFacade;
     private List<usuario> items = null;
-    private usuario selected;
+   private List<usuario> deshabilitados = null;
+    private usuario selected;   
     private String passTemp;
     private Object fma;
 
-    public usuarioController() {
+    private String nombre;
+    private String correo;
+    private String rut;
+    private String outcome;
+    private String userInput;
+
+    public String getNombre() {             return nombre;    }
+    public void setNombre(String nombre) {  this.nombre = nombre;    }
+    public String getCorreo() {             return correo;    }
+    public void setCorreo(String correo) {  this.correo = correo;    }
+    public String getRut() {                return rut;    }
+    public void setRut(String rut) {        this.rut = rut;    }
+    public String getOutcome() {            return outcome;    }
+    public void setOutcome(String outcome) {this.outcome = outcome;    }
+    public String getUserInput() {          return userInput;    }
+    public void setUserInput(String userInput) {            this.userInput = userInput;    }
+    public String submit(){
+            this.userInput = "The user has entered \""+this.userInput+" \"";
+            return "";
+    }
+    
+    public List<usuario> deshabilitados(){
+        getItems();
+        List<usuario> deshabilitados= null;
+        for (usuario item :items){
+            if(item.getEstado()==null){
+                deshabilitados.add(item);
+            }
+            System.out.println("USUARIO");
+        }
+        return deshabilitados;
     }
 
     public usuario getSelected() {
@@ -493,6 +538,52 @@ public class usuarioController implements Serializable {
         return getFacade().find(id);
     }
 
+    public void recupContrValida(){
+        System.out.println("entré");
+        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+//        nombre = ec.getRequestParameterMap().get("Nombre");
+//        rut = ec.getRequestParameterMap().get("Rut");
+//        correo = ec.getRequestParameterMap().get("Correo");
+        System.out.println("4"+nombre);
+        System.out.println("5"+rut);
+        System.out.println("6"+correo);
+        System.out.println("sadasdasdsad");
+        
+        getItems();
+        
+        for (usuario item : items) {
+            if (item.getEmail_usuario().equals(correo.toUpperCase()) && item.getRut().equals(rut)  ) {
+                enviaCorreo(nombre, rut, correo);
+            }
+        }
+        
+        nombre = "";
+        rut = "";
+        correo = "";
+    }
+    
+    public void vaciaFormContr(){
+        nombre = "";
+        rut = "";
+        correo = "";
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        FacesContext context = FacesContext.getCurrentInstance();
+        UIViewRoot uiViewRoot = facesContext.getViewRoot();
+        HtmlInputText inputText = null;
+//        inputText = (HtmlInputText) uiViewRoot.findComponent("searchAgreement:agreementNumber");
+//        inputText.setValue("");
+
+        inputText = (HtmlInputText) uiViewRoot.findComponent("form2:Rut");
+        inputText.setValue("");
+        
+        
+        
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Holi") );
+
+//        inputText = (HtmlInputText) uiViewRoot.findComponent("searchAgreement:customerRefNumber");
+//        inputText.setValue("");
+    }
+    
     public List<usuario> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
@@ -501,6 +592,63 @@ public class usuarioController implements Serializable {
         return getFacade().findAll();
     }
 
+    private void enviaCorreo(String name, String rut, String correo) {
+        String to = parametros.getCorreoAdmin();
+
+        String from = "nelson.jerezv@gmail.com";
+        
+        System.out.println(name);
+        name = name.replaceAll("[Ñ]","N");
+        name = name.replaceAll("[ñ]","n");
+        
+        name = name.replaceAll("[èéêë]","e");
+        name = name.replaceAll("[ùúûü]","u");
+        name = name.replaceAll("[ìíîï]","i");
+        name = name.replaceAll("[àáâä]","a");
+        name = name.replaceAll("[òóôö]","o");
+
+        name = name.replaceAll("[ÈÉÊË]","E");
+        name = name.replaceAll("[ÙÚÛÜ]","U");
+        name = name.replaceAll("[ÌÍÎÏ]","I");
+        name = name.replaceAll("[ÀÁÂÄ]","A");
+        name = name.replaceAll("[ÒÓÔÖ]","O");
+        System.out.println(name);
+        
+        // Assuming you are sending email through relay.jangosmtp.net
+        final String username = /*"fp-usach@gmail.com"*/parametros.getCorreoApp();
+        final String password = parametros.getContrasenaApp();
+        
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");      
+        
+        Session session = Session.getInstance(props,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(username, password);
+                    }
+                });
+
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(from));
+            message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(to));
+            message.setSubject("Solicitud contraseña nueva");
+            message.setText("Administrador:\n"
+                            + "El usuario "+ name.toUpperCase() +" ha solicitado se cambie su contraseña.\n"
+                            + "Sus datos:\n"
+                            + "- RUT= "+ rut +"\n"
+                            + "- CORREO= "+ correo.toUpperCase() +".\n");
+            Transport.send(message);
+            System.out.println("Sent message successfully....");
+
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
     @FacesConverter(forClass = usuario.class)
     public static class usuarioControllerConverter implements Converter {
 

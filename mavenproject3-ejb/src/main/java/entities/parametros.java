@@ -26,8 +26,7 @@ public class parametros implements Serializable {
     private Long id;
     
     @NotNull
-    private Integer valor_uf;
-    
+    private Integer valor_uf;    
     @NotNull
     private Float prima_catastrofico_titular;
     @NotNull
@@ -40,7 +39,12 @@ public class parametros implements Serializable {
     private Float prima_hospitalario_titularmas1;
     @NotNull
     private Float prima_hospitalario_titular2omas;
-    
+    @NotNull
+    private String correo_s_admin;
+    @NotNull
+    private String correo_aplicacion;
+    @NotNull
+    private String contrasena_correo_aplicacion;
     @NotNull
     private Integer aporte_institucional;
 
@@ -51,8 +55,30 @@ public class parametros implements Serializable {
     public void setAporte_institucional(Integer aporte_institucional) {
         this.aporte_institucional = aporte_institucional;
     }
-    
-    
+
+    public String getCorreo_s_admin() {
+        return correo_s_admin;
+    }
+
+    public void setCorreo_s_admin(String correo_s_admin) {
+        this.correo_s_admin = correo_s_admin;
+    }
+
+    public String getCorreo_aplicacion() {
+        return correo_aplicacion;
+    }
+
+    public void setCorreo_aplicacion(String correo_aplicacion) {
+        this.correo_aplicacion = correo_aplicacion;
+    }
+
+    public String getContrasena_correo_aplicacion() {
+        return contrasena_correo_aplicacion;
+    }
+
+    public void setContrasena_correo_aplicacion(String contrasena_correo_aplicacion) {
+        this.contrasena_correo_aplicacion = contrasena_correo_aplicacion;
+    }
 
     public Float getPrima_catastrofico_titular() {
         return prima_catastrofico_titular;
@@ -102,10 +128,6 @@ public class parametros implements Serializable {
         this.prima_hospitalario_titular2omas = prima_hospitalario_titular2omas;
     }
 
-    
-    
-    
-
     public Integer getValor_uf() {
         return valor_uf;
     }
@@ -113,8 +135,6 @@ public class parametros implements Serializable {
     public void setValor_uf(Integer valor_uf) {
         this.valor_uf = valor_uf;
     }
-    
-    
 
     public Long getId() {
         return id;
