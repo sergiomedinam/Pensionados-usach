@@ -1,6 +1,5 @@
 package managebeans;
 
-import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import entities.usuario;
 import managebeans.util.JsfUtil;
 import managebeans.util.JsfUtil.PersistAction;
