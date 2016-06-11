@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
@@ -20,6 +22,9 @@ import javax.validation.constraints.NotNull;
  * @author seerg
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "usuario.findByEstado", query = "SELECT p FROM usuario p WHERE p.estado = :estado")
+})
 public class usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
