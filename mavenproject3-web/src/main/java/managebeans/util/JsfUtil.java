@@ -1,5 +1,7 @@
 package managebeans.util;
 
+import com.sun.org.glassfish.gmbal.ParameterNames;
+import entities.usuario;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -67,4 +69,5 @@ public class JsfUtil {
         DELETE,
         UPDATE
     }
+    
 }

@@ -30,6 +30,8 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.faces.validator.ValidatorException;
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 
 @Named("usuarioController")
 @SessionScoped
@@ -44,7 +46,18 @@ public class usuarioController implements Serializable {
     private usuario selected;   
     private String passTemp;
     private Object fma;
+    protected EntityManager em;
 
+    public EntityManager getEm() {
+        return em;
+    }
+
+    public void setEm(EntityManager em) {
+        this.em = em;
+    }
+
+
+    
     public usuarioController() {
     }
     
@@ -88,6 +101,7 @@ public class usuarioController implements Serializable {
         }
         return nombre;
     }
+    
     
     public String getApellido(String rut){
         String nombre = "";
@@ -467,6 +481,15 @@ public class usuarioController implements Serializable {
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
+    
+    public List<usuario> findByEstado() {
+    try {
+        List<usuario> deshabilitados = null;
+      return  (List<usuario>) em.createNamedQuery("usuario.findbyEstado");
+    } catch (NoResultException e) {
+      return deshabilitados;
+    }
+  }
 
     public List<usuario> getItems() {
         if (items == null) {

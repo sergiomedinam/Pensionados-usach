@@ -23,7 +23,7 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "usuario.findByEstado", query = "SELECT p FROM usuario p WHERE p.estado = :estado")
+    @NamedQuery(name = "usuario.findbyEstado", query = "SELECT p FROM usuario p WHERE p.estado = :estado")
 })
 public class usuario implements Serializable {
 
@@ -162,5 +162,5 @@ public class usuario implements Serializable {
     }
 
     
-    
+        
 }
