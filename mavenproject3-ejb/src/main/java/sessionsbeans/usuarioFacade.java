@@ -33,7 +33,7 @@ public class usuarioFacade extends AbstractFacade<usuario> implements usuarioFac
     
     public List<usuario> findbyEstado() {
         Query query;
-        query = em.createNamedQuery("usuario.findByEstado")
+        query = em.createNamedQuery("usuario.findbyEstado")
                 .setParameter("estado", "Deshabilitado");
         return query.getResultList();  
                 
