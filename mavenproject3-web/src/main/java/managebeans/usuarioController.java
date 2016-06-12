@@ -38,6 +38,7 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.faces.event.ComponentSystemEvent;
 import javax.faces.validator.ValidatorException;
 import javax.inject.Inject;
 
@@ -55,27 +56,17 @@ public class usuarioController implements Serializable {
     private usuario selected;
     private String passTemp;
     private Object fma;
+    private boolean accepted = false;
 
-    private String nombre;
-    private String correo;
-    private String rut;
-    private String outcome;
-    private String userInput;
-
-    public String getNombre() {             return nombre;    }
-    public void setNombre(String nombre) {  this.nombre = nombre;    }
-    public String getCorreo() {             return correo;    }
-    public void setCorreo(String correo) {  this.correo = correo;    }
-    public String getRut() {                return rut;    }
-    public void setRut(String rut) {        this.rut = rut;    }
-    public String getOutcome() {            return outcome;    }
-    public void setOutcome(String outcome) {this.outcome = outcome;    }
-    public String getUserInput() {          return userInput;    }
-    public void setUserInput(String userInput) {            this.userInput = userInput;    }
-    public String submit(){
-            this.userInput = "The user has entered \""+this.userInput+" \"";
-            return "";
+    public boolean isAccepted() {
+        return accepted;
     }
+
+    public void setAccepted(boolean accepted) {
+        this.accepted = accepted;
+    }
+    
+    
 
     public usuario getSelected() {
         return selected;
@@ -306,9 +297,9 @@ public class usuarioController implements Serializable {
     }
     
     public String getNombreCompleto() {
-        String nombre = getUsername(FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal().getName());
+        String name = getUsername(FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal().getName());
         String apellido = getApellido(FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal().getName());
-        String respuesta = nombre +" "+apellido;
+        String respuesta = name +" "+apellido;
         return respuesta;
     }
     
@@ -459,6 +450,80 @@ public class usuarioController implements Serializable {
         }
     }
     
+    public boolean validarRut2(FacesContext context, UIComponent toValidate, Object value) {
+        context = FacesContext.getCurrentInstance();
+        FacesMessage message = null;
+        String texto = (String) value;
+        boolean alpha = texto.matches("[0-9]{1,2}.[0-9]{3}.[0-9]{3}-[0-9kK]{1}");
+        boolean beta = texto.matches("[0-9]{1,2}[0-9]{3}[0-9]{3}-[0-9kK]{1}");
+        boolean gamma = texto.matches("[0-9]{1,2}[0-9]{3}[0-9]{3}[0-9kK]{1}");
+        
+        if (alpha || beta || gamma) {
+            String partA = "";
+            String partB = "";
+            boolean raya = false;
+            int suma = 0;
+            int mult = 5;
+            int modulo;
+            int resta;
+            
+            if (alpha || beta) {
+                for (int i = 0; i < texto.length(); i++) {
+                    if (texto.charAt(i) == '-') {
+                        raya = true;
+                    }
+                    if (texto.charAt(i) != '.' && texto.charAt(i) != '-'){
+                        if (!raya) {
+                            partA = partA + texto.charAt(i);
+                        }else{
+                            partB = partB + texto.charAt(i);
+                            partB = partB.toUpperCase();
+                        }
+                    }
+                }
+            }else{
+                for (int i = 0; i < texto.length()-1; i++) {
+                    partA = partA + texto.charAt(i);                    
+                }
+                partB = ""+texto.charAt(texto.length()-1);
+                partB = partB.toUpperCase();
+            }
+            for (int i = partA.length()-1; i >= 0; i--) {
+                if (mult < 0) {
+                    mult = 5;
+                }
+                suma = suma + Integer.parseInt(""+partA.charAt(i))*(7-mult);
+                mult = mult-1;
+            }
+            modulo = suma%11;
+            resta = 11 - modulo;
+
+            if(!  ( ( resta == 11 && partB.equals("0") )||
+                    ( resta == 10 && partB.equals("K") )||
+                    ( resta == 9  && partB.equals("9") )||
+                    ( resta == 8  && partB.equals("8") )||
+                    ( resta == 7  && partB.equals("7") )||
+                    ( resta == 6  && partB.equals("6") )||
+                    ( resta == 5  && partB.equals("5") )||
+                    ( resta == 4  && partB.equals("4") )||
+                    ( resta == 3  && partB.equals("3") )||
+                    ( resta == 2  && partB.equals("2") )||
+                    ( resta == 1  && partB.equals("1") )    ) ){
+
+                ((UIInput) toValidate).setValid(false);
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "El rut ingresado no es válido.") );
+                return false;
+            }                
+            
+        }
+        else{
+            ((UIInput) toValidate).setValid(false);
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "El rut ingresado no es válido.") );
+            return false;
+        }
+        return true;
+    }
+    
     private String encryptSHA256(String password){
         
         try {
@@ -524,50 +589,98 @@ public class usuarioController implements Serializable {
         return getFacade().find(id);
     }
 
-    public void recupContrValida(){
-        System.out.println("entré");
-        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-//        nombre = ec.getRequestParameterMap().get("Nombre");
-//        rut = ec.getRequestParameterMap().get("Rut");
-//        correo = ec.getRequestParameterMap().get("Correo");
-        System.out.println("4"+nombre);
-        System.out.println("5"+rut);
-        System.out.println("6"+correo);
-        System.out.println("sadasdasdsad");
+    private void existeSolicitante(String nombre, String rut, String correo, UIInput uirut, UIInput uicorreo){
+        FacesContext context = FacesContext.getCurrentInstance();
+        getItems();  
         
-        getItems();
+        boolean flagEnviado = false;
         
         for (usuario item : items) {
-            if (item.getEmail_usuario().equals(correo.toUpperCase()) && item.getRut().equals(rut)  ) {
-                enviaCorreo(nombre, rut, correo);
+            // si existe usuario con ese correo -> flagCorreo
+            if (  item.getEmail_usuario().equals(correo) && item.getRut().equals(rut)  ) {
+                enviaCorreo(item.getNombre() +" "+ item.getApellido(), rut, correo);
+                flagEnviado = true;
             }
         }
-        
-        nombre = "";
-        rut = "";
-        correo = "";
+        if (!flagEnviado) {
+            uirut.setValid(false);
+            uicorreo.setValid(false);
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "No se encuentran usuarios con este rut y correo.") );
+        }
     }
     
-    public void vaciaFormContr(){
-        nombre = "";
-        rut = "";
-        correo = "";
-        FacesContext facesContext = FacesContext.getCurrentInstance();
+    public void submitSolicitud(){
+        System.out.println("soy submit");
+        accepted = true;
         FacesContext context = FacesContext.getCurrentInstance();
-        UIViewRoot uiViewRoot = facesContext.getViewRoot();
-        HtmlInputText inputText = null;
-//        inputText = (HtmlInputText) uiViewRoot.findComponent("searchAgreement:agreementNumber");
-//        inputText.setValue("");
-
-        inputText = (HtmlInputText) uiViewRoot.findComponent("form2:Rut");
-        inputText.setValue("");
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Exito",  "Se envio el correo a la dirección indicada") );
+    }
+    
+    public void resetForm(){
+        accepted = false;
+        System.out.println("reset");
+    }
+    
+    public void vaciaFormContr(ComponentSystemEvent event){
+        UIComponent components = event.getComponent(); 
         
+        UIInput uinombre = (UIInput) components.findComponent("Nombre");
+        UIInput uirut = (UIInput) components.findComponent("Rut");
+        UIInput uicorreo = (UIInput) components.findComponent("Correo");
         
+        uinombre.setValue("");
+        uirut.setValue("");
+        uicorreo.setValue("");
+    }
+    
+    public void validaFormContr(ComponentSystemEvent event){
+        FacesContext context = FacesContext.getCurrentInstance();
+        UIComponent components = event.getComponent(); 
         
-        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Holi") );
-
-//        inputText = (HtmlInputText) uiViewRoot.findComponent("searchAgreement:customerRefNumber");
-//        inputText.setValue("");
+        UIInput uinombre = (UIInput) components.findComponent("Nombre");
+        UIInput uirut = (UIInput) components.findComponent("Rut");
+        UIInput uicorreo = (UIInput) components.findComponent("Correo");
+        
+        boolean pasaValidacion = true;
+        
+        if(uinombre == null){
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Nombre no se encuentra") );
+            pasaValidacion = false;
+        }else if(uinombre.getSubmittedValue().toString().trim().equals("")){
+            uinombre.setValid(false);
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Nombre no puede ser nulo") );
+            pasaValidacion = false;
+        }
+        
+        if(uirut    == null){
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Rut no se encuentra") );
+            pasaValidacion = false;
+        }else if(uirut.getSubmittedValue().toString().trim().equals("")   ){
+            uirut.setValid(false);
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Rut no puede ser nulo") );
+            pasaValidacion = false;
+        }
+        
+        if(uicorreo == null){
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Correo no se encuentra") );
+            pasaValidacion = false;
+        }else if(uicorreo.getSubmittedValue().toString().trim().equals("")){
+            uicorreo.setValid(false);
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Correo no puede ser nulo") );
+            pasaValidacion = false;
+        }
+        
+        if (pasaValidacion) {
+            if (validarRut2(context, uirut, uirut.getSubmittedValue().toString().trim().toUpperCase())) {
+                String nombre = uinombre.getSubmittedValue().toString().trim();
+                String rut = uirut.getSubmittedValue().toString().trim().toUpperCase();
+                String correo = uicorreo.getSubmittedValue().toString().trim().toUpperCase();
+                existeSolicitante(nombre, rut, correo, uirut, uicorreo);
+                uinombre.setValue("");
+                uirut.setValue("");
+                uicorreo.setValue("");
+            }            
+        }
     }
     
     public List<usuario> getItemsAvailableSelectMany() {
@@ -578,30 +691,9 @@ public class usuarioController implements Serializable {
         return getFacade().findAll();
     }
 
-    private void enviaCorreo(String name, String rut, String correo) {
-        String to = parametros.getCorreoAdmin();
-
-        String from = "nelson.jerezv@gmail.com";
-        
-        System.out.println(name);
-        name = name.replaceAll("[Ñ]","N");
-        name = name.replaceAll("[ñ]","n");
-        
-        name = name.replaceAll("[èéêë]","e");
-        name = name.replaceAll("[ùúûü]","u");
-        name = name.replaceAll("[ìíîï]","i");
-        name = name.replaceAll("[àáâä]","a");
-        name = name.replaceAll("[òóôö]","o");
-
-        name = name.replaceAll("[ÈÉÊË]","E");
-        name = name.replaceAll("[ÙÚÛÜ]","U");
-        name = name.replaceAll("[ÌÍÎÏ]","I");
-        name = name.replaceAll("[ÀÁÂÄ]","A");
-        name = name.replaceAll("[ÒÓÔÖ]","O");
-        System.out.println(name);
-        
-        // Assuming you are sending email through relay.jangosmtp.net
-        final String username = /*"fp-usach@gmail.com"*/parametros.getCorreoApp();
+    private void enviaCorreo(String name, String rut, String correo) {        
+        String to = parametros.getCorreoAdmin();        
+        final String username = parametros.getCorreoApp();
         final String password = parametros.getContrasenaApp();
         
         Properties props = new Properties();
@@ -619,14 +711,14 @@ public class usuarioController implements Serializable {
 
         try {
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(from));
+            message.setFrom(new InternetAddress(username));
             message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(to));
             message.setSubject("Solicitud contraseña nueva");
             message.setText("Administrador:\n"
-                            + "El usuario "+ name.toUpperCase() +" ha solicitado se cambie su contraseña.\n"
+                            + "El usuario "+ name +" ha solicitado se cambie su contraseña.\n"
                             + "Sus datos:\n"
                             + "- RUT= "+ rut +"\n"
-                            + "- CORREO= "+ correo.toUpperCase() +".\n");
+                            + "- CORREO= "+ correo +".\n");
             Transport.send(message);
             System.out.println("Sent message successfully....");
 
