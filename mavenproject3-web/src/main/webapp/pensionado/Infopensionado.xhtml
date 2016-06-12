@@ -23,6 +23,7 @@
                 <section class="content-header">
                         <h1>Pensionado: #{pensionadoController.selected.nombre_pensionado} #{pensionadoController.selected.apellido_p_pensionado}
                         <small>Panel administrador</small>
+                        <br/>
                         <p:commandButton id="editButton1"   icon="ui-icon-circle-close" value="Deshabilitar" update=":pensionadoEditForm1" oncomplete="PF('pensionadoEditDialog1').show()"/>
                             
                       <p:dialog id="pensionadoEditDlg1" widgetVar="pensionadoEditDialog1" modal="true" resizable="false" appendTo="@(body)" header="Deshabilitar Pensionado del Sistema">
