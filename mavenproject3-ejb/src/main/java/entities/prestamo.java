@@ -30,6 +30,18 @@ public class prestamo implements Serializable {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
     
+    @NotNull(message = "Debe tener un nombre")
+    private String nombre_prestamo;
+    
+    @NotNull(message = "Debe tener un monto total")
+    private String total_prestamo;
+    
+    @NotNull(message = "Debe tener cuotas a pagar")
+    private Integer cuotas_prestamo;
+    
+    @NotNull(message = "Debe tener un interes porcentual")
+    private String interes_prestamo;
+    
         
     @OneToMany(mappedBy = "prestamo")
     private Set<pensionadoprestamo> pensionadoprestamo = new HashSet<pensionadoprestamo>();
@@ -58,20 +70,6 @@ public class prestamo implements Serializable {
         this.pensionadoprestamo.add(pensionadoprestamo);
     }
     
-        
-    
-    @NotNull(message = "Debe tener un nombre")
-    private String nombre_prestamo;
-    
-    @NotNull(message = "Debe tener un monto total")
-    private String total_prestamo;
-    
-    @NotNull(message = "Debe tener cuotas a pagar")
-    private String cuotas_prestamo;
-    
-    @NotNull(message = "Debe tener un interes porcentual")
-    private String interes_prestamo;
-
     public String getNombre_prestamo() {
         return nombre_prestamo;
     }
@@ -88,13 +86,15 @@ public class prestamo implements Serializable {
         this.total_prestamo = total_prestamo;
     }
 
-    public String getCuotas_prestamo() {
+    public Integer getCuotas_prestamo() {
         return cuotas_prestamo;
     }
 
-    public void setCuotas_prestamo(String cuotas_prestamo) {
+    public void setCuotas_prestamo(Integer cuotas_prestamo) {
         this.cuotas_prestamo = cuotas_prestamo;
     }
+
+    
 
     public String getInteres_prestamo() {
         return interes_prestamo;

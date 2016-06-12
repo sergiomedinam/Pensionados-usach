@@ -49,8 +49,8 @@
                                  rowsPerPageTemplate="10,20,30,40,50"
                                  >
 
-                        <p:ajax event="rowSelect"   update="createButton viewButton editButton"/>
-                        <p:ajax event="rowUnselect" update="createButton viewButton editButton"/>
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton editButton1" />
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton editButton1"/>
 
                         <p:column>
                             <f:facet name="header">
@@ -89,18 +89,25 @@
                             <c:if test="${ name_rol != rol }">   
                                 <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{usuarioController.prepareCreate}" update=":usuarioCreateForm" oncomplete="PF('usuarioCreateDialog').show()"/>
                                 <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":usuarioEditForm" oncomplete="PF('usuarioEditDialog').show()" disabled="#{empty usuarioController.selected}"/>
-                                <p:commandButton id="editButton1"   icon="ui-icon-circle-close" value="Deshabilitar" update=":usuarioEditForm1" oncomplete="PF('usuarioEditDialog1').show()" disabled="#{empty usuarioController.selected}"/>
+                                <p:commandButton id="editButton1"   icon="ui-icon-circle-close" value="Deshabilitar" update=":usuarioEditForm" oncomplete="PF('usuarioEditDialog1').show()" disabled="#{empty usuarioController.selected}"/>
+                               
                             </c:if>
                         </f:facet>
                     </p:dataTable>
                 </p:panel>
             </h:form>
+             
+            
 
             <ui:include src="Create.xhtml"/>
             <ui:include src="Edit.xhtml"/>
             <ui:include src="View.xhtml"/>
             <ui:include src="deshabilitar.xhtml"/>
+            
+            
         </ui:define>
+        
+        
     </ui:composition>
 
 </html>

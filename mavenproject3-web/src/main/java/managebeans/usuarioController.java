@@ -30,6 +30,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
 import javax.faces.component.UIViewRoot;
@@ -53,13 +54,26 @@ public class usuarioController implements Serializable {
     @EJB
     private usuarioFacadeLocal ejbFacade;
     private List<usuario> items = null;
-    private usuario selected;
+   private List<usuario> deshabilitados = null;
+    private usuario selected;   
     private String passTemp;
     private Object fma;
     private boolean accepted = false;
 
     public boolean isAccepted() {
         return accepted;
+    }
+    
+    public List<usuario> deshabilitados(){
+        getItems();
+        List<usuario> deshabilitados= null;
+        for (usuario item :items){
+            if(item.getEstado()==null){
+                deshabilitados.add(item);
+            }
+            System.out.println("USUARIO");
+        }
+        return deshabilitados;
     }
 
     public void setAccepted(boolean accepted) {
@@ -554,6 +568,8 @@ public class usuarioController implements Serializable {
         if (items == null) {
             items = getFacade().findAll();
         }
+        
+       
         return items;
     }
 

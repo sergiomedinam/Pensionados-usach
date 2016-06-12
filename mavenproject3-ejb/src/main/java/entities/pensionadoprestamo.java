@@ -39,6 +39,17 @@ public class pensionadoprestamo implements Serializable {
     private String fecha_termino;
     private Integer cuotas;
     private Integer monto_total;
+    private Integer valor_cuota;
+
+    public Integer getValor_cuota() {
+        return valor_cuota;
+    }
+
+    public void setValor_cuota(Integer valor_cuota) {
+        this.valor_cuota = valor_cuota;
+    }
+    
+    
 
     public pensionado getPensionado() {
         return pensionado;
