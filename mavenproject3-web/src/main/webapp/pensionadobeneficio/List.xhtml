@@ -17,7 +17,7 @@
             <p:breadCrumb > 
                 <p:menuitem value="Inicio" url="#" />
                 <p:menuitem value="Inicio" url="/" />
-                <p:menuitem value="Beneficios" url="/faces/pensionadobeneficio/List.xhtml" />
+                <p:menuitem value="Beneficiados" url="/faces/pensionadobeneficio/List.xhtml" />
             </p:breadCrumb>
                 <section class="content-header">
                     <h1>
@@ -37,7 +37,7 @@
             <br/>
             
             <h:form id="pensionadobeneficioListForm">
-                <p:panel header="LISTA DE BENEFICIOS">
+                <p:panel header="LISTA DE BENEFICIADOS">
                     <p:dataTable id="datalist" value="#{pensionadobeneficioController.items}" var="item"
                                  selectionMode="single" selection="#{pensionadobeneficioController.selected}"
                                  paginator="true"

@@ -53,8 +53,24 @@
                           </ul>
                         </li>
               
-                      <li><a href="#">Préstamos</a></li> 
-                      <li><a href="#{request.contextPath}/faces/pensionadobeneficio/List.xhtml">Beneficios</a></li>
+                        <li class="dropdown">
+                          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Préstamos
+                          <span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="#{request.contextPath}/faces/prestamo/List.xhtml">Préstamos</a></li>
+                            <li><a href="#{request.contextPath}/faces/pensionadoprestamo/List.xhtml">Préstamos Realizados</a></li>
+                          </ul>
+                        </li>
+                        
+                        <li class="dropdown">
+                          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Beneficios
+                          <span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="#{request.contextPath}/faces/beneficio/List.xhtml">Beneficios</a></li>
+                            <li><a href="#{request.contextPath}/faces/pensionadobeneficio/List.xhtml">Beneficiados</a></li>
+                          </ul>
+                        </li>
+                    
                       <li><a href="#{request.contextPath}/faces/cargas/List.xhtml">Seguros</a></li>
                       <li><a href="#{request.contextPath}/faces/pago/List.xhtml">Pagos</a></li>
                     

@@ -1,0 +1,88 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>FP Usach | Sistema de administración de pensionados</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+        <link rel="stylesheet" href="http://localhost:8080/mavenproject3-web/resources/font-awesome/css/font-awesome.min.css"/>
+        <!-- Bootstrap Core CSS -->
+        <link href="http://localhost:8080/mavenproject3-web/resources/css/bootstrap.min.css" rel="stylesheet"/>
+        <script>
+            function check() {
+                var message = document.getElementById("form:input");
+                if (confirm("Are you sure sending message " + message.value + " !")) {
+                    return true;
+                }
+                return false;
+            }
+        </script>
+    </h:head>
+    <h:body>
+        <div class="jumbotron vertical-center">
+            <p:growl id="growl" showDetail="true" showSummary="true" autoUpdate="true" />
+            <div class="container">
+                <div class="container" align="center">
+                    <h2>Sistema de Funcionarios Pensionados</h2>
+                    <h3>USACH</h3>
+                    <div class="col-md-6 col-md-offset-3" >                        
+                        <h:form id="form2">
+                            <f:event listener="#{usuarioController.validaFormContr}" type="preValidate" />
+                            <f:event listener="#{usuarioController.vaciaFormContr}" type="preValidate" />
+                            <h:panelGroup rendered="#{not usuarioController.accepted}">
+                                <div class="form-group row">
+                                    <div align="left">
+                                        <h:outputLabel for="Nombre" class="col-sm-2 form-control-label" value="Nombre"/>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <h:inputText id="Nombre" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div align="left">
+                                        <h:outputLabel for="Rut" class="col-sm-2 form-control-label" value="Rut"/>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <h:inputText id="Rut" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div align="left">
+                                        <h:outputLabel for="Correo" class="col-sm-2 form-control-label" value="Correo"/>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <h:inputText id="Correo" class="form-control" />
+                                    </div>
+                                </div>
+                            </h:panelGroup>
+                            <h:panelGroup id="exito" rendered="#{usuarioController.accepted}" >
+                                <div align="left">
+                                    <h3>Su solicitud fue enviada exitosamente. Favor epere la respuesta del administrador</h3>
+                                </div>
+                            </h:panelGroup>
+                            <div class="form-group row">
+                                <div class="col-sm-offset-2 col-sm-10" vertical-align="middle" align="left">
+                                    <h:panelGroup rendered="#{ not usuarioController.accepted}" >
+                                        <h:commandButton styleClass="btn btn-primary" actionListener="#{usuarioController.submitSolicitud()}" value="Enviar Formulario"  />
+                                        <h:button styleClass="btn btn-secondary"  value="Reiniciar" />
+                                        <h:button styleClass="btn btn-warning" value="Volver" outcome="index"/>
+                                    </h:panelGroup>                                    
+                                </div>                                
+                            </div>
+                        </h:form>
+                        <h:form>
+                            <h:panelGroup rendered="#{usuarioController.accepted}">
+                                <div align="left">
+                                    <h:commandButton styleClass="btn btn-primary" action="#{usuarioController.resetForm()}" value="Reiniciar formulario"/>
+                                    <h:button styleClass="btn btn-warning" value="Volver" outcome="index"/>
+                                </div> 
+                            </h:panelGroup>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </h:body>
+</html>

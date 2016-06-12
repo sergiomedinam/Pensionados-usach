@@ -73,32 +73,6 @@ public class prestamoTest {
     }
 
     /**
-     * Test of getTotal_prestamo method, of class prestamo.
-     */
-    @Test
-    public void testGetTotal_prestamo() {
-        System.out.println("getTotal_prestamo");
-        prestamo instance = new prestamo();
-        String expResult = "asdas";
-        instance.setTotal_prestamo(expResult);
-        String result = instance.getTotal_prestamo();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-    }
-
-    /**
-     * Test of setTotal_prestamo method, of class prestamo.
-     */
-    @Test
-    public void testSetTotal_prestamo() {
-        System.out.println("setTotal_prestamo");
-        String total_prestamo = "asdsad";
-        prestamo instance = new prestamo();
-        instance.setTotal_prestamo(total_prestamo);
-        // TODO review the generated test code and remove the default call to fail.
-    }
-
-    /**
      * Test of getCuotas_prestamo method, of class prestamo.
      */
     @Test
@@ -121,32 +95,6 @@ public class prestamoTest {
         Integer cuotas_prestamo = 123;
         prestamo instance = new prestamo();
         instance.setCuotas_prestamo(cuotas_prestamo);
-        // TODO review the generated test code and remove the default call to fail.
-    }
-
-    /**
-     * Test of getInteres_prestamo method, of class prestamo.
-     */
-    @Test
-    public void testGetInteres_prestamo() {
-        System.out.println("getInteres_prestamo");
-        prestamo instance = new prestamo();
-        String expResult = "test";
-        instance.setInteres_prestamo(expResult);
-        String result = instance.getInteres_prestamo();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-    }
-
-    /**
-     * Test of setInteres_prestamo method, of class prestamo.
-     */
-    @Test
-    public void testSetInteres_prestamo() {
-        System.out.println("setInteres_prestamo");
-        String interes_prestamo = "asdsad";
-        prestamo instance = new prestamo();
-        instance.setInteres_prestamo(interes_prestamo);
         // TODO review the generated test code and remove the default call to fail.
     }
 

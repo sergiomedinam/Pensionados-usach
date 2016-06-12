@@ -24,6 +24,7 @@
                         
                         <p:outputLabel value="#{bundle.CreatepensionadobeneficioLabel_beneficio}" for="beneficio" />
                         <p:selectOneMenu id="beneficio" required="true" requiredMessage="Se necesita un beneficio." style="width:155px" filter="true" filterMatchMode="contains" value="#{pensionadobeneficioController.selected.beneficio}" >
+                            <p:ajax  update="monto"/>
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{beneficioController.itemsAvailableSelectOne}"
                                            var="beneficioItem"
@@ -33,7 +34,7 @@
                         
                         <p:outputLabel value="#{bundle.CreatepensionadobeneficioLabel_monto}" for="monto" />
                         <p:inputText id="monto" required="true" requiredMessage="Se necesita un monto." value="#{pensionadobeneficioController.selected.monto}" title="#{bundle.CreatepensionadobeneficioTitle_monto}" >
-                            <f:validateLongRange minimum="0" />
+                            <f:validateLongRange minimum="0" maximum="#{pensionadobeneficioController.selected.beneficio.monto_max_beneficio}"/>
                         </p:inputText>
                         
                         <p:outputLabel value="Fecha beneficio" for="fecha_beneficio" />
