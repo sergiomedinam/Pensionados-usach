@@ -12,20 +12,37 @@
             <h:form id="pensionadoprestamoViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{pensionadoprestamoController.selected != null}">
-                        <h:outputText value="#{bundle.ViewpensionadoprestamoLabel_pensionado}"/>
-                        <h:outputText value="#{pensionadoprestamoController.selected.pensionado}" title="#{bundle.ViewpensionadoprestamoTitle_pensionado}"/>
+                        <h:outputText value="Rut:"/>
+                        <h:outputText value="#{pensionadoprestamoController.selected.pensionado.rut_pensionado}" title="Rut"/>
+                        
+                        <h:outputText value="Nombre:"/>
+                        <h:outputText value="#{pensionadoprestamoController.selected.pensionado.nombre_pensionado}
+                                             #{pensionadoprestamoController.selected.pensionado.apellido_p_pensionado}
+                                             #{pensionadoprestamoController.selected.pensionado.apellido_m_pensionado}" 
+                                             title="Nombre" />
+                        
                         <h:outputText value="#{bundle.ViewpensionadoprestamoLabel_prestamo}"/>
-                        <h:outputText value="#{pensionadoprestamoController.selected.prestamo}" title="#{bundle.ViewpensionadoprestamoTitle_prestamo}"/>
+                        <h:outputText value="#{pensionadoprestamoController.selected.prestamo.nombre_prestamo}" title="#{bundle.ViewpensionadoprestamoTitle_prestamo}"/>
+
+                        <h:outputText value="Monto pedido:"/>
+                        <h:outputText value="$ #{pensionadoprestamoController.selected.monto_total}" title="Monto pedido"/>
+
+                        <h:outputText value="Plazo:"/>
+                        <h:outputText value="#{pensionadoprestamoController.selected.cuotas} MESES" title="Plazo"/>
+
+
+                        <h:outputText value="Valor cuota:"/>
+                        <h:outputText value="$ #{pensionadoprestamoController.selected.valor_cuota}" title="Valor cuota"/>
+
+                        <h:outputText value="Valor total préstamo:"/>
+                        <h:outputText value="$ #{pensionadoprestamoController.selected.valor_cuota * pensionadoprestamoController.selected.cuotas}" title="Valor total"/>
+                        
                         <h:outputText value="#{bundle.ViewpensionadoprestamoLabel_fecha_pedido}"/>
                         <h:outputText value="#{pensionadoprestamoController.selected.fecha_pedido}" title="#{bundle.ViewpensionadoprestamoTitle_fecha_pedido}"/>
+
                         <h:outputText value="#{bundle.ViewpensionadoprestamoLabel_fecha_termino}"/>
                         <h:outputText value="#{pensionadoprestamoController.selected.fecha_termino}" title="#{bundle.ViewpensionadoprestamoTitle_fecha_termino}"/>
-                        <h:outputText value="#{bundle.ViewpensionadoprestamoLabel_cuotas}"/>
-                        <h:outputText value="#{pensionadoprestamoController.selected.cuotas}" title="#{bundle.ViewpensionadoprestamoTitle_cuotas}"/>
-                        <h:outputText value="#{bundle.ViewpensionadoprestamoLabel_monto_total}"/>
-                        <h:outputText value="#{pensionadoprestamoController.selected.monto_total}" title="#{bundle.ViewpensionadoprestamoTitle_monto_total}"/>
-                        <h:outputText value="#{bundle.ViewpensionadoprestamoLabel_id}"/>
-                        <h:outputText value="#{pensionadoprestamoController.selected.id}" title="#{bundle.ViewpensionadoprestamoTitle_id}"/>
+                        
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="pensionadoprestamoViewDialog.hide()"/>
                 </h:panelGroup>
