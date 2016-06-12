@@ -16,7 +16,9 @@
                         <h:outputText value="Nombre préstamo:"/>
                         <h:outputText value="#{prestamoController.selected.nombre_prestamo}" title="#{bundle.ViewprestamoTitle_nombre_prestamo}"/>
                         <h:outputText value="Monto máximo:"/>
-                        <h:outputText value="#{prestamoController.selected.monto_max_prestamo}" title="Monto máximo"/>
+                        <h:outputText value="$ #{prestamoController.selected.monto_max_prestamo}" title="Monto máximo"/>
+                        <h:outputText value="Plazo máximo:"/>
+                        <h:outputText value="#{prestamoController.selected.cuotas_prestamo} MESES" title="Plazo máximo"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="prestamoViewDialog.hide()"/>
                 </h:panelGroup>

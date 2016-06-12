@@ -66,6 +66,13 @@
                             </f:facet>
                             <h:outputText value="$ #{item.monto_max_prestamo}"/>
                         </p:column>
+                        <p:column id="plazo" sortBy="#{item.cuotas_prestamo}" >
+                            <f:facet name="header">
+                                <h:outputText value="Plazo máximo"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cuotas_prestamo} MESES"/>
+                        </p:column>
+                        
                         <f:facet name="footer">
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":prestamoViewForm" oncomplete="PF('prestamoViewDialog').show()" disabled="#{empty prestamoController.selected}"/>
                             <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":prestamoEditForm" oncomplete="PF('prestamoEditDialog').show()" disabled="#{empty prestamoController.selected}"/>
