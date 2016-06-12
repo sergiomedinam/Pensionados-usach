@@ -87,11 +87,17 @@
                             </f:facet>
                             <h:outputText value="$ #{item.monto_total}"/>
                         </p:column>
-                        <p:column id="plazo" sortBy="#{item.cuotas}">
+                        <p:column id="plazo" sortBy="#{item.cuotas}" style="width: 80px;">
                             <f:facet name="header">
                                 <h:outputText value="Plazo"/>
                             </f:facet>
                             <h:outputText value="#{item.cuotas} MESES"/>
+                        </p:column>
+                        <p:column id="fecha" sortBy="#{item.fecha_pedido}" style="width: 80px;" >
+                            <f:facet name="header">
+                                <h:outputText value="Fecha Pedido"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecha_pedido}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{pensionadoprestamoController.prepareCreate}" update=":pensionadoprestamoCreateForm" oncomplete="PF('pensionadoprestamoCreateDialog').show()"/>
