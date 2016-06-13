@@ -18,14 +18,14 @@
                         <p:outputLabel value="Causal" for="causal" />
                         <p:selectOneMenu id="causal" required="true" requiredMessage="Se necesita una causal de deshabilitación" value="#{pensionadoController.selected.causal}" style="width:125px">
                             <f:selectItem itemLabel="Selecciona una causal" itemValue="" />
-                            <f:selectItem itemLabel="Fallecimiento" itemValue="Fallecimiento" />
-                            <f:selectItem itemLabel="Desafiliación" itemValue="Desafiliación" />
-                            <f:selectItem itemLabel="Renuncia" itemValue="Renuncia" />
-                            <f:selectItem itemLabel="Otro" itemValue="Otro" />
+                            <f:selectItem itemLabel="FALLECIMIENTO" itemValue="FALLECIMIENTO" />
+                            <f:selectItem itemLabel="DESAFILIACIÓN" itemValue="DESAFILIACIÓN" />
+                            <f:selectItem itemLabel="RENUNCIA" itemValue="RENUNCIA" />
+                            <f:selectItem itemLabel="OTRO" itemValue="OTRO" />
                         </p:selectOneMenu>
                         <p:outputLabel value="Estado a modificar" for="estado" />      
                         <p:selectOneMenu id="estado" required="true" requiredMessage="Se necesita un estado de pensionado" value="#{pensionadoController.selected.estado}"   style="width:125px">
-                            <f:selectItem itemLabel="Deshabilitado" itemValue="Deshabilitado" />
+                            <f:selectItem itemLabel="DESHABILITADO" itemValue="DESHABILITADO" />
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{pensionadoController.update}" value="Deshabilitar" update="display,:pensionadoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'pensionadoEditDialog1');"/>

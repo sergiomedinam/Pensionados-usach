@@ -23,8 +23,10 @@
                 <section class="content-header">
                         <h1>Pensionado: #{pensionadoController.selected.nombre_pensionado} #{pensionadoController.selected.apellido_p_pensionado}
                         <small>Panel administrador</small>
-                        <p:commandButton id="editButton1"   icon="ui-icon-circle-close" value="Deshabilitar" update=":pensionadoEditForm1" oncomplete="PF('pensionadoEditDialog1').show()"/>
-                            
+                        <br/>
+                        <c:if test="${pensionadoController.selected.estado.equals('HABILITADO')}" >
+                            <p:commandButton id="editButton1"   icon="ui-icon-circle-close" value="Deshabilitar" update=":pensionadoEditForm1" oncomplete="PF('pensionadoEditDialog1').show()"/>
+                        </c:if>    
                       <p:dialog id="pensionadoEditDlg1" widgetVar="pensionadoEditDialog1" modal="true" resizable="false" appendTo="@(body)" header="Deshabilitar Pensionado del Sistema">
                             <h:form id="pensionadoEditForm1">
                                 <p:growl id="growl" showDetail="true" showSummary="true" autoUpdate="true" />  
@@ -32,16 +34,17 @@
                                     <p:panelGrid columns="2" rendered="#{pensionadoController.selected != null}">
 
 
-                                        <p:outputLabel value="Causal" for="causal" />
-                                        <p:selectOneMenu id="causal" required="true" requiredMessage="Se necesita una causal de deshabilitación" value="#{pensionadoController.selected.causal}" style="width:125px">
-                                            <f:selectItem itemLabel="Selecciona una causal" itemValue="" />
-                                            <f:selectItem itemLabel="Fallecimiento" itemValue="Fallecimiento" />
-                                            <f:selectItem itemLabel="Desafiliación" itemValue="Desafiliación" />
-                                            <f:selectItem itemLabel="Otro" itemValue="Otro" />
+                                        <p:outputLabel value="Causal:" for="causal" />
+                                        <p:selectOneMenu id="causal" required="true" requiredMessage="Se necesita una causal de deshabilitación" value="#{pensionadoController.selected.causal}" style="width:155px">
+                                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
+                                            <f:selectItem itemLabel="FALLECIMIENTO" itemValue="FALLECIMIENTO" />
+                                            <f:selectItem itemLabel="DESAFILIACIÓN" itemValue="DESAFILIACIÓN" />
+                                            <f:selectItem itemLabel="RENUNCIA" itemValue="RENUNCIA" />
+                                            <f:selectItem itemLabel="OTRO" itemValue="OTRO" />
                                         </p:selectOneMenu>
-                                        <p:outputLabel value="Estado a modificar" for="estado" />      
-                                        <p:selectOneMenu id="estado" required="true" requiredMessage="Se necesita un estado de pensionado" value="#{pensionadoController.selected.estado}"   style="width:125px">
-                                            <f:selectItem itemLabel="Deshabilitado" itemValue="Deshabilitado" />
+                                        <p:outputLabel value="Estado a modificar:" for="estado" />      
+                                        <p:selectOneMenu id="estado" required="true" requiredMessage="Se necesita un estado de pensionado" value="#{pensionadoController.selected.estado}"   style="width:155px">
+                                            <f:selectItem itemLabel="DESHABILITADO" itemValue="DESHABILITADO" />
                                         </p:selectOneMenu>
                                     </p:panelGrid>
                                     <p:commandButton actionListener="#{pensionadoController.update}" value="Deshabilitar" update="growl" oncomplete="handleSubmit(args, 'pensionadoEditDialog1');"/>
@@ -197,7 +200,7 @@
                                 <div class="icon">
                                     <i class="ion ion-person-add"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
+                                <a href="#prestamosPensionado" data-toggle="collapse" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <div class="col-md-6" >
@@ -331,14 +334,64 @@
                 </div>
             </div>
             
-            
+        <div id="prestamosPensionado" class=" collapse">
+            <div class="panel panel-default">
+            <h:form id="pensionadoprestamoListForm">
+                <p:panel header="LISTA DE PRÉSTAMOS DEL PENSIONADO">
+                    <p:dataTable id="datalist" value="#{pensionadoprestamoController.PrestamosPensionados(pensionadoController.selected.rut_pensionado)}" var="item"
+                                 selectionMode="single" selection="#{pensionadoprestamoController.selected}"
+                                 paginator="false"
+                                 rowKey="#{item.id}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 emptyMessage="No hay resultados."
+                                 >
+
+                        <p:column id="rut" >
+                            <f:facet name="header">
+                                <h:outputText value="Rut"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pensionado.rut_pensionado}"/>
+                        </p:column>
+                        <p:column   id="nombre" >
+                            <f:facet name="header">
+                                <h:outputText value="Nombre"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pensionado.nombre_pensionado} #{item.pensionado.apellido_p_pensionado} #{item.pensionado.apellido_m_pensionado}"/>
+                        </p:column>
+                        <p:column id="prestamo" >
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListpensionadoprestamoTitle_prestamo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.prestamo.nombre_prestamo}"/>
+                        </p:column>
+                        <p:column id="monto" >
+                            <f:facet name="header">
+                                <h:outputText value="Monto pedido"/>
+                            </f:facet>
+                            <h:outputText value="$ #{item.monto_total}"/>
+                        </p:column>
+                        <p:column id="plazo" style="width: 80px;" >
+                            <f:facet name="header">
+                                <h:outputText value="Plazo"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cuotas} MESES"/>
+                        </p:column>
+                        <p:column id="fecha" style="width: 80px;" >
+                            <f:facet name="header">
+                                <h:outputText value="Fecha Pedido"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecha_pedido}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+            </div>
+        </div>
      
-                
-                
-                
-                
-                
-                
+
                 <div id="beneficiosPensionado" class=" collapse">
                 <div class="panel panel-default">
                 
@@ -392,58 +445,7 @@
             </div>
         </div>
                 
-                <h:form id="pensionadoprestamoListForm">
-                <p:panel header="LISTA DE PRÉSTAMOS DEL PENSIONADO">
-                    <p:dataTable id="datalist" value="#{pensionadoprestamoController.PrestamosPensionados(pensionadoController.selected.rut_pensionado)}" var="item"
-                                 selectionMode="single" selection="#{pensionadoprestamoController.selected}"
-                                 paginator="false"
-                                 rowKey="#{item.id}"
-                                 rows="10"
-                                 rowsPerPageTemplate="10,20,30,40,50"
-                                 emptyMessage="No hay resultados."
-                                 >
-
-                        <p:column id="rut" >
-                            <f:facet name="header">
-                                <h:outputText value="Rut"/>
-                            </f:facet>
-                            <h:outputText value="#{item.pensionado.rut_pensionado}"/>
-                        </p:column>
-                        <p:column   id="nombre" >
-                            <f:facet name="header">
-                                <h:outputText value="Nombre"/>
-                            </f:facet>
-                            <h:outputText value="#{item.pensionado.nombre_pensionado} #{item.pensionado.apellido_p_pensionado} #{item.pensionado.apellido_m_pensionado}"/>
-                        </p:column>
-                        <p:column id="prestamo" >
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoprestamoTitle_prestamo}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.prestamo.nombre_prestamo}"/>
-                        </p:column>
-                        <p:column id="monto" >
-                            <f:facet name="header">
-                                <h:outputText value="Monto pedido"/>
-                            </f:facet>
-                            <h:outputText value="$ #{item.monto_total}"/>
-                        </p:column>
-                        <p:column id="plazo" style="width: 80px;" >
-                            <f:facet name="header">
-                                <h:outputText value="Plazo"/>
-                            </f:facet>
-                            <h:outputText value="#{item.cuotas} MESES"/>
-                        </p:column>
-                        <p:column id="fecha" style="width: 80px;" >
-                            <f:facet name="header">
-                                <h:outputText value="Fecha Pedido"/>
-                            </f:facet>
-                            <h:outputText value="#{item.fecha_pedido}"/>
-                        </p:column>
-                        <f:facet name="footer">
-                        </f:facet>
-                    </p:dataTable>
-                </p:panel>
-            </h:form>
+                
                 
         </ui:define> 
         </ui:composition>
