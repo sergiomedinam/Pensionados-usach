@@ -38,7 +38,7 @@ public class pensionadoController implements Serializable {
 
     private String causal;
     @Inject
-    private parametrosController paraController;
+    private parametrosController parametrosController;
     @Inject
     private cargasController cargasController;
     @Inject
@@ -214,7 +214,7 @@ public class pensionadoController implements Serializable {
                 aporte = item.getAporte();
             }
         }
-        List<parametros> parametros = paraController.getItems();
+        List<parametros> parametros = parametrosController.getItems();
         for (parametros parametro : parametros) {
             if (parametro.getId() == 1) {
                 aporte_institucional = parametro.getAporte_institucional();
