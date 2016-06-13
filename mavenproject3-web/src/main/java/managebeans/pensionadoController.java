@@ -149,6 +149,19 @@ public class pensionadoController implements Serializable {
         }
         return items;
     }
+
+    
+    public List<pensionado> getHabilitados() {
+        getItems();
+        List<pensionado> habilitados = new ArrayList<pensionado>();
+        for (pensionado item : items) {
+            if (item.getEstado().equals("HABILITADO")) {
+                habilitados.add(item);
+                System.out.println(item.getRut_pensionado());
+            }
+        }
+        return habilitados;
+    }
     
     public int porcentajeBeneficios(){
         getItems();
