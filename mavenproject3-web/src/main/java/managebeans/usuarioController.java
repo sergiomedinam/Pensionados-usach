@@ -626,8 +626,6 @@ public class usuarioController implements Serializable {
     public void submitSolicitud(){
         System.out.println("soy submit");
         accepted = true;
-        FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Exito",  "Se envio el correo a la dirección indicada") );
     }
     
     public void resetForm(){
