@@ -23,7 +23,7 @@
             </p:breadCrumb>
                 <section class="content-header">
                     <h1>
-                      Funcionarios Pensionados  
+                      Pensionados  
                       <small>Panel de administrador</small> <a href="#demo" data-toggle="collapse" class="btn btn-info">Informacion</a>
 
                     </h1>
@@ -102,6 +102,15 @@
                             </c:if>
                         </f:facet>
                     </p:dataTable>
+                    <br></br>
+                    <br></br>
+                    <p:fieldset legend="Resumen">
+                        <h:outputText  class="center" value="Existen "/>
+                        <h:outputText class="center" value="#{pensionadoController.habilitados.size()}"/>
+                        <h:outputText class="center" value=" pensionados habilitados y "/>
+                        <h:outputText class="center" value="#{pensionadoController.items.size() - pensionadoController.habilitados.size()}"/>
+                        <h:outputText class="center" value=" pensionados deshabilitados en el sistema."/>
+                    </p:fieldset>
                 </p:panel>
             </h:form>
 
