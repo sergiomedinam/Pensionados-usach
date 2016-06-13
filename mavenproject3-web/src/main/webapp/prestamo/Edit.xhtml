@@ -15,8 +15,15 @@
                       
                         <p:outputLabel value="Nombre préstamo:" />
                         <p:outputLabel value="#{prestamoController.selected.nombre_prestamo}" title="Nombre préstamo" />
-                        <p:outputLabel value="Monto máximo" for="monto" />
-                        <p:inputText id="monto" required="true" requiredMessage="Se necesita un monto máximo para el préstamo." value="#{prestamoController.selected.monto_max_prestamo}" title="Monto máximo" />
+                        <p:outputLabel value="Monto máximo:" for="monto" />
+                        <p:inputText id="monto" required="true" requiredMessage="Se necesita un monto máximo para el préstamo." value="#{prestamoController.selected.monto_max_prestamo}" title="Monto máximo" >
+                            <f:validateLongRange minimum="0"/>
+                        </p:inputText>
+                        <p:outputLabel value="Plazo máximo:" for="plazo" />
+                        <p:inputText id="plazo" required="true" requiredMessage="Se necesita un plazo máximo para el préstamo." value="#{prestamoController.selected.cuotas_prestamo}" title="Plazo máximo" >
+                            <f:validateLongRange minimum="0"/>
+                        </p:inputText>
+                        
                     </p:panelGrid>
                     <p:commandButton actionListener="#{prestamoController.update}" value="#{bundle.Save}" update="display,:prestamoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'prestamoEditDialog');"/>
                 </h:panelGroup>

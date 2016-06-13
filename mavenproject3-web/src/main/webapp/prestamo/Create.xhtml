@@ -15,16 +15,10 @@
                         
                         <p:outputLabel value="#{bundle.CreateprestamoLabel_nombre_prestamo}" for="nombre_prestamo" />
                         <p:inputText id="nombre_prestamo" value="#{prestamoController.selected.nombre_prestamo}" title="#{bundle.CreateprestamoTitle_nombre_prestamo}" />
-                        <p:outputLabel value="#{bundle.CreateprestamoLabel_total_prestamo}" for="total_prestamo" />
-                        <p:inputText id="total_prestamo" value="#{prestamoController.selected.total_prestamo}" title="#{bundle.CreateprestamoTitle_total_prestamo}" />
                         <p:outputLabel value="monto maximo" for="monto_max_prestamo" />
                         <p:inputText id="monto_max_prestamo" value="#{prestamoController.selected.monto_max_prestamo}" title="monto maximo" />
                         <p:outputLabel value="#{bundle.CreateprestamoLabel_cuotas_prestamo}" for="cuotas_prestamo" />
                         <p:inputText id="cuotas_prestamo" value="#{prestamoController.selected.cuotas_prestamo}" title="#{bundle.CreateprestamoTitle_cuotas_prestamo}" />
-                        <p:outputLabel value="#{bundle.CreateprestamoLabel_interes_prestamo}" for="interes_prestamo" />
-                        <p:inputText id="interes_prestamo" value="#{prestamoController.selected.interes_prestamo}" title="#{bundle.CreateprestamoTitle_interes_prestamo}" />
-                        <p:outputLabel value="#{bundle.CreateprestamoLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{prestamoController.selected.id}" title="#{bundle.CreateprestamoTitle_id}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{prestamoController.create}" value="#{bundle.Save}" update="display,:prestamoListForm:datalist,:growl" oncomplete="handleSubmit(args,'prestamoCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="prestamoCreateDialog.hide()"/>

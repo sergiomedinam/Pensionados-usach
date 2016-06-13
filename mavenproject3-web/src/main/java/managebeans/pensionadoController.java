@@ -99,6 +99,7 @@ public class pensionadoController implements Serializable {
     }
 
     public void create() {
+        selected.setEstado("HABILITADO");
         String texto = selected.getRut_pensionado();
         boolean alphaA = texto.matches("[0-9]{1}.[0-9]{3}.[0-9]{3}-[0-9kK]{1}");
         boolean alphaB = texto.matches("[0-9]{2}.[0-9]{3}.[0-9]{3}-[0-9kK]{1}");
@@ -148,6 +149,19 @@ public class pensionadoController implements Serializable {
         }
         return items;
     }
+
+    
+    public List<pensionado> getHabilitados() {
+        getItems();
+        List<pensionado> habilitados = new ArrayList<pensionado>();
+        for (pensionado item : items) {
+            if (item.getEstado().equals("HABILITADO")) {
+                habilitados.add(item);
+                System.out.println(item.getRut_pensionado());
+            }
+        }
+        return habilitados;
+    }
     
     public int porcentajeBeneficios(){
         getItems();
@@ -166,8 +180,8 @@ public class pensionadoController implements Serializable {
     
     public List<pensionado> PensionadosComuna(String Comuna) {
         List<pensionado> perteneceComuna = new ArrayList<pensionado>();
-        getItems();
-        for (pensionado item : items) {
+        List<pensionado> habilitados = getHabilitados();
+        for (pensionado item : habilitados) {
             if (item.getComuna().equals(Comuna)){
                     perteneceComuna.add(item);          
             }
@@ -177,8 +191,8 @@ public class pensionadoController implements Serializable {
     
     public List<pensionado> PensionadosRegion(String Region) {
         List<pensionado> perteneceRegion = new ArrayList<pensionado>();
-        getItems();
-        for (pensionado item : items) {
+        List<pensionado> habilitados = getHabilitados();
+        for (pensionado item : habilitados) {
             if (item.getRegion().equals(Region)){
                     perteneceRegion.add(item);          
             }
