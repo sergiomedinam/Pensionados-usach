@@ -18,7 +18,7 @@
                         <p:selectOneMenu id="pensionado" required="true" requiredMessage="Se requiere un pensionado" filter="true" filterMatchMode="contains" value="#{pagoController.selected.pensionado}" style="width:155px">
                             <p:ajax  update="cat,vi,hosp,ap,ot,prest,pago"/>
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
-                            <f:selectItems value="#{pensionadoController.itemsAvailableSelectOne}"
+                            <f:selectItems value="#{pensionadoController.habilitados}"
                                            var="pensionadoItem"
                                            itemLabel="#{pensionadoItem.rut_pensionado}"
                                            itemValue="#{pensionadoItem}"/>
