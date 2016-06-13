@@ -1,6 +1,7 @@
 package managebeans;
 
 import entities.pensionado;
+import entities.parametros;
 import managebeans.util.JsfUtil;
 import managebeans.util.JsfUtil.PersistAction;
 import sessionsbeans.pensionadoFacadeLocal;
@@ -36,6 +37,8 @@ public class pensionadoController implements Serializable {
     private String estado;
 
     private String causal;
+    @Inject
+    private parametrosController paraController;
     @Inject
     private cargasController cargasController;
     @Inject
@@ -203,13 +206,22 @@ public class pensionadoController implements Serializable {
     
     public int Aporte(String rut){
         int aporte = 0;
+        int aporte_institucional = 0;
+        int total = 0;
         getItems();
         for(pensionado item : items){
             if (item.getRut_pensionado().equals(rut)) {
                 aporte = item.getAporte();
             }
         }
-        return aporte;
+        List<parametros> parametros = paraController.getItems();
+        for (parametros parametro : parametros) {
+            if (parametro.getId() == 1) {
+                aporte_institucional = parametro.getAporte_institucional();
+            }
+        }
+        total = aporte + aporte_institucional;
+        return total;
     }
     
     public float Total(String rut,boolean cat,boolean vida,boolean hosp,boolean aporte,boolean otros,boolean prest,float valor_otros){
