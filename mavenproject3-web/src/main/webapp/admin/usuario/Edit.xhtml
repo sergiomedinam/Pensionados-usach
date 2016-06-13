@@ -39,7 +39,11 @@
                         <p:outputLabel value="#{bundle.EditusuarioLabel_contrasena}" for="contrasena" />
                         <p:password id="contrasena" required="true" requiredMessage="Se necesita contraseña" value="#{usuarioController.selected.contrasena}" title="#{bundle.CreateusuarioTitle_contrasena}" />
                         
-                        
+                        <p:outputLabel value="Estado:" for="estado" />
+                        <p:selectOneMenu id="estado" required="true" requiredMessage="Seleccione estado de usuario." value="#{usuarioController.selected.estado}" style="width:155px" >
+                            <f:selectItem itemLabel="HABILITADO" itemValue="HABILITADO" />
+                            <f:selectItem itemLabel="DESHABILITADO" itemValue="DESHABILITADO" />
+                        </p:selectOneMenu>
                         
                         
                     </p:panelGrid>

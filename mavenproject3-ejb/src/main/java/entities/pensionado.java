@@ -45,7 +45,7 @@ public class pensionado implements Serializable {
     private Integer saldo = 0;
     
     @NotNull
-    private Integer monto_pension = 0;
+    private Integer monto_pension;
     
     @NotNull
     private String rut_pensionado;

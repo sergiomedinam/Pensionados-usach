@@ -63,21 +63,21 @@
                             </c:otherwise>
                         </c:choose>
                         
-                        <p:column headerText="Rut pensionado" filterMatchMode="contains" sortBy="#{item.rut_pensionado}">
+                        <p:column headerText="Rut pensionado" filterMatchMode="contains" >
                                 <f:facet name="header">
                                     <h:outputText value="#{bundle.ListpensionadoTitle_rut_pensionado}"/>
                                 </f:facet>
                             <h:outputText value="#{item.rut_pensionado}"/>
                         </p:column>
                         
-                        <p:column headerText="Nombre pensionado" filterMatchMode="contains" sortBy="#{item.nombre_pensionado} #{item.apellido_p_pensionado} #{item.apellido_m_pensionado}">
+                        <p:column headerText="Nombre pensionado" filterMatchMode="contains" >
                             <f:facet name="header">
                                 <h:outputText value="Nombres"/>
                             </f:facet>
                             <h:outputText value="#{item.nombre_pensionado} #{item.apellido_p_pensionado} #{item.apellido_m_pensionado}"/>
                         </p:column>
                         
-                        <p:column  filterBy="#{item.comuna} #{item.comuna.toLowerCase()}" filterStyle="width:200px;" id="comuna" headerText="Comuna" filterMatchMode="contains" sortBy="#{item.comuna}">
+                        <p:column  filterBy="#{item.comuna} #{item.comuna.toLowerCase()}" filterStyle="width:200px;" id="comuna" headerText="Comuna" filterMatchMode="contains" >
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListpensionadoTitle_comuna}"/>
                                 <p:watermark for="comuna" value="Buscar Comuna" />
@@ -85,7 +85,7 @@
                             <h:outputText value="#{item.comuna}"/>
                         </p:column>
                         
-                        <p:column filterBy="#{item.region} #{item.region.toLowerCase()}" id="region" headerText="Region" filterStyle="width:200px;" filterMatchMode="contains" sortBy="#{item.region}">
+                        <p:column filterBy="#{item.region} #{item.region.toLowerCase()}" id="region" headerText="Region" filterStyle="width:200px;" filterMatchMode="contains" >
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListpensionadoTitle_region}"/>
                                 <p:watermark for="region" value="Buscar Región"/>
