@@ -74,11 +74,9 @@
                             <f:facet name="header">
                                 <h:outputText value="Nombres"/>
                                 <p:watermark for="nombre" value="Buscar Nombre" />
-
                             </f:facet>
                             <h:outputText value="#{item.nombre_pensionado} "/>
                         </p:column>
-                       
                         <p:column filterBy="#{item.apellido_p_pensionado} #{item.apellido_p_pensionado.toLowerCase()} #{item.apellido_m_pensionado}  #{item.apellido_m_pensionado.toLowerCase()}" headerText="Apellido pensionado" id="apellido" filterStyle="width:200px;" filterMatchMode="contains" sortBy="#{item.apellido_p_pensionado} #{item.apellido_m_pensionado}">
                             <f:facet name="header">
                                 <h:outputText value="Apellidos"/>
@@ -86,9 +84,10 @@
                             </f:facet>
                             <h:outputText value="#{item.apellido_p_pensionado} #{item.apellido_m_pensionado}"/>
                         </p:column>
-                        <p:column headerText="Estado pensionado" id="estado" sortBy="#{item.estado}" style="width: 120px;" >
+                        <p:column headerText="Estado pensionado" id="estado" sortBy="#{item.estado}" style="width: 120px;" filterBy="#{item.estado.toLowerCase()} #{item.estado}" filterStyle="width:90px;" filterMatchMode="startsWith"  >
                             <f:facet name="header">
                                 <h:outputText value="Estado"/>
+                                <p:watermark for="estado" value="Buscar Estado" />
                             </f:facet>
                             <h:outputText value="#{item.estado}"/>
                         </p:column>
@@ -99,7 +98,7 @@
                             <c:if test="${ name_rol != rol }">   
                                 <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{pensionadoController.prepareCreate}" update=":pensionadoCreateForm" oncomplete="PF('pensionadoCreateDialog').show()"/>
                                 <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":pensionadoEditForm" oncomplete="PF('pensionadoEditDialog').show()" disabled="#{empty pensionadoController.selected}"/>
-                            </c:if>
+                            </c:if> 
                         </f:facet>
                     </p:dataTable>
                     <br></br>
