@@ -180,8 +180,8 @@ public class pensionadoController implements Serializable {
     
     public List<pensionado> PensionadosComuna(String Comuna) {
         List<pensionado> perteneceComuna = new ArrayList<pensionado>();
-        getItems();
-        for (pensionado item : items) {
+        List<pensionado> habilitados = getHabilitados();
+        for (pensionado item : habilitados) {
             if (item.getComuna().equals(Comuna)){
                     perteneceComuna.add(item);          
             }
@@ -191,8 +191,8 @@ public class pensionadoController implements Serializable {
     
     public List<pensionado> PensionadosRegion(String Region) {
         List<pensionado> perteneceRegion = new ArrayList<pensionado>();
-        getItems();
-        for (pensionado item : items) {
+        List<pensionado> habilitados = getHabilitados();
+        for (pensionado item : habilitados) {
             if (item.getRegion().equals(Region)){
                     perteneceRegion.add(item);          
             }
