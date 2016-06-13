@@ -74,6 +74,15 @@
             <web-resource-name>Protected General Area</web-resource-name>
             <description></description>
             
+            <url-pattern>/faces/NUEVOSCAMBIOS/*</url-pattern> 
+            <url-pattern>/NUEVOSCAMBIOS/*</url-pattern>
+            
+            <url-pattern>/faces/PAGOYPAGODETALLE/*</url-pattern> 
+            <url-pattern>/PAGOYPAGODETALLE/*</url-pattern>
+            
+            <url-pattern>/faces/PENSIONADO-PAGO/*</url-pattern> 
+            <url-pattern>/PENSIONADO-PAGO/*</url-pattern>
+            
             <url-pattern>/faces/beneficio/*</url-pattern> 
             <url-pattern>/beneficio/*</url-pattern>
             
