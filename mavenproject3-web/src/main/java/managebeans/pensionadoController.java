@@ -157,18 +157,17 @@ public class pensionadoController implements Serializable {
         for (pensionado item : items) {
             if (item.getEstado().equals("HABILITADO")) {
                 habilitados.add(item);
-                System.out.println(item.getRut_pensionado());
             }
         }
         return habilitados;
     }
     
     public int porcentajeBeneficios(){
-        getItems();
+        List<pensionado> habilitados = getHabilitados();
         int porcentaje = 0;
         float numeroBeneficiados = 0;
-        float numeroPensionados = getItems().size();
-        for (pensionado item : items) {
+        float numeroPensionados = habilitados.size();
+        for (pensionado item : habilitados) {
             if(pensionadobeneficioController.BeneficiosPensionados(item.getRut_pensionado()).size()>0){
                 numeroBeneficiados = numeroBeneficiados + 1;
             }
