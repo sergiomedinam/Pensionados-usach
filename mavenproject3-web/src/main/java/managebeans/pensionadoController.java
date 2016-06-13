@@ -100,6 +100,8 @@ public class pensionadoController implements Serializable {
 
     public void create() {
         selected.setEstado("HABILITADO");
+        int valor = selected.getMonto_pension() / 100;
+        selected.setAporte(valor);
         String texto = selected.getRut_pensionado();
         boolean alphaA = texto.matches("[0-9]{1}.[0-9]{3}.[0-9]{3}-[0-9kK]{1}");
         boolean alphaB = texto.matches("[0-9]{2}.[0-9]{3}.[0-9]{3}-[0-9kK]{1}");
