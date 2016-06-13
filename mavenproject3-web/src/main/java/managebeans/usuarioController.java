@@ -12,6 +12,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
@@ -54,7 +55,6 @@ public class usuarioController implements Serializable {
     @EJB
     private usuarioFacadeLocal ejbFacade;
     private List<usuario> items = null;
-   private List<usuario> deshabilitados = null;
     private usuario selected;   
     private String passTemp;
     private Object fma;
@@ -62,18 +62,6 @@ public class usuarioController implements Serializable {
 
     public boolean isAccepted() {
         return accepted;
-    }
-    
-    public List<usuario> deshabilitados(){
-        getItems();
-        List<usuario> deshabilitados= null;
-        for (usuario item :items){
-            if(item.getEstado()==null){
-                deshabilitados.add(item);
-            }
-            System.out.println("USUARIO");
-        }
-        return deshabilitados;
     }
 
     public void setAccepted(boolean accepted) {
@@ -566,12 +554,20 @@ public class usuarioController implements Serializable {
         }
     }
 
+    public List<usuario> getHabilitados() {
+        getItems();
+        List<usuario> habilitados = new ArrayList<usuario>();
+        for (usuario item : items) {
+            if (item.getEstado().equals("HABILITADO")) {
+                habilitados.add(item);
+            }
+        }
+        return habilitados;
+    }
     public List<usuario> getItems() {
         if (items == null) {
             items = getFacade().findAll();
         }
-        
-       
         return items;
     }
 
