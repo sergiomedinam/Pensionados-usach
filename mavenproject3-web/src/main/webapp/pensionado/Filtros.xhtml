@@ -42,7 +42,7 @@
             
             <h:form id="pensionadoListForm">
                 <p:panel header="#{bundle.ListpensionadoTitle}">
-                    <p:dataTable id="datalist" value="#{pensionadoController.items}" var="item"
+                    <p:dataTable id="datalist" value="#{pensionadoController.habilitados}" var="item"
                                  selectionMode="single" selection="#{pensionadoController.selected}"
                                  paginator="true"
                                  rowKey="#{item.id}"

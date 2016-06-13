@@ -40,7 +40,7 @@
             <h:form id="pensionadoListForm">
                 
                 <p:panel header="LISTA DE MOROSOS">
-                    <p:dataTable id="datalist" value="#{cuotaspagadasController.Morosos(pensionadoController.getHabilitados())}" var="item"
+                    <p:dataTable id="datalist" value="#{cuotaspagadasController.Morosos(pensionadoController.habilitados)}" var="item"
                                  selectionMode="single" selection="#{pensionadoController.selected}"
                                  paginator="true"
                                  rowKey="#{item.id}"
