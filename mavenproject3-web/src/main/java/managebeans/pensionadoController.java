@@ -131,6 +131,8 @@ public class pensionadoController implements Serializable {
     }
 
     public void update() {
+        int valor = selected.getMonto_pension() / 100;
+        selected.setAporte(valor);
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("pensionadoUpdated"));
     }
     
