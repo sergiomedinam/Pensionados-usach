@@ -140,6 +140,8 @@ public class usuarioController implements Serializable {
     }
 
     public void create() {
+        selected.setEstado("HABILITADO");
+        
         passTemp = encryptSHA256(selected.getContrasena());
         selected.setContrasena(passTemp);
         System.out.println(selected.getContrasena());
