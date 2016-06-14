@@ -93,6 +93,54 @@ public class pensionadoprestamoController implements Serializable {
         return Prestamos;
     }
     
+    public int valorPrestamos(String rut, String mes, String año){
+        System.out.println("******************************************");
+        System.out.println("rut_rec: "+rut);
+        int mesPagoprestamo;
+        int añoPagoprestamo;
+        if(!año.equals("")){
+            añoPagoprestamo = Integer.parseInt(año);
+        }else{
+            añoPagoprestamo = 0;
+        }
+        if(!mes.equals("")){
+            mesPagoprestamo = Integer.parseInt(mes);
+        }else{
+            mesPagoprestamo = 0;
+        }
+        System.out.println("mes_rec: "+mesPagoprestamo);
+        System.out.println("año_rec: "+añoPagoprestamo);
+        System.out.println("******************************************");
+        int total = 0;
+        getItems();
+        for (pensionadoprestamo item : items) {
+            if (item.getPensionado().getRut_pensionado().equals(rut)){
+                System.out.println("******************************************");
+                System.out.println("prestamo: "+item.getPrestamo().getNombre_prestamo());
+                System.out.println("va_Cuota: "+item.getValor_cuota());
+                System.out.println("f_inicio: "+item.getFecha_pedido());
+                System.out.println("fTermino: "+item.getFecha_termino());
+                int mesInicio = Integer.parseInt(item.getFecha_pedido().split("/")[0]);
+                int añoInicio = Integer.parseInt(item.getFecha_pedido().split("/")[1]);
+                int añoTermino = Integer.parseInt(item.getFecha_termino().split("/")[1]);
+                int nCuotas = item.getCuotas();
+                if((añoPagoprestamo>=añoInicio) &&(añoPagoprestamo<=añoTermino)){
+                    int diferencia = añoPagoprestamo - añoInicio;
+                    int valorAyuda = nCuotas + mesInicio - 1;
+                    int valorComparar = diferencia*12 + mesPagoprestamo;
+                    if(valorAyuda>=valorComparar && valorComparar>=mesInicio){
+                        total = total + item.getValor_cuota();
+                        System.out.println("> SE DEBE PAGAR<");
+                    }
+                    else{System.out.println("> NO SE DEBE PAGAR <");}
+                }else{System.out.println("> NO SE DEBE PAGAR <");}
+                System.out.println("******************************************");
+            }
+        }
+        
+        return total;
+    }
+    
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
             setEmbeddableKeys();

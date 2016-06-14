@@ -81,7 +81,8 @@
                         <p:outputLabel value="#{bundle.CreatepagodetalleLabel_prestamos}" for="prestamos" />
                         <p:outputLabel id="prest">
                             $ #{pensionadoprestamoController.valorPrestamos(pagoController.selected.pensionado.rut_pensionado,pagoController.selected.mes,pagoController.selected.ano)}
-                            #{pagoController.setMonto_prestamos(0)}
+                            #{pagoController.setMonto_prestamos(pensionadoprestamoController.valorPrestamos(pagoController.selected.pensionado.rut_pensionado,pagoController.selected.mes,pagoController.selected.ano))}
+                        
                         </p:outputLabel>
                         <p:selectBooleanCheckbox id="prestamos" value="#{pagoController.prestamos}" >
                             <p:ajax  update="pago"/>
