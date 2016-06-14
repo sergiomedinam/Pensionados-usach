@@ -43,6 +43,8 @@ public class pensionadoController implements Serializable {
     private cargasController cargasController;
     @Inject
     private pensionadobeneficioController pensionadobeneficioController;
+    @Inject
+    private pensionadoprestamoController pensionadoprestamoController;
 
     public pensionadoController() {
     }
@@ -226,13 +228,13 @@ public class pensionadoController implements Serializable {
         return total;
     }
     
-    public float Total(String rut,boolean cat,boolean vida,boolean hosp,boolean aporte,boolean otros,boolean prest,float valor_otros){
+    public float Total(String rut,boolean cat,boolean vida,boolean hosp,boolean aporte,boolean otros,boolean prest,float valor_otros,String mes,String año){
         float valor = 0;
         if(cat) valor = valor + cargasController.ValorCatastrofico(rut);
         if(vida) valor = valor + cargasController.ValorVida(rut);
         if(hosp) valor = valor + cargasController.ValorHospitalario(rut);
         if(aporte) valor = valor + Aporte(rut);
-        if(prest) valor = valor + 0;
+        if(prest) valor = valor + pensionadoprestamoController.valorPrestamos(rut, mes, año);
         if(otros) valor = valor + valor_otros;
         return valor;
     }

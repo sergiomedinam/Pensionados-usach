@@ -27,7 +27,7 @@
                         
                         <p:outputLabel value="Año" for="ano" />
                         <p:selectOneMenu  required="true" requiredMessage="Se necesita un año." id="ano" value="#{pagoController.selected.ano}" style="width:155px">
-                            <p:ajax  update="prest"/>
+                            <p:ajax  update="prest,pago"/>
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{añosCuotas.añosCuotas}" />
                         </p:selectOneMenu>
@@ -36,7 +36,7 @@
                         
                         <p:outputLabel value="#{bundle.CreatepagoLabel_mes}" for="mes" />
                         <p:selectOneMenu  required="true" requiredMessage="Se necesita un mes." id="mes" value="#{pagoController.selected.mes}" style="width:155px">
-                            <p:ajax  update="prest"/>
+                            <p:ajax  update="prest,pago"/>
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{añosCuotas.NCuotas}" />
                         </p:selectOneMenu>
@@ -112,7 +112,9 @@
                                                          pagoController.aportes,
                                                          pagoController.otros,
                                                          pagoController.prestamos,
-                                                         pagoController.monto_otros)}
+                                                         pagoController.monto_otros,
+                                                         pagoController.selected.mes, 
+                                                         pagoController.selected.ano)}
                             <c:if id="if" test="${ pensionadoController.Total(pagoController.selected.pensionado.rut_pensionado,
                                                          pagoController.catastrofico,
                                                          pagoController.vida,
@@ -120,7 +122,9 @@
                                                          pagoController.aportes,
                                                          pagoController.otros,
                                                          pagoController.prestamos,
-                                                         pagoController.monto_otros) >= 0}">
+                                                         pagoController.monto_otros,
+                                                         pagoController.selected.mes,
+                                                         pagoController.selected.ano) >= 0}">
                                 #{pagoController.selected.setPago(pensionadoController.Total(pagoController.selected.pensionado.rut_pensionado,
                                                          pagoController.catastrofico,
                                                          pagoController.vida,
@@ -128,7 +132,9 @@
                                                          pagoController.aportes,
                                                          pagoController.otros,
                                                          pagoController.prestamos,
-                                                         pagoController.monto_otros))}
+                                                         pagoController.monto_otros,
+                                                         pagoController.selected.mes,
+                                                         pagoController.selected.ano))}
                                 #{pagoController.selected.setCompleto(pagoController.Complete(pagoController.catastrofico,
                                                                                               pagoController.vida,
                                                                                               pagoController.hospitalario,
