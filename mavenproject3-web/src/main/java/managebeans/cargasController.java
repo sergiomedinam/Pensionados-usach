@@ -311,21 +311,6 @@ public class cargasController implements Serializable {
         List <parametros> Parametros = parametros.getItems();
         List <cargas> Cargas = CargasPensionados(rut);
         float total = 0;
-        int UF = 0;
-        int Ntitular = 0;
-        for(parametros par : Parametros){
-            if (par.getId() == 1) {
-                UF = par.getValor_uf();
-            }
-        }
-        for (cargas item : Cargas) {
-            if (item.getSeguro().getNombre_seguro().equals("VIDA")){
-                Ntitular = item.getTitular();
-            }
-        }
-        if(Cargas.size() > 0){
-            total = UF*Ntitular/4;
-        }
         return total;
     }
     
