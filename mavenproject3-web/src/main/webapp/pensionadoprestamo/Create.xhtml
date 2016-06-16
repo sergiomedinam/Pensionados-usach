@@ -15,7 +15,7 @@
                         <p:outputLabel value="#{bundle.CreatepensionadoprestamoLabel_pensionado}" for="pensionado" />
                         <p:selectOneMenu id="pensionado" required="true" requiredMessage="Se necesita un pensionado." style="width:155px" filter="true" filterMatchMode="contains" value="#{pensionadoprestamoController.selected.pensionado}" >
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
-                            <f:selectItems value="#{pensionadoController.itemsAvailableSelectOne}"
+                            <f:selectItems value="#{pensionadoController.habilitados}"
                                            var="pensionadoItem"
                                            itemValue="#{pensionadoItem}"
                                            itemLabel="#{pensionadoItem.rut_pensionado}"/>
@@ -44,10 +44,10 @@
                         <p:inputText id="valor_cuota" required="true" requiredMessage="Se necesita el valor de la cuota." value="#{pensionadoprestamoController.selected.valor_cuota}" title="Valor cuota" />
                         
                         <p:outputLabel value="#{bundle.CreatepensionadoprestamoLabel_fecha_pedido}" for="fecha_pedido" />
-                        <p:inputMask id="fecha_pedido" mask="99/99/9999" placeholder="DD/MM/AAAA" required="true" requiredMessage="Se necesita una fecha de pedido." value="#{pensionadoprestamoController.selected.fecha_pedido}" title="#{bundle.CreatepensionadoprestamoTitle_fecha_pedido}" />
+                        <p:inputMask id="fecha_pedido" mask="99/9999" placeholder="MM/AAAA" required="true" requiredMessage="Se necesita una fecha de pedido." value="#{pensionadoprestamoController.selected.fecha_pedido}" title="#{bundle.CreatepensionadoprestamoTitle_fecha_pedido}" />
                         
                         <p:outputLabel value="#{bundle.CreatepensionadoprestamoLabel_fecha_termino}" for="fecha_termino" />
-                        <p:inputMask id="fecha_termino" mask="99/99/9999" placeholder="DD/MM/AAAA" required="true" requiredMessage="Se necesita una fecha de término." value="#{pensionadoprestamoController.selected.fecha_termino}" title="#{bundle.CreatepensionadoprestamoTitle_fecha_termino}" />
+                        <p:inputMask id="fecha_termino" mask="99/9999" placeholder="MM/AAAA" required="true" requiredMessage="Se necesita una fecha de término." value="#{pensionadoprestamoController.selected.fecha_termino}" title="#{bundle.CreatepensionadoprestamoTitle_fecha_termino}" />
                         
                     
                     </p:panelGrid>

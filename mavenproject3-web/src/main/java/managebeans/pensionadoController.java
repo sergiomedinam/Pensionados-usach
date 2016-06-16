@@ -1,6 +1,7 @@
 package managebeans;
 
 import entities.pensionado;
+import entities.parametros;
 import managebeans.util.JsfUtil;
 import managebeans.util.JsfUtil.PersistAction;
 import sessionsbeans.pensionadoFacadeLocal;
@@ -37,9 +38,13 @@ public class pensionadoController implements Serializable {
 
     private String causal;
     @Inject
+    private parametrosController parametrosController;
+    @Inject
     private cargasController cargasController;
     @Inject
     private pensionadobeneficioController pensionadobeneficioController;
+    @Inject
+    private pensionadoprestamoController pensionadoprestamoController;
 
     public pensionadoController() {
     }
@@ -99,6 +104,9 @@ public class pensionadoController implements Serializable {
     }
 
     public void create() {
+        selected.setEstado("HABILITADO");
+        int valor = selected.getMonto_pension() / 100;
+        selected.setAporte(valor);
         String texto = selected.getRut_pensionado();
         boolean alphaA = texto.matches("[0-9]{1}.[0-9]{3}.[0-9]{3}-[0-9kK]{1}");
         boolean alphaB = texto.matches("[0-9]{2}.[0-9]{3}.[0-9]{3}-[0-9kK]{1}");
@@ -125,6 +133,8 @@ public class pensionadoController implements Serializable {
     }
 
     public void update() {
+        int valor = selected.getMonto_pension() / 100;
+        selected.setAporte(valor);
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("pensionadoUpdated"));
     }
     
@@ -148,13 +158,25 @@ public class pensionadoController implements Serializable {
         }
         return items;
     }
+
+    
+    public List<pensionado> getHabilitados() {
+        getItems();
+        List<pensionado> habilitados = new ArrayList<pensionado>();
+        for (pensionado item : items) {
+            if (item.getEstado().equals("HABILITADO")) {
+                habilitados.add(item);
+            }
+        }
+        return habilitados;
+    }
     
     public int porcentajeBeneficios(){
-        getItems();
+        List<pensionado> habilitados = getHabilitados();
         int porcentaje = 0;
         float numeroBeneficiados = 0;
-        float numeroPensionados = getItems().size();
-        for (pensionado item : items) {
+        float numeroPensionados = habilitados.size();
+        for (pensionado item : habilitados) {
             if(pensionadobeneficioController.BeneficiosPensionados(item.getRut_pensionado()).size()>0){
                 numeroBeneficiados = numeroBeneficiados + 1;
             }
@@ -166,8 +188,8 @@ public class pensionadoController implements Serializable {
     
     public List<pensionado> PensionadosComuna(String Comuna) {
         List<pensionado> perteneceComuna = new ArrayList<pensionado>();
-        getItems();
-        for (pensionado item : items) {
+        List<pensionado> habilitados = getHabilitados();
+        for (pensionado item : habilitados) {
             if (item.getComuna().equals(Comuna)){
                     perteneceComuna.add(item);          
             }
@@ -177,8 +199,8 @@ public class pensionadoController implements Serializable {
     
     public List<pensionado> PensionadosRegion(String Region) {
         List<pensionado> perteneceRegion = new ArrayList<pensionado>();
-        getItems();
-        for (pensionado item : items) {
+        List<pensionado> habilitados = getHabilitados();
+        for (pensionado item : habilitados) {
             if (item.getRegion().equals(Region)){
                     perteneceRegion.add(item);          
             }
@@ -188,22 +210,31 @@ public class pensionadoController implements Serializable {
     
     public int Aporte(String rut){
         int aporte = 0;
+        int aporte_institucional = 0;
+        int total = 0;
         getItems();
         for(pensionado item : items){
             if (item.getRut_pensionado().equals(rut)) {
                 aporte = item.getAporte();
             }
         }
-        return aporte;
+        List<parametros> parametros = parametrosController.getItems();
+        for (parametros parametro : parametros) {
+            if (parametro.getId() == 1) {
+                aporte_institucional = parametro.getAporte_institucional();
+            }
+        }
+        total = aporte + aporte_institucional;
+        return total;
     }
     
-    public float Total(String rut,boolean cat,boolean vida,boolean hosp,boolean aporte,boolean otros,boolean prest,float valor_otros){
+    public float Total(String rut,boolean cat,boolean vida,boolean hosp,boolean aporte,boolean otros,boolean prest,float valor_otros,String mes,String año){
         float valor = 0;
         if(cat) valor = valor + cargasController.ValorCatastrofico(rut);
         if(vida) valor = valor + cargasController.ValorVida(rut);
         if(hosp) valor = valor + cargasController.ValorHospitalario(rut);
         if(aporte) valor = valor + Aporte(rut);
-        if(prest) valor = valor + 0;
+        if(prest) valor = valor + pensionadoprestamoController.valorPrestamos(rut, mes, año);
         if(otros) valor = valor + valor_otros;
         return valor;
     }

@@ -6,6 +6,7 @@ import managebeans.util.JsfUtil.PersistAction;
 import sessionsbeans.pensionadoprestamoFacadeLocal;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -81,6 +82,52 @@ public class pensionadoprestamoController implements Serializable {
         return items;
     }
 
+    public List<pensionadoprestamo> PrestamosPensionados(String rut) {
+        List<pensionadoprestamo> Prestamos = new ArrayList<pensionadoprestamo>();
+        getItems();
+        for (pensionadoprestamo item : items) {
+            if (item.getPensionado().getRut_pensionado().equals(rut)){
+                    Prestamos.add(item);          
+            }
+        }
+        return Prestamos;
+    }
+    
+    public int valorPrestamos(String rut, String mes, String año){
+        int mesPagoprestamo;
+        int añoPagoprestamo;
+        if(!año.equals("")){
+            añoPagoprestamo = Integer.parseInt(año);
+        }else{
+            añoPagoprestamo = 0;
+        }
+        if(!mes.equals("")){
+            mesPagoprestamo = Integer.parseInt(mes);
+        }else{
+            mesPagoprestamo = 0;
+        }
+        int total = 0;
+        getItems();
+        for (pensionadoprestamo item : items) {
+            if (item.getPensionado().getRut_pensionado().equals(rut)){
+                int mesInicio = Integer.parseInt(item.getFecha_pedido().split("/")[0]);
+                int añoInicio = Integer.parseInt(item.getFecha_pedido().split("/")[1]);
+                int añoTermino = Integer.parseInt(item.getFecha_termino().split("/")[1]);
+                int nCuotas = item.getCuotas();
+                if((añoPagoprestamo>=añoInicio) &&(añoPagoprestamo<=añoTermino)){
+                    int diferencia = añoPagoprestamo - añoInicio;
+                    int valorAyuda = nCuotas + mesInicio - 1;
+                    int valorComparar = diferencia*12 + mesPagoprestamo;
+                    if(valorAyuda>=valorComparar && valorComparar>=mesInicio){
+                        total = total + item.getValor_cuota();
+                    }
+                }
+            }
+        }
+        
+        return total;
+    }
+    
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
             setEmbeddableKeys();

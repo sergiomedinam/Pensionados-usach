@@ -15,10 +15,10 @@
                     <p:panelGrid columns="3" rendered="#{pagoController.selected != null}">
                         
                         <p:outputLabel value="#{bundle.CreatepagoLabel_pensionado}" for="pensionado" />
-                        <p:selectOneMenu id="pensionado" required="true" requiredMessage="Se requiere un pensionado" filter="true" filterMatchMode="contains" value="#{pagoController.selected.pensionado}" style="width:155px">
+                        <p:selectOneMenu id="pensionado" required="true" requiredMessage="Se necesita un pensionado." filter="true" filterMatchMode="contains" value="#{pagoController.selected.pensionado}" style="width:155px">
                             <p:ajax  update="cat,vi,hosp,ap,ot,prest,pago"/>
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
-                            <f:selectItems value="#{pensionadoController.itemsAvailableSelectOne}"
+                            <f:selectItems value="#{pensionadoController.habilitados}"
                                            var="pensionadoItem"
                                            itemLabel="#{pensionadoItem.rut_pensionado}"
                                            itemValue="#{pensionadoItem}"/>
@@ -26,7 +26,8 @@
                         <p:outputLabel/>
                         
                         <p:outputLabel value="Año" for="ano" />
-                        <p:selectOneMenu  required="true" requiredMessage="Se requiere un año" id="ano" value="#{pagoController.selected.ano}" style="width:155px">
+                        <p:selectOneMenu  required="true" requiredMessage="Se necesita un año." id="ano" value="#{pagoController.selected.ano}" style="width:155px">
+                            <p:ajax  update="prest,pago"/>
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{añosCuotas.añosCuotas}" />
                         </p:selectOneMenu>
@@ -34,7 +35,8 @@
 
                         
                         <p:outputLabel value="#{bundle.CreatepagoLabel_mes}" for="mes" />
-                        <p:selectOneMenu  required="true" requiredMessage="Se requiere un mes a cancelar" id="mes" value="#{pagoController.selected.mes}" style="width:155px">
+                        <p:selectOneMenu  required="true" requiredMessage="Se necesita un mes." id="mes" value="#{pagoController.selected.mes}" style="width:155px">
+                            <p:ajax  update="prest,pago"/>
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{añosCuotas.NCuotas}" />
                         </p:selectOneMenu>
@@ -78,8 +80,9 @@
 
                         <p:outputLabel value="#{bundle.CreatepagodetalleLabel_prestamos}" for="prestamos" />
                         <p:outputLabel id="prest">
-                            $ 0
-                            #{pagoController.setMonto_prestamos(0)}
+                            $ #{pensionadoprestamoController.valorPrestamos(pagoController.selected.pensionado.rut_pensionado,pagoController.selected.mes,pagoController.selected.ano)}
+                            #{pagoController.setMonto_prestamos(pensionadoprestamoController.valorPrestamos(pagoController.selected.pensionado.rut_pensionado,pagoController.selected.mes,pagoController.selected.ano))}
+                        
                         </p:outputLabel>
                         <p:selectBooleanCheckbox id="prestamos" value="#{pagoController.prestamos}" >
                             <p:ajax  update="pago"/>
@@ -109,7 +112,9 @@
                                                          pagoController.aportes,
                                                          pagoController.otros,
                                                          pagoController.prestamos,
-                                                         pagoController.monto_otros)}
+                                                         pagoController.monto_otros,
+                                                         pagoController.selected.mes, 
+                                                         pagoController.selected.ano)}
                             <c:if id="if" test="${ pensionadoController.Total(pagoController.selected.pensionado.rut_pensionado,
                                                          pagoController.catastrofico,
                                                          pagoController.vida,
@@ -117,7 +122,9 @@
                                                          pagoController.aportes,
                                                          pagoController.otros,
                                                          pagoController.prestamos,
-                                                         pagoController.monto_otros) >= 0}">
+                                                         pagoController.monto_otros,
+                                                         pagoController.selected.mes,
+                                                         pagoController.selected.ano) >= 0}">
                                 #{pagoController.selected.setPago(pensionadoController.Total(pagoController.selected.pensionado.rut_pensionado,
                                                          pagoController.catastrofico,
                                                          pagoController.vida,
@@ -125,7 +132,9 @@
                                                          pagoController.aportes,
                                                          pagoController.otros,
                                                          pagoController.prestamos,
-                                                         pagoController.monto_otros))}
+                                                         pagoController.monto_otros,
+                                                         pagoController.selected.mes,
+                                                         pagoController.selected.ano))}
                                 #{pagoController.selected.setCompleto(pagoController.Complete(pagoController.catastrofico,
                                                                                               pagoController.vida,
                                                                                               pagoController.hospitalario,

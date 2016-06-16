@@ -23,7 +23,7 @@
             </p:breadCrumb>
                 <section class="content-header">
                     <h1>
-                      Funcionarios Pensionados  
+                      Pensionados 
                       <small>Panel de administrador</small> <a href="#demo" data-toggle="collapse" class="btn btn-info">Informacion</a>
 
                     </h1>
@@ -52,8 +52,8 @@
                         <c:set var="rol" value="observador"/>
                         <c:choose>
                             <c:when test="${ name_rol != rol }">
-                                <p:ajax event="rowSelect"   update="createButton viewButton editButton editButton1"/>
-                                <p:ajax event="rowUnselect" update="createButton viewButton editButton editButton1"/>
+                                <p:ajax event="rowSelect"   update="createButton viewButton editButton"/>
+                                <p:ajax event="rowUnselect" update="createButton viewButton editButton"/>
                             </c:when>    
                             <c:otherwise>
                                 <p:ajax event="rowSelect"   update="viewButton"/>
@@ -74,17 +74,22 @@
                             <f:facet name="header">
                                 <h:outputText value="Nombres"/>
                                 <p:watermark for="nombre" value="Buscar Nombre" />
-
                             </f:facet>
                             <h:outputText value="#{item.nombre_pensionado} "/>
                         </p:column>
-                       
                         <p:column filterBy="#{item.apellido_p_pensionado} #{item.apellido_p_pensionado.toLowerCase()} #{item.apellido_m_pensionado}  #{item.apellido_m_pensionado.toLowerCase()}" headerText="Apellido pensionado" id="apellido" filterStyle="width:200px;" filterMatchMode="contains" sortBy="#{item.apellido_p_pensionado} #{item.apellido_m_pensionado}">
                             <f:facet name="header">
                                 <h:outputText value="Apellidos"/>
                                 <p:watermark for="apellido" value="Buscar Apellido" />
                             </f:facet>
                             <h:outputText value="#{item.apellido_p_pensionado} #{item.apellido_m_pensionado}"/>
+                        </p:column>
+                        <p:column headerText="Estado pensionado" id="estado" sortBy="#{item.estado}" style="width: 120px;" filterBy="#{item.estado.toLowerCase()} #{item.estado}" filterStyle="width:90px;" filterMatchMode="startsWith"  >
+                            <f:facet name="header">
+                                <h:outputText value="Estado"/>
+                                <p:watermark for="estado" value="Buscar Estado" />
+                            </f:facet>
+                            <h:outputText value="#{item.estado}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":pensionadoViewForm" oncomplete="PF('pensionadoViewDialog').show()" disabled="#{empty pensionadoController.selected}"/>
@@ -93,17 +98,24 @@
                             <c:if test="${ name_rol != rol }">   
                                 <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{pensionadoController.prepareCreate}" update=":pensionadoCreateForm" oncomplete="PF('pensionadoCreateDialog').show()"/>
                                 <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":pensionadoEditForm" oncomplete="PF('pensionadoEditDialog').show()" disabled="#{empty pensionadoController.selected}"/>
-                                <p:commandButton id="editButton1"   icon="ui-icon-circle-close" value="Deshabilitar" update=":pensionadoEditForm1" oncomplete="PF('pensionadoEditDialog1').show()" disabled="#{empty pensionadoController.selected}"/>
-                            </c:if>
+                            </c:if> 
                         </f:facet>
                     </p:dataTable>
+                    <br></br>
+                    <br></br>
+                    <p:fieldset legend="Resumen">
+                        <h:outputText  class="center" value="Existen "/>
+                        <h:outputText class="center" value="#{pensionadoController.habilitados.size()}"/>
+                        <h:outputText class="center" value=" pensionados habilitados y "/>
+                        <h:outputText class="center" value="#{pensionadoController.items.size() - pensionadoController.habilitados.size()}"/>
+                        <h:outputText class="center" value=" pensionados deshabilitados en el sistema."/>
+                    </p:fieldset>
                 </p:panel>
             </h:form>
 
             <ui:include src="Create.xhtml"/>
             <ui:include src="Edit.xhtml"/>
             <ui:include src="View.xhtml"/>
-            <ui:include src="deshabilitar.xhtml"/>
         </ui:define>
     </ui:composition>
 

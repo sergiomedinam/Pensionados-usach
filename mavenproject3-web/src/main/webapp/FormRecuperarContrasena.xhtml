@@ -26,6 +26,8 @@
                 <div class="container" align="center">
                     <h2>Sistema de Funcionarios Pensionados</h2>
                     <h3>USACH</h3>
+                    <h4>Recuperación de contraseña</h4>
+                    
                     <div class="col-md-6 col-md-offset-3" >                        
                         <h:form id="form2">
                             <f:event listener="#{usuarioController.validaFormContr}" type="preValidate" />
@@ -33,7 +35,7 @@
                             <h:panelGroup rendered="#{not usuarioController.accepted}">
                                 <div class="form-group row">
                                     <div align="left">
-                                        <h:outputLabel for="Nombre" class="col-sm-2 form-control-label" value="Nombre"/>
+                                        <h:outputLabel for="Nombre" class="col-sm-2 form-control-label" value="Nombre:"/>
                                     </div>
                                     <div class="col-sm-10">
                                         <h:inputText id="Nombre" class="form-control" />
@@ -41,15 +43,15 @@
                                 </div>
                                 <div class="form-group row">
                                     <div align="left">
-                                        <h:outputLabel for="Rut" class="col-sm-2 form-control-label" value="Rut"/>
+                                        <h:outputLabel for="Rut" class="col-sm-2 form-control-label" value="Rut:" />
                                     </div>
                                     <div class="col-sm-10">
-                                        <h:inputText id="Rut" class="form-control" />
+                                        <h:inputText id="Rut" class="form-control"  />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div align="left">
-                                        <h:outputLabel for="Correo" class="col-sm-2 form-control-label" value="Correo"/>
+                                        <h:outputLabel for="Correo" class="col-sm-2 form-control-label" value="Correo:"/>
                                     </div>
                                     <div class="col-sm-10">
                                         <h:inputText id="Correo" class="form-control" />
@@ -58,15 +60,16 @@
                             </h:panelGroup>
                             <h:panelGroup id="exito" rendered="#{usuarioController.accepted}" >
                                 <div align="left">
-                                    <h3>Su solicitud fue enviada exitosamente. Favor epere la respuesta del administrador</h3>
+                                    <h3>Su solicitud fue enviada exitosamente.</h3>
+                                    <h3>Favor espere la respuesta del administrador.</h3>
                                 </div>
                             </h:panelGroup>
                             <div class="form-group row">
                                 <div class="col-sm-offset-2 col-sm-10" vertical-align="middle" align="left">
                                     <h:panelGroup rendered="#{ not usuarioController.accepted}" >
-                                        <h:commandButton styleClass="btn btn-primary" actionListener="#{usuarioController.submitSolicitud()}" value="Enviar Formulario"  />
-                                        <h:button styleClass="btn btn-secondary"  value="Reiniciar" />
-                                        <h:button styleClass="btn btn-warning" value="Volver" outcome="index"/>
+                                        <h:commandButton styleClass="btn btn-primary" actionListener="#{usuarioController.submitSolicitud()}" value="Enviar Formulario"  /> #{" "}
+                                        <h:button styleClass="btn btn-default"  value="Reiniciar" /> #{" "}
+                                        <h:button styleClass="btn btn-default" value="Volver" outcome="index"/>
                                     </h:panelGroup>                                    
                                 </div>                                
                             </div>
@@ -74,8 +77,8 @@
                         <h:form>
                             <h:panelGroup rendered="#{usuarioController.accepted}">
                                 <div align="left">
-                                    <h:commandButton styleClass="btn btn-primary" action="#{usuarioController.resetForm()}" value="Reiniciar formulario"/>
-                                    <h:button styleClass="btn btn-warning" value="Volver" outcome="index"/>
+                                    <h:commandButton styleClass="btn btn-primary" action="#{usuarioController.resetForm()}" value="Reiniciar formulario"/> #{" "}
+                                    <h:button styleClass="btn btn-default" value="Volver" outcome="index"/>
                                 </div> 
                             </h:panelGroup>
                         </h:form>
