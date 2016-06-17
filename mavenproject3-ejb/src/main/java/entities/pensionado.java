@@ -404,5 +404,9 @@ public class pensionado implements Serializable {
     public String toString() {
         return "entities.pensionado[ id=" + id + " ]";
     }
+
+    public String getNombreCompleto() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
    
 }

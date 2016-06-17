@@ -23,9 +23,12 @@
             </p:breadCrumb>
                 <section class="content-header">
                     <h1>
-                      Morosos  
-                      <small>Panel de administrador</small> <a href="#demo" data-toggle="collapse" class="btn btn-info">Informacion</a>
-
+                      <h:form>
+                        Morosos  
+                        <small>Panel de administrador</small> 
+                        <a href="#demo" data-toggle="collapse" class="btn btn-info">Informacion</a> #{" "}
+                        <h:commandButton styleClass="btn btn-warning" action="#{pensionadoController.correoTodosMorosos()}" value="Enviar correo a todos morosos"/>
+                      </h:form>
                     </h1>
                   
                     <div id="demo" class=" collapse">

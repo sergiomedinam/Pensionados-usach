@@ -9,6 +9,7 @@ import sessionsbeans.pensionadoFacadeLocal;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,6 +25,13 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.faces.validator.ValidatorException;
 import javax.inject.Inject;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import org.primefaces.context.RequestContext;
 
 @Named("pensionadoController")
@@ -38,9 +46,11 @@ public class pensionadoController implements Serializable {
 
     private String causal;
     @Inject
-    private parametrosController parametrosController;
+    private parametrosController parametrosController;    
     @Inject
     private cargasController cargasController;
+    @Inject
+    private cuotaspagadasController cuotaspagadasController;
     @Inject
     private pensionadobeneficioController pensionadobeneficioController;
     @Inject
@@ -159,7 +169,6 @@ public class pensionadoController implements Serializable {
         return items;
     }
 
-    
     public List<pensionado> getHabilitados() {
         getItems();
         List<pensionado> habilitados = new ArrayList<pensionado>();
@@ -249,7 +258,82 @@ public class pensionadoController implements Serializable {
         }
         return nombre;
     }
+    
+    public void correoTodosMorosos(){
+        getItems();
+        int count1 = 0;
+        int count2 = 0;
+        List<pensionado> morosos = cuotaspagadasController.Morosos(items);
+        for (pensionado moroso : morosos) {
+            try{
+                if (!moroso.getEmail_pensionado().equals("")) {
+                    System.out.println(moroso.getEmail_pensionado());
+                    enviarCorreoAPensionado(moroso);
+                    count1++;
+                }else{
+                    count2++;
+                }            
+            }catch(NullPointerException e){
+                count2++;
+            }
+        }
+        System.out.println("hay con correo"+ count1);
+        System.out.println("hay sin correo"+ count2);
+        count2 = count1+count2;
+        System.out.println("total "+ count2);
+    }
+    
+    public void correoUnMoroso(){
+        try{
+            if (!selected.getEmail_pensionado().equals("")) {
+                System.out.println(selected.getEmail_pensionado());
+                enviarCorreoAPensionado(selected);
+            }
+        }catch(NullPointerException e){
+            
+        }
+    }
+    
+    private void enviarCorreoAPensionado(pensionado moroso) {
+        String to = moroso.getEmail_pensionado();        
+        final String username = parametrosController.getCorreoApp();
+        final String password = parametrosController.getContrasenaApp();
         
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");      
+        
+        Session session = Session.getInstance(props,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(username, password);
+                    }
+                });
+
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(username));
+            message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(to));
+            message.setSubject("Solicitud contraseña nueva");
+            message.setText("Estimado "+ getNombreCompleto(moroso) +":\n"
+                            + "Bienestar USACH le informa que se encuentra atrasado con sus pagos. \nSaludos.");
+            Transport.send(message);
+            System.out.println("Sent message successfully....");
+
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public String getNombreCompleto(pensionado Pensionado){
+        String nCompleto = Pensionado.getNombre_pensionado() + " " + 
+                           Pensionado.getApellido_p_pensionado() + " " +
+                           Pensionado.getApellido_m_pensionado();
+        return nCompleto;
+    }
+    
     public void validarRut(FacesContext context, UIComponent toValidate, Object value) {
         context = FacesContext.getCurrentInstance();
         FacesMessage message = null;
