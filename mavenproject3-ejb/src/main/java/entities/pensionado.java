@@ -102,8 +102,21 @@ public class pensionado implements Serializable {
     @OneToMany(mappedBy = "pensionado")
     private Set<pensionadobeneficio> pensionadobeneficio = new HashSet<pensionadobeneficio>();
     
+    @OneToMany(mappedBy = "pensionado")
+    private Set<pensionadopatologia> pensionadopatologia = new HashSet<pensionadopatologia>();
+    
     @OneToMany
     private List<pago> pagos;
+
+    public Set<pensionadopatologia> getPensionadopatologia() {
+        return pensionadopatologia;
+    }
+
+    public void setPensionadopatologia(Set<pensionadopatologia> pensionadopatologia) {
+        this.pensionadopatologia = pensionadopatologia;
+    }
+    
+    
 
     public String getEstado() {
         return estado;
