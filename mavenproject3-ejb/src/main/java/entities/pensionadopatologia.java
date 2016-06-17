@@ -6,58 +6,56 @@
 package entities;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author Sergio
+ * @author seerg
  */
 @Entity
-public class patologia implements Serializable {
+public class pensionadopatologia implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
     
-    @NotNull(message = "La patologia debe tener un nombre")
-    private String nombre_patologia;
-
-    @OneToMany(mappedBy = "prestamo")
-    private Set<pensionadopatologia> pensionadopatologia = new HashSet<pensionadopatologia>();
-
-    public Set<pensionadopatologia> getPensionadopatologia() {
-        return pensionadopatologia;
-    }
-
-    public void setPensionadopatologia(Set<pensionadopatologia> pensionadopatologia) {
-        this.pensionadopatologia = pensionadopatologia;
-    }
-        
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_pensionado") 
+    private pensionado pensionado;
     
-    
-    public String getNombre_patologia() {
-        return nombre_patologia;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_patologia") 
+    private patologia patologia;
+
+    public pensionado getPensionado() {
+        return pensionado;
     }
 
-    public void setNombre_patologia(String nombre_patologia) {
-        this.nombre_patologia = nombre_patologia;
+    public void setPensionado(pensionado pensionado) {
+        this.pensionado = pensionado;
     }
+
+    public patologia getPatologia() {
+        return patologia;
+    }
+
+    public void setPatologia(patologia patologia) {
+        this.patologia = patologia;
+    }
+    
     
 
     public Long getId() {
         return id;
     }
-    
 
     public void setId(Long id) {
         this.id = id;
@@ -73,10 +71,10 @@ public class patologia implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof patologia)) {
+        if (!(object instanceof pensionadopatologia)) {
             return false;
         }
-        patologia other = (patologia) object;
+        pensionadopatologia other = (pensionadopatologia) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -85,7 +83,7 @@ public class patologia implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.patologia[ id=" + id + " ]";
+        return "entities.pensionadopatologia[ id=" + id + " ]";
     }
     
 }
