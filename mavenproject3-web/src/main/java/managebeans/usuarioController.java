@@ -58,18 +58,35 @@ public class usuarioController implements Serializable {
     private usuario selected;   
     private String passTemp;
     private Object fma;
-    private boolean accepted = false;
+    private boolean resultoEnvio = false;
+    private boolean falloEnvio = false;
+    private boolean aunNoEnviado = true;
+//    private boolean flagFallaCorreo = false;
 
-    public boolean isAccepted() {
-        return accepted;
+    public boolean isAunNoEnviado() {
+        return aunNoEnviado;
     }
 
-    public void setAccepted(boolean accepted) {
-        this.accepted = accepted;
+    public void setAunNoEnviado(boolean aunNoEnviado) {
+        this.aunNoEnviado = aunNoEnviado;
+    }
+
+    public boolean isResultoEnvio() {
+        return resultoEnvio;
+    }
+
+    public void setResultoEnvio(boolean resultoEnvio) {
+        this.resultoEnvio = resultoEnvio;
+    }
+
+    public boolean isFalloEnvio() {
+        return falloEnvio;
+    }
+
+    public void setFalloEnvio(boolean falloEnvio) {
+        this.falloEnvio = falloEnvio;
     }
     
-    
-
     public usuario getSelected() {
         return selected;
     }
@@ -556,7 +573,7 @@ public class usuarioController implements Serializable {
 
     public List<usuario> getHabilitados() {
         getItems();
-        List<usuario> habilitados = new ArrayList<usuario>();
+        List<usuario> habilitados = new ArrayList<>();
         for (usuario item : items) {
             if (item.getEstado().equals("HABILITADO")) {
                 habilitados.add(item);
@@ -564,6 +581,7 @@ public class usuarioController implements Serializable {
         }
         return habilitados;
     }
+    
     public List<usuario> getItems() {
         if (items == null) {
             items = getFacade().findAll();
@@ -607,16 +625,22 @@ public class usuarioController implements Serializable {
         FacesContext context = FacesContext.getCurrentInstance();
         getItems();  
         
-        boolean flagEnviado = false;
-        
+        System.out.println(rut);
+        System.out.println(correo);
         for (usuario item : items) {
             // si existe usuario con ese correo -> flagCorreo
+            System.out.println(item.getEmail_usuario());
+            System.out.println(item.getRut());
             if (  item.getEmail_usuario().equals(correo) && item.getRut().equals(rut)  ) {
-                enviaCorreo(item.getNombre() +" "+ item.getApellido(), rut, correo);
-                flagEnviado = true;
+                if (enviaCorreo(item.getNombre() +" "+ item.getApellido(), rut, correo)) {
+                    resultoEnvio = true;
+                }else{
+                    falloEnvio = true;
+                }
+                aunNoEnviado = false;
             }
         }
-        if (!flagEnviado) {
+        if (aunNoEnviado) {
             uirut.setValid(false);
             uicorreo.setValid(false);
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "No se encuentran usuarios con este rut y correo.") );
@@ -625,11 +649,12 @@ public class usuarioController implements Serializable {
     
     public void submitSolicitud(){
         System.out.println("soy submit");
-        accepted = true;
     }
     
     public void resetForm(){
-        accepted = false;
+        resultoEnvio = false;
+        falloEnvio = false;
+        aunNoEnviado = true;
         System.out.println("reset");
     }
     
@@ -703,7 +728,7 @@ public class usuarioController implements Serializable {
         return getFacade().findAll();
     }
 
-    private void enviaCorreo(String name, String rut, String correo) {        
+    private boolean enviaCorreo(String name, String rut, String correo) {        
         String to = parametros.getCorreoAdmin();        
         final String username = parametros.getCorreoApp();
         final String password = parametros.getContrasenaApp();
@@ -735,8 +760,9 @@ public class usuarioController implements Serializable {
             System.out.println("Sent message successfully....");
 
         } catch (MessagingException e) {
-            throw new RuntimeException(e);
+            return false;
         }
+        return true;
     }
     
     @FacesConverter(forClass = usuario.class)
