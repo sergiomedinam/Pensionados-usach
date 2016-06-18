@@ -38,6 +38,19 @@
                              <div class="panel-footer"> <b>¿Que hacer aqui?</b> En esta seccion del sistema es posible ver la información de los funcionarios y pensionados morosos.</div>
                         </div>
                     </div>
+                    <h:form>
+                        <br/>
+                        <h:panelGroup id="myPanelGroup" rendered="#{pensionadoController.filledSinCorreo}">
+                            <div class="panel panel-default">
+                                <div class="panel-footer"> 
+                                    <p>No se le pudo enviar correo a los siguientes pensionados</p>
+                                    <p:commandButton  actionListener="#{pensionadoController.createPDFcorreofallido}" value="PDF Lista envíos fallidos" ajax="false">
+                                        <p:ajax oncomplete="" process="@this" update="myPanelGroup" />
+                                    </p:commandButton>
+                                </div>
+                            </div>
+                        </h:panelGroup>
+                    </h:form>
                   </section>
             <br/>
             <h:form id="pensionadoListForm">
