@@ -264,6 +264,8 @@ public class pensionadoController implements Serializable {
         int count1 = 0;
         int count2 = 0;
         List<pensionado> morosos = cuotaspagadasController.Morosos(items);
+        ArrayList<Object> sinCorreo = new ArrayList<>();
+        
         for (pensionado moroso : morosos) {
             try{
                 if (!moroso.getEmail_pensionado().equals("")) {
@@ -272,6 +274,7 @@ public class pensionadoController implements Serializable {
                     count1++;
                 }else{
                     count2++;
+                    sinCorreo.add(moroso);
                 }            
             }catch(NullPointerException e){
                 count2++;
