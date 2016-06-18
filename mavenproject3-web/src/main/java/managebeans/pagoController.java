@@ -819,7 +819,7 @@ public class pagoController implements Serializable {
     
     public void destroyMes() {
         pagodetalle.destroy();
-        persist(PersistAction.DELETE, "Error: Para el pensionado, ya existe un pago con este mes y año");
+        persist(PersistAction.DELETE, "Ya existe un pago con este mes y año para el pensionado seleccionado.");
         if (!JsfUtil.isValidationFailed()) {
             selected = null; // Remove selection
             items = null;    // Invalidate list of items to trigger re-query.

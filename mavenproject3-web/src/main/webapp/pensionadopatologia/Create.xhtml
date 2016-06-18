@@ -10,8 +10,12 @@
 
         <p:dialog id="pensionadopatologiaCreateDlg" widgetVar="pensionadopatologiaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatepensionadopatologiaTitle}">
             <h:form id="pensionadopatologiaCreateForm">
+                <p:growl id="growl" showDetail="true" showSummary="true" autoUpdate="true" />
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{pensionadopatologiaController.selected != null}">
+                        
+                        <f:event listener="#{pensionadopatologiaController.validaCreate}" type="preValidate" />
+                        
                         <p:outputLabel value="Pensionado"  for="pensionado" />
                         <p:selectOneMenu id="pensionado" required="true" requiredMessage="Se necesita un pensionado." style="width:200px" filter="true" filterMatchMode="contains" value="#{pensionadopatologiaController.selected.pensionado}" >
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
