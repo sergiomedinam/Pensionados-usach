@@ -6,6 +6,7 @@ import managebeans.util.JsfUtil.PersistAction;
 import sessionsbeans.pensionadopatologiaFacadeLocal;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -82,6 +83,17 @@ public class pensionadopatologiaController implements Serializable {
             items = getFacade().findAll();
         }
         return items;
+    }
+    
+    public List<pensionadopatologia> PatologiaPensionados(String rut) {
+        List<pensionadopatologia> pensionadopatologia = new ArrayList<pensionadopatologia>();
+        getItems();
+        for (pensionadopatologia item : items) {
+            if (item.getPensionado().getRut_pensionado().equals(rut)){
+                    pensionadopatologia.add(item);          
+            }
+        }
+        return pensionadopatologia;
     }
 
     private void persist(PersistAction persistAction, String successMessage) {
