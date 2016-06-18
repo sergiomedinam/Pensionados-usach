@@ -57,6 +57,16 @@
                                     <td>#{pensionadoController.selected.estado_civil}</td>
                                 </tr>
                                 <tr>
+                                    <td rowspan="1">Fecha Nacimiento</td>
+                                    <td>#{pensionadoController.selected.fecha_nacimiento}</td>
+                                </tr>
+                            <thead>
+                                <tr>
+                                    <th rowspan="1">Contacto</th>
+                                    <th></th>
+                                </tr>
+                            </thead>                                
+                                <tr>
                                     <td rowspan="1">Correo</td>
                                     <td>#{pensionadoController.selected.email_pensionado}</td>
                                 </tr>
@@ -72,9 +82,19 @@
                                     <td rowspan="1">Telefono Celular</td>
                                     <td>#{pensionadoController.selected.celular}</td>
                                 </tr>
+                            <thead>
+                                <tr>
+                                    <th rowspan="1">Domicilio</th>
+                                    <th></th>
+                                </tr>
+                            </thead>                                
                                 <tr>
                                     <td rowspan="1">Dirección</td>
                                     <td>#{pensionadoController.selected.direccion}</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="1">Comuna</td>
+                                    <td>#{pensionadoController.selected.comuna}</td>
                                 </tr>
                                 <tr>
                                     <td rowspan="1">Región</td>
@@ -122,7 +142,7 @@
                         
                         <div class="col-md-6">
                             <!-- small box -->
-                            <div class="small-box bg-aqua">
+                            <div class="small-box bg-blue">
                                 <div class="inner" align="center">
                                     <h3>#{cargasController.CargasPensionados(pensionadoController.selected.rut_pensionado).size()}</h3>
                                     <p>Seguros asociados</p>
@@ -164,7 +184,7 @@
                         <!-- ./col -->
                         <div class="col-md-6">
                             <!-- small box -->
-                            <div class="small-box bg-yellow">
+                            <div class="small-box bg-orange">
                                 <div class="inner" align="center" >
                                     <h3>#{pensionadoprestamoController.PrestamosPensionados(pensionadoController.selected.rut_pensionado).size()}</h3>
 
@@ -178,7 +198,7 @@
                         </div>
                         <div class="col-md-6" >
                             <!-- small box -->
-                            <div class="small-box bg-maroon">
+                            <div class="small-box bg-purple">
                                 <div class="inner" align="center">
                                     <h3>#{pensionadobeneficioController.BeneficiosPensionados(pensionadoController.selected.rut_pensionado).size()}</h3>
 
@@ -188,6 +208,20 @@
                                     <i class="ion ion-person-add"></i>
                                 </div>
                                 <a href="#beneficiosPensionado" data-toggle="collapse" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-md-6" >
+                            <!-- small box -->
+                            <div class="small-box bg-teal">
+                                <div class="inner" align="center">
+                                    <h3>#{pensionadopatologiaController.PatologiaPensionados(pensionadoController.selected.rut_pensionado).size()}</h3>
+
+                                    <p>Patologías</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-person-add"></i>
+                                </div>
+                                <a href="#patologiasPensionado" data-toggle="collapse" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->
@@ -207,9 +241,6 @@
                                  selectionMode="single" selection="#{cargasController.selected}"
                                  paginator="false"
                                  rowKey="#{item.id}"
-                                 rows="10"
-                                 rowsPerPageTemplate="10,20,30,40,50"
-                                 emptyMessage="No hay resultados."
                                  >
                         
                         <p:column >
@@ -269,9 +300,6 @@
                                          selectionMode="single" selection="#{cuotaspagadasController.selected}"
                                          paginator="false"
                                          rowKey="#{item.id}"
-                                         rows="10"
-                                         rowsPerPageTemplate="10,20,30,40,50"
-                                         emptyMessage="No hay resultados."
                                          >
 
                                 <p:column >
@@ -315,9 +343,6 @@
                                  selectionMode="single" selection="#{pensionadoprestamoController.selected}"
                                  paginator="false"
                                  rowKey="#{item.id}"
-                                 rows="10"
-                                 rowsPerPageTemplate="10,20,30,40,50"
-                                 emptyMessage="No hay resultados."
                                  >
 
                         <p:column id="rut" >
@@ -374,9 +399,6 @@
                                  selectionMode="single" selection="#{pensionadobeneficioController.selected}"
                                  paginator="false"
                                  rowKey="#{item.id}"
-                                 rows="10"
-                                 rowsPerPageTemplate="10,20,30,40,50"
-                                 emptyMessage="No hay resultados."
                                  >
 
                         <p:column >
@@ -417,9 +439,43 @@
             </h:form>
             </div>
         </div>
+        
+        <div id="patologiasPensionado" class=" collapse">
+            <div class="panel panel-default">
+                <h:form id="pensionadopatologiaListForm">
+                <p:panel header="LISTA DE PATOLOGÍAS">
+                    <p:dataTable id="datalist" value="#{pensionadopatologiaController.PatologiaPensionados(pensionadoController.selected.rut_pensionado)}" var="item"
+                                 selectionMode="single" selection="#{pensionadopatologiaController.selected}"
+                                 paginator="false"
+                                 rowKey="#{item.id}"
+                                 >
+                        <p:column  >
+                            <f:facet name="header">
+                                <h:outputText value="Rut"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pensionado.rut_pensionado}"/>
+                        </p:column>
+                        <p:column >
+                            <f:facet name="header">
+                                <h:outputText value="Nombre"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pensionado.nombre_pensionado} #{item.pensionado.apellido_p_pensionado} #{item.pensionado.apellido_m_pensionado}"/>
+                        </p:column>
+                        <p:column >
+                            <f:facet name="header">
+                                <h:outputText value="Patología"/>
+                            </f:facet>
+                            <h:outputText value="#{item.patologia.nombre_patologia}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>        
+        </div>
+    </div>
                 
-                
-                
+                    
         </ui:define> 
         </ui:composition>
     </h:body>
