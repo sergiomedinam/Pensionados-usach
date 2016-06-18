@@ -32,7 +32,7 @@
                         <h:form id="form2">
                             <f:event listener="#{usuarioController.validaFormContr}" type="preValidate" />
                             <f:event listener="#{usuarioController.vaciaFormContr}" type="preValidate" />
-                            <h:panelGroup rendered="#{not usuarioController.accepted}">
+                            <h:panelGroup rendered="#{usuarioController.aunNoEnviado}">
                                 <div class="form-group row">
                                     <div align="left">
                                         <h:outputLabel for="Nombre" class="col-sm-2 form-control-label" value="Nombre:"/>
@@ -58,15 +58,21 @@
                                     </div>
                                 </div>
                             </h:panelGroup>
-                            <h:panelGroup id="exito" rendered="#{usuarioController.accepted}" >
+                            <h:panelGroup id="exito" rendered="#{usuarioController.resultoEnvio}" >
                                 <div align="left">
                                     <h3>Su solicitud fue enviada exitosamente.</h3>
                                     <h3>Favor espere la respuesta del administrador.</h3>
                                 </div>
                             </h:panelGroup>
+                            <h:panelGroup id="fallo" rendered="#{usuarioController.falloEnvio}" >
+                                <div align="left">
+                                    <h3>Su solicitud no se pudo enviar.</h3>
+                                    <h3>Favor solicitamos intentar en otro momento.</h3> 
+                                </div>
+                            </h:panelGroup>
                             <div class="form-group row">
                                 <div class="col-sm-offset-2 col-sm-10" vertical-align="middle" align="left">
-                                    <h:panelGroup rendered="#{ not usuarioController.accepted}" >
+                                    <h:panelGroup rendered="#{usuarioController.aunNoEnviado}" >
                                         <h:commandButton styleClass="btn btn-primary" actionListener="#{usuarioController.submitSolicitud()}" value="Enviar Formulario"  /> #{" "}
                                         <h:button styleClass="btn btn-default"  value="Reiniciar" /> #{" "}
                                         <h:button styleClass="btn btn-default" value="Volver" outcome="index"/>
@@ -75,7 +81,13 @@
                             </div>
                         </h:form>
                         <h:form>
-                            <h:panelGroup rendered="#{usuarioController.accepted}">
+                            <h:panelGroup rendered="#{usuarioController.resultoEnvio}">
+                                <div align="left">
+                                    <h:commandButton styleClass="btn btn-primary" action="#{usuarioController.resetForm()}" value="Reiniciar formulario"/> #{" "}
+                                    <h:button styleClass="btn btn-default" value="Volver" outcome="index"/>
+                                </div> 
+                            </h:panelGroup>
+                            <h:panelGroup rendered="#{usuarioController.falloEnvio}">
                                 <div align="left">
                                     <h:commandButton styleClass="btn btn-primary" action="#{usuarioController.resetForm()}" value="Reiniciar formulario"/> #{" "}
                                     <h:button styleClass="btn btn-default" value="Volver" outcome="index"/>
