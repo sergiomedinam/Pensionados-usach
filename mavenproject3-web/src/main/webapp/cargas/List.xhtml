@@ -17,12 +17,12 @@
             <p:breadCrumb > 
                 <p:menuitem value="Inicio" url="#" />
                 <p:menuitem value="Inicio" url="/" />
-                <p:menuitem value="Cargas" url="/faces/cargas/List.xhtml" />
+                <p:menuitem value="Asegurados" url="/faces/cargas/List.xhtml" />
             </p:breadCrumb>
                 <section class="content-header">
                     <h1>
-                      Cargas y Seguros
-                      <small>Panel de administrador</small> <a href="#demo" data-toggle="collapse" class="btn btn-info">Informacion</a>
+                      Asegurados
+                      <small>Panel de administrador</small> <a href="#demo" data-toggle="collapse" class="btn btn-info">Información</a>
 
                     </h1>
                   
@@ -30,14 +30,14 @@
                           <br/>
                          <div class="panel panel-default">
                         
-                             <div class="panel-footer"> <b>¿Que hacer aqui?</b> En esta seccion del sistema es posible agregar los seguros de los pensionados, además de las cargas por pensionados, además de modificar éstos.</div>
+                             <div class="panel-footer"> <b>¿Que hacer aquí?</b> En esta sección del sistema es posible agregar los seguros que contraten los pensionados y las cargas por seguro contratado, adempas de modificar éstos según sea necesario.</div>
                         </div>
                     </div>
                   </section>
             <br/>
             
             <h:form id="cargasListForm">
-                <p:panel header="LISTA DE CARGAS">
+                <p:panel header="LISTA DE ASEGURADOS">
                     <p:dataTable id="datalist" value="#{cargasController.items}" var="item"
                                  selectionMode="single" selection="#{cargasController.selected}"
                                  paginator="true"
