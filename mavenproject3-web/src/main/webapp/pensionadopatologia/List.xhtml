@@ -71,7 +71,7 @@
                             </f:facet>
                             <h:outputText value="#{item.pensionado.nombre_pensionado} #{item.pensionado.apellido_p_pensionado} #{item.pensionado.apellido_m_pensionado}"/>
                         </p:column>
-                        <p:column id="patologia" sortBy="#{item.patologia.nombre_patologia}" filterBy="#{item.patologia.nombre_patologia} #{item.patologia.nombre_patologia.toLowerCase()}" filterMatchMode="contains" filterStyle="width:200px;" > >
+                        <p:column id="patologia" sortBy="#{item.patologia.nombre_patologia}" filterBy="#{item.patologia.nombre_patologia} #{item.patologia.nombre_patologia.toLowerCase()}" filterMatchMode="contains" filterStyle="width:200px;" >
                             <f:facet name="header">
                                 <h:outputText value="Patología"/>
                                 <p:watermark for="patologia" value="Buscar Patología" />
