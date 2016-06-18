@@ -12,12 +12,17 @@
             <h:form id="pensionadopatologiaViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{pensionadopatologiaController.selected != null}">
-                        <h:outputText value="#{bundle.ViewpensionadopatologiaLabel_pensionado}"/>
-                        <h:outputText value="#{pensionadopatologiaController.selected.pensionado}" title="#{bundle.ViewpensionadopatologiaTitle_pensionado}"/>
-                        <h:outputText value="#{bundle.ViewpensionadopatologiaLabel_patologia}"/>
-                        <h:outputText value="#{pensionadopatologiaController.selected.patologia}" title="#{bundle.ViewpensionadopatologiaTitle_patologia}"/>
-                        <h:outputText value="#{bundle.ViewpensionadopatologiaLabel_id}"/>
-                        <h:outputText value="#{pensionadopatologiaController.selected.id}" title="#{bundle.ViewpensionadopatologiaTitle_id}"/>
+                        <h:outputText value="Rut:"/>
+                        <h:outputText value="#{pensionadopatologiaController.selected.pensionado.rut_pensionado}" title="Rut"/>
+                        
+                        <h:outputText value="Nombre:"/>
+                        <h:outputText value="#{pensionadopatologiaController.selected.pensionado.nombre_pensionado} 
+                                             #{pensionadopatologiaController.selected.pensionado.apellido_p_pensionado}
+                                             #{pensionadopatologiaController.selected.pensionado.apellido_m_pensionado}"
+                                       title="Nombre"/>
+                        
+                        <h:outputText value="Patología:"/>
+                        <h:outputText value="#{pensionadopatologiaController.selected.patologia.nombre_patologia}" title="Patología"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="pensionadopatologiaViewDialog.hide()"/>
                 </h:panelGroup>
