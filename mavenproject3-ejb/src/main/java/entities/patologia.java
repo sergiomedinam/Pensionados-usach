@@ -50,7 +50,7 @@ public class patologia implements Serializable {
     }
 
     public void setNombre_patologia(String nombre_patologia) {
-        this.nombre_patologia = nombre_patologia;
+        this.nombre_patologia = nombre_patologia.toUpperCase();
     }
     
 
