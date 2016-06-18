@@ -6,6 +6,7 @@ import managebeans.util.JsfUtil.PersistAction;
 import sessionsbeans.pensionadopatologiaFacadeLocal;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -14,10 +15,13 @@ import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
+import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.faces.event.ComponentSystemEvent;
 
 @Named("pensionadopatologiaController")
 @SessionScoped
@@ -80,6 +84,17 @@ public class pensionadopatologiaController implements Serializable {
         }
         return items;
     }
+    
+    public List<pensionadopatologia> PatologiaPensionados(String rut) {
+        List<pensionadopatologia> pensionadopatologia = new ArrayList<pensionadopatologia>();
+        getItems();
+        for (pensionadopatologia item : items) {
+            if (item.getPensionado().getRut_pensionado().equals(rut)){
+                    pensionadopatologia.add(item);          
+            }
+        }
+        return pensionadopatologia;
+    }
 
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
@@ -109,6 +124,29 @@ public class pensionadopatologiaController implements Serializable {
         }
     }
 
+    public void validaCreate(ComponentSystemEvent event){
+        FacesContext context = FacesContext.getCurrentInstance();
+        UIComponent components = event.getComponent(); 
+        
+        UIInput uipatologia = (UIInput) components.findComponent("patologia");
+        UIInput uipensionado = (UIInput) components.findComponent("pensionado");
+        
+        
+        if(!uipatologia.getSubmittedValue().toString().equals("") && !uipensionado.getSubmittedValue().toString().equals("")){
+            int patologia = Integer.parseInt(uipatologia.getSubmittedValue().toString());
+            int pensionado = Integer.parseInt(uipensionado.getSubmittedValue().toString());
+
+            getItems();
+            for (pensionadopatologia item : items) {
+                if (item.getPensionado().getId() == pensionado && item.getPatologia().getId() == patologia) {
+                    uipensionado.setValid(false);
+                    uipatologia.setValid(false);
+                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "El pensionado ya registra la patología.") );
+                }
+            }
+        }
+    }
+    
     public pensionadopatologia getpensionadopatologia(java.lang.Long id) {
         return getFacade().find(id);
     }
