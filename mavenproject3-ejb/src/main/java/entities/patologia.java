@@ -32,7 +32,7 @@ public class patologia implements Serializable {
     @NotNull(message = "La patologia debe tener un nombre")
     private String nombre_patologia;
 
-    @OneToMany(mappedBy = "prestamo")
+    @OneToMany(mappedBy = "patologia")
     private Set<pensionadopatologia> pensionadopatologia = new HashSet<pensionadopatologia>();
 
     public Set<pensionadopatologia> getPensionadopatologia() {
