@@ -33,8 +33,7 @@
                   
                     <div id="demo" class=" collapse">
                           <br/>
-                         <div class="panel panel-default">
-                        
+                         <div class="panel panel-default">                        
                              <div class="panel-footer"> <b>¿Que hacer aqui?</b> En esta seccion del sistema es posible ver la información de los funcionarios y pensionados morosos.</div>
                         </div>
                     </div>
@@ -43,6 +42,9 @@
                         <h:panelGroup id="myPanelGroup" rendered="#{pensionadoController.filledSinCorreo}">
                             <div class="panel panel-default">
                                 <div class="panel-footer"> 
+                                    <h:panelGroup  rendered="#{pensionadoController.sinConexion}">
+                                        <p>No se pueden enviar correos en este momento. Solicitamos intentar en otro momento.</p><br/>
+                                    </h:panelGroup>
                                     <p>No se le pudo enviar correo a los siguientes pensionados</p>
                                     <p:commandButton  actionListener="#{pensionadoController.createPDFcorreofallido}" value="PDF Lista envíos fallidos" ajax="false">
                                         <p:ajax oncomplete="" process="@this" update="myPanelGroup" />
