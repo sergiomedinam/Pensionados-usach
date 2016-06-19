@@ -14,42 +14,73 @@
         </ui:define>
 
         <ui:define name="body">
+            <p:breadCrumb > 
+                <p:menuitem value="Inicio" url="#" />
+                <p:menuitem value="Inicio" url="/" />
+                <p:menuitem value="Enfermos" url="/faces/pensionadopatologia/List.xhtml" />
+            </p:breadCrumb>
+                <section class="content-header">
+                    <h1>
+                      Enfermos
+                      <small>Panel de administrador</small> <a href="#demo" data-toggle="collapse" class="btn btn-info">Información</a>
+
+                    </h1>
+                  
+                    <div id="demo" class=" collapse">
+                          <br/>
+                         <div class="panel panel-default">
+                        
+                             <div class="panel-footer"> <b>¿Que hacer aquí?</b> En esta sección del sistema es posible agregar las patologías que padecen de los pensionados.</div>
+                        </div>
+                    </div>
+                  </section>
+            <br/>
             <h:form id="pensionadopatologiaListForm">
-                <p:panel header="#{bundle.ListpensionadopatologiaTitle}">
+                <p:panel header="LISTA DE ENFERMOS">
                     <p:dataTable id="datalist" value="#{pensionadopatologiaController.items}" var="item"
                                  selectionMode="single" selection="#{pensionadopatologiaController.selected}"
                                  paginator="true"
                                  rowKey="#{item.id}"
                                  rows="10"
                                  rowsPerPageTemplate="10,20,30,40,50"
+                                 emptyMessage="No hay resultados."
                                  >
 
-                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
-                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowSelect"   update="createButton viewButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton"/>
 
-                        <p:column>
+                        <p:column id="rut" sortBy="#{item.pensionado.rut_pensionado}" filterBy="#{item.pensionado.rut_pensionado}" filterMatchMode="contains" filterStyle="width:200px;" >
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadopatologiaTitle_pensionado}"/>
+                                <h:outputText value="Rut"/>
+                                <p:watermark for="rut" value="Buscar Rut (con puntos y guión)" />
                             </f:facet>
-                            <h:outputText value="#{item.pensionado}"/>
+                            <h:outputText value="#{item.pensionado.rut_pensionado}"/>
                         </p:column>
-                        <p:column>
+                        <p:column id="nombre"   sortBy="#{item.pensionado.nombre_pensionado}
+                                                        #{item.pensionado.apellido_p_pensionado}
+                                                        #{item.pensionado.apellido_m_pensionado}"
+                                                        filterBy="#{item.pensionado.nombre_pensionado} #{item.pensionado.nombre_pensionado.toLowerCase()}
+                                                                  #{item.pensionado.apellido_p_pensionado} #{item.pensionado.apellido_p_pensionado.toLowerCase()}
+                                                                  #{item.pensionado.apellido_m_pensionado} #{item.pensionado.apellido_m_pensionado.toLowerCase()}"
+                                                        filterMatchMode="contains"
+                                                        filterStyle="width:200px;"
+                                                        >
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadopatologiaTitle_patologia}"/>
+                                <h:outputText value="Nombre"/>
+                                <p:watermark for="nombre" value="Buscar Nombre" />
                             </f:facet>
-                            <h:outputText value="#{item.patologia}"/>
+                            <h:outputText value="#{item.pensionado.nombre_pensionado} #{item.pensionado.apellido_p_pensionado} #{item.pensionado.apellido_m_pensionado}"/>
                         </p:column>
-                        <p:column>
+                        <p:column id="patologia" sortBy="#{item.patologia.nombre_patologia}" filterBy="#{item.patologia.nombre_patologia} #{item.patologia.nombre_patologia.toLowerCase()}" filterMatchMode="contains" filterStyle="width:200px;" >
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadopatologiaTitle_id}"/>
+                                <h:outputText value="Patología"/>
+                                <p:watermark for="patologia" value="Buscar Patología" />
                             </f:facet>
-                            <h:outputText value="#{item.id}"/>
+                            <h:outputText value="#{item.patologia.nombre_patologia}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{pensionadopatologiaController.prepareCreate}" update=":pensionadopatologiaCreateForm" oncomplete="PF('pensionadopatologiaCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":pensionadopatologiaViewForm" oncomplete="PF('pensionadopatologiaViewDialog').show()" disabled="#{empty pensionadopatologiaController.selected}"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":pensionadopatologiaEditForm" oncomplete="PF('pensionadopatologiaEditDialog').show()" disabled="#{empty pensionadopatologiaController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{pensionadopatologiaController.destroy}" update=":growl,datalist" disabled="#{empty pensionadopatologiaController.selected}"/>
                         </f:facet>
                     </p:dataTable>
                 </p:panel>

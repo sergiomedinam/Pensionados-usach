@@ -8,27 +8,33 @@
 
     <ui:composition>
 
-        <p:dialog id="pensionadopatologiaCreateDlg" widgetVar="pensionadopatologiaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatepensionadopatologiaTitle}">
+        <p:dialog id="pensionadopatologiaCreateDlg" widgetVar="pensionadopatologiaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="CREAR PATOLOGIA - PENSIONADO">
             <h:form id="pensionadopatologiaCreateForm">
+                <p:growl id="growl" showDetail="true" showSummary="true" autoUpdate="true" />
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{pensionadopatologiaController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreatepensionadopatologiaLabel_pensionado}" for="pensionado" />
-                        <p:selectOneMenu id="pensionado" value="#{pensionadopatologiaController.selected.pensionado}" >
-                            <f:selectItems value="#{pensionadoController.itemsAvailableSelectOne}"
+                        
+                        <f:event listener="#{pensionadopatologiaController.validaCreate}" type="preValidate" />
+                        
+                        <p:outputLabel value="Pensionado"  for="pensionado" />
+                        <p:selectOneMenu id="pensionado" required="true" requiredMessage="Se necesita un pensionado." style="width:200px" filter="true" filterMatchMode="contains" value="#{pensionadopatologiaController.selected.pensionado}" >
+                            <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{pensionadoController.habilitados}"
                                            var="pensionadoItem"
-                                           itemValue="#{pensionadoItem}"/>
+                                           itemValue="#{pensionadoItem}"
+                                           itemLabel="#{pensionadoItem.rut_pensionado}" />
                         </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreatepensionadopatologiaLabel_patologia}" for="patologia" />
-                        <p:selectOneMenu id="patologia" value="#{pensionadopatologiaController.selected.patologia}" >
+                        
+                        <p:outputLabel value="Patología" for="patologia" />
+                        <p:selectOneMenu id="patologia" required="true" requiredMessage="Se necesita una patología." style="width:200px" filter="true" filterMatchMode="contains" value="#{pensionadopatologiaController.selected.patologia}" >
+                            <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{patologiaController.itemsAvailableSelectOne}"
                                            var="patologiaItem"
-                                           itemValue="#{patologiaItem}"/>
+                                           itemValue="#{patologiaItem}"
+                                           itemLabel="#{patologiaItem.nombre_patologia}"/>
                         </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreatepensionadopatologiaLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{pensionadopatologiaController.selected.id}" title="#{bundle.CreatepensionadopatologiaTitle_id}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{pensionadopatologiaController.create}" value="#{bundle.Save}" update="display,:pensionadopatologiaListForm:datalist,:growl" oncomplete="handleSubmit(args,'pensionadopatologiaCreateDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="pensionadopatologiaCreateDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

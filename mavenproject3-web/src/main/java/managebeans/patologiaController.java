@@ -56,10 +56,25 @@ public class patologiaController implements Serializable {
     }
 
     public void create() {
-        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("patologiaCreated"));
-        if (!JsfUtil.isValidationFailed()) {
-            items = null;    // Invalidate list of items to trigger re-query.
+        
+        
+        String nombre_patologia = selected.getNombre_patologia();
+        getItems();
+        boolean existePatologia = false;
+        for(patologia item : items){
+            if(item.getNombre_patologia().equals(nombre_patologia)){
+                destroyNombre();
+                existePatologia = true;
+            }
         }
+        
+        if (!existePatologia) {
+            persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("patologiaCreated"));
+            if (!JsfUtil.isValidationFailed()) {
+                items = null;    // Invalidate list of items to trigger re-query.
+            }
+        }
+        
     }
 
     public void update() {
@@ -73,7 +88,13 @@ public class patologiaController implements Serializable {
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
-
+    public void destroyNombre() {
+        persist(PersistAction.DELETE, "Error: La patología ya existe.");
+        if (!JsfUtil.isValidationFailed()) {
+            selected = null; // Remove selection
+            items = null;    // Invalidate list of items to trigger re-query.
+        }
+    }
     public List<patologia> getItems() {
         if (items == null) {
             items = getFacade().findAll();

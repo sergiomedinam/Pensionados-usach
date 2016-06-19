@@ -47,7 +47,7 @@ public class patologiaTest {
         String expResult = "test";
         instance.setNombre_patologia(expResult);
         String result = instance.getNombre_patologia();
-        assertEquals(expResult, result);
+        assertEquals(expResult.toUpperCase(), result);
         // TODO review the generated test code and remove the default call to fail.
     }
 
