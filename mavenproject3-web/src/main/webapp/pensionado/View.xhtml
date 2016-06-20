@@ -19,9 +19,6 @@
                         <h:outputText value="#{bundle.ViewpensionadoLabel_nombre_pensionado}"/>
                         <h:outputText value="#{pensionadoController.selected.nombre_pensionado} #{pensionadoController.selected.apellido_p_pensionado} #{pensionadoController.selected.apellido_m_pensionado}" title="#{bundle.ViewpensionadoTitle_nombre_pensionado}"/>
 
-                        <h:outputText value="#{bundle.ViewpensionadoLabel_fecha_nacimiento}"/>
-                        <h:outputText value="#{pensionadoController.selected.fecha_nacimiento}" title="#{bundle.ViewpensionadoTitle_fecha_nacimiento}"/>
-                        
                         <h:outputText value="#{bundle.ViewpensionadoLabel_estado_civil}"/>
                         <h:outputText value="#{pensionadoController.selected.estado_civil}" title="#{bundle.ViewpensionadoTitle_estado_civil}"/>
                         
@@ -34,16 +31,11 @@
                         <h:outputText value="#{bundle.ViewpensionadoLabel_region}"/>
                         <h:outputText value="#{pensionadoController.selected.region}" title="#{bundle.ViewpensionadoTitle_region}"/>
                         
-                        
-                        <h:outputText value="#{bundle.ViewpensionadoLabel_telefono_fijo}"/>
-                        <h:outputText value="#{pensionadoController.selected.telefono_fijo}" title="#{bundle.ViewpensionadoTitle_telefono_fijo}"/>
-                        
                         <h:outputText value="#{bundle.ViewpensionadoLabel_celular}"/>
                         <h:outputText value="#{pensionadoController.selected.celular}" title="#{bundle.ViewpensionadoTitle_celular}"/>
                         
                         <h:outputText value="#{bundle.ViewpensionadoLabel_email_pensionado}"/>
                         <h:outputText value="#{pensionadoController.selected.email_pensionado}" title="#{bundle.ViewpensionadoTitle_email_pensionado}"/>
-
                         
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="pensionadoViewDialog.hide()"/>
