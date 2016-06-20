@@ -46,6 +46,9 @@
                         <p:inputText id="ap_inst" required="true" requiredMessage="Se necesita valor del aporte institucional." value="#{parametrosController.selected.aporte_institucional}" title="Aporte instituconal" />
                        
                     </p:panelGrid>
+                    <br>
+                        * Campo requerido
+                    </br>
                     <p:commandButton actionListener="#{parametrosController.update}" value="#{bundle.Save}" update="display,:parametrosListForm:datalist,:growl" oncomplete="handleSubmit(args, 'parametrosEditDialog');"/>
                 </h:panelGroup>
             </h:form>
@@ -56,16 +59,19 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{parametrosController.selected != null}">
                         <p:outputLabel value="Prima Catastrofico Titular:" for="prima_catastrofico_titular" />
-                        <p:inputText id="prima_catastrofico_titular" required="true" requiredMessage="Se necesita prima." value="#{parametrosController.selected.prima_catastrofico_titular}" title="#{bundle.EditparametrosTitle_prima_catastrofico_titular}" />
+                        <p:inputText id="prima_catastrofico_titular" required="true" requiredMessage="Se necesita prima." style="width: 200px;" value="#{parametrosController.selected.prima_catastrofico_titular}" title="#{bundle.EditparametrosTitle_prima_catastrofico_titular}" />
                         
                         <p:outputLabel value="Prima Catastrofico Conyuge:" for="prima_catastrofico_conyuge" />
-                        <p:inputText id="prima_catastrofico_conyuge" required="true" requiredMessage="Se necesita prima." value="#{parametrosController.selected.prima_catastrofico_conyuge}" title="#{bundle.EditparametrosTitle_prima_catastrofico_conyuge}" />
+                        <p:inputText id="prima_catastrofico_conyuge" required="true" requiredMessage="Se necesita prima." style="width: 200px;" value="#{parametrosController.selected.prima_catastrofico_conyuge}" title="#{bundle.EditparametrosTitle_prima_catastrofico_conyuge}" />
                         
                         <p:outputLabel value="Prima Catastrofico Hijos:" for="prima_catastrofico_hijos" />
-                        <p:inputText id="prima_catastrofico_hijos" required="true" requiredMessage="Se necesita prima." value="#{parametrosController.selected.prima_catastrofico_hijos}" title="#{bundle.EditparametrosTitle_prima_catastrofico_hijos}" />
+                        <p:inputText id="prima_catastrofico_hijos" required="true" requiredMessage="Se necesita prima." style="width: 200px;" value="#{parametrosController.selected.prima_catastrofico_hijos}" title="#{bundle.EditparametrosTitle_prima_catastrofico_hijos}" />
                         
                    
                     </p:panelGrid>
+                    <br>
+                        * Campo requerido
+                    </br>
                     <p:commandButton actionListener="#{parametrosController.update}" value="#{bundle.Save}" update="display,:parametrosListForm:datalist,:growl" oncomplete="handleSubmit(args, 'parametrosEditDialog6');"/>
                 </h:panelGroup>
             </h:form>
@@ -78,15 +84,18 @@
                     <p:panelGrid columns="2" rendered="#{parametrosController.selected != null}">
      
                         <p:outputLabel value="Prima Hospitalario Titular:" for="prima_hospitalario_titular" />
-                        <p:inputText id="prima_hospitalario_titular" required="true" requiredMessage="Se necesita prima." value="#{parametrosController.selected.prima_hospitalario_titular}" title="#{bundle.EditparametrosTitle_prima_hospitalario_titular}" />
+                        <p:inputText id="prima_hospitalario_titular" required="true" requiredMessage="Se necesita prima." style="width: 200px;" value="#{parametrosController.selected.prima_hospitalario_titular}" title="#{bundle.EditparametrosTitle_prima_hospitalario_titular}" />
                         
                         <p:outputLabel value="Prima Hospitalario Titular + 1:" for="prima_hospitalario_titularmas1" />
-                        <p:inputText id="prima_hospitalario_titularmas1" required="true" requiredMessage="Se necesita prima." value="#{parametrosController.selected.prima_hospitalario_titularmas1}" title="#{bundle.EditparametrosTitle_prima_hospitalario_titularmas1}" />
+                        <p:inputText id="prima_hospitalario_titularmas1" required="true" requiredMessage="Se necesita prima." style="width: 200px;" value="#{parametrosController.selected.prima_hospitalario_titularmas1}" title="#{bundle.EditparametrosTitle_prima_hospitalario_titularmas1}" />
                         
                         <p:outputLabel value="Prima Hospitalario Titular + 2 o más:" for="prima_hospitalario_titular2omas" />
-                        <p:inputText id="prima_hospitalario_titular2omas" required="true" requiredMessage="Se necesita prima." value="#{parametrosController.selected.prima_hospitalario_titular2omas}" title="#{bundle.EditparametrosTitle_prima_hospitalario_titular2omas}" />
+                        <p:inputText id="prima_hospitalario_titular2omas" required="true" requiredMessage="Se necesita prima." style="width: 200px;" value="#{parametrosController.selected.prima_hospitalario_titular2omas}" title="#{bundle.EditparametrosTitle_prima_hospitalario_titular2omas}" />
                       
                     </p:panelGrid>
+                    <br>
+                        * Campo requerido
+                    </br>
                     <p:commandButton actionListener="#{parametrosController.update}" value="#{bundle.Save}" update="display,:parametrosListForm1:datalist,:growl" oncomplete="handleSubmit(args, 'parametrosEditDialog1');"/>
                 </h:panelGroup>
             </h:form>
@@ -98,22 +107,28 @@
                     <p:panelGrid columns="2" rendered="#{parametrosController.selected != null}">
 
                         <p:outputLabel value="Valor UF:" for="valor_uf" />
-                        <p:inputText id="valor_uf" required="true" requiredMessage="Se necesita valor de la UF." value="#{parametrosController.selected.valor_uf}" title="#{bundle.EditparametrosTitle_valor_uf}" />
+                        <p:inputText id="valor_uf" required="true" requiredMessage="Se necesita valor de la UF." style="width: 200px;" value="#{parametrosController.selected.valor_uf}" title="#{bundle.EditparametrosTitle_valor_uf}" />
                    
                     </p:panelGrid>
+                    <br>
+                        * Campo requerido
+                    </br>
                     <p:commandButton actionListener="#{parametrosController.update}" value="#{bundle.Save}" update="display,:parametrosListForm2:datalist,:growl" oncomplete="handleSubmit(args, 'parametrosEditDialog2');"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>
         
-        <p:dialog id="parametrosEditDlg3" widgetVar="parametrosEditDialog3" modal="true" resizable="false" appendTo="@(body)" header="PARAMETRO DE APORTE INSTITUCIONAL">
+        <p:dialog id="parametrosEditDlg3" widgetVar="parametrosEditDialog3" modal="true" resizable="false"  appendTo="@(body)" header="PARAMETRO DE APORTE INSTITUCIONAL">
             <h:form id="parametrosEditForm3">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{parametrosController.selected != null}">
                         <p:outputLabel value="Aporte Institucional:" for="ap_inst" />
-                        <p:inputText id="ap_inst" required="true" requiredMessage="Se necesita valor del aporte institucional." value="#{parametrosController.selected.aporte_institucional}" title="Aporte instituconal" />
+                        <p:inputText id="ap_inst" required="true" requiredMessage="Se necesita valor del aporte institucional." style="width: 200px;" value="#{parametrosController.selected.aporte_institucional}" title="Aporte instituconal" />
                        
                     </p:panelGrid>
+                    <br>
+                        * Campo requerido
+                    </br>
                     <p:commandButton actionListener="#{parametrosController.update}" value="#{bundle.Save}" update="display,:parametrosListForm3:datalist,:growl" oncomplete="handleSubmit(args, 'parametrosEditDialog3');"/>
                 </h:panelGroup>
             </h:form>
@@ -124,9 +139,12 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{parametrosController.selected != null}">
                         <p:outputLabel value="Correo Administrador" for="correo_s_admin" />
-                        <p:inputText id="correo_s_admin" required="true" requiredMessage="Se necesita correo del administrador." value="#{parametrosController.selected.correo_s_admin}" title="#{bundle.EditparametrosTitle_correo_s_admin}" />
+                        <p:inputText id="correo_s_admin" required="true" requiredMessage="Se necesita correo del administrador." style="width: 200px;" value="#{parametrosController.selected.correo_s_admin}" title="#{bundle.EditparametrosTitle_correo_s_admin}" />
 
                     </p:panelGrid>
+                    <br>
+                        * Campo requerido
+                    </br>
                     <p:commandButton actionListener="#{parametrosController.update}" value="#{bundle.Save}" update="display,:parametrosListForm4:datalist,:growl" oncomplete="handleSubmit(args, 'parametrosEditDialog4');"/>
                 </h:panelGroup>
             </h:form>
@@ -138,13 +156,16 @@
                     <p:panelGrid columns="2" rendered="#{parametrosController.selected != null}">
   
                         <p:outputLabel value="Correo Aplicación" for="correo_aplicacion" />
-                        <p:inputText id="correo_aplicacion" required="true" requiredMessage="Se necesita correo de la aplicación." value="#{parametrosController.selected.correo_aplicacion}" title="#{bundle.EditparametrosTitle_correo_aplicacion}" />
+                        <p:inputText id="correo_aplicacion" required="true" requiredMessage="Se necesita correo de la aplicación." style="width: 200px;" value="#{parametrosController.selected.correo_aplicacion}" title="#{bundle.EditparametrosTitle_correo_aplicacion}" />
                         
                         <p:outputLabel value="Contraseña" for="contrasena_correo_aplicacion" />
-                        <p:inputText id="contrasena_correo_aplicacion" required="true" requiredMessage="Se necesita contraseña del correo de la aplicación." value="#{parametrosController.selected.contrasena_correo_aplicacion}" title="#{bundle.EditparametrosTitle_contrasena_correo_aplicacion}" />
+                        <p:inputText id="contrasena_correo_aplicacion" required="true" requiredMessage="Se necesita contraseña del correo de la aplicación." style="width: 200px;" value="#{parametrosController.selected.contrasena_correo_aplicacion}" title="#{bundle.EditparametrosTitle_contrasena_correo_aplicacion}" />
                        
 
                     </p:panelGrid>
+                    <br>
+                        * Campo requerido
+                    </br>
                     <p:commandButton actionListener="#{parametrosController.update}" value="#{bundle.Save}" update="display,:parametrosListForm5:datalist,:growl" oncomplete="handleSubmit(args, 'parametrosEditDialog5');"/>
                 </h:panelGroup>
             </h:form>

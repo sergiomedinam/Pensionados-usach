@@ -34,6 +34,9 @@
                                            itemLabel="#{patologiaItem.nombre_patologia}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
+                    <br>
+                        * Campo requerido
+                    </br>
                     <p:commandButton actionListener="#{pensionadopatologiaController.create}" value="#{bundle.Save}" update="display,:pensionadopatologiaListForm:datalist,:growl" oncomplete="handleSubmit(args,'pensionadopatologiaCreateDialog');"/>
                 </h:panelGroup>
             </h:form>

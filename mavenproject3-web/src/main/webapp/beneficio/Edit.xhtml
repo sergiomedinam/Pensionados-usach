@@ -17,13 +17,16 @@
                         <p:outputLabel id="nombre_beneficio" value="#{beneficioController.selected.nombre_beneficio}" title="#{bundle.EditbeneficioTitle_nombre_beneficio}" />
                         
                         <p:outputLabel value="Monto máximo:" for="monto" />
-                        <p:inputText id="monto" required="true" requiredMessage="Se necesita un monto para el beneficio." value="#{beneficioController.selected.monto_max_beneficio}" title="Monto máximo" >
+                        <p:inputText id="monto" required="true" requiredMessage="Se necesita un monto máximo para el beneficio." style="width: 200px;" value="#{beneficioController.selected.monto_max_beneficio}" title="Monto máximo" >
                             <f:validateLongRange minimum="0"/>
                         </p:inputText>
                         
                         
                         
                     </p:panelGrid>
+                    <br>
+                        * Campo requerido
+                    </br>
                     <p:commandButton actionListener="#{beneficioController.update}" value="#{bundle.Save}" update="display,:beneficioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'beneficioEditDialog');"/>
                 </h:panelGroup>
             </h:form>

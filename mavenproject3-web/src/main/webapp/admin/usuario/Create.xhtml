@@ -14,7 +14,8 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{usuarioController.selected != null}">
                         <p:outputLabel value="#{bundle.CreateusuarioLabel_tipo_usuario}" for="tipo_usuario" />
-                        <p:selectOneMenu id="tipo_usuario" required="true" requiredMessage="Seleccione tipo de usuario" value="#{usuarioController.selected.tipo_usuario}" style="width:155px" >
+                        <p:selectOneMenu id="tipo_usuario" required="true" requiredMessage="Seleccione tipo de usuario." value="#{usuarioController.selected.tipo_usuario}" style="width:200px" >
+                            <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{rolController.itemsAvailableSelectOne}"
                                            var="tipo_usuarioItem"
                                            itemValue="#{tipo_usuarioItem}"
@@ -22,24 +23,27 @@
                         </p:selectOneMenu>
                         
                         <p:outputLabel value="#{bundle.CreateusuarioLabel_rut}" for="rut" />
-                        <p:inputMask id="rut" mask="99.999.999-9" placeholder="12.345.678-9" required="true" requiredMessage="Se necesita Rut" value="#{usuarioController.selected.rut}" title="#{bundle.CreateusuarioTitle_rut}" validator="#{usuarioController.verificarRutExistencia}" />
+                        <p:inputMask id="rut" mask="99.999.999-9" placeholder="12.345.678-9" required="true" requiredMessage="Se necesita Rut." style="width:200px" value="#{usuarioController.selected.rut}" title="#{bundle.CreateusuarioTitle_rut}" validator="#{usuarioController.verificarRutExistencia}" />
 
                         
                         
                         <p:outputLabel value="#{bundle.CreateusuarioLabel_nombre}" for="nombre" />
-                        <p:inputText id="nombre" required="true" requiredMessage="Se necesita nombre" value="#{usuarioController.selected.nombre}" title="#{bundle.CreateusuarioTitle_nombre}" />
+                        <p:inputText id="nombre" required="true" requiredMessage="Se necesita nombre." style="width:200px" value="#{usuarioController.selected.nombre}" title="#{bundle.CreateusuarioTitle_nombre}" />
                         <p:outputLabel value="#{bundle.CreateusuarioLabel_apellido}" for="apellido" />
-                        <p:inputText id="apellido" required="true" requiredMessage="Se necesita apellido" value="#{usuarioController.selected.apellido}" title="#{bundle.CreateusuarioTitle_apellido}" />
+                        <p:inputText id="apellido" required="true" requiredMessage="Se necesita apellido." style="width:200px" value="#{usuarioController.selected.apellido}" title="#{bundle.CreateusuarioTitle_apellido}" />
                         <p:outputLabel value="#{bundle.CreateusuarioLabel_email_usuario}" for="email_usuario" />
-                        <p:inputText id="email_usuario"  validatorMessage="Email con formato invalido" required="true" requiredMessage="Se necesita email" value="#{usuarioController.selected.email_usuario}" title="#{bundle.CreateusuarioTitle_email_usuario}">
+                        <p:inputText id="email_usuario"  validatorMessage="Email con formato invalido." style="width:200px" required="true" requiredMessage="Se necesita email." value="#{usuarioController.selected.email_usuario}" title="#{bundle.CreateusuarioTitle_email_usuario}">
                             <f:validateRegex
 		pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
                         </p:inputText>
                             
-                        <p:outputLabel value="#{bundle.CreateusuarioLabel_contrasena}" for="contrasena" />
-                        <p:password id="contrasena" required="true" requiredMessage="Se necesita contraseña" value="#{usuarioController.selected.contrasena}" title="#{bundle.CreateusuarioTitle_contrasena}" />
+                        <p:outputLabel value="Contraseña:" for="contrasena" />
+                        <p:password id="contrasena" required="true" requiredMessage="Se necesita contraseña." style="width:200px" value="#{usuarioController.selected.contrasena}" title="#{bundle.CreateusuarioTitle_contrasena}" />
                       
                     </p:panelGrid>
+                    <br>
+                        * Campo requerido
+                    </br>
                     <p:commandButton actionListener="#{usuarioController.create}" value="#{bundle.Save}" update="display,:usuarioListForm:datalist,:growl" oncomplete="handleSubmit(args,'usuarioCreateDialog');"/>
                 </h:panelGroup>
                 
