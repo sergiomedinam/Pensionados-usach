@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <ui:composition>
 
@@ -47,6 +48,10 @@
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="pensionadoViewDialog.hide()"/>
                     <p:button value="Ver Mas"  href="/faces/pensionado/Infopensionado.xhtml" />
+                    <c:if test="#{cuotaspagadasController.esMoroso(pensionadoController.selected.rut_pensionado)}">
+                        <p:commandButton action="#{pensionadoController.correoUnMoroso()}" value="Enviar correo por morosidad"/>
+                    </c:if>
+                    <c:set var="rol" value="observador"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>
