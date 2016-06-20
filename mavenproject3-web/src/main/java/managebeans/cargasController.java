@@ -412,7 +412,7 @@ public class cargasController implements Serializable {
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Otros no puede ser menos a 0.") ); 
             }                    
         }catch(NullPointerException|ClassCastException|NumberFormatException e){
-            uihijos.setValid(false);
+            uiotros.setValid(false);
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",  "Otros debe ser un numero sin comas ni puntos.") );                   
         }
         if(!uiseguro.getSubmittedValue().toString().equals("") && !uipensionado.getSubmittedValue().toString().equals("")){

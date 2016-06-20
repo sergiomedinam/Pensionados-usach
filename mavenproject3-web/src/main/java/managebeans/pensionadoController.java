@@ -18,7 +18,11 @@ import managebeans.util.JsfUtil.PersistAction;
 import sessionsbeans.pensionadoFacadeLocal;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Properties;
 import java.util.ResourceBundle;
@@ -314,6 +318,7 @@ public class pensionadoController implements Serializable {
                     if( !enviarCorreoAPensionado(moroso) ){
                         sinCorreo.add(moroso);
                         sinConexion = true;
+                        count2++; 
                     }else{
                         count1++;
                     }
@@ -339,6 +344,8 @@ public class pensionadoController implements Serializable {
                 System.out.println(selected.getEmail_pensionado());
                 if( !enviarCorreoAPensionado(selected) ){
                     context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error de conexión",  "No se puede enviar el correo en este momento.") );
+                }else{
+                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Envío exitoso",  "Se ha enviado correctamente el correo al pensionado.") );
                 }
             }else{
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Correo inválido",  "El correo de este pensionado no es válido.") );
@@ -354,11 +361,17 @@ public class pensionadoController implements Serializable {
     }
     
     public void createPDFcorreofallido() throws IOException, DocumentException{
-        
+        Calendar fecha = new GregorianCalendar();
+        int anoActual = fecha.get(Calendar.YEAR);
+        int mesActual = fecha.get(Calendar.MONTH) + 1;
+        int diaActual = fecha.get(Calendar.DATE);
+        int horaActual = fecha.get(Calendar.HOUR_OF_DAY);
+        int minutoActual = fecha.get(Calendar.MINUTE);
+        int segundoActual = fecha.get(Calendar.SECOND);
         filledSinCorreo = false;
         sinConexion = false;
         Document document = new Document();
-        String nombre_completo = "Envio de correo fallido";
+        String nombre_completo = "Envio de correo fallido - "+horaActual+":"+minutoActual+":"+segundoActual+" - "+diaActual+"/"+mesActual+"/"+anoActual;
         String title = nombre_completo +".pdf";
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PdfWriter.getInstance(document, baos);
