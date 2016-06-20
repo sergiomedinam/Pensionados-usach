@@ -8,13 +8,13 @@
 
     <ui:composition>
 
-        <p:dialog id="prestamoViewDlg" widgetVar="prestamoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewprestamoTitle}">
+        <p:dialog id="prestamoViewDlg" widgetVar="prestamoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="VER PRÉSTAMO">
             <h:form id="prestamoViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{prestamoController.selected != null}">
                         
                         <h:outputText value="Nombre préstamo:"/>
-                        <h:outputText value="#{prestamoController.selected.nombre_prestamo}" title="#{bundle.ViewprestamoTitle_nombre_prestamo}"/>
+                        <h:outputText value="#{prestamoController.selected.nombre_prestamo}" title="Nombre préstamo"/>
                         <h:outputText value="Monto máximo:"/>
                         <h:outputText value="$ #{prestamoController.selected.monto_max_prestamo}" title="Monto máximo"/>
                         <h:outputText value="Plazo máximo:"/>
