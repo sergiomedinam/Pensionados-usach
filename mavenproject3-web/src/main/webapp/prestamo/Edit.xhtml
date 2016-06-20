@@ -8,7 +8,7 @@
 
     <ui:composition>
 
-        <p:dialog id="prestamoEditDlg" widgetVar="prestamoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditprestamoTitle}">
+        <p:dialog id="prestamoEditDlg" widgetVar="prestamoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="EDITAR PRÉSTAMO">
             <h:form id="prestamoEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{prestamoController.selected != null}">
@@ -16,15 +16,18 @@
                         <p:outputLabel value="Nombre préstamo:" />
                         <p:outputLabel value="#{prestamoController.selected.nombre_prestamo}" title="Nombre préstamo" />
                         <p:outputLabel value="Monto máximo:" for="monto" />
-                        <p:inputText id="monto" required="true" requiredMessage="Se necesita un monto máximo para el préstamo." value="#{prestamoController.selected.monto_max_prestamo}" title="Monto máximo" >
+                        <p:inputText id="monto" required="true" requiredMessage="Se necesita un monto máximo para el préstamo." style="width: 200px;" value="#{prestamoController.selected.monto_max_prestamo}" title="Monto máximo" >
                             <f:validateLongRange minimum="0"/>
                         </p:inputText>
                         <p:outputLabel value="Plazo máximo:" for="plazo" />
-                        <p:inputText id="plazo" required="true" requiredMessage="Se necesita un plazo máximo para el préstamo." value="#{prestamoController.selected.cuotas_prestamo}" title="Plazo máximo" >
+                        <p:inputText id="plazo" required="true" requiredMessage="Se necesita un plazo máximo para el préstamo." style="width: 200px;" value="#{prestamoController.selected.cuotas_prestamo}" title="Plazo máximo" >
                             <f:validateLongRange minimum="0"/>
                         </p:inputText>
                         
                     </p:panelGrid>
+                    <br>
+                        * Campo requerido
+                    </br>
                     <p:commandButton actionListener="#{prestamoController.update}" value="#{bundle.Save}" update="display,:prestamoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'prestamoEditDialog');"/>
                 </h:panelGroup>
             </h:form>

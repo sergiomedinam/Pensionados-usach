@@ -8,20 +8,20 @@
 
     <ui:composition>
 
-        <p:dialog id="pensionadoprestamoCreateDlg" widgetVar="pensionadoprestamoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatepensionadoprestamoTitle}">
+        <p:dialog id="pensionadoprestamoCreateDlg" widgetVar="pensionadoprestamoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="CREAR PRÉSTAMO">
             <h:form id="pensionadoprestamoCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{pensionadoprestamoController.selected != null}">
                         <p:outputLabel value="#{bundle.CreatepensionadoprestamoLabel_pensionado}" for="pensionado" />
-                        <p:selectOneMenu id="pensionado" required="true" requiredMessage="Se necesita un pensionado." style="width:155px" filter="true" filterMatchMode="contains" value="#{pensionadoprestamoController.selected.pensionado}" >
+                        <p:selectOneMenu id="pensionado" required="true" requiredMessage="Se necesita un pensionado." style="width:200px" filter="true" filterMatchMode="contains" value="#{pensionadoprestamoController.selected.pensionado}" >
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{pensionadoController.habilitados}"
                                            var="pensionadoItem"
                                            itemValue="#{pensionadoItem}"
                                            itemLabel="#{pensionadoItem.rut_pensionado}"/>
                         </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreatepensionadoprestamoLabel_prestamo}" for="prestamo" />
-                        <p:selectOneMenu id="prestamo" required="true" requiredMessage="Se necesita un préstamo." style="width:155px" filter="true" filterMatchMode="contains" value="#{pensionadoprestamoController.selected.prestamo}" >
+                        <p:outputLabel value="Préstamo:" for="prestamo" />
+                        <p:selectOneMenu id="prestamo" required="true" requiredMessage="Se necesita un préstamo." style="width:200px" filter="true" filterMatchMode="contains" value="#{pensionadoprestamoController.selected.prestamo}" >
                             <p:ajax  update="cuotas,monto_pedido"/>
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{prestamoController.itemsAvailableSelectOne}"
@@ -31,26 +31,29 @@
                         </p:selectOneMenu>
                         
                         <p:outputLabel value="Monto pedido" for="monto_pedido" />
-                        <p:inputText id="monto_pedido" required="true" requiredMessage="Se necesita un monto." value="#{pensionadoprestamoController.selected.monto_total}" title="Monto pedido" >
+                        <p:inputText id="monto_pedido" required="true" requiredMessage="Se necesita un monto." style="width:200px" value="#{pensionadoprestamoController.selected.monto_total}" title="Monto pedido" >
                             <f:validateLongRange minimum="0" maximum="#{pensionadoprestamoController.selected.prestamo.monto_max_prestamo}" />
                         </p:inputText>
                                                 
                         <p:outputLabel value="#{bundle.CreatepensionadoprestamoLabel_cuotas}" for="cuotas" />
-                        <p:inputText id="cuotas" required="true" requiredMessage="Se necesita un número de cuotas." value="#{pensionadoprestamoController.selected.cuotas}" title="#{bundle.CreatepensionadoprestamoTitle_cuotas}" >
+                        <p:inputText id="cuotas" required="true" requiredMessage="Se necesita un número de cuotas." style="width:200px" value="#{pensionadoprestamoController.selected.cuotas}" title="#{bundle.CreatepensionadoprestamoTitle_cuotas}" >
                             <f:validateLongRange minimum="0" maximum="#{pensionadoprestamoController.selected.prestamo.cuotas_prestamo}" />
                         </p:inputText>
                         
                         <p:outputLabel value="Valor cuota:" for="valor_cuota" />
-                        <p:inputText id="valor_cuota" required="true" requiredMessage="Se necesita el valor de la cuota." value="#{pensionadoprestamoController.selected.valor_cuota}" title="Valor cuota" />
+                        <p:inputText id="valor_cuota" required="true" requiredMessage="Se necesita el valor de la cuota." style="width:200px" value="#{pensionadoprestamoController.selected.valor_cuota}" title="Valor cuota" />
                         
                         <p:outputLabel value="#{bundle.CreatepensionadoprestamoLabel_fecha_pedido}" for="fecha_pedido" />
-                        <p:inputMask id="fecha_pedido" mask="99/9999" placeholder="MM/AAAA" required="true" requiredMessage="Se necesita una fecha de pedido." value="#{pensionadoprestamoController.selected.fecha_pedido}" title="#{bundle.CreatepensionadoprestamoTitle_fecha_pedido}" />
+                        <p:inputMask id="fecha_pedido" mask="99/9999" placeholder="MM/AAAA" required="true" requiredMessage="Se necesita una fecha de pedido." style="width:200px" value="#{pensionadoprestamoController.selected.fecha_pedido}" title="#{bundle.CreatepensionadoprestamoTitle_fecha_pedido}" />
                         
-                        <p:outputLabel value="#{bundle.CreatepensionadoprestamoLabel_fecha_termino}" for="fecha_termino" />
-                        <p:inputMask id="fecha_termino" mask="99/9999" placeholder="MM/AAAA" required="true" requiredMessage="Se necesita una fecha de término." value="#{pensionadoprestamoController.selected.fecha_termino}" title="#{bundle.CreatepensionadoprestamoTitle_fecha_termino}" />
+                        <p:outputLabel value="Fecha término:" for="fecha_termino" />
+                        <p:inputMask id="fecha_termino" mask="99/9999" placeholder="MM/AAAA" required="true" requiredMessage="Se necesita una fecha de término." style="width:200px" value="#{pensionadoprestamoController.selected.fecha_termino}" title="#{bundle.CreatepensionadoprestamoTitle_fecha_termino}" />
                         
                     
                     </p:panelGrid>
+                    <br>
+                        * Campo requerido
+                    </br>
                     <p:commandButton actionListener="#{pensionadoprestamoController.create}" value="#{bundle.Save}" update="display,:pensionadoprestamoListForm:datalist,:growl" oncomplete="handleSubmit(args,'pensionadoprestamoCreateDialog');"/>
                 </h:panelGroup>
             </h:form>
