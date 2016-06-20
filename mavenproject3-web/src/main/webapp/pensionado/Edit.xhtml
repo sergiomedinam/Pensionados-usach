@@ -14,67 +14,66 @@
                     <p:panelGrid columns="2" rendered="#{pensionadoController.selected != null}">
                         
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_rut_pensionado}" for="rut_pensionado" />
-                        <p:outputLabel id="rut_pensionado" value="#{pensionadoController.selected.rut_pensionado}" title="#{bundle.EditpensionadoTitle_rut_pensionado}"/>
-                        
+                        <p:outputLabel id="rut_pensionado" style="width:200px" value="#{pensionadoController.selected.rut_pensionado}" title="#{bundle.EditpensionadoTitle_rut_pensionado}"/>
                         
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_nombre_pensionado}" for="nombre_pensionado" />
-                        <p:inputText id="nombre_pensionado" value="#{pensionadoController.selected.nombre_pensionado}" title="#{bundle.EditpensionadoTitle_nombre_pensionado}" />
+                        <p:inputText id="nombre_pensionado" style="width:200px" required="true" requiredMessage="Se necesita un nombre." value="#{pensionadoController.selected.nombre_pensionado}" title="#{bundle.EditpensionadoTitle_nombre_pensionado}" />
+                        
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_apellido_p_pensionado}" for="apellido_p_pensionado" />
-                        <p:inputText id="apellido_p_pensionado" value="#{pensionadoController.selected.apellido_p_pensionado}" title="#{bundle.EditpensionadoTitle_apellido_p_pensionado}" />
+                        <p:inputText id="apellido_p_pensionado" style="width:200px" required="true" requiredMessage="Se necesita un apellido." value="#{pensionadoController.selected.apellido_p_pensionado}" title="#{bundle.EditpensionadoTitle_apellido_p_pensionado}" />
+                        
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_apellido_m_pensionado}" for="apellido_m_pensionado" />
-                        <p:inputText id="apellido_m_pensionado" value="#{pensionadoController.selected.apellido_m_pensionado}" title="#{bundle.EditpensionadoTitle_apellido_m_pensionado}" />
+                        <p:inputText id="apellido_m_pensionado" style="width:200px" value="#{pensionadoController.selected.apellido_m_pensionado}" title="#{bundle.EditpensionadoTitle_apellido_m_pensionado}" />
 
-                        
-                        
-                        
                         <p:outputLabel for="fecha_nacimiento" value="Fecha Nacimiento:" />
-                        <p:inputMask mask="99/99/9999" id="fecha_nacimiento" value="#{pensionadoController.selected.fecha_nacimiento}" placeholder="dd/mm/yyyy"/>
+                        <p:inputMask mask="99/99/9999" style="width:200px" id="fecha_nacimiento" value="#{pensionadoController.selected.fecha_nacimiento}" placeholder="DD/MM/AAAA"/>
                         
                         <p:outputLabel value="#{bundle.EditpensionadoLabel_estado_civil}" for="estado_civil" />                        
-                        <p:selectOneMenu id="estado_civil" value="#{pensionadoController.selected.estado_civil}" style="width:155px" >
+                        <p:selectOneMenu id="estado_civil" required="true" requiredMessage="Se necesita un estado civil." value="#{pensionadoController.selected.estado_civil}" style="width:200px" >
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{estadoCivil.estadosCiviles}" />
                         </p:selectOneMenu>
                              
-                        <p:outputLabel value="#{bundle.EditpensionadoLabel_direccion}" for="direccion" />
-                        <p:inputText required="true" requiredMessage="Se necesita una direccion"  id="direccion" value="#{pensionadoController.selected.direccion}" title="#{bundle.EditpensionadoTitle_direccion}" />
+                        <p:outputLabel value="Dirección:" for="direccion" />
+                        <p:inputText id="direccion" style="width:200px" value="#{pensionadoController.selected.direccion}" title="#{bundle.EditpensionadoTitle_direccion}" />
                         
-                        <p:outputLabel for="country" value="#{bundle.CreatepensionadoLabel_region}" />
-                        <p:selectOneMenu required="true" requiredMessage="Se necesita una región" id="country" value="#{pensionadoController.selected.region}" style="width:155px" >
+                        <p:outputLabel for="country" value="Región:" />
+                        <p:selectOneMenu required="true" requiredMessage="Se necesita una región." style="width:200px" id="country" value="#{pensionadoController.selected.region}" >
                             <p:ajax listener="#{regionesComunas.onCountryChange(pensionadoController.selected.region)}" update="city" />
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{regionesComunas.countries}" />
                         </p:selectOneMenu>
                         
                         <p:outputLabel for="city" value="#{bundle.CreatepensionadoLabel_comuna}" />
-                        <p:selectOneMenu required="true" requiredMessage="Se necesita una comuna" id="city" value="#{pensionadoController.selected.comuna}" style="width:155px">
-                            <f:selectItem itemLabel="Seleccionar" itemValue="#{pensionadoController.selected.comuna}"/>
+                        <p:selectOneMenu style="width:200px" filter="true" filterMatchMode="contains" required="true" requiredMessage="Se necesita una comuna." id="city" value="#{pensionadoController.selected.comuna}" >
+                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{regionesComunas.cities}" />
                         </p:selectOneMenu>                        
                         
                         <p:outputLabel  value="#{bundle.CreatepensionadoLabel_telefono_fijo}"  for="telefono_fijo" />
-                        <p:inputMask id="telefono_fijo" mask="99999999" placeholder="27778888" value="#{pensionadoController.selected.telefono_fijo}" title="#{bundle.CreatepensionadoTitle_telefono_fijo}">
+                        <p:inputMask id="telefono_fijo" mask="99999999" style="width:200px" placeholder="27778888" value="#{pensionadoController.selected.telefono_fijo}" title="#{bundle.CreatepensionadoTitle_telefono_fijo}">
                             <f:validateLength minimum="8" maximum="8"/>
                         </p:inputMask>
                         
                         <p:outputLabel value="#{bundle.CreatepensionadoLabel_celular}" for="celular" />
-                        <p:inputMask id="celular" mask="99999999"  placeholder="97778888" value="#{pensionadoController.selected.celular}" title="#{bundle.CreatepensionadoTitle_celular}">
+                        <p:inputMask id="celular" mask="99999999" style="width:200px" placeholder="97778888" value="#{pensionadoController.selected.celular}" title="#{bundle.CreatepensionadoTitle_celular}">
                             <f:validateLength minimum="8" maximum="8"/>
                         </p:inputMask>
                     
                         <p:outputLabel value="#{bundle.CreatepensionadoLabel_email_pensionado}" for="email_pensionado" />
-                        <p:inputText id="email_pensionado" value="#{pensionadoController.selected.email_pensionado}" title="#{bundle.CreatepensionadoTitle_email_pensionado}" />
-
-                        
+                        <p:inputText id="email_pensionado" style="width:200px" value="#{pensionadoController.selected.email_pensionado}" title="#{bundle.CreatepensionadoTitle_email_pensionado}" />
                         
                         <p:outputLabel value="#{bundle.CreatepensionadoLabel_email_alternativo}" for="email_alternativo" />
-                        <p:inputText id="email_alternativo" value="#{pensionadoController.selected.email_alternativo}" title="#{bundle.CreatepensionadoTitle_email_alternativo}" />
+                        <p:inputText id="email_alternativo" style="width:200px" value="#{pensionadoController.selected.email_alternativo}" title="#{bundle.CreatepensionadoTitle_email_alternativo}" />
                         
                         <p:outputLabel value="Monto pensión:" for="pension" />
-                        <p:inputText id="pension" value="#{pensionadoController.selected.monto_pension}" title="#{bundle.EditpensionadoTitle_monto_pension}" >
+                        <p:inputText id="pension" required="true" requiredMessage="Se necesita monto pensión." style="width:200px" value="#{pensionadoController.selected.monto_pension}" title="Monto pensión" >
                             <f:validateLongRange minimum="0"/>
                         </p:inputText>
                     </p:panelGrid>
+                    <br>
+                    * Campo requerido
+                    </br>
                     <p:commandButton actionListener="#{pensionadoController.update}" value="#{bundle.Save}" update="display,:pensionadoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'pensionadoEditDialog');"/>
                 </h:panelGroup>
             </h:form>
