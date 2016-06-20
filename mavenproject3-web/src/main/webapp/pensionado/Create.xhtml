@@ -45,10 +45,10 @@
                             <f:selectItems value="#{estadoCivil.estadosCiviles}" />
                         </p:selectOneMenu>
                         
-                        <p:outputLabel value="#{bundle.CreatepensionadoLabel_direccion}" for="direccion" />
+                        <p:outputLabel value="Dirección:" for="direccion" />
                         <p:inputText style="width:200px" id="direccion" value="#{pensionadoController.selected.direccion}" title="#{bundle.CreatepensionadoTitle_direccion}" />
                                                
-                        <p:outputLabel for="country" value="#{bundle.CreatepensionadoLabel_region}" />
+                        <p:outputLabel for="country" value="Región:" />
                         <p:selectOneMenu required="true" requiredMessage="Se necesita una región." id="country" filter="true" filterMatchMode="contains" value="#{pensionadoController.selected.region}" style="width:200px" >
                             <p:ajax listener="#{regionesComunas.onCountryChange(pensionadoController.selected.region)}" update="city" />
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
