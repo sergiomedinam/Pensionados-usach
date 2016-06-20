@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="pensionadopatologiaCreateDlg" widgetVar="pensionadopatologiaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="CREAR PATOLOGIA - PENSIONADO">
+            <h:form id="pensionadopatologiaCreateForm">
+                <p:growl id="growl" showDetail="true" showSummary="true" autoUpdate="true" />
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{pensionadopatologiaController.selected != null}">
+                        
+                        <f:event listener="#{pensionadopatologiaController.validaCreate}" type="preValidate" />
+                        
+                        <p:outputLabel value="Pensionado"  for="pensionado" />
+                        <p:selectOneMenu id="pensionado" required="true" requiredMessage="Se necesita un pensionado." style="width:200px" filter="true" filterMatchMode="contains" value="#{pensionadopatologiaController.selected.pensionado}" >
+                            <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{pensionadoController.habilitados}"
+                                           var="pensionadoItem"
+                                           itemValue="#{pensionadoItem}"
+                                           itemLabel="#{pensionadoItem.rut_pensionado}" />
+                        </p:selectOneMenu>
+                        
+                        <p:outputLabel value="Patología" for="patologia" />
+                        <p:selectOneMenu id="patologia" required="true" requiredMessage="Se necesita una patología." style="width:200px" filter="true" filterMatchMode="contains" value="#{pensionadopatologiaController.selected.patologia}" >
+                            <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{patologiaController.itemsAvailableSelectOne}"
+                                           var="patologiaItem"
+                                           itemValue="#{patologiaItem}"
+                                           itemLabel="#{patologiaItem.nombre_patologia}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <br>
+                        * Campo requerido
+                    </br>
+                    <p:commandButton actionListener="#{pensionadopatologiaController.create}" value="#{bundle.Save}" update="display,:pensionadopatologiaListForm:datalist,:growl" oncomplete="handleSubmit(args,'pensionadopatologiaCreateDialog');"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

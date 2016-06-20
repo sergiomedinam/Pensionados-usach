@@ -70,8 +70,23 @@
                             <li><a href="#{request.contextPath}/faces/pensionadobeneficio/List.xhtml">Beneficiados</a></li>
                           </ul>
                         </li>
-                    
-                      <li><a href="#{request.contextPath}/faces/cargas/List.xhtml">Seguros</a></li>
+                        
+                        <li class="dropdown">
+                          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Seguros
+                          <span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="#{request.contextPath}/faces/seguro/List.xhtml">Seguros</a></li>
+                            <li><a href="#{request.contextPath}/faces/cargas/List.xhtml">Asegurados</a></li>
+                          </ul>
+                        </li>
+                        <li class="dropdown">
+                          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Patologías
+                          <span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="#{request.contextPath}/faces/patologia/List.xhtml">Patologías</a></li>
+                            <li><a href="#{request.contextPath}/faces/pensionadopatologia/List.xhtml">Enfermos</a></li>
+                          </ul>
+                        </li>
                       <li><a href="#{request.contextPath}/faces/pago/List.xhtml">Pagos</a></li>
                     
                   </c:if>

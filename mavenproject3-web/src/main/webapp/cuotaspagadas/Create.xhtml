@@ -13,7 +13,7 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{cuotaspagadasController.selected != null}">
                         <p:outputLabel value="#{bundle.CreatecuotaspagadasLabel_pensionado}" for="pensionado" />
-                        <p:selectOneMenu id="pensionado" required="true" requiredMessage="Se necesita un pensionado" filter="true" filterMatchMode="contains"  value="#{cuotaspagadasController.selected.pensionado}" style="width:155px">
+                        <p:selectOneMenu id="pensionado" required="true" requiredMessage="Se necesita un pensionado." filter="true" filterMatchMode="contains"  value="#{cuotaspagadasController.selected.pensionado}" style="width:200px" >
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{pensionadoController.habilitados}"
                                            var="pensionadoItem"
@@ -21,21 +21,23 @@
                                            itemLabel="#{pensionadoItem.rut_pensionado}"/>
                         </p:selectOneMenu>
                         
-                        <p:outputLabel value="#{bundle.CreatecuotaspagadasLabel_ano}" for="ano" />
-                        <p:selectOneMenu  id="ano" required="true" requiredMessage="Se necesita un año"  value="#{cuotaspagadasController.selected.ano}" style="width:155px" >
+                        <p:outputLabel value="Año:" for="ano" />
+                        <p:selectOneMenu  id="ano" required="true" requiredMessage="Se necesita un año." filter="true" filterMatchMode="contains" value="#{cuotaspagadasController.selected.ano}" style="width:200px" >
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{añosCuotas.añosCuotas}" />
                         </p:selectOneMenu>
                         
                         <p:outputLabel value="#{bundle.CreatecuotaspagadasLabel_cuotas}" for="cuotas" />
-                       
-                        <p:selectOneMenu  id="cuotas" required="true" requiredMessage="Se necesita número de cuotas" value="#{cuotaspagadasController.selected.cuotas}" style="width:155px">
+                        <p:selectOneMenu id="cuotas" required="true" requiredMessage="Se necesita número de cuotas." value="#{cuotaspagadasController.selected.cuotas}" style="width:200px" >
                             <f:selectItem itemLabel="NINGUNO"  itemValue="#{0}" noSelectionOption="false" />
                             <f:selectItems value="#{añosCuotas.NCuotas}" />
                         </p:selectOneMenu>
                         
                         
                     </p:panelGrid>
+                    <br>
+                        * Campo requerido
+                    </br>
                     <p:commandButton actionListener="#{cuotaspagadasController.create}" value="#{bundle.Save}" update="display,:cuotaspagadasListForm:datalist,:growl" oncomplete="handleSubmit(args,'cuotaspagadasCreateDialog');"/>
                 </h:panelGroup>
             </h:form>

@@ -13,12 +13,14 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{patologiaController.selected != null}">
                         <p:outputLabel value="#{bundle.CreatepatologiaLabel_nombre_patologia}" for="nombre_patologia" />
-                        <p:inputText id="nombre_patologia" value="#{patologiaController.selected.nombre_patologia}" title="#{bundle.CreatepatologiaTitle_nombre_patologia}" />
-                        <p:outputLabel value="#{bundle.CreatepatologiaLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{patologiaController.selected.id}" title="#{bundle.CreatepatologiaTitle_id}" />
+                        <p:inputText id="nombre_patologia" validatorMessage="Formato de nombre incorrecto." style="width:200px" required="true" requiredMessage="Se necesita el nombre de la patología." value="#{patologiaController.selected.nombre_patologia}" title="Nombre patología" >
+                            <f:validateRegex pattern="[A-Za-z]*"/>
+                        </p:inputText>
                     </p:panelGrid>
+                    <br>
+                        * Campo requerido
+                    </br>
                     <p:commandButton actionListener="#{patologiaController.create}" value="#{bundle.Save}" update="display,:patologiaListForm:datalist,:growl" oncomplete="handleSubmit(args,'patologiaCreateDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="patologiaCreateDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>
