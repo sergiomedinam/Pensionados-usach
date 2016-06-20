@@ -34,40 +34,18 @@ public class pensionado implements Serializable {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
-    
     private String email_pensionado;
     private String email_alternativo;
     private Integer aporte;
-    
-    
-    
-    @NotNull
     private Integer saldo = 0;
-    
-    @NotNull
     private Integer monto_pension;
-    
-    @NotNull
     private String rut_pensionado;
-    
-    @NotNull
     private String nombre_pensionado;
-    
-    @NotNull
     private String apellido_p_pensionado;
     private String apellido_m_pensionado;
-    
-    @NotNull
     private String fecha_nacimiento;
-    
-    
-    @NotNull
     private String estado_civil;
-    
-    @NotNull
     private String direccion;
-    
-    @NotNull
     private String comuna;
     private String region;
     private Long telefono_fijo;
