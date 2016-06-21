@@ -47,7 +47,7 @@ public class contactoTest {
         instance.setNombre_contacto("alfredo");
         String expResult = "alfredo";
         String result = instance.getNombre_contacto();
-        assertEquals(expResult, result);
+        assertEquals(expResult.toUpperCase(), result);
     }
 
     /**
@@ -59,7 +59,7 @@ public class contactoTest {
         String nombre_contacto = "";
         contacto instance = new contacto();
         instance.setNombre_contacto(nombre_contacto);        
-        assertEquals(nombre_contacto, instance.getNombre_contacto());
+        assertEquals(nombre_contacto.toUpperCase(), instance.getNombre_contacto());
     }
 
     /**
@@ -72,7 +72,7 @@ public class contactoTest {
         instance.setApellido_contacto("test");
         String expResult = "test";
         String result = instance.getApellido_contacto();
-        assertEquals(expResult, result);
+        assertEquals(expResult.toUpperCase(), result);
         // TODO review the generated test code and remove the default call to fail.
     }
 
@@ -85,7 +85,7 @@ public class contactoTest {
         String apellido_contacto = "test";
         contacto instance = new contacto();
         instance.setApellido_contacto(apellido_contacto);
-        assertEquals(apellido_contacto, instance.getApellido_contacto());
+        assertEquals(apellido_contacto.toUpperCase(), instance.getApellido_contacto());
         // TODO review the generated test code and remove the default call to fail.
     }
 
@@ -99,7 +99,7 @@ public class contactoTest {
         instance.setParentesco("test");
         String expResult = "test";
         String result = instance.getParentesco();
-        assertEquals(expResult, result);
+        assertEquals(expResult.toUpperCase(), result);
         // TODO review the generated test code and remove the default call to fail.
     }
 
@@ -112,7 +112,7 @@ public class contactoTest {
         String parentesco = "test";
         contacto instance = new contacto();
         instance.setParentesco(parentesco);
-        assertEquals(parentesco, instance.getParentesco());
+        assertEquals(parentesco.toUpperCase(), instance.getParentesco());
         // TODO review the generated test code and remove the default call to fail.
     }
 
