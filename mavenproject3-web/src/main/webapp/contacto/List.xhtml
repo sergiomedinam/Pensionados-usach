@@ -15,14 +15,34 @@
         </ui:define>
 
         <ui:define name="body">
+            <p:breadCrumb > 
+                <p:menuitem value="Inicio" url="#" />
+                <p:menuitem value="Inicio" url="/" />
+                <p:menuitem value="Contactos" url="/faces/contacto/List.xhtml" />
+            </p:breadCrumb>
+                <section class="content-header">
+                    <h1>
+                      Contactos
+                      <small>Panel de administrador</small> <a href="#demo" data-toggle="collapse" class="btn btn-info">Información</a>
+                    </h1>
+                    <div id="demo" class=" collapse">
+                          <br/>
+                         <div class="panel panel-default">
+                        
+                             <div class="panel-footer"> <b>¿Que hacer aquí?</b> En esta sección del sistema es posible ver los contactos existentes para los pensionados, además de la posibilidad modificar los contactos de éstos, según sea el caso.</div>
+                        </div>
+                    </div>
+                  </section>
+            <br/>
             <h:form id="contactoListForm">
-                <p:panel header="#{bundle.ListcontactoTitle}">
+                <p:panel header="LISTA DE CONTACTOS">
                     <p:dataTable id="datalist" value="#{contactoController.items}" var="item"
                                  selectionMode="single" selection="#{contactoController.selected}"
                                  paginator="true"
                                  rowKey="#{item.id}"
                                  rows="10"
                                  rowsPerPageTemplate="10,20,30,40,50"
+                                 emptyMessage="No hay resultados."
                                  >
 
                         <c:set var="name_rol" value="#{usuarioController.getTipo(request.userPrincipal.name)}"/>
@@ -38,36 +58,43 @@
                             </c:otherwise>
                         </c:choose>
 
-                        <p:column>
+                        <p:column filterBy="#{item.pensionados.rut_pensionado}" filterStyle="width:200px;" id="rut" headerText="Rut pensionado" filterMatchMode="contains" sortBy="#{item.pensionados.rut_pensionado}" >
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListcontactoTitle_nombre_contacto}"/>
+                                <h:outputText value="Rut pensionado"/>
+                                <p:watermark for="rut" value="Buscar Rut (con puntos y guión)" />
                             </f:facet>
-                            <h:outputText value="#{item.nombre_contacto}"/>
+                            <h:outputText value="#{item.pensionados.rut_pensionado}"/>
                         </p:column>
-                        <p:column>
+                        
+                        <p:column id="nombre"   sortBy="#{item.pensionados.nombre_pensionado}
+                                                        #{item.pensionados.apellido_p_pensionado}
+                                                        #{item.pensionados.apellido_m_pensionado}"
+                                                        filterBy="#{item.pensionados.nombre_pensionado} #{item.pensionados.nombre_pensionado.toLowerCase()}
+                                                                  #{item.pensionados.apellido_p_pensionado} #{item.pensionados.apellido_p_pensionado.toLowerCase()}
+                                                                  #{item.pensionados.apellido_m_pensionado} #{item.pensionados.apellido_m_pensionado.toLowerCase()}"
+                                                        filterMatchMode="contains"
+                                                        filterStyle="width:200px;"
+                                                        >
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListcontactoTitle_apellido_contacto}"/>
+                                <h:outputText value="Nombre pensionado"/>
+                                <p:watermark for="nombre" value="Buscar Nombre" />
                             </f:facet>
-                            <h:outputText value="#{item.apellido_contacto}"/>
+                            <h:outputText value="#{item.pensionados.nombre_pensionado} #{item.pensionados.apellido_p_pensionado} #{item.pensionados.apellido_m_pensionado}"/>
                         </p:column>
-                        <p:column>
+                        
+                        <p:column id="nombre_contacto"  sortBy="#{item.nombre_contacto} #{item.apellido_contacto}"
+                                                        filterBy="#{item.nombre_contacto} #{item.nombre_contacto.toLowerCase()}
+                                                                  #{item.apellido_contacto} #{item.apellido_contacto.toLowerCase()}"
+                                                        filterMatchMode="contains"
+                                                        filterStyle="width:200px;"
+                            >
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListcontactoTitle_parentesco}"/>
+                                <h:outputText value="Nombre contacto"/>
+                                <p:watermark for="nombre_contacto" value="Buscar Nombre" />
                             </f:facet>
-                            <h:outputText value="#{item.parentesco}"/>
+                            <h:outputText value="#{item.nombre_contacto} #{item.apellido_contacto}"/>
                         </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListcontactoTitle_telefono_contacto}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.telefono_contacto}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListcontactoTitle_id}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.id}"/>
-                        </p:column>
+                        
                         <f:facet name="footer">
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":contactoViewForm" oncomplete="PF('contactoViewDialog').show()" disabled="#{empty contactoController.selected}"/>
                             <c:set var="name_rol" value="#{usuarioController.getTipo(request.userPrincipal.name)}"/>
