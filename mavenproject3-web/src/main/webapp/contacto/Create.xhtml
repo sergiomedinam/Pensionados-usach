@@ -21,14 +21,18 @@
                                            itemLabel="#{pensionadoItem.rut_pensionado}"/>
                         </p:selectOneMenu>
                         
-                        <p:outputLabel value="Nombres:" for="nombre_contacto" />
-                        <p:inputText id="nombre_contacto" value="#{contactoController.selected.nombre_contacto}" title="Nombres" style="width:200px" />
+                        <p:outputLabel value="Nombre:" for="nombre_contacto" />
+                        <p:inputText id="nombre_contacto" value="#{contactoController.selected.nombre_contacto}" required="true" requiredMessage="Se necesita el nombre del contacto." validatorMessage="Formato incorrecto de nombre." title="Nombre" style="width:200px" >
+                            <f:validateRegex pattern="[A-Za-zñáéíóúÑÁÉÍÓÚ]*"/>
+                        </p:inputText>
                         
-                        <p:outputLabel value="Apellidos:" for="apellido_contacto" />
-                        <p:inputText id="apellido_contacto" value="#{contactoController.selected.apellido_contacto}" title="Apellidos" style="width:200px" />
+                        <p:outputLabel value="Apellido:" for="apellido_contacto" />
+                        <p:inputText id="apellido_contacto" value="#{contactoController.selected.apellido_contacto}" required="true" requiredMessage="Se necesita el apellido del contacto." validatorMessage="Formato incorrecto de apellido." title="Apellido" style="width:200px" >
+                            <f:validateRegex pattern="[A-Za-zñáéíóúÑÁÉÍÓÚ]*"/>
+                        </p:inputText>
                         
                         <p:outputLabel value="Parentesco:" for="parentesco" />
-                        <p:selectOneMenu required="true" requiredMessage="Se necesita el parentesco del contacto." id="parentesco" value="#{contactoController.selected.parentesco}" style="width:200px" >
+                        <p:selectOneMenu filter="true" filterMatchMode="contains" required="true" requiredMessage="Se necesita el parentesco del contacto." id="parentesco" value="#{contactoController.selected.parentesco}" style="width:200px" >
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{dropdown.parentesco}" />
                         </p:selectOneMenu>
@@ -36,14 +40,20 @@
                         
                         
                         <p:outputLabel value="Email:" for="email" />
-                        <p:inputText id="email" value="#{contactoController.selected.correo_contacto}" title="Email" style="width:200px" />
+                        <p:inputText id="email" value="#{contactoController.selected.correo_contacto}" required="true" requiredMessage="Se necesita el email del contacto." validatorMessage="Formato incorrecto de email." title="Email" style="width:200px" >
+                            <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                        </p:inputText>
                     
                         <p:outputLabel value="Teléfono:" for="telefono_contacto" />
-                        <p:inputText id="telefono_contacto" value="#{contactoController.selected.telefono_contacto}" title="Teléfono" style="width:200px" />
+                        <p:inputText id="telefono_contacto" value="#{contactoController.selected.telefono_contacto}" required="true" requiredMessage="Se necesita el teléfono del contacto." validatorMessage="El número telefónico debe tener 8 dígitos." title="Teléfono" style="width:200px" >
+                            <f:validateLength minimum="8" maximum="8" parent="[0-9]*"/>
+                        </p:inputText>
                         
                     </p:panelGrid>
+                    <br>
+                        * Campo requerido
+                    </br>
                     <p:commandButton actionListener="#{contactoController.create}" value="#{bundle.Save}" update="display,:contactoListForm:datalist,:growl" oncomplete="handleSubmit(args,'contactoCreateDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="contactoCreateDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>
