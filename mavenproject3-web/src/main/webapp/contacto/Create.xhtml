@@ -37,8 +37,6 @@
                             <f:selectItems value="#{dropdown.parentesco}" />
                         </p:selectOneMenu>
                         
-                        
-                        
                         <p:outputLabel value="Email:" for="email" />
                         <p:inputText id="email" value="#{contactoController.selected.correo_contacto}" required="true" requiredMessage="Se necesita el email del contacto." validatorMessage="Formato incorrecto de email." title="Email" style="width:200px" >
                             <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
