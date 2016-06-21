@@ -32,7 +32,7 @@ public class Dropdown implements Serializable {
         parentesco.put("PADRASTRO", "PADRASTRO");
         parentesco.put("MADRASTRA", "MADRASTRA");
         parentesco.put("HIJO/A", "HIJO/A");
-        parentesco.put("CÓNYUGE", "CÓNYUGE");
+        parentesco.put("CONYUGE", "CONYUGE");
         parentesco.put("SUEGRO/A", "SUEGRO/A");
         parentesco.put("YERNO", "YERNO");
         parentesco.put("NUERA", "NUERA");
@@ -43,7 +43,7 @@ public class Dropdown implements Serializable {
         parentesco.put("CUÑADO/A", "CUÑADO/A");
         parentesco.put("BISABUELO/A", "BISABUELO/A");
         parentesco.put("BISNIETO/A", "BISNIETO/A");
-        parentesco.put("TÍO/A", "TÍO/A");
+        parentesco.put("TIO/A", "TIO/A");
         parentesco.put("SOBRINO/A", "SOBRINO/A");
         parentesco.put("PRIMO/A", "PRIMO/A");
         
