@@ -21,7 +21,7 @@
                 </p:breadCrumb>
                 
                 <section class="content-header">
-                        <h1>Pensionado: #{pensionadoController.selected.nombre_pensionado} #{pensionadoController.selected.apellido_p_pensionado}
+                        <h1>Pensionado: #{pensionadoController.selected.nombre_pensionado} #{pensionadoController.selected.apellido_p_pensionado} #{pensionadoController.selected.apellido_m_pensionado}
                         <small>Panel administrador</small>
                         <br/>
                         </h1>    
@@ -36,7 +36,7 @@
                     <div class="container panel panel-default col-md-4">
                         
                         <table class="table table-hover">
-                            <h3>Informacion Básica</h3>
+                            <h3>Información Básica</h3>
                             <thead>
                                 <tr>
                                     <th rowspan="1">Datos personales</th>
@@ -104,7 +104,6 @@
                         </table>
 
                       </div>
-
 
                     
                     <div class="container col-md-8" >
@@ -226,9 +225,33 @@
                         </div>
                         <!-- ./col -->
                         
+                        
                         <!-- ./col -->
                     </div>
-                        
+                    
+                    <div class="container panel panel-default col-md-4">
+                        <table class="table table-hover">
+                            <h3>Información Contacto</h3>
+                            <tbody>
+                                <tr>
+                                    <td rowspan="1">Nombre</td>
+                                    <td>#{contactoController.getNombre(pensionadoController.selected.rut_pensionado)}</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="1">Parentesco</td>
+                                    <td>#{contactoController.getParentesco(pensionadoController.selected.rut_pensionado)}</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="1">Email</td>
+                                    <td>#{contactoController.getEmail(pensionadoController.selected.rut_pensionado)}</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="1">Teléfono</td>
+                                    <td>#{contactoController.getTelefono(pensionadoController.selected.rut_pensionado)}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                      </div>
                    </div>
                 </section>
                 
@@ -473,9 +496,7 @@
                 </p:panel>
             </h:form>        
         </div>
-    </div>
-                
-                    
+    </div>           
         </ui:define> 
         </ui:composition>
     </h:body>
