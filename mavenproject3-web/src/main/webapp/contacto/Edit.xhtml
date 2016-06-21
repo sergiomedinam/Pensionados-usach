@@ -44,6 +44,9 @@
                         
                         
                     </p:panelGrid>
+                    <br>
+                        * Campo requerido
+                    </br>
                     <p:commandButton actionListener="#{contactoController.update}" value="#{bundle.Save}" update="display,:contactoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'contactoEditDialog');"/>
                 </h:panelGroup>
             </h:form>
