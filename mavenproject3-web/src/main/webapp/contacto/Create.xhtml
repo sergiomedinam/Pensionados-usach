@@ -38,14 +38,14 @@
                         </p:selectOneMenu>
                         
                         <p:outputLabel value="Email:" for="email" />
-                        <p:inputText id="email" value="#{contactoController.selected.correo_contacto}" required="true" requiredMessage="Se necesita el email del contacto." validatorMessage="Formato incorrecto de email." title="Email" style="width:200px" >
+                        <p:inputText id="email" placeholder="correo@dominio.com" value="#{contactoController.selected.correo_contacto}" required="true" requiredMessage="Se necesita el email del contacto." validatorMessage="Formato incorrecto de email." title="Email" style="width:200px" >
                             <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
                         </p:inputText>
                     
                         <p:outputLabel value="Teléfono:" for="telefono_contacto" />
-                        <p:inputText id="telefono_contacto" value="#{contactoController.selected.telefono_contacto}" required="true" requiredMessage="Se necesita el teléfono del contacto." validatorMessage="El número telefónico debe tener 8 dígitos." title="Teléfono" style="width:200px" >
+                        <p:inputMask id="telefono_contacto" mask="99999999" placeholder="98887777" value="#{contactoController.selected.telefono_contacto}" required="true" requiredMessage="Se necesita el teléfono del contacto." validatorMessage="El número telefónico debe tener 8 dígitos." title="Teléfono" style="width:200px" >
                             <f:validateLength minimum="8" maximum="8" parent="[0-9]*"/>
-                        </p:inputText>
+                        </p:inputMask>
                         
                     </p:panelGrid>
                     <br>
