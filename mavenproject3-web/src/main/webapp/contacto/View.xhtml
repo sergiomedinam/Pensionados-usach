@@ -12,16 +12,24 @@
             <h:form id="contactoViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{contactoController.selected != null}">
-                        <h:outputText value="#{bundle.ViewcontactoLabel_nombre_contacto}"/>
-                        <h:outputText value="#{contactoController.selected.nombre_contacto}" title="#{bundle.ViewcontactoTitle_nombre_contacto}"/>
-                        <h:outputText value="#{bundle.ViewcontactoLabel_apellido_contacto}"/>
-                        <h:outputText value="#{contactoController.selected.apellido_contacto}" title="#{bundle.ViewcontactoTitle_apellido_contacto}"/>
-                        <h:outputText value="#{bundle.ViewcontactoLabel_parentesco}"/>
-                        <h:outputText value="#{contactoController.selected.parentesco}" title="#{bundle.ViewcontactoTitle_parentesco}"/>
-                        <h:outputText value="#{bundle.ViewcontactoLabel_telefono_contacto}"/>
-                        <h:outputText value="#{contactoController.selected.telefono_contacto}" title="#{bundle.ViewcontactoTitle_telefono_contacto}"/>
-                        <h:outputText value="#{bundle.ViewcontactoLabel_id}"/>
-                        <h:outputText value="#{contactoController.selected.id}" title="#{bundle.ViewcontactoTitle_id}"/>
+                        <h:outputText value="Rut pensionado:"/>
+                        <h:outputText value="#{contactoController.selected.pensionados.rut_pensionado}" title="Rut pensionado"/>
+                        
+                        <h:outputText value="Nombre pensionado:"/>
+                        <h:outputText value="#{contactoController.selected.pensionados.nombre_pensionado} #{contactoController.selected.pensionados.apellido_p_pensionado} #{contactoController.selected.pensionados.apellido_m_pensionado}" title="Nombre pensionado"/>
+                        
+                        <h:outputText value="Nombre contacto:"/>
+                        <h:outputText value="#{contactoController.selected.nombre_contacto} #{contactoController.selected.apellido_contacto}" title="Nombre contacto"/>
+                        
+                        <h:outputText value="Parentesco:"/>
+                        <h:outputText value="#{contactoController.selected.parentesco}" title="Parentesco"/>
+                        
+                        <h:outputText value="Email:"/>
+                        <h:outputText value="#{contactoController.selected.correo_contacto}" title="Email"/>
+                        
+                        <h:outputText value="Teléfono:"/>
+                        <h:outputText value="#{contactoController.selected.telefono_contacto}" title="Teléfono"/>
+                    
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="contactoViewDialog.hide()"/>
                 </h:panelGroup>
