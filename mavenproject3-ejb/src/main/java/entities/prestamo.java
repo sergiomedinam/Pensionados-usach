@@ -13,10 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -29,13 +26,8 @@ public class prestamo implements Serializable {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
-
     private Integer monto_max_prestamo;
-    
-    @NotNull(message = "Debe tener un nombre")
     private String nombre_prestamo;
-    
-    @NotNull(message = "Debe tener cuotas a pagar")
     private Integer cuotas_prestamo;
     
     @OneToMany(mappedBy = "prestamo")
