@@ -10,12 +10,9 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -29,7 +26,6 @@ public class patologia implements Serializable {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
     
-    @NotNull(message = "La patologia debe tener un nombre")
     private String nombre_patologia;
 
     @OneToMany(mappedBy = "patologia")

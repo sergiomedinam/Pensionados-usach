@@ -15,10 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-/**
- *
- * @author seerg
- */
+
 @Entity
 public class auditoria implements Serializable {
 

@@ -8,38 +8,22 @@ package entities;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
 
-/**
- *
- * @author Sergio
- */
+
 @Entity
 public class designado_fallecimiento implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    private Long id;
-    
-    
-    @NotNull(message ="Debe tener un nombre")
-    private String nombre_designado;
-    
-    @NotNull(message ="Debe tener un apellido")
-    private String apellido_designado;
-    
-    @NotNull(message ="Debe tener un rut")
-    private Long rut_designado;
-    
-    @NotNull(message ="Debe tener un parentesco")
-    private String parentesco;
-    
-    @NotNull(message ="Debe tener un telefono")
+    private Long id;    
+    private String nombre_designado;    
+    private String apellido_designado;    
+    private Long rut_designado;    
+    private String parentesco;    
     private Long telefono;
     
     @ManyToOne

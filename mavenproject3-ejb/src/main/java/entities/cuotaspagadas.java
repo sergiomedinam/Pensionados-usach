@@ -26,14 +26,10 @@ public class cuotaspagadas implements Serializable {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
-    
-    @NotNull
     private String ano;
     
     @ManyToOne(fetch=FetchType.LAZY)
     private pensionado pensionado;
-    
-    @NotNull
     private Integer cuotas;
 
     public pensionado getPensionado() {
