@@ -23,8 +23,16 @@
                 <section class="content-header">
                         <h1>Pensionado: #{pensionadoController.selected.nombre_pensionado} #{pensionadoController.selected.apellido_p_pensionado} #{pensionadoController.selected.apellido_m_pensionado}
                         <small>Panel administrador</small>
+                        <a href="#demo" data-toggle="collapse" class="btn btn-info">Información</a>
                         <br/>
-                        </h1>    
+                        </h1>
+                        <div id="demo" class=" collapse">
+                              <br/>
+                             <div class="panel panel-default">
+
+                                 <div class="panel-footer"> <b>¿Que hacer aquí?</b> En esta sección del sistema es posible visualizar toda la información relacionada con un pensionado.</div>
+                            </div>
+                        </div>
                      
                     
                 </section>
@@ -33,13 +41,12 @@
                     
                     <div class="row">
                     
-                    <div class="container panel panel-default col-md-4">
+                    <div class="container panel panel-default col-md-5">
                         
                         <table class="table table-hover">
-                            <h3>Información Básica</h3>
                             <thead>
                                 <tr>
-                                    <th rowspan="1">Datos personales</th>
+                                    <th rowspan="1">Datos Personales</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -60,12 +67,14 @@
                                     <td rowspan="1">Fecha Nacimiento</td>
                                     <td>#{pensionadoController.selected.fecha_nacimiento}</td>
                                 </tr>
+                            </tbody>
                             <thead>
                                 <tr>
-                                    <th rowspan="1">Contacto</th>
+                                    <th rowspan="1">Datos de contacto</th>
                                     <th></th>
                                 </tr>
-                            </thead>                                
+                            </thead>
+                            <tbody>
                                 <tr>
                                     <td rowspan="1">Correo</td>
                                     <td>#{pensionadoController.selected.email_pensionado}</td>
@@ -82,12 +91,14 @@
                                     <td rowspan="1">Telefono Celular</td>
                                     <td>#{pensionadoController.selected.celular}</td>
                                 </tr>
+                            </tbody>
                             <thead>
                                 <tr>
-                                    <th rowspan="1">Domicilio</th>
+                                    <th rowspan="1">Datos de Residencia</th>
                                     <th></th>
                                 </tr>
-                            </thead>                                
+                            </thead>
+                            <tbody>
                                 <tr>
                                     <td rowspan="1">Dirección</td>
                                     <td>#{pensionadoController.selected.direccion}</td>
@@ -101,12 +112,35 @@
                                     <td>#{pensionadoController.selected.region}</td>
                                 </tr>
                             </tbody>
+                            <thead>
+                                <tr>
+                                    <th rowspan="1">Contacto</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td rowspan="1">Nombre</td>
+                                    <td>#{contactoController.getNombre(pensionadoController.selected.rut_pensionado)}</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="1">Parentesco</td>
+                                    <td>#{contactoController.getParentesco(pensionadoController.selected.rut_pensionado)}</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="1">Email</td>
+                                    <td>#{contactoController.getEmail(pensionadoController.selected.rut_pensionado)}</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="1">Teléfono</td>
+                                    <td>#{contactoController.getTelefono(pensionadoController.selected.rut_pensionado)}</td>
+                                </tr>
+                            </tbody>
                         </table>
-
                       </div>
 
                     
-                    <div class="container col-md-8" >
+                    <div class="container col-md-7" >
                         
                         <div class="container panel panel-default col-md-12">
                         
@@ -228,33 +262,9 @@
                         
                         <!-- ./col -->
                     </div>
-                    
-                    <div class="container panel panel-default col-md-4">
-                        <table class="table table-hover">
-                            <h3>Información Contacto</h3>
-                            <tbody>
-                                <tr>
-                                    <td rowspan="1">Nombre</td>
-                                    <td>#{contactoController.getNombre(pensionadoController.selected.rut_pensionado)}</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan="1">Parentesco</td>
-                                    <td>#{contactoController.getParentesco(pensionadoController.selected.rut_pensionado)}</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan="1">Email</td>
-                                    <td>#{contactoController.getEmail(pensionadoController.selected.rut_pensionado)}</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan="1">Teléfono</td>
-                                    <td>#{contactoController.getTelefono(pensionadoController.selected.rut_pensionado)}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                      </div>
                    </div>
                 </section>
-                
+    <c:if test="${cargasController.CargasPensionados(pensionadoController.selected.rut_pensionado).size() > 0}" >
                 <div id="cargasPensionado" class=" collapse">
                 <div class="panel panel-default">
                 
@@ -308,12 +318,21 @@
             </h:form>    
             </div>
         </div>
-                
+    </c:if>
+    <c:if test="${cargasController.CargasPensionados(pensionadoController.selected.rut_pensionado).size() == 0}" >
+        <div id="cargasPensionado" class=" collapse">
+            <p id="failtext" class="alert alert-info bg-blue" align="center" style="font-size:100%;" >
+                El pensionado no registra seguros asociados.
+            </p>
+        </div>
+    </c:if>
+
+    <c:if test="${cuotaspagadasController.CuotasPensionados(pensionadoController.selected.rut_pensionado).size() > 0}" >
                 <div id="cuotasPensionado" class=" collapse">
                     <c:if test="${cuotaspagadasController.esMoroso(pensionadoController.selected.rut_pensionado) == true}" >
                         <p id="failtext" class="alert alert-danger" align="center" style="font-size:100%;" >
                                 El pensionado se encuentra moroso.
-                            </p>        
+                        </p>        
                     </c:if>
                     <div class="panel panel-default">
                     
@@ -357,7 +376,15 @@
                     </h:form>
                 </div>
             </div>
-            
+    </c:if>
+    <c:if test="${cuotaspagadasController.CuotasPensionados(pensionadoController.selected.rut_pensionado).size() == 0}" >
+        <div id="cuotasPensionado" class=" collapse">
+            <p id="failtext" class="alert alert-danger" align="center" style="font-size:100%;" >
+                El pensionado no registra cuotas pagadas en ningún año.
+            </p>
+        </div>
+    </c:if>
+    <c:if test="${pensionadoprestamoController.PrestamosPensionados(pensionadoController.selected.rut_pensionado).size() > 0}" >
         <div id="prestamosPensionado" class=" collapse">
             <div class="panel panel-default">
             <h:form id="pensionadoprestamoListForm">
@@ -411,8 +438,16 @@
             </h:form>
             </div>
         </div>
+    </c:if>
+    <c:if test="${pensionadoprestamoController.PrestamosPensionados(pensionadoController.selected.rut_pensionado).size() == 0}" >
+        <div id="prestamosPensionado" class=" collapse">
+            <p id="failtext" class="alert alert-success bg-orange" align="center" style="font-size:100%;" >
+                El pensionado no registra préstamos asociados.
+            </p>
+        </div>
+    </c:if>    
      
-
+    <c:if test="${pensionadobeneficioController.BeneficiosPensionados(pensionadoController.selected.rut_pensionado).size() > 0}" >
                 <div id="beneficiosPensionado" class=" collapse">
                 <div class="panel panel-default">
                 
@@ -462,7 +497,15 @@
             </h:form>
             </div>
         </div>
-        
+    </c:if>
+    <c:if test="${pensionadobeneficioController.BeneficiosPensionados(pensionadoController.selected.rut_pensionado).size() == 0}" >
+        <div id="beneficiosPensionado" class=" collapse">
+            <p id="failtext" class="alert alert-success bg-purple" align="center" style="font-size:100%;" >
+                El pensionado no registra beneficios asociados.
+            </p>
+        </div>
+    </c:if> 
+    <c:if test="${pensionadopatologiaController.PatologiaPensionados(pensionadoController.selected.rut_pensionado).size() > 0}" >
         <div id="patologiasPensionado" class=" collapse">
             <div class="panel panel-default">
                 <h:form id="pensionadopatologiaListForm">
@@ -492,11 +535,19 @@
                         </p:column>
                         <f:facet name="footer">
                         </f:facet>
-                    </p:dataTable>
-                </p:panel>
-            </h:form>        
+                        </p:dataTable>
+                    </p:panel>
+                </h:form>        
+            </div>
         </div>
-    </div>           
+    </c:if> 
+    <c:if test="${pensionadopatologiaController.PatologiaPensionados(pensionadoController.selected.rut_pensionado).size() == 0}" >
+        <div id="patologiasPensionado" class=" collapse">
+            <p id="failtext" class="alert alert-success bg-teal" align="center" style="font-size:100%;" >
+                El pensionado no registra patologías asociadas.
+            </p>
+        </div>
+    </c:if> 
         </ui:define> 
         </ui:composition>
     </h:body>
