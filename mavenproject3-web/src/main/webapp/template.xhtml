@@ -34,7 +34,7 @@
               <div class="container ">
               <div class="navbar-header">
 
-                  <a class="navbar-brand" href="#{request.contextPath}">FP-USACH</a>
+                  <a class="navbar-brand text-orange" href="#{request.contextPath}">FP-USACH</a>
               </div>
               <ul class="nav navbar-nav">
 
@@ -45,7 +45,9 @@
                           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Pensionados
                           <span class="caret"></span></a>
                           <ul class="dropdown-menu">
-                            <li><a href="#{request.contextPath}/faces/pensionado/List.xhtml">Pensionados</a></li>
+                            <li><a href="#{request.contextPath}/faces/pensionado/List.xhtml">Todos</a></li>
+                            <li><a href="#{request.contextPath}/faces/pensionado/Habilitados.xhtml">Habilitados</a></li>
+                            <li><a href="#{request.contextPath}/faces/pensionado/Deshabilitados.xhtml">Deshabilitados</a></li>
                             <li><a href="#{request.contextPath}/faces/pensionado/Morosos.xhtml">Morosos</a></li>
                             <li><a href="#{request.contextPath}/faces/contacto/List.xhtml">Contactos</a></li>  
                             <li><a href="#{request.contextPath}/faces/pensionado/Filtros.xhtml">Búsqueda</a></li>

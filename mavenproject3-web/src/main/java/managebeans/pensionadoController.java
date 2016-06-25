@@ -223,6 +223,16 @@ public class pensionadoController implements Serializable {
         }
         return habilitados;
     }
+    public List<pensionado> getDeshabilitados() {
+        getItems();
+        List<pensionado> deshabilitados = new ArrayList<pensionado>();
+        for (pensionado item : items) {
+            if (item.getEstado().equals("DESHABILITADO")) {
+                deshabilitados.add(item);
+            }
+        }
+        return deshabilitados;
+    }
     
     public List<pensionado> getSinContacto() {
         List<contacto> contactos = contactoController.getItems();
