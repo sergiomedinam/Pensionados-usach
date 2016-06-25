@@ -23,12 +23,12 @@
                         
                         <p:outputLabel value="Nombre:" for="nombre_contacto" />
                         <p:inputText id="nombre_contacto" value="#{contactoController.selected.nombre_contacto}" required="true" requiredMessage="Se necesita el nombre del contacto." validatorMessage="Formato incorrecto de nombre." title="Nombre" style="width:200px" >
-                            <f:validateRegex pattern="[A-Za-zñáéíóúÑÁÉÍÓÚ]*"/>
+                            <f:validateRegex pattern="[A-Za-zñáéíóúÑÁÉÍÓÚ\s]*"/>
                         </p:inputText>
                         
                         <p:outputLabel value="Apellido:" for="apellido_contacto" />
                         <p:inputText id="apellido_contacto" value="#{contactoController.selected.apellido_contacto}" required="true" requiredMessage="Se necesita el apellido del contacto." validatorMessage="Formato incorrecto de apellido." title="Apellido" style="width:200px" >
-                            <f:validateRegex pattern="[A-Za-zñáéíóúÑÁÉÍÓÚ]*"/>
+                            <f:validateRegex pattern="[A-Za-zñáéíóúÑÁÉÍÓÚ\s]*"/>
                         </p:inputText>
                         
                         <p:outputLabel value="Parentesco:" for="parentesco" />
