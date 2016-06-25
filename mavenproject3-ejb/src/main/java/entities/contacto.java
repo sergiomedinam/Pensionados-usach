@@ -35,7 +35,7 @@ public class contacto implements Serializable {
     }
 
     public void setCorreo_contacto(String correo_contacto) {
-        this.correo_contacto = correo_contacto;
+        this.correo_contacto = correo_contacto.toUpperCase() ;
     }
 
     
