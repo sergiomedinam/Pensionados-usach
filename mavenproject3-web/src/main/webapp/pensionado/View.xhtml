@@ -41,7 +41,9 @@
                     <p:commandButton value="#{bundle.Close}" onclick="pensionadoViewDialog.hide()"/>
                     <p:button value="Ver Mas"  href="/faces/pensionado/Infopensionado.xhtml" />
                     <c:if test="#{cuotaspagadasController.esMoroso(pensionadoController.selected.rut_pensionado)}">
-                        <p:commandButton action="#{pensionadoController.correoUnMoroso()}" value="Enviar correo por morosidad"/>
+                        <c:if test="${pensionadoController.selected.estado.equals('HABILITADO') == true}" >    
+                            <p:commandButton action="#{pensionadoController.correoUnMoroso()}" value="Enviar correo por morosidad"/>
+                        </c:if>
                     </c:if>
                     <c:set var="rol" value="observador"/>
                 </h:panelGroup>

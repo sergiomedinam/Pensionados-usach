@@ -35,10 +35,10 @@
                     <div class="row" align="center">
                         <div class="col-lg-3 col-xs-6">
                             <!-- small box -->
-                            <div class="small-box bg-aqua">
+                            <div class="small-box bg-blue">
                                 <div class="inner">
-                                    <h3>#{pensionadoController.habilitados.size()}</h3>
-                                    <p>Pensionados Habilitados</p>
+                                    <h3>#{pensionadoController.items.size()}</h3>
+                                    <p>Pensionados</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-bag"></i>
@@ -49,7 +49,80 @@
                         <!-- ./col -->
                         <div class="col-lg-3 col-xs-6">
                             <!-- small box -->
-                            <div class="small-box bg-green">
+                            <div class="small-box bg-blue">
+                                <div class="inner">
+                                    <h3>#{pensionadoController.habilitados.size()}</h3>
+                                    <p>Pensionados habilitados</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-bag"></i>
+                                </div>
+                                <a href="#{request.contextPath}/faces/pensionado/Habilitados.xhtml" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-blue">
+                                <div class="inner">
+                                    <h3>#{pensionadoController.deshabilitados.size()}</h3>
+                                    <p>Pensionados deshabilitados</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-bag"></i>
+                                </div>
+                                <a href="#{request.contextPath}/faces/pensionado/Deshabilitados.xhtml" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-blue">
+                                <div class="inner">
+                                    <h3>#{cuotaspagadasController.Morosos(pensionadoController.habilitados).size()}</h3>
+
+                                    <p>Morosos</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-pie-graph"></i>
+                                </div>
+                                <a href="#{request.contextPath}/faces/pensionado/Morosos.xhtml" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-blue">
+                                <div class="inner">
+                                    <h3>#{prestamoController.items.size()}</h3>
+
+                                    <p>Préstamos</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-stats-bars"></i>
+                                </div>
+                                <a href="#{request.contextPath}/faces/prestamo/List.xhtml" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-blue">
+                                <div class="inner">
+                                    <h3>#{beneficioController.items.size()}</h3>
+
+                                    <p>Beneficios</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-stats-bars"></i>
+                                </div>
+                                <a href="#{request.contextPath}/faces/beneficio/List.xhtml" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-blue">
                                 <div class="inner">
                                     <h3>#{pensionadoController.porcentajeBeneficios()}<sup style="font-size: 20px">%</sup></h3>
 
@@ -64,11 +137,11 @@
                         <!-- ./col -->
                         <div class="col-lg-3 col-xs-6">
                             <!-- small box -->
-                            <div class="small-box bg-yellow">
+                            <div class="small-box bg-blue">
                                 <div class="inner">
                                     <h3>#{usuarioController.habilitados.size()}</h3>
 
-                                    <p>Usuarios Habilitados en el sistema</p>
+                                    <p>Usuarios habilitados</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-person-add"></i>
@@ -77,43 +150,35 @@
                             </div>
                         </div>
                         <!-- ./col -->
-                        <div class="col-lg-3 col-xs-6">
-                            <!-- small box -->
-                            <div class="small-box bg-red">
-                                <div class="inner">
-                                    <h3>#{cuotaspagadasController.Morosos(pensionadoController.habilitados).size()}</h3>
-
-                                    <p>Morosos</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-pie-graph"></i>
-                                </div>
-                                <a href="#{request.contextPath}/faces/pensionado/Morosos.xhtml" class="small-box-footer">Ir <i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <!-- ./col -->
+                        
                     </div>
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="panel panel-primary">
-                                <div class="panel-heading"><b>1. </b>Información de los pensionados</div>
+                        <div class="col-md-3">
+                            <div class="panel panel-info">
+                                <div class="panel-heading bg-orange"><b>1. </b>Información de los pensionados</div>
                                 <div class="panel-body">En el sistema FP-Usach es posible encontrar de forma fácil y cómoda toda la información de los pensionados. Tal como 
                                     la ubicación de donde reside, ademas de sus compromisos con bienestar.</div>
                             </div>
 
                         </div>
-                        <div class="col-md-4">
-                            <div class="panel panel-primary">
-                                <div class="panel-heading"><b>2. </b>Registrar Pagos</div>
-                                <div class="panel-body">También lleva el control sobre sus compromisos con Bienestar, de tal forma se pueda acceder de manera sencilla y rápida 
-                                    a toda la información actualizada de RRHH.</div>
+                        <div class="col-md-3">
+                            <div class="panel panel-info">
+                                <div class="panel-heading bg-orange"><b>2. </b>Registrar Pagos</div>
+                                <div class="panel-body">El sistema llevará el control sobre los compromisos que posean los pensionados con Bienestar, de tal forma se podrá tener la información actualizada, adicionalmente podrá ser accedida de manera sencilla y rápida.</div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="panel panel-primary">
-                                <div class="panel-heading"><b>3. </b>Atrasos y Morosos</div>
+                        <div class="col-md-3">
+                            <div class="panel panel-info">
+                                <div class="panel-heading bg-orange"><b>3. </b>Atrasos y Morosos</div>
                                 <div class="panel-body">Como parte fundamental del sistema, se tiene la información de los pensionados que se encuentran con problemas en sus compromisos,
                                     de esta forma es posible actuar frente a esto oportunamente.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="panel panel-info">
+                                <div class="panel-heading bg-orange"><b>4. </b>Préstamos y Beneficios</div>
+                                <div class="panel-body">El sistema podrá recopilar información detallada de los pensionados que adquieran préstamos en algun momento, como también guardar la 
+                                    informacion de los beneficios entregados a los pensionados.</div>
                             </div>
                         </div>
                     </div>

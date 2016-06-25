@@ -8,10 +8,8 @@ package entities;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -24,8 +22,6 @@ public class medicamento implements Serializable {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
-    
-    @NotNull(message = "Debe tener un nombre")
     private String nombre_medicamento;
 
     public String getNombre_medicamento() {
