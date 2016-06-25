@@ -94,16 +94,6 @@
                             </c:if> 
                         </f:facet>
                     </p:dataTable>
-                    <br></br>
-                    <br></br>
-                    <p:fieldset legend="Resumen">
-                        <h:outputText  class="center" value="Existen "/>
-                        <h:outputText class="center" value="#{pensionadoController.habilitados.size()}"/>
-                        <h:outputText class="center" value=" pensionados habilitados y "/>
-                        <h:outputText class="center" value="#{pensionadoController.items.size() - pensionadoController.habilitados.size()}"/>
-                        <h:outputText class="center" value=" pensionados deshabilitados en el sistema."/>
-                        <p></p>
-                    </p:fieldset>
                 </p:panel>
             </h:form>
 
@@ -112,5 +102,4 @@
             <ui:include src="View.xhtml"/>
         </ui:define>
     </ui:composition>
-
 </html>
