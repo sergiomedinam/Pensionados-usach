@@ -8,19 +8,13 @@ package entities;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
 
-/**
- *
- * @author seerg
- */
+
 @Entity
 @NamedQueries({
     @NamedQuery(name = "usuario.findbyEstado", query = "SELECT p FROM usuario p WHERE p.estado = :estado")
@@ -33,23 +27,13 @@ public class usuario implements Serializable {
     private Long id;
        
     private String email_usuario;
-    
     private String estado;
     private String causal;
-    
-    
-    @NotNull(message = "debe ingresar nombre")
     private String nombre;
-    
-    @NotNull(message = "debe ingresar apellido")
     private String apellido;
-    
-    @NotNull(message = "debe ingresar rut")
     private String rut;
-    
-    @NotNull(message = "debe ingresar contraseña")
     private String contrasena;
-    @NotNull(message = "debe tener un rol")
+
     @OneToOne
     private rol tipo_usuario;
 

@@ -112,6 +112,50 @@ public class contactoController implements Serializable {
     public contacto getcontacto(java.lang.Long id) {
         return getFacade().find(id);
     }
+    
+    public String getNombre(String rut){
+        getItems();
+        String nombre = "";
+        for (contacto item : items) {
+            if(item.getPensionados().getRut_pensionado().equals(rut)){
+                nombre = item.getNombre_contacto() + " " + item.getApellido_contacto();
+            }
+        }
+        return nombre;
+    }
+    
+    public String getParentesco(String rut){
+        getItems();
+        String parentesco = "";
+        for (contacto item : items) {
+            if(item.getPensionados().getRut_pensionado().equals(rut)){
+                parentesco = item.getParentesco();
+            }
+        }
+        return parentesco;
+    }
+    public String getEmail(String rut){
+        getItems();
+        String email = "";
+        for (contacto item : items) {
+            if(item.getPensionados().getRut_pensionado().equals(rut)){
+                email = item.getCorreo_contacto();
+            }
+        }
+        return email;
+    }
+    public Long getTelefono(String rut){
+        getItems();
+        Long telefono = null;
+        for (contacto item : items) {
+            if(item.getPensionados().getRut_pensionado().equals(rut)){
+                telefono = item.getTelefono_contacto();
+            }
+        }
+        return telefono;
+    }
+    
+    
 
     public List<contacto> getItemsAvailableSelectMany() {
         return getFacade().findAll();

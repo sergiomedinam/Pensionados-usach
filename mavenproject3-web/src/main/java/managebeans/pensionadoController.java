@@ -6,6 +6,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import entities.contacto;
 import entities.pensionado;
 import entities.parametros;
 import java.io.ByteArrayInputStream;
@@ -63,8 +64,10 @@ public class pensionadoController implements Serializable {
     private ArrayList<pensionado> sinCorreo = new ArrayList<>();
     private boolean filledSinCorreo = false;
     private boolean sinConexion = false;
-
     private String causal;
+    
+    @Inject
+    private contactoController contactoController;
     @Inject
     private parametrosController parametrosController;    
     @Inject
@@ -224,6 +227,36 @@ public class pensionadoController implements Serializable {
         }
         return habilitados;
     }
+    public List<pensionado> getDeshabilitados() {
+        getItems();
+        List<pensionado> deshabilitados = new ArrayList<pensionado>();
+        for (pensionado item : items) {
+            if (item.getEstado().equals("DESHABILITADO")) {
+                deshabilitados.add(item);
+            }
+        }
+        return deshabilitados;
+    }
+    
+    public List<pensionado> getSinContacto() {
+        List<contacto> contactos = contactoController.getItems();
+        List<pensionado> habilitados = getHabilitados();
+        List<pensionado> sinContacto = new ArrayList<pensionado>();
+        for (pensionado item : habilitados) {
+            int aux = 0;
+            for (contacto cont : contactos) {
+                if(!item.getRut_pensionado().equals(cont.getPensionados().getRut_pensionado())){
+                    aux++;
+                }
+            }
+            if (aux == contactos.size()) {
+               sinContacto.add(item);
+            }
+        }
+        return sinContacto;
+    }
+    
+    
     
     public int porcentajeBeneficios(){
         List<pensionado> habilitados = getHabilitados();

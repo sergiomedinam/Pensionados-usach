@@ -15,7 +15,7 @@
                     <p:panelGrid columns="3" rendered="#{pagoController.selected != null}">
                         
                         <p:outputLabel value="#{bundle.CreatepagoLabel_pensionado}" for="pensionado" />
-                        <p:selectOneMenu id="pensionado" required="true" requiredMessage="Se necesita un pensionado." filter="true" filterMatchMode="contains" value="#{pagoController.selected.pensionado}" style="width:155px">
+                        <p:selectOneMenu id="pensionado" required="true" requiredMessage="Se necesita un pensionado." filter="true" filterMatchMode="contains" value="#{pagoController.selected.pensionado}" style="width:200px">
                             <p:ajax  update="cat,vi,hosp,ap,ot,prest,pago"/>
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{pensionadoController.habilitados}"
@@ -26,7 +26,7 @@
                         <p:outputLabel/>
                         
                         <p:outputLabel value="Año" for="ano" />
-                        <p:selectOneMenu  required="true" requiredMessage="Se necesita un año." id="ano" value="#{pagoController.selected.ano}" style="width:155px">
+                        <p:selectOneMenu  required="true" requiredMessage="Se necesita un año." id="ano" value="#{pagoController.selected.ano}" style="width:200px">
                             <p:ajax  update="prest,pago"/>
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{añosCuotas.añosCuotas}" />
@@ -35,7 +35,7 @@
 
                         
                         <p:outputLabel value="#{bundle.CreatepagoLabel_mes}" for="mes" />
-                        <p:selectOneMenu  required="true" requiredMessage="Se necesita un mes." id="mes" value="#{pagoController.selected.mes}" style="width:155px">
+                        <p:selectOneMenu  required="true" requiredMessage="Se necesita un mes." id="mes" value="#{pagoController.selected.mes}" style="width:200px">
                             <p:ajax  update="prest,pago"/>
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{añosCuotas.NCuotas}" />
@@ -90,7 +90,7 @@
                         
 
                         <p:outputLabel value="#{bundle.CreatepagodetalleLabel_otros}" for="otros" />
-                        <p:inputText id="ot" required="true" requiredMessage="Otros no puede estar vacío." value="#{pagoController.monto_otros}" style="width: 155px;">
+                        <p:inputText id="ot" required="true" requiredMessage="Otros no puede estar vacío." value="#{pagoController.monto_otros}" style="width: 200px;">
                             <f:validateLongRange minimum="0" />
                             <p:ajax update="pago"/>
                         </p:inputText>
@@ -100,7 +100,7 @@
 
                         
                         <p:outputLabel value="Observaciones:" for="observaciones" />
-                        <p:inputTextarea id="observaciones" value="#{pagoController.selected.observaciones}" title="Observaciones" />
+                        <p:inputTextarea id="observaciones" value="#{pagoController.selected.observaciones}" style="width:200px" title="Observaciones" />
                         <p:outputLabel/>
                         
                         <p:outputLabel value="Pago Total" for="pago" />
@@ -149,6 +149,9 @@
                        
                        
                     </p:panelGrid>
+                    <br>
+                        * Campo requerido
+                    </br>
                     <p:commandButton actionListener="#{pagoController.create}" value="#{bundle.Save}" update="display,:pagoListForm:datalist,:growl" oncomplete="handleSubmit(args,'pagoCreateDialog');"/>
                     <p:commandButton actionListener="#{pagoController.createPDF}" value="Crear PDF" ajax="false" update="display,:pagoListForm:datalist,:growl" oncomplete="handleSubmit(args,'pagoCreateDialog');"/>
                 </h:panelGroup>

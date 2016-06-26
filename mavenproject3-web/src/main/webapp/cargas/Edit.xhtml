@@ -23,15 +23,18 @@
 
                         
                         <p:outputLabel value="#{bundle.EditcargasLabel_conyuge}" for="conyuge" />
-                        <p:inputText id="conyuge" value="#{cargasController.selected.conyuge}" title="#{bundle.EditcargasTitle_conyuge}"/>
+                        <p:inputText id="conyuge" value="#{cargasController.selected.conyuge}" style="width:200px" title="#{bundle.EditcargasTitle_conyuge}"/>
                         <p:outputLabel value="#{bundle.EditcargasLabel_hijos}" for="hijos" />
-                        <p:inputText id="hijos" value="#{cargasController.selected.hijos}" title="#{bundle.EditcargasTitle_hijos}"/>
+                        <p:inputText id="hijos" value="#{cargasController.selected.hijos}" style="width:200px" title="#{bundle.EditcargasTitle_hijos}"/>
                         <p:outputLabel value="#{bundle.EditcargasLabel_otros}" for="otros" />
-                        <p:inputText id="otros" value="#{cargasController.selected.otros}" title="#{bundle.EditcargasTitle_otros}"/>
+                        <p:inputText id="otros" value="#{cargasController.selected.otros}" style="width:200px" title="#{bundle.EditcargasTitle_otros}"/>
                         
                         
  
                     </p:panelGrid>
+                    <br>
+                        * Campo requerido
+                    </br>
                     <p:commandButton actionListener="#{cargasController.update}" value="#{bundle.Save}" update="display,:cargasListForm:datalist,:growl" oncomplete="handleSubmit(args, 'cargasEditDialog');"/>
                 </h:panelGroup>
             </h:form>

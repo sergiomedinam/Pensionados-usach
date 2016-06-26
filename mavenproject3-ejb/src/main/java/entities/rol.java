@@ -8,11 +8,8 @@ package entities;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -26,7 +23,6 @@ public class rol implements Serializable {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
     
-    @NotNull(message ="Debe tener un nombre")
     private String nombre_rol;
 
     public String getNombre_rol() {

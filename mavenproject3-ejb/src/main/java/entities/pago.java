@@ -8,12 +8,10 @@ package entities;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -26,12 +24,8 @@ public class pago implements Serializable {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
-    
-    @NotNull
     private Integer pago;
-    
     private String ano;
-    
     private String observaciones;
     
     

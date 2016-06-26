@@ -12,10 +12,6 @@ import javax.persistence.GenerationType;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 
-/**
- *
- * @author Sergio
- */
 @Entity
 public class pagodetalle implements Serializable {
 
@@ -34,7 +30,6 @@ public class pagodetalle implements Serializable {
     private Boolean aportes;
     private Boolean prestamos;
     private Boolean otros;
-    
     
     private Integer monto_seguro_catastrofico;
     private Integer monto_seguro_vida;

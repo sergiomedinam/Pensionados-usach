@@ -8,15 +8,11 @@ package entities;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
+import javax.persistence.ManyToOne;
 
-/**
- *
- * @author Sergio
- */
+
 @Entity
 public class contacto implements Serializable {
 
@@ -24,25 +20,41 @@ public class contacto implements Serializable {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
-    
-    @NotNull(message ="Debe tener un nombre")
+
     private String nombre_contacto;
-    
-    @NotNull(message ="Debe tener un apellido")
     private String apellido_contacto;
-    
-    @NotNull(message ="Debe tener un parentesco")
     private String parentesco;
-    
-    @NotNull(message ="Debe tener un telefono")
     private Long telefono_contacto;
+    private String correo_contacto;
+    
+    @ManyToOne
+    private pensionado pensionados;
+
+    public String getCorreo_contacto() {
+        return correo_contacto;
+    }
+
+    public void setCorreo_contacto(String correo_contacto) {
+        this.correo_contacto = correo_contacto.toUpperCase() ;
+    }
+
+    
+    
+    public pensionado getPensionados() {
+        return pensionados;
+    }
+
+    public void setPensionados(pensionado pensionados) {
+        this.pensionados = pensionados;
+    }
+    
 
     public String getNombre_contacto() {
         return nombre_contacto;
     }
 
     public void setNombre_contacto(String nombre_contacto) {
-        this.nombre_contacto = nombre_contacto;
+        this.nombre_contacto = nombre_contacto.toUpperCase();
     }
 
     public String getApellido_contacto() {
@@ -50,7 +62,7 @@ public class contacto implements Serializable {
     }
 
     public void setApellido_contacto(String apellido_contacto) {
-        this.apellido_contacto = apellido_contacto;
+        this.apellido_contacto = apellido_contacto.toUpperCase();
     }
 
     public String getParentesco() {
@@ -58,7 +70,7 @@ public class contacto implements Serializable {
     }
 
     public void setParentesco(String parentesco) {
-        this.parentesco = parentesco;
+        this.parentesco = parentesco.toUpperCase();
     }
 
     public Long getTelefono_contacto() {

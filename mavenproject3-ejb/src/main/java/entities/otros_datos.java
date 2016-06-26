@@ -4,10 +4,8 @@ package entities;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
 
 @Entity
 public class otros_datos implements Serializable {
@@ -16,35 +14,15 @@ public class otros_datos implements Serializable {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
-    
-    @NotNull(message = "Debe tener un sistema de salud")
     private String sistema_salud;
-    
-    @NotNull(message = "Debe tener un tipo de pension")
     private String tipo_pension;
-    
-    @NotNull(message = "Debe tener un sistema pension")
     private String sistema_pension;
-    
-    @NotNull(message = "Debe tener un banco asociado")
     private String nombre_banco;
-    
-    @NotNull(message = "Debe tener una cuenta bancaria")
     private String cuenta_banco;
-    
-    @NotNull(message = "Debe tener un estamento")
     private String estamento;
-    
-    @NotNull(message = "Debe tener un monto de pension")
     private Integer monto_pension;
-    
-    @NotNull(message = "Debe tener un valor de cuota")
     private Integer valor_cuota;
-    
-    @NotNull(message = "Debe tener una fecha de ultimo aporte")
     private String ultimo_aporte;
-    
-    @NotNull(message = "Debe tener una caja de compensacion")
     private String caja_compensacion;
 
     public String getSistema_salud() {

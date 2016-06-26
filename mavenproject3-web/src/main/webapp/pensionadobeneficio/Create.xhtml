@@ -14,7 +14,7 @@
                     <p:panelGrid columns="2" rendered="#{pensionadobeneficioController.selected != null}">
                         
                         <p:outputLabel value="#{bundle.CreatepensionadobeneficioLabel_pensionado}" for="pensionado" />
-                        <p:selectOneMenu id="pensionado" required="true" requiredMessage="Se necesita un pensionado." style="width:155px" filter="true" filterMatchMode="contains" value="#{pensionadobeneficioController.selected.pensionado}" >
+                        <p:selectOneMenu id="pensionado" required="true" requiredMessage="Se necesita un pensionado." style="width:200px" filter="true" filterMatchMode="contains" value="#{pensionadobeneficioController.selected.pensionado}" >
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{pensionadoController.habilitados}"
                                            var="pensionadoItem"
@@ -23,7 +23,7 @@
                         </p:selectOneMenu>
                         
                         <p:outputLabel value="#{bundle.CreatepensionadobeneficioLabel_beneficio}" for="beneficio" />
-                        <p:selectOneMenu id="beneficio" required="true" requiredMessage="Se necesita un beneficio." style="width:155px" filter="true" filterMatchMode="contains" value="#{pensionadobeneficioController.selected.beneficio}" >
+                        <p:selectOneMenu id="beneficio" required="true" requiredMessage="Se necesita un beneficio." style="width:200px" filter="true" filterMatchMode="contains" value="#{pensionadobeneficioController.selected.beneficio}" >
                             <p:ajax  update="monto"/>
                             <f:selectItem itemLabel="Selecionar" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{beneficioController.itemsAvailableSelectOne}"
@@ -33,14 +33,17 @@
                         </p:selectOneMenu>
                         
                         <p:outputLabel value="#{bundle.CreatepensionadobeneficioLabel_monto}" for="monto" />
-                        <p:inputText id="monto" required="true" requiredMessage="Se necesita un monto." value="#{pensionadobeneficioController.selected.monto}" title="#{bundle.CreatepensionadobeneficioTitle_monto}" >
+                        <p:inputText id="monto" required="true" requiredMessage="Se necesita un monto." style="width:200px" value="#{pensionadobeneficioController.selected.monto}" title="#{bundle.CreatepensionadobeneficioTitle_monto}" >
                             <f:validateLongRange minimum="0" maximum="#{pensionadobeneficioController.selected.beneficio.monto_max_beneficio}"/>
                         </p:inputText>
                         
                         <p:outputLabel value="Fecha beneficio" for="fecha_beneficio" />
-                        <p:inputMask id="fecha_beneficio" mask="99/99/9999" placeholder="DD/MM/AAAA" required="true" requiredMessage="Se necesita una fecha." value="#{pensionadobeneficioController.selected.fecha_beneficio}" title="Fecha beneficio" />
+                        <p:inputMask id="fecha_beneficio" mask="99/99/9999" placeholder="DD/MM/AAAA" style="width:200px" required="true" requiredMessage="Se necesita una fecha." value="#{pensionadobeneficioController.selected.fecha_beneficio}" title="Fecha beneficio" />
                          
                     </p:panelGrid>
+                    <br>
+                        * Campo requerido
+                    </br>
                     <p:commandButton actionListener="#{pensionadobeneficioController.create}" value="#{bundle.Save}" update="display,:pensionadobeneficioListForm:datalist,:growl" oncomplete="handleSubmit(args,'pensionadobeneficioCreateDialog');"/>
                 </h:panelGroup>
             </h:form>

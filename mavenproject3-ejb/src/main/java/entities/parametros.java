@@ -8,15 +8,9 @@ package entities;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
 
-/**
- *
- * @author Sergio
- */
 @Entity
 public class parametros implements Serializable {
 
@@ -25,27 +19,16 @@ public class parametros implements Serializable {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
     
-    @NotNull
     private Integer valor_uf;    
-    @NotNull
     private Float prima_catastrofico_titular;
-    @NotNull
     private Float prima_catastrofico_conyuge;
-    @NotNull
     private Float prima_catastrofico_hijos;
-    @NotNull
     private Float prima_hospitalario_titular;
-    @NotNull
     private Float prima_hospitalario_titularmas1;
-    @NotNull
     private Float prima_hospitalario_titular2omas;
-    @NotNull
     private String correo_s_admin;
-    @NotNull
     private String correo_aplicacion;
-    @NotNull
     private String contrasena_correo_aplicacion;
-    @NotNull
     private Integer aporte_institucional;
 
     public Integer getAporte_institucional() {
