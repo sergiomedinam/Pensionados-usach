@@ -495,7 +495,7 @@ public class pensionadoController implements Serializable {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(username));
             message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(to));
-            message.setSubject("Solicitud contraseña nueva");
+            message.setSubject("Estado morosidad");
             message.setText("Estimado "+ getNombreCompleto(moroso) +":\n"
                             + "Bienestar USACH le informa que se encuentra atrasado con sus pagos. \nSaludos.");
             Transport.send(message);
