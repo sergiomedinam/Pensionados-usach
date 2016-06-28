@@ -23,8 +23,10 @@
                 <section class="content-header">
                     <h1>Pensionado: #{pensionadoController.selected.nombre_pensionado} #{pensionadoController.selected.apellido_p_pensionado} #{pensionadoController.selected.apellido_m_pensionado}
                         <small>Panel administrador</small>
-                        <a href="#demo" data-toggle="collapse" class="btn btn-info">Información</a>    
-                        <a href="#demo2" data-toggle="collapse" class="btn btn-warning">Actualizar Imagen</a>
+                        <a href="#demo" data-toggle="collapse" class="btn btn-info">Información</a>
+                        <c:if test="${pensionadoController.selected.estado.equals('HABILITADO')}" >
+                            <a href="#demo2" data-toggle="collapse" class="btn btn-warning">Actualizar Imagen</a>
+                        </c:if> 
                         <br/>
                     </h1>
                     
