@@ -12,596 +12,630 @@
     <h:body>
         <ui:composition template="/template.xhtml"> 
             <ui:define name="body">
-                
+
                 <p:breadCrumb > 
-                <p:menuitem value="Inicio" url="#" />
-                <p:menuitem value="Inicio" url="/" />
-                <p:menuitem value="Pensionados" url="/faces/pensionado/List.xhtml" />
-                <p:menuitem value="Información" url="/faces/pensionado/Infopensionado.xhtml" />
+                    <p:menuitem value="Inicio" url="#" />
+                    <p:menuitem value="Inicio" url="/" />
+                    <p:menuitem value="Pensionados" url="/faces/pensionado/List.xhtml" />
+                    <p:menuitem value="Información" url="/faces/pensionado/Infopensionado.xhtml" />
                 </p:breadCrumb>
-                
+
                 <section class="content-header">
-                        <h1>Pensionado: #{pensionadoController.selected.nombre_pensionado} #{pensionadoController.selected.apellido_p_pensionado} #{pensionadoController.selected.apellido_m_pensionado}
+                    <h1>Pensionado: #{pensionadoController.selected.nombre_pensionado} #{pensionadoController.selected.apellido_p_pensionado} #{pensionadoController.selected.apellido_m_pensionado}
                         <small>Panel administrador</small>
-                        <a href="#demo" data-toggle="collapse" class="btn btn-info">Información</a>
+                        <a href="#demo" data-toggle="collapse" class="btn btn-info">Información</a>    
+                        <a href="#demo2" data-toggle="collapse" class="btn btn-warning">Actualizar Imagen</a>
                         <br/>
-                        </h1>
+                    </h1>
                     
-                    
-                     <c:if test="${pensionadoController.selected.estado.equals('HABILITADO')}" >
-                            <p:commandButton id="editButton1"   icon="ui-icon-circle-close" value="Deshabilitar" update=":pensionadoEditForm1" oncomplete="PF('pensionadoEditDialog1').show()"/>
-                        </c:if>    
-                      <p:dialog id="pensionadoEditDlg1" widgetVar="pensionadoEditDialog1" modal="true" resizable="false" appendTo="@(body)" header="Deshabilitar Pensionado del Sistema">
-                            <h:form id="pensionadoEditForm1">
-                                <p:growl id="growl" showDetail="true" showSummary="true" autoUpdate="true" />  
-                                <h:panelGroup id="display">
-                                    <p:panelGrid columns="2" rendered="#{pensionadoController.selected != null}">
-                                        
-                                        <p:outputLabel value="Estado:" for="estado" />      
-                                        <p:selectOneMenu id="estado" required="true" requiredMessage="Se necesita un estado para el pensionado." value="#{pensionadoController.selected.estado}"   style="width:200px">
-                                            <f:selectItem itemLabel="DESHABILITADO" itemValue="DESHABILITADO" />
-                                        </p:selectOneMenu>
-                                        
-                                        <p:outputLabel value="Causal:" for="causal" />
-                                        <p:selectOneMenu id="causal" required="true" requiredMessage="Se necesita una causal de deshabilitación." value="#{pensionadoController.selected.causal}" style="width:200px">
-                                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
-                                            <f:selectItem itemLabel="FALLECIMIENTO" itemValue="FALLECIMIENTO" />
-                                            <f:selectItem itemLabel="DESAFILIACIÓN" itemValue="DESAFILIACIÓN" />
-                                            <f:selectItem itemLabel="RENUNCIA" itemValue="RENUNCIA" />
-                                            <f:selectItem itemLabel="OTRO" itemValue="OTRO" />
-                                        </p:selectOneMenu>
-                                        
-                                    </p:panelGrid>
-                                    <p:commandButton actionListener="#{pensionadoController.update}" value="Deshabilitar" update="growl" oncomplete="handleSubmit(args, 'pensionadoEditDialog1');"/>
-                                </h:panelGroup>
-                            </h:form>
-                        </p:dialog>
-                    
-                        <div id="demo" class=" collapse">
-                              <br/>
-                             <div class="panel panel-default">
 
-                                 <div class="panel-footer"> <b>¿Que hacer aquí?</b> En esta sección del sistema es posible visualizar toda la información relacionada con un pensionado.</div>
-                            </div>
-                        </div>
-                     
+                    <c:if test="${pensionadoController.selected.estado.equals('HABILITADO')}" >
+                        <p:commandButton id="editButton1"   icon="ui-icon-circle-close" value="Deshabilitar" update=":pensionadoEditForm1" oncomplete="PF('pensionadoEditDialog1').show()"/>
+                    </c:if>    
+                    <p:dialog id="pensionadoEditDlg1" widgetVar="pensionadoEditDialog1" modal="true" resizable="false" appendTo="@(body)" header="Deshabilitar Pensionado del Sistema">
+                        <h:form id="pensionadoEditForm1">
+                            <!--<p:remoteCommand name="onload" action="#{pensionado.cargaImagen}" autoRun="true"/>-->
+                            <p:growl id="growl" showDetail="true" showSummary="true" autoUpdate="true" />  
+                            <h:panelGroup id="display">
+                                <p:panelGrid columns="2" rendered="#{pensionadoController.selected != null}">
+
+                                    <p:outputLabel value="Estado:" for="estado" />      
+                                    <p:selectOneMenu id="estado" required="true" requiredMessage="Se necesita un estado para el pensionado." value="#{pensionadoController.selected.estado}"   style="width:200px">
+                                        <f:selectItem itemLabel="DESHABILITADO" itemValue="DESHABILITADO" />
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel value="Causal:" for="causal" />
+                                    <p:selectOneMenu id="causal" required="true" requiredMessage="Se necesita una causal de deshabilitación." value="#{pensionadoController.selected.causal}" style="width:200px">
+                                        <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true" />
+                                        <f:selectItem itemLabel="FALLECIMIENTO" itemValue="FALLECIMIENTO" />
+                                        <f:selectItem itemLabel="DESAFILIACIÓN" itemValue="DESAFILIACIÓN" />
+                                        <f:selectItem itemLabel="RENUNCIA" itemValue="RENUNCIA" />
+                                        <f:selectItem itemLabel="OTRO" itemValue="OTRO" />
+                                    </p:selectOneMenu>
+
+                                </p:panelGrid>
+                                <p:commandButton actionListener="#{pensionadoController.update}" value="Deshabilitar" update="growl" oncomplete="handleSubmit(args, 'pensionadoEditDialog1');"/>
+                            </h:panelGroup>
+                        </h:form>
+                        
+                    </p:dialog>
                     
-                </section>
-                
-                <section class="content " >
-                    
-                    <div class="row">
-                    
-                    <div class="container panel panel-default col-md-5">
-                        
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th rowspan="1">Datos Personales</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td rowspan="1">Rut</td>
-                                    <td>#{pensionadoController.selected.rut_pensionado}</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan="1">Nombre</td>
-                                    <td>#{pensionadoController.selected.nombre_pensionado} #{pensionadoController.selected.apellido_p_pensionado} #{pensionadoController.selected.apellido_m_pensionado}</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan="1">Estado Civil</td>
-                                    <td>#{pensionadoController.selected.estado_civil}</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan="1">Fecha Nacimiento</td>
-                                    <td>#{pensionadoController.selected.fecha_nacimiento}</td>
-                                </tr>
-                            </tbody>
-                            <thead>
-                                <tr>
-                                    <th rowspan="1">Datos de contacto</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td rowspan="1">Correo</td>
-                                    <td>#{pensionadoController.selected.email_pensionado}</td>
-                                </tr>
-                                 <tr>
-                                    <td rowspan="1">Correo Alternativo</td>
-                                    <td>#{pensionadoController.selected.email_alternativo}</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan="1">Telefono Fijo</td>
-                                    <td>#{pensionadoController.selected.telefono_fijo}</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan="1">Telefono Celular</td>
-                                    <td>#{pensionadoController.selected.celular}</td>
-                                </tr>
-                            </tbody>
-                            <thead>
-                                <tr>
-                                    <th rowspan="1">Datos Residencia</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td rowspan="1">Dirección</td>
-                                    <td>#{pensionadoController.selected.direccion}</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan="1">Comuna</td>
-                                    <td>#{pensionadoController.selected.comuna}</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan="1">Región</td>
-                                    <td>#{pensionadoController.selected.region}</td>
-                                </tr>
-                            </tbody>
-                            <thead>
-                                <tr>
-                                    <th rowspan="1">Contacto</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td rowspan="1">Nombre</td>
-                                    <td>#{contactoController.getNombre(pensionadoController.selected.rut_pensionado)}</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan="1">Parentesco</td>
-                                    <td>#{contactoController.getParentesco(pensionadoController.selected.rut_pensionado)}</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan="1">Email</td>
-                                    <td>#{contactoController.getEmail(pensionadoController.selected.rut_pensionado)}</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan="1">Teléfono</td>
-                                    <td>#{contactoController.getTelefono(pensionadoController.selected.rut_pensionado)}</td>
-                                </tr>
-                            </tbody>
-                            <thead>
-                                <tr>
-                                    <th rowspan="1">Estado</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td rowspan="1">Estado</td>
-                                    <td>#{pensionadoController.selected.estado}</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan="1">Causal</td>
-                                    <c:if test="${pensionadoController.selected.estado.equals('HABILITADO') == true}" >
-                                        <td>#{'NO APLICA'}</td>  
-                                    </c:if>
-                                    <c:if test="${pensionadoController.selected.estado.equals('DESHABILITADO') == true}" >
-                                        <td>#{pensionadoController.selected.causal}</td>
-                                    </c:if>
-                                </tr>
-                            </tbody>
-                        </table>
-                      </div>
+                    <div id="demo" class=" collapse">
+                        <br/>
+                        <div class="panel panel-default">
 
-                    
-                    <div class="container col-md-7" >
-                        
-                        <div class="container panel panel-default col-md-12">
-                        
-                        <table class="table table-hover">
-                          
-                            <thead>
-                                <tr>
-                                    <th rowspan="1">Compromisos</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                
-                               
-                                <tr>
-                                    <td rowspan="1">Monto Pensión</td>
-                                    <td>$ #{pensionadoController.selected.monto_pension}</td>
-                                </tr>
-                                 <tr>
-                                    <td rowspan="1">Aporte</td>
-                                    <td>$ #{pensionadoController.selected.aporte}</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan="1">Saldo</td>
-                                    <td>$ #{pensionadoController.selected.saldo}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                      </div>
-                        
-                        
-                        <div class="col-md-6">
-                            <!-- small box -->
-                            <div class="small-box bg-blue">
-                                <div class="inner" align="center">
-                                    <h3>#{cargasController.CargasPensionados(pensionadoController.selected.rut_pensionado).size()}</h3>
-                                    <p>Seguros asociados</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-bag"></i>
-                                </div>
-                                <a href="#cargasPensionado" data-toggle="collapse" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
+                            <div class="panel-footer"> <b>¿Que hacer aquí?</b> En esta sección del sistema es posible visualizar toda la información relacionada con un pensionado.</div>
                         </div>
-                        <!-- ./col -->
-                        <div class="col-md-6">
-                            <!-- small box -->
-                            <c:if test="${cuotaspagadasController.alDia(pensionadoController.selected.rut_pensionado) == true}" >
-                                <div class="small-box bg-green">
-                                    <div class="inner" align="center">
-                                        <h3>Si</h3>
-                                        <p>¿Esta al día?</p>
-                                    </div>
-                                    <div class="icon">
-                                        <i class="ion ion-stats-bars"></i>
-                                    </div>
-                                    <a href="#cuotasPensionado" data-toggle="collapse" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
-                                </div>
-                            </c:if>
-                            <c:if test="${cuotaspagadasController.alDia(pensionadoController.selected.rut_pensionado) == false}" >
-                                <div class="small-box bg-red">
-                                    <div class="inner" align="center">
-                                        <h3>No</h3>
-                                        <p>¿Esta al dia?</p>
-                                    </div>
-                                    <div class="icon">
-                                        <i class="ion ion-stats-bars"></i>
-                                    </div>
-                                    <a href="#cuotasPensionado" data-toggle="collapse" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
-                                </div>
-                            </c:if>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-md-6">
-                            <!-- small box -->
-                            <div class="small-box bg-orange">
-                                <div class="inner" align="center" >
-                                    <h3>#{pensionadoprestamoController.PrestamosPensionados(pensionadoController.selected.rut_pensionado).size()}</h3>
-
-                                    <p>Préstamos</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-person-add"></i>
-                                </div>
-                                <a href="#prestamosPensionado" data-toggle="collapse" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-md-6" >
-                            <!-- small box -->
-                            <div class="small-box bg-purple">
-                                <div class="inner" align="center">
-                                    <h3>#{pensionadobeneficioController.BeneficiosPensionados(pensionadoController.selected.rut_pensionado).size()}</h3>
-
-                                    <p>Beneficios</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-person-add"></i>
-                                </div>
-                                <a href="#beneficiosPensionado" data-toggle="collapse" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-md-6" >
-                            <!-- small box -->
-                            <div class="small-box bg-teal">
-                                <div class="inner" align="center">
-                                    <h3>#{pensionadopatologiaController.PatologiaPensionados(pensionadoController.selected.rut_pensionado).size()}</h3>
-
-                                    <p>Patologías</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-person-add"></i>
-                                </div>
-                                <a href="#patologiasPensionado" data-toggle="collapse" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <!-- ./col -->
-                        
-                        
-                        <!-- ./col -->
                     </div>
-                   </div>
+                    <div id="demo2" class=" collapse">
+                        <br/>
+                        <div class="panel panel-default">
+                            <div class="panel-footer"> 
+                                <h:form enctype="multipart/form-data">
+                                    <h:panelGroup>
+                                        <p:fileUpload id="filImaPro" mode="advanced" fileUploadListener="#{pensionadoController.subirImagen}" 
+                                                      sizeLimit="5120000" allowTypes="/(\.|\/)(gif|jpeg|jpg|png|JPEG)$/" 
+                                                      cancelLabel="Cancelar" uploadLabel="Subir Imagen" 
+                                                      label="Elegir nueva imagen" 
+                                                      fileLimit="1"/>                        
+                                    </h:panelGroup>
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </section>
-    <c:if test="${cargasController.CargasPensionados(pensionadoController.selected.rut_pensionado).size() > 0}" >
-                <div id="cargasPensionado" class=" collapse">
-                <div class="panel panel-default">
-                
-                <h:form id="cargasListForm">
-                <p:panel header="SEGUROS Y CARGAS DEL PENSIONADO">
-                    <p:dataTable id="datalist" value="#{cargasController.CargasPensionados(pensionadoController.selected.rut_pensionado)}" var="item"
-                                 selectionMode="single" selection="#{cargasController.selected}"
-                                 paginator="false"
-                                 rowKey="#{item.id}"
-                                 >
-                        
-                        <p:column >
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListcargasTitle_pensionado}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.pensionado.rut_pensionado}"/>
-                        </p:column>
-                        <p:column >
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoTitle_nombre_pensionado}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.pensionado.nombre_pensionado} #{item.pensionado.apellido_p_pensionado} #{item.pensionado.apellido_m_pensionado}"/>
-                        </p:column>
-                        <p:column >
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListcargasTitle_seguro}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.seguro.nombre_seguro}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListcargasTitle_conyuge}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.conyuge}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListcargasTitle_hijos}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.hijos}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListcargasTitle_otros}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.otros}"/>
-                        </p:column>
-                        
-                    </p:dataTable>
-                </p:panel>
-            </h:form>    
-            </div>
-        </div>
-    </c:if>
-    <c:if test="${cargasController.CargasPensionados(pensionadoController.selected.rut_pensionado).size() == 0}" >
-        <div id="cargasPensionado" class=" collapse">
-            <p id="failtext" class="alert alert-info bg-blue" align="center" style="font-size:100%;" >
-                El pensionado no registra seguros asociados.
-            </p>
-        </div>
-    </c:if>
 
-    <c:if test="${cuotaspagadasController.CuotasPensionados(pensionadoController.selected.rut_pensionado).size() > 0}" >
-                <div id="cuotasPensionado" class=" collapse">
-                    <c:if test="${cuotaspagadasController.esMoroso(pensionadoController.selected.rut_pensionado) == true}" >
-                        <p id="failtext" class="alert alert-danger" align="center" style="font-size:100%;" >
+                <section class="content " >
+
+                    <div class="row">
+
+                        <div class="container panel panel-default col-md-5">
+                            <div class="ui-g">
+                                <div class="ui-g-6 ui-md-3" style="margin:10px">
+                                    <c:if test="#{pensionadoController.selected.content != null}">
+                                        <p:graphicImage value="#{pensionadoController.imagenPensionado}" style="width:100%"/>
+                                    </c:if>
+                                    
+                                </div>  
+                            </div>
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th rowspan="1">Datos Personales</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td rowspan="1">Rut</td>
+                                        <td>#{pensionadoController.selected.rut_pensionado}</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="1">Nombre</td>
+                                        <td>#{pensionadoController.selected.nombre_pensionado} #{pensionadoController.selected.apellido_p_pensionado} #{pensionadoController.selected.apellido_m_pensionado}</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="1">Estado Civil</td>
+                                        <td>#{pensionadoController.selected.estado_civil}</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="1">Fecha Nacimiento</td>
+                                        <td>#{pensionadoController.selected.fecha_nacimiento}</td>
+                                    </tr>
+                                </tbody>
+                                <thead>
+                                    <tr>
+                                        <th rowspan="1">Datos de contacto</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td rowspan="1">Correo</td>
+                                        <td>#{pensionadoController.selected.email_pensionado}</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="1">Correo Alternativo</td>
+                                        <td>#{pensionadoController.selected.email_alternativo}</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="1">Telefono Fijo</td>
+                                        <td>#{pensionadoController.selected.telefono_fijo}</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="1">Telefono Celular</td>
+                                        <td>#{pensionadoController.selected.celular}</td>
+                                    </tr>
+                                </tbody>
+                                <thead>
+                                    <tr>
+                                        <th rowspan="1">Datos Residencia</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td rowspan="1">Dirección</td>
+                                        <td>#{pensionadoController.selected.direccion}</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="1">Comuna</td>
+                                        <td>#{pensionadoController.selected.comuna}</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="1">Región</td>
+                                        <td>#{pensionadoController.selected.region}</td>
+                                    </tr>
+                                </tbody>
+                                <thead>
+                                    <tr>
+                                        <th rowspan="1">Contacto</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td rowspan="1">Nombre</td>
+                                        <td>#{contactoController.getNombre(pensionadoController.selected.rut_pensionado)}</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="1">Parentesco</td>
+                                        <td>#{contactoController.getParentesco(pensionadoController.selected.rut_pensionado)}</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="1">Email</td>
+                                        <td>#{contactoController.getEmail(pensionadoController.selected.rut_pensionado)}</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="1">Teléfono</td>
+                                        <td>#{contactoController.getTelefono(pensionadoController.selected.rut_pensionado)}</td>
+                                    </tr>
+                                </tbody>
+                                <thead>
+                                    <tr>
+                                        <th rowspan="1">Estado</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td rowspan="1">Estado</td>
+                                        <td>#{pensionadoController.selected.estado}</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="1">Causal</td>
+                                        <c:if test="${pensionadoController.selected.estado.equals('HABILITADO') == true}" >
+                                            <td>#{'NO APLICA'}</td>  
+                                        </c:if>
+                                        <c:if test="${pensionadoController.selected.estado.equals('DESHABILITADO') == true}" >
+                                            <td>#{pensionadoController.selected.causal}</td>
+                                        </c:if>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                        <div class="container col-md-7" >
+
+                            <div class="container panel panel-default col-md-12">
+                                <table class="table table-hover">
+
+                                    <thead>
+                                        <tr>
+                                            <th rowspan="1">Compromisos</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td rowspan="1">Monto Pensión</td>
+                                            <td>$ #{pensionadoController.selected.monto_pension}</td>
+                                        </tr>
+                                        <tr>
+                                            <td rowspan="1">Aporte</td>
+                                            <td>$ #{pensionadoController.selected.aporte}</td>
+                                        </tr>
+                                        <tr>
+                                            <td rowspan="1">Saldo</td>
+                                            <td>$ #{pensionadoController.selected.saldo}</td>
+                                        </tr>
+                                        <tr>
+
+                                        </tr>
+                                    </tbody>
+                                </table>              
+
+                            </div>
+
+                            <div class="col-md-6">
+                                <!-- small box -->
+                                <div class="small-box bg-blue">
+                                    <div class="inner" align="center">
+                                        <h3>#{cargasController.CargasPensionados(pensionadoController.selected.rut_pensionado).size()}</h3>
+                                        <p>Seguros asociados</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-bag"></i>
+                                    </div>
+                                    <a href="#cargasPensionado" data-toggle="collapse" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                            <!-- ./col -->
+                            <div class="col-md-6">
+                                <!-- small box -->
+                                <c:if test="${cuotaspagadasController.alDia(pensionadoController.selected.rut_pensionado) == true}" >
+                                    <div class="small-box bg-green">
+                                        <div class="inner" align="center">
+                                            <h3>Si</h3>
+                                            <p>¿Esta al día?</p>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="ion ion-stats-bars"></i>
+                                        </div>
+                                        <a href="#cuotasPensionado" data-toggle="collapse" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
+                                    </div>
+                                </c:if>
+                                <c:if test="${cuotaspagadasController.alDia(pensionadoController.selected.rut_pensionado) == false}" >
+                                    <div class="small-box bg-red">
+                                        <div class="inner" align="center">
+                                            <h3>No</h3>
+                                            <p>¿Esta al dia?</p>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="ion ion-stats-bars"></i>
+                                        </div>
+                                        <a href="#cuotasPensionado" data-toggle="collapse" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
+                                    </div>
+                                </c:if>
+                            </div>
+                            <!-- ./col -->
+                            <div class="col-md-6">
+                                <!-- small box -->
+                                <div class="small-box bg-orange">
+                                    <div class="inner" align="center" >
+                                        <h3>#{pensionadoprestamoController.PrestamosPensionados(pensionadoController.selected.rut_pensionado).size()}</h3>
+
+                                        <p>Préstamos</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-person-add"></i>
+                                    </div>
+                                    <a href="#prestamosPensionado" data-toggle="collapse" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-md-6" >
+                                <!-- small box -->
+                                <div class="small-box bg-purple">
+                                    <div class="inner" align="center">
+                                        <h3>#{pensionadobeneficioController.BeneficiosPensionados(pensionadoController.selected.rut_pensionado).size()}</h3>
+
+                                        <p>Beneficios</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-person-add"></i>
+                                    </div>
+                                    <a href="#beneficiosPensionado" data-toggle="collapse" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-md-6" >
+                                <!-- small box -->
+                                <div class="small-box bg-teal">
+                                    <div class="inner" align="center">
+                                        <h3>#{pensionadopatologiaController.PatologiaPensionados(pensionadoController.selected.rut_pensionado).size()}</h3>
+
+                                        <p>Patologías</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-person-add"></i>
+                                    </div>
+                                    <a href="#patologiasPensionado" data-toggle="collapse" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                            <!-- ./col -->
+
+
+                            <!-- ./col -->
+                        </div>
+                    </div>
+                </section>
+                <c:if test="${cargasController.CargasPensionados(pensionadoController.selected.rut_pensionado).size() > 0}" >
+                    <div id="cargasPensionado" class=" collapse">
+                        <div class="panel panel-default">
+
+                            <h:form id="cargasListForm">
+                                <p:panel header="SEGUROS Y CARGAS DEL PENSIONADO">
+                                    <p:dataTable id="datalist" value="#{cargasController.CargasPensionados(pensionadoController.selected.rut_pensionado)}" var="item"
+                                                 selectionMode="single" selection="#{cargasController.selected}"
+                                                 paginator="false"
+                                                 rowKey="#{item.id}"
+                                                 >
+
+                                        <p:column >
+                                            <f:facet name="header">
+                                                <h:outputText value="#{bundle.ListcargasTitle_pensionado}"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.pensionado.rut_pensionado}"/>
+                                        </p:column>
+                                        <p:column >
+                                            <f:facet name="header">
+                                                <h:outputText value="#{bundle.ListpensionadoTitle_nombre_pensionado}"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.pensionado.nombre_pensionado} #{item.pensionado.apellido_p_pensionado} #{item.pensionado.apellido_m_pensionado}"/>
+                                        </p:column>
+                                        <p:column >
+                                            <f:facet name="header">
+                                                <h:outputText value="#{bundle.ListcargasTitle_seguro}"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.seguro.nombre_seguro}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="#{bundle.ListcargasTitle_conyuge}"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.conyuge}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="#{bundle.ListcargasTitle_hijos}"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.hijos}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="#{bundle.ListcargasTitle_otros}"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.otros}"/>
+                                        </p:column>
+
+                                    </p:dataTable>
+                                </p:panel>
+                            </h:form>    
+                        </div>
+                    </div>
+                </c:if>
+                <c:if test="${cargasController.CargasPensionados(pensionadoController.selected.rut_pensionado).size() == 0}" >
+                    <div id="cargasPensionado" class=" collapse">
+                        <p id="failtext" class="alert alert-info bg-blue" align="center" style="font-size:100%;" >
+                            El pensionado no registra seguros asociados.
+                        </p>
+                    </div>
+                </c:if>
+
+                <c:if test="${cuotaspagadasController.CuotasPensionados(pensionadoController.selected.rut_pensionado).size() > 0}" >
+                    <div id="cuotasPensionado" class=" collapse">
+                        <c:if test="${cuotaspagadasController.esMoroso(pensionadoController.selected.rut_pensionado) == true}" >
+                            <p id="failtext" class="alert alert-danger" align="center" style="font-size:100%;" >
                                 El pensionado se encuentra moroso.
-                        </p>        
-                    </c:if>
-                    <div class="panel panel-default">
-                    
-                    <h:form id="cuotaspagadasListForm">
-                        <p:panel header="CUOTAS DEL PENSIONADO">
-                            <p:dataTable id="datalist" value="#{cuotaspagadasController.CuotasPensionados(pensionadoController.selected.rut_pensionado)}" var="item"
-                                         selectionMode="single" selection="#{cuotaspagadasController.selected}"
-                                         paginator="false"
-                                         rowKey="#{item.id}"
-                                         >
+                            </p>        
+                        </c:if>
+                        <div class="panel panel-default">
 
-                                <p:column >
-                                    <f:facet name="header">
-                                        <h:outputText value="#{bundle.ListcuotaspagadasTitle_pensionado}"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.pensionado.rut_pensionado}"/>
-                                </p:column>
-                                <p:column >
-                                    <f:facet name="header">
-                                        <h:outputText value="Nombre"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.pensionado.nombre_pensionado}
-                                                         #{item.pensionado.apellido_p_pensionado}
-                                                         #{item.pensionado.apellido_m_pensionado}"/>
-                                </p:column>
+                            <h:form id="cuotaspagadasListForm">
+                                <p:panel header="CUOTAS DEL PENSIONADO">
+                                    <p:dataTable id="datalist" value="#{cuotaspagadasController.CuotasPensionados(pensionadoController.selected.rut_pensionado)}" var="item"
+                                                 selectionMode="single" selection="#{cuotaspagadasController.selected}"
+                                                 paginator="false"
+                                                 rowKey="#{item.id}"
+                                                 >
 
-                                <p:column >
-                                    <f:facet name="header">
-                                        <h:outputText value="#{bundle.ListcuotaspagadasTitle_ano}"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.ano}"/>
-                                </p:column>
-                                <p:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="#{bundle.ListcuotaspagadasTitle_cuotas}"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.cuotas}"/>
-                                </p:column>
-                            </p:dataTable>
-                        </p:panel>
-                    </h:form>
-                </div>
-            </div>
-    </c:if>
-    <c:if test="${cuotaspagadasController.CuotasPensionados(pensionadoController.selected.rut_pensionado).size() == 0}" >
-        <div id="cuotasPensionado" class=" collapse">
-            <p id="failtext" class="alert alert-danger" align="center" style="font-size:100%;" >
-                El pensionado no registra cuotas pagadas en ningún año.
-            </p>
-        </div>
-    </c:if>
-    <c:if test="${pensionadoprestamoController.PrestamosPensionados(pensionadoController.selected.rut_pensionado).size() > 0}" >
-        <div id="prestamosPensionado" class=" collapse">
-            <div class="panel panel-default">
-            <h:form id="pensionadoprestamoListForm">
-                <p:panel header="LISTA DE PRÉSTAMOS DEL PENSIONADO">
-                    <p:dataTable id="datalist" value="#{pensionadoprestamoController.PrestamosPensionados(pensionadoController.selected.rut_pensionado)}" var="item"
-                                 selectionMode="single" selection="#{pensionadoprestamoController.selected}"
-                                 paginator="false"
-                                 rowKey="#{item.id}"
-                                 >
+                                        <p:column >
+                                            <f:facet name="header">
+                                                <h:outputText value="#{bundle.ListcuotaspagadasTitle_pensionado}"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.pensionado.rut_pensionado}"/>
+                                        </p:column>
+                                        <p:column >
+                                            <f:facet name="header">
+                                                <h:outputText value="Nombre"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.pensionado.nombre_pensionado}
+                                                          #{item.pensionado.apellido_p_pensionado}
+                                                          #{item.pensionado.apellido_m_pensionado}"/>
+                                        </p:column>
 
-                        <p:column id="rut" >
-                            <f:facet name="header">
-                                <h:outputText value="Rut"/>
-                            </f:facet>
-                            <h:outputText value="#{item.pensionado.rut_pensionado}"/>
-                        </p:column>
-                        <p:column   id="nombre" >
-                            <f:facet name="header">
-                                <h:outputText value="Nombre"/>
-                            </f:facet>
-                            <h:outputText value="#{item.pensionado.nombre_pensionado} #{item.pensionado.apellido_p_pensionado} #{item.pensionado.apellido_m_pensionado}"/>
-                        </p:column>
-                        <p:column id="prestamo" >
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadoprestamoTitle_prestamo}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.prestamo.nombre_prestamo}"/>
-                        </p:column>
-                        <p:column id="monto" >
-                            <f:facet name="header">
-                                <h:outputText value="Monto pedido"/>
-                            </f:facet>
-                            <h:outputText value="$ #{item.monto_total}"/>
-                        </p:column>
-                        <p:column id="plazo" style="width: 80px;" >
-                            <f:facet name="header">
-                                <h:outputText value="Plazo"/>
-                            </f:facet>
-                            <h:outputText value="#{item.cuotas} MESES"/>
-                        </p:column>
-                        <p:column id="fecha" style="width: 80px;" >
-                            <f:facet name="header">
-                                <h:outputText value="Fecha Inicio"/>
-                            </f:facet>
-                            <h:outputText value="#{item.fecha_pedido}"/>
-                        </p:column>
-                        <f:facet name="footer">
-                        </f:facet>
-                    </p:dataTable>
-                </p:panel>
-            </h:form>
-            </div>
-        </div>
-    </c:if>
-    <c:if test="${pensionadoprestamoController.PrestamosPensionados(pensionadoController.selected.rut_pensionado).size() == 0}" >
-        <div id="prestamosPensionado" class=" collapse">
-            <p id="failtext" class="alert alert-success bg-orange" align="center" style="font-size:100%;" >
-                El pensionado no registra préstamos asociados.
-            </p>
-        </div>
-    </c:if>    
-     
-    <c:if test="${pensionadobeneficioController.BeneficiosPensionados(pensionadoController.selected.rut_pensionado).size() > 0}" >
-                <div id="beneficiosPensionado" class=" collapse">
-                <div class="panel panel-default">
+                                        <p:column >
+                                            <f:facet name="header">
+                                                <h:outputText value="#{bundle.ListcuotaspagadasTitle_ano}"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.ano}"/>
+                                        </p:column>
+                                        <p:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="#{bundle.ListcuotaspagadasTitle_cuotas}"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.cuotas}"/>
+                                        </p:column>
+                                    </p:dataTable>
+                                </p:panel>
+                            </h:form>
+                        </div>
+                    </div>
+                </c:if>
+                <c:if test="${cuotaspagadasController.CuotasPensionados(pensionadoController.selected.rut_pensionado).size() == 0}" >
+                    <div id="cuotasPensionado" class=" collapse">
+                        <p id="failtext" class="alert alert-danger" align="center" style="font-size:100%;" >
+                            El pensionado no registra cuotas pagadas en ningún año.
+                        </p>
+                    </div>
+                </c:if>
                 
-                <h:form id="pensionadobeneficioListForm">
-                <p:panel header="BENEFICIOS DEL PENSIONADO">
-                    <p:dataTable id="datalist" value="#{pensionadobeneficioController.BeneficiosPensionados(pensionadoController.selected.rut_pensionado)}" var="item"
-                                 selectionMode="single" selection="#{pensionadobeneficioController.selected}"
-                                 paginator="false"
-                                 rowKey="#{item.id}"
-                                 >
+                <c:if test="${pensionadoprestamoController.PrestamosPensionados(pensionadoController.selected.rut_pensionado).size() > 0}" >
+                    <div id="prestamosPensionado" class=" collapse">
+                        <div class="panel panel-default">
+                            <h:form id="pensionadoprestamoListForm">
+                                <p:panel header="LISTA DE PRÉSTAMOS DEL PENSIONADO">
+                                    <p:dataTable id="datalist" value="#{pensionadoprestamoController.PrestamosPensionados(pensionadoController.selected.rut_pensionado)}" var="item"
+                                                 selectionMode="single" selection="#{pensionadoprestamoController.selected}"
+                                                 paginator="false"
+                                                 rowKey="#{item.id}"
+                                                 >
 
-                        <p:column >
-                            <f:facet name="header">
-                                <h:outputText value="Rut"/>
-                            </f:facet>
-                            <h:outputText value="#{item.pensionado.rut_pensionado}"/>
-                        </p:column>
-                        <p:column >
-                            <f:facet name="header">
-                                <h:outputText value="Nombre"/>
-                            </f:facet>
-                            <h:outputText value="#{item.pensionado.nombre_pensionado} #{item.pensionado.apellido_p_pensionado} #{item.pensionado.apellido_m_pensionado}"/>
-                        </p:column>
-                        
-                        <p:column >
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadobeneficioTitle_beneficio}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.beneficio.nombre_beneficio}"/>
-                        </p:column>
-                        <p:column >
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListpensionadobeneficioTitle_monto}"/>
-                            </f:facet>
-                            <h:outputText value="$ #{item.monto}"/>
-                        </p:column>
-                        <p:column >
-                            <f:facet name="header">
-                                <h:outputText value="Fecha Beneficio"/>
-                            </f:facet>
-                            <h:outputText value="#{item.fecha_beneficio}"/>
-                        </p:column>
-                        <f:facet name="footer">
-                        </f:facet>
-                    </p:dataTable>
-                </p:panel>
-            </h:form>
-            </div>
-        </div>
-    </c:if>
-    <c:if test="${pensionadobeneficioController.BeneficiosPensionados(pensionadoController.selected.rut_pensionado).size() == 0}" >
-        <div id="beneficiosPensionado" class=" collapse">
-            <p id="failtext" class="alert alert-success bg-purple" align="center" style="font-size:100%;" >
-                El pensionado no registra beneficios asociados.
-            </p>
-        </div>
-    </c:if> 
-    <c:if test="${pensionadopatologiaController.PatologiaPensionados(pensionadoController.selected.rut_pensionado).size() > 0}" >
-        <div id="patologiasPensionado" class=" collapse">
-            <div class="panel panel-default">
-                <h:form id="pensionadopatologiaListForm">
-                <p:panel header="LISTA DE PATOLOGÍAS">
-                    <p:dataTable id="datalist" value="#{pensionadopatologiaController.PatologiaPensionados(pensionadoController.selected.rut_pensionado)}" var="item"
-                                 selectionMode="single" selection="#{pensionadopatologiaController.selected}"
-                                 paginator="false"
-                                 rowKey="#{item.id}"
-                                 >
-                        <p:column  >
-                            <f:facet name="header">
-                                <h:outputText value="Rut"/>
-                            </f:facet>
-                            <h:outputText value="#{item.pensionado.rut_pensionado}"/>
-                        </p:column>
-                        <p:column >
-                            <f:facet name="header">
-                                <h:outputText value="Nombre"/>
-                            </f:facet>
-                            <h:outputText value="#{item.pensionado.nombre_pensionado} #{item.pensionado.apellido_p_pensionado} #{item.pensionado.apellido_m_pensionado}"/>
-                        </p:column>
-                        <p:column >
-                            <f:facet name="header">
-                                <h:outputText value="Patología"/>
-                            </f:facet>
-                            <h:outputText value="#{item.patologia.nombre_patologia}"/>
-                        </p:column>
-                        <f:facet name="footer">
-                        </f:facet>
-                        </p:dataTable>
-                    </p:panel>
-                </h:form>        
-            </div>
-        </div>
-    </c:if> 
-    <c:if test="${pensionadopatologiaController.PatologiaPensionados(pensionadoController.selected.rut_pensionado).size() == 0}" >
-        <div id="patologiasPensionado" class=" collapse">
-            <p id="failtext" class="alert alert-success bg-teal" align="center" style="font-size:100%;" >
-                El pensionado no registra patologías asociadas.
-            </p>
-        </div>
-    </c:if> 
-        </ui:define> 
+                                        <p:column id="rut" >
+                                            <f:facet name="header">
+                                                <h:outputText value="Rut"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.pensionado.rut_pensionado}"/>
+                                        </p:column>
+                                        <p:column   id="nombre" >
+                                            <f:facet name="header">
+                                                <h:outputText value="Nombre"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.pensionado.nombre_pensionado} #{item.pensionado.apellido_p_pensionado} #{item.pensionado.apellido_m_pensionado}"/>
+                                        </p:column>
+                                        <p:column id="prestamo" >
+                                            <f:facet name="header">
+                                                <h:outputText value="#{bundle.ListpensionadoprestamoTitle_prestamo}"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.prestamo.nombre_prestamo}"/>
+                                        </p:column>
+                                        <p:column id="monto" >
+                                            <f:facet name="header">
+                                                <h:outputText value="Monto pedido"/>
+                                            </f:facet>
+                                            <h:outputText value="$ #{item.monto_total}"/>
+                                        </p:column>
+                                        <p:column id="plazo" style="width: 80px;" >
+                                            <f:facet name="header">
+                                                <h:outputText value="Plazo"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.cuotas} MESES"/>
+                                        </p:column>
+                                        <p:column id="fecha" style="width: 80px;" >
+                                            <f:facet name="header">
+                                                <h:outputText value="Fecha Inicio"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.fecha_pedido}"/>
+                                        </p:column>
+                                        <f:facet name="footer">
+                                        </f:facet>
+                                    </p:dataTable>
+                                </p:panel>
+                            </h:form>
+
+                        </div>
+                    </div>
+                </c:if>
+                <c:if test="${pensionadoprestamoController.PrestamosPensionados(pensionadoController.selected.rut_pensionado).size() == 0}" >
+                    <div id="prestamosPensionado" class=" collapse">
+                        <p id="failtext" class="alert alert-success bg-orange" align="center" style="font-size:100%;" >
+                            El pensionado no registra préstamos asociados.
+                        </p>
+                    </div>
+                </c:if>    
+
+                <c:if test="${pensionadobeneficioController.BeneficiosPensionados(pensionadoController.selected.rut_pensionado).size() > 0}" >
+                    <div id="beneficiosPensionado" class=" collapse">
+                        <div class="panel panel-default">
+
+                            <h:form id="pensionadobeneficioListForm">
+                                <p:panel header="BENEFICIOS DEL PENSIONADO">
+                                    <p:dataTable id="datalist" value="#{pensionadobeneficioController.BeneficiosPensionados(pensionadoController.selected.rut_pensionado)}" var="item"
+                                                 selectionMode="single" selection="#{pensionadobeneficioController.selected}"
+                                                 paginator="false"
+                                                 rowKey="#{item.id}"
+                                                 >
+
+                                        <p:column >
+                                            <f:facet name="header">
+                                                <h:outputText value="Rut"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.pensionado.rut_pensionado}"/>
+                                        </p:column>
+                                        <p:column >
+                                            <f:facet name="header">
+                                                <h:outputText value="Nombre"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.pensionado.nombre_pensionado} #{item.pensionado.apellido_p_pensionado} #{item.pensionado.apellido_m_pensionado}"/>
+                                        </p:column>
+
+                                        <p:column >
+                                            <f:facet name="header">
+                                                <h:outputText value="#{bundle.ListpensionadobeneficioTitle_beneficio}"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.beneficio.nombre_beneficio}"/>
+                                        </p:column>
+                                        <p:column >
+                                            <f:facet name="header">
+                                                <h:outputText value="#{bundle.ListpensionadobeneficioTitle_monto}"/>
+                                            </f:facet>
+                                            <h:outputText value="$ #{item.monto}"/>
+                                        </p:column>
+                                        <p:column >
+                                            <f:facet name="header">
+                                                <h:outputText value="Fecha Beneficio"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.fecha_beneficio}"/>
+                                        </p:column>
+                                        <f:facet name="footer">
+                                        </f:facet>
+                                    </p:dataTable>
+                                </p:panel>
+                            </h:form>
+                        </div>
+                    </div>
+                </c:if>
+                <c:if test="${pensionadobeneficioController.BeneficiosPensionados(pensionadoController.selected.rut_pensionado).size() == 0}" >
+                    <div id="beneficiosPensionado" class=" collapse">
+                        <p id="failtext" class="alert alert-success bg-purple" align="center" style="font-size:100%;" >
+                            El pensionado no registra beneficios asociados.
+                        </p>
+                    </div>
+                </c:if> 
+                <c:if test="${pensionadopatologiaController.PatologiaPensionados(pensionadoController.selected.rut_pensionado).size() > 0}" >
+                    <div id="patologiasPensionado" class=" collapse">
+                        <div class="panel panel-default">
+                            <h:form id="pensionadopatologiaListForm">
+                                <p:panel header="LISTA DE PATOLOGÍAS">
+                                    <p:dataTable id="datalist" value="#{pensionadopatologiaController.PatologiaPensionados(pensionadoController.selected.rut_pensionado)}" var="item"
+                                                 selectionMode="single" selection="#{pensionadopatologiaController.selected}"
+                                                 paginator="false"
+                                                 rowKey="#{item.id}"
+                                                 >
+                                        <p:column  >
+                                            <f:facet name="header">
+                                                <h:outputText value="Rut"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.pensionado.rut_pensionado}"/>
+                                        </p:column>
+                                        <p:column >
+                                            <f:facet name="header">
+                                                <h:outputText value="Nombre"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.pensionado.nombre_pensionado} #{item.pensionado.apellido_p_pensionado} #{item.pensionado.apellido_m_pensionado}"/>
+                                        </p:column>
+                                        <p:column >
+                                            <f:facet name="header">
+                                                <h:outputText value="Patología"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.patologia.nombre_patologia}"/>
+                                        </p:column>
+                                        <f:facet name="footer">
+                                        </f:facet>
+                                    </p:dataTable>
+                                </p:panel>
+                            </h:form>        
+                        </div>
+                    </div>
+                </c:if> 
+                <c:if test="${pensionadopatologiaController.PatologiaPensionados(pensionadoController.selected.rut_pensionado).size() == 0}" >
+                    <div id="patologiasPensionado" class=" collapse">
+                        <p id="failtext" class="alert alert-success bg-teal" align="center" style="font-size:100%;" >
+                            El pensionado no registra patologías asociadas.
+                        </p>
+                    </div>
+                </c:if> 
+
+            </ui:define> 
         </ui:composition>
+        <!--        <h1>Select the file and click on the Submit button!</h1>
+                <br />
+                <form method="post" enctype="multipart/form-data" action="#{request.contextPath}/FileUploadServlet">
+                    <input type="file" name="selectedFile" value="Select a File..." /><br />
+                    <input type="submit" value="Submit" />
+                </form>-->
     </h:body>
 </html>
 

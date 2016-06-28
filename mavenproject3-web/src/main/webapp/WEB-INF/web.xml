@@ -5,11 +5,11 @@
         <param-value>Production</param-value>
     </context-param>
     <context-param>
-    <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
-    <param-value>client</param-value>
-</context-param>
+        <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+        <param-value>client</param-value>
+    </context-param>
 
-        <context-param>  
+    <context-param>  
         <param-name>primefaces.THEME</param-name>  
         <param-value>excite-bike</param-value>  
     </context-param>  
@@ -22,6 +22,30 @@
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
     </servlet-mapping>
+    <filter>
+        <filter-name>Primefaces Upload Filter</filter-name>
+        <filter-class>org.primefaces.webapp.filter.FileUploadFilter</filter-class> 
+        <init-param>
+            <param-name>thresholdSize</param-name>
+            <param-value>5120000</param-value>
+        </init-param>       
+        <init-param>
+            <param-name>uploadDirectory</param-name>
+            <param-value>/users/</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>Primefaces Upload Filter</filter-name>
+        <servlet-name>Faces Servlet</servlet-name>
+    </filter-mapping>
+<!--    <servlet>
+        <servlet-name>FileUploadServlet</servlet-name>
+        <servlet-class>servlet.FileUploadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FileUploadServlet</servlet-name>
+        <url-pattern>/faces/</url-pattern>
+    </servlet-mapping>-->
     <session-config>
         <session-timeout>
             30

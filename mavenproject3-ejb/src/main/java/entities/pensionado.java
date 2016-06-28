@@ -15,6 +15,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -48,7 +49,10 @@ public class pensionado implements Serializable {
     private Long celular;
     private String estado;
     private String causal;
-
+    
+    @Lob()
+    private byte[] content;
+    
     @ManyToOne
     private patologia patologias;
    
@@ -89,8 +93,14 @@ public class pensionado implements Serializable {
     public void setPensionadopatologia(Set<pensionadopatologia> pensionadopatologia) {
         this.pensionadopatologia = pensionadopatologia;
     }
-    
-    
+
+    public byte[] getContent() {
+        return content;
+    }
+
+    public void setContent(byte[] content) {
+        this.content = content;
+    }   
 
     public String getEstado() {
         return estado;
